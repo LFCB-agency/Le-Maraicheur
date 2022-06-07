@@ -33,7 +33,7 @@ ENV ACCESS_JWT_COOKIE_SECURE=${ACCESS_JWT_COOKIE_SECURE}
 COPY ./ /usr/src/app
 RUN npm install -g pnpm
 # Create front app
-RUN cd ./frontend && pnpm i --prod && pnpm build
+RUN cd ./frontend && pnpm i && pnpm build
 # Create back app
 RUN cd ./backend && pnpm i --prod
 
