@@ -1,13 +1,17 @@
-const express = require('express')
+const express = require("express");
 
-const {AdmController} = require("../controllers")
+// const { AdmController } = require("../controllers");
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/Adm", AdmController.Browse)
-router.get("/Adm/:id", AdmController.read)
-router.post("/Adm", AdmController.add)
-router.put("/Adm/:id", AdmController.edit)
-router.delete("/Adm/:id", AdmController.delete)
+router.get("/", (req, res) => {
+  return res.send("Hello Adm routes");
+});
+// router.get("/", AdmController.browse);
+
+// router.get("/:id", AdmController.read);
+// router.post("/", AdmController.add);
+// router.put("/:id", AdmController.edit);
+// router.delete("/:id", AdmController.delete);
 
 module.exports = router;

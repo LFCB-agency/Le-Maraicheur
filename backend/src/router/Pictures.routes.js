@@ -1,13 +1,13 @@
-const express = require('express')
+const express = require("express");
 
-const {PicturesController} = require("../controllers")
+const { PicturesController } = require("../controllers");
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/Pictures", PicturesController.Browse)
-router.get("/Pictures/:id", PicturesController.read)
-router.post("/Pictures", PicturesController.add)
-router.put("/Pictures/:id", PicturesController.edit)
-router.delete("/Pictures/:id", PicturesController.delete)
+router.get("/", PicturesController.Browse);
+router.get("/:id", PicturesController.read);
+router.post("/", PicturesController.add);
+router.put("/:id", PicturesController.edit);
+router.delete("/:id", PicturesController.delete);
 
 module.exports = router;

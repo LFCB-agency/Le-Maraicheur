@@ -1,13 +1,13 @@
-const express = require('express')
+const express = require("express");
 
-const {TextController} = require("../controllers")
+const { TextController } = require("../controllers");
 
-const router = express.Router()
+const router = express.Router();
 
-router.get("/Text", TextController.Browse)
-router.get("/Text/:id", TextController.read)
-router.post("/Text", TextController.add)
-router.put("/Text/:id", TextController.edit)
-router.delete("/Text/:id", TextController.delete)
+router.get("", TextController.Browse);
+router.get("/:id", TextController.read);
+router.post("", TextController.add);
+router.put("/:id", TextController.edit);
+router.delete("/:id", TextController.delete);
 
 module.exports = router;
