@@ -25,8 +25,6 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `item`
 --
-
-DROP TABLE IF EXISTS `adm`;
 CREATE TABLE `adm` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `email` varchar(255) NOT NULL,
@@ -34,7 +32,7 @@ CREATE TABLE `adm` (
   `question` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
-DROP TABLE IF EXISTS `preorder`;
+
 CREATE TABLE `preorder` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `lastname` varchar(80) NOT NULL,
@@ -45,14 +43,13 @@ CREATE TABLE `preorder` (
   `date` date
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
-DROP TABLE IF EXISTS `popup`;
+
 CREATE TABLE `popup` (
   `id` int AUTO_INCREMENT PRIMARY KEY,
   `titlePopup` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
 
-DROP TABLE IF EXISTS `pictures`;
 CREATE TABLE `pictures` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `file` varchar(255) NOT NULL,
@@ -62,7 +59,7 @@ CREATE TABLE `pictures` (
   `picSection` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
-DROP TABLE IF EXISTS `text`;
+
 CREATE TABLE `text` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `title` varchar(255) NOT NULL,
@@ -72,7 +69,7 @@ CREATE TABLE `text` (
   ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
 
-DROP TABLE IF EXISTS `products`;
+
 CREATE TABLE `products` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` enum("legume", "fermier", "panier", "plant"),
