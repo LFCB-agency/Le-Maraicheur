@@ -32,6 +32,8 @@ CREATE TABLE `adm` (
   `question` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
+-- INSERT INTO `adm`(`email`, `password`, `question`) VALUES (``)
+
 
 CREATE TABLE `preorder` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -54,7 +56,7 @@ CREATE TABLE `pictures` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `file` varchar(255) NOT NULL,
   `alt` varchar(255) NOT NULL,
-  `pictogram` varchar(255) NOT NULL,
+  `pictogram` varchar(255) NULL,
   `categories` enum("carousel", "home", "methode", "produit", "propos", "contact"),
   `picSection` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
@@ -62,13 +64,17 @@ CREATE TABLE `pictures` (
 
 CREATE TABLE `text` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `title` varchar(255) NOT NULL,
+  `title` varchar(255) NULL,
+<<<<<<< HEAD
+  `body` mediumtext  NULL,
+=======
   `body` mediumtext NOT NULL,
+>>>>>>> dev
   `page` enum("home", "methode", "produit", "propos", "contact"),
   `textSection` int NOT NULL
   ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
-
+-- INSERT INTO `text`(`title`, `body`, `page`, `textSection`) VALUES (`Notre raison d’être`, "", `home`, 1; "", `Le Maraîcheur est une microferme de production de légumes sur sol vivant créée en 2021 et s’appuyant sur les principes de la permaculture et de l’agroécologie. Notre objectif est de vous proposer des légumes d’excellente qualité nutritionnelle et gustative dans le respect du Vivant.`, `home`, 2);
 
 CREATE TABLE `products` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,

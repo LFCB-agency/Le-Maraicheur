@@ -1,8 +1,9 @@
+/* eslint-disable consistent-return */
 const models = require("../models");
 
-class ItemController {
+class TextController {
   static browse = (req, res) => {
-    models.item
+    models.text
       .findAll()
       .then(([rows]) => {
         res.send(rows);
@@ -14,7 +15,7 @@ class ItemController {
   };
 
   static read = (req, res) => {
-    models.item
+    models.text
       .find(req.params.id)
       .then(([rows]) => {
         if (rows[0] == null) {
@@ -30,14 +31,12 @@ class ItemController {
   };
 
   static edit = (req, res) => {
-    const item = req.body;
+    const text = req.body;
 
-    // TODO validations (length, format...)
+    text.id = parseInt(req.params.id, 10);
 
-    item.id = parseInt(req.params.id, 10);
-
-    models.item
-      .update(item)
+    models.text
+      .update(text)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
@@ -51,24 +50,28 @@ class ItemController {
       });
   };
 
-  static add = (req, res) => {
-    const item = req.body;
+  static add = async (req, res) => {
+    const text = req.body;
 
-    // TODO validations (length, format...)
+    const textIsValid = await models.text.validTextToCreate(text);
 
-    models.item
-      .insert(item)
+    if (!textIsValid) {
+      return res.status(400).send("You must provide all data to create a text");
+    }
+
+    models.text
+      .insert(text)
       .then(([result]) => {
-        res.status(201).send({ ...item, id: result.insertId });
+        return res.status(201).send({ ...text, id: result.insertId });
       })
       .catch((err) => {
         console.error(err);
-        res.sendStatus(500);
+        return res.sendStatus(500);
       });
   };
 
   static delete = (req, res) => {
-    models.item
+    models.text
       .delete(req.params.id)
       .then(() => {
         res.sendStatus(204);
@@ -79,5 +82,4 @@ class ItemController {
       });
   };
 }
-
-module.exports = ItemController;
+module.exports = TextController;
