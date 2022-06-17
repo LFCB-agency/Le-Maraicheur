@@ -9,6 +9,7 @@ class PreOrderController {
       return res.status(500).send(err.message);
     }
   };
+
   static read = (req, res) => {
     models.preorder
       .find(req.params.id)
