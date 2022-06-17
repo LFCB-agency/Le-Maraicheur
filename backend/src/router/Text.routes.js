@@ -4,7 +4,7 @@ const { TextController } = require("../controllers");
 
 const router = express.Router();
 
-router.get("", TextController.Browse);
+router.get("/", TextController.Browse);
 router.get("/:id", TextController.read);
 router.post("", TextController.add);
 router.put("/:id", TextController.edit);
