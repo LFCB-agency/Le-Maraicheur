@@ -1,8 +1,9 @@
-const AbstractManager = require("./AbstractManager");
 const Joi = require("joi");
+const AbstractManager = require("./AbstractManager");
 
 const payments = ["1x", "3x", "12x"];
 
+// eslint-disable-next-line no-unused-vars
 const schemaForCreation = Joi.object({
   lastname: Joi.string()
     .pattern(/^[a-z ,.'-]+$/i)
@@ -14,7 +15,7 @@ const schemaForCreation = Joi.object({
     .email({
       minDomainSegments: 2,
       //   tlds: { allow: ["com", "net", "fr", "gmail"] },
-      //Allowing .com .net and .fr
+      // Allowing .com .net and .fr
     })
     .required(),
   paymentMethod: Joi.string().valid(...payments),

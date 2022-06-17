@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const router = require("./router");
 
 const app = express();
@@ -14,6 +15,8 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
+
+app.use(cookieParser());
 
 app.use(express.json());
 

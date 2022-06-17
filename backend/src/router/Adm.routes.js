@@ -1,6 +1,6 @@
 const express = require("express");
 
-// const { AdmController } = require("../controllers");
+const { AdmController } = require("../controllers");
 
 const router = express.Router();
 
@@ -9,9 +9,18 @@ const router = express.Router();
 // });
 // router.get("/", AdmController.browse);
 
-// router.get("/:id", AdmController.read);
-// router.post("/", AdmController.add);
-// router.put("/:id", AdmController.edit);
-// router.delete("/:id", AdmController.delete);
+router.get("/", AdmController.browse);
+router.get("/logout", AdmController.authorization, AdmController.clearCookie);
+router.get("/:id", AdmController.read);
+
+router.post("/login", AdmController.login);
+router.post("/", AdmController.register);
+router.put(
+  "/:id",
+  AdmController.edit,
+  AdmController.authorization,
+  AdmController.isSameId
+);
+router.delete("/:id", AdmController.delete);
 
 module.exports = router;
