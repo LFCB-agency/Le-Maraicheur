@@ -62,7 +62,7 @@ CREATE TABLE `pictures` (
 
 CREATE TABLE `text` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `title` varchar(255) NOT NULL,
+  `title` varchar(255) NULL,
   `body` mediumtext NOT NULL,
   `page` enum("home", "methode", "produit", "propos", "contact"),
   `textSection` int NOT NULL
