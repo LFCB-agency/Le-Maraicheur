@@ -38,7 +38,7 @@ class TextManager extends AbstractManager {
 
   update(text) {
     return this.connection.query(
-      `UPDATE ${TextManager.table} SET title = ?, body = ?, page = ?, WHERE textSection = ?`,
+      `UPDATE ${TextManager.table} SET title = ?, body = ?, page = ? WHERE textSection = ?`,
       [text.title, text.body, text.page, text.textSection]
     );
   }

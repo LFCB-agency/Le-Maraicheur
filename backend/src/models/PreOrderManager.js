@@ -46,6 +46,15 @@ class PreOrderManager extends AbstractManager {
       id,
     ]);
   }
+
+  // async validPreorderToCreate(preorder) {
+  //   try {
+  //     await schemaForCreation.validateAsync(preorder);
+  //     return true;
+  //   } catch (err) {
+  //     return false;
+  //   }
+  // }
 }
 
 module.exports = PreOrderManager;
