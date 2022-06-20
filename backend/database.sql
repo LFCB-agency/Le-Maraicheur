@@ -81,39 +81,16 @@ CREATE TABLE `text` (
 -- ce cas précis des valeurs doivent être passées en null car si l'insert exige des champs en not null, nous sommes obligé de les renseigner pour pouvoir insérer nos valeurs 
 -- text pour la page home
 
-
--- Les queries sont rentrées une par une pour éviter les doublons pour nos valeurs fixes. Il faut cependant spécifier body ou title is NOT NULL dans nos query pour avoir les bonnes données
-
-INSERT INTO `text`(`title`, `page`, `textSection`) 
+INSERT INTO `text`(`title`, `body`, `page`, `textSection`) 
 VALUES 
-('Notre raison d’être','home', 1);
+('Notre raison d’être', 'Le Maraîcheur est une microferme de production de légumes sur sol vivant créée en 2021 et s’appuyant sur les principes de la permaculture et de l’agroécologie.
+ Notre objectif est de vous proposer des légumes d’excellente qualité nutritionnelle et gustative dans le respect du Vivant.', 'home', 1),
 
-INSERT INTO `text`(`body`, `page`, `textSection`) 
-VALUES 
-('Le Maraîcheur est une microferme de production de légumes sur sol vivant créée en 2021 et s’appuyant sur les principes de la permaculture et de l’agroécologie.
- Notre objectif est de vous proposer des légumes d’excellente qualité nutritionnelle et gustative dans le respect du Vivant.', 'home', 1);
+('Paniers de légumes', 'Un panier de légumes naturels, sur sol vivant et de saison chaque semaine, Composé d’au moins 6 variétés de légumes (selon saisonnalité)', 'home',2),
 
-INSERT INTO `text`(`title`, `page`, `textSection`) 
-VALUES 
-('Paniers de légumes','home', 2);
+-- text pour la page a propos
 
-INSERT INTO `text`(`body`, `page`, `textSection`) 
-VALUES 
-('Un panier de légumes naturels, sur sol vivant et de saison chaque semaine, Composé d’au moins 6 variétés de légumes (selon saisonnalité)', 'home',2);
-
--- -- text pour la page a propos
-
-INSERT INTO `text`(`title`, `page`, `textSection`) 
-VALUES 
-('Un peu d’histoire', 'propos', 1);
-
-INSERT INTO `text`(`body`, `page`, `textSection`) 
-VALUES 
-('Antoine Debray', 'propos', 2);
-
-INSERT INTO `text`(`body`, `page`, `textSection`) 
-VALUES 
-('Pourquoi m’être lancé dans la maraîchage ?
+('Un peu d’histoire', 'Pourquoi m’être lancé dans la maraîchage ?
 -- Depuis mes 15 ans, j’ai toujours voulu reprendre l’entreprise familiale de poules pondeuses élevées en plein air. Après des études d’entrepreneuriat et de commerce,
  je suis parti en Irlande pendant deux ans où j’ai travaillé en tant que commercial.
   C’est en discutant avec mon père que je décide finalement de produire des légumes car je pense que les gens ont plus besoin d’excellents légumes que d’excellents œufs dans leur assiette. 
@@ -121,54 +98,40 @@ VALUES
  l’une des fermes maraichères d’Europe les plus renommées, où j’ai énormément appris. C’est donc à mon retour fin 2021 que je dispose les premières brouettes de compost sur le terrain,
   avec l’aide de la famille et des copains du coin.
 -- Ma première source d’inspiration fut le film Demain et l’exemple de la Ferme du Bec Hellouin en Normandiequi montrait qu’on pouvait produire une grande quantité de légumes sur très petite surface,
- tout en créant de la biodiversité et se dégager un revenu décent. Ensuite les travaux de Jean-Martin Fortier, Charles Dowding et Richard Perkins m’ont encouragé à passer le pas.', 'propos', 1);
+ tout en créant de la biodiversité et se dégager un revenu décent. Ensuite les travaux de Jean-Martin Fortier, Charles Dowding et Richard Perkins m’ont encouragé à passer le pas.', 'propos', 1),
 
--- -- exemple insertion d'un membre d'équipe à supprimer plus tard
+('','Antoine Debray', 'propos', 2),
 
-INSERT INTO `text`(`title`, `page`, `textSection`) 
-VALUES 
-('Jean Michel', 'propos', 3);
+-- exemple insertion d'un membre d'équipe à supprimer plus tard
 
-INSERT INTO `text`(`body`, `page`, `textSection`) 
-VALUES 
-('Lorem ipsum dolor sit amet. Sit voluptatem minima ut internos error impedit nulla et quia optio ut dolor iste sed eveniet facere animi quisquam.
- Ex itaque quia et culpa fuga aut porro fuga et ipsa commodi.', 'propos', 2);
+('Jean Michel', '', 'propos', 3),
 
--- -- text pour la page methode
+('','Lorem ipsum dolor sit amet. Sit voluptatem minima ut internos error impedit nulla et quia optio ut dolor iste sed eveniet facere animi quisquam.
+ Ex itaque quia et culpa fuga aut porro fuga et ipsa commodi.', 'propos', 2),
 
-INSERT INTO `text`(`title`, `page`, `textSection`) 
-VALUES 
-('Sol vivant', 'methode', 1);
+-- text pour la page methode
 
-INSERT INTO `text`(`body`, `page`, `textSection`) 
-VALUES 
-('Saviez-vous que pour la consommation annuelle de nourriture de chaque personne sur terre (en moyenne 450kg), 10 tonnes de terres arables disparaissent chaque année ?
+('Sol vivant','Saviez-vous que pour la consommation annuelle de nourriture de chaque personne sur terre (en moyenne 450kg), 10 tonnes de terres arables disparaissent chaque année ?
 Tout ceci découle du travail du sol et notamment du labour qui crée de l’érosion. Si un sol est labouré et nu, chaque fois qu’il y a du vent ou de la pluie les fines particules d’argile s’échappent,
  entrainant des phénomènes comme les inondations ou les fameuses tempêtes de sable des Etats-Unis des années 30. 1mm de sol érodé équivaut à 10 tonnes d’argile perdu par hectare. Le sol a besoin d’être couvert,
   comme nous avons besoin de notre peau pour nous protéger des agressions extérieures.
-En outre, nous avons déjà perdu 1/3 de terres arables dans le monde. Il est urgent d’agir si nous voulons sauver nos sols.', 'methode', 1);
+En outre, nous avons déjà perdu 1/3 de terres arables dans le monde. Il est urgent d’agir si nous voulons sauver nos sols.', 'methode', 1),
 
-INSERT INTO `text`(`body`, `page`, `textSection`) 
-VALUES 
-("Le maraîchage sol vivant (msv) découle des principes de Permaculture et d'agroécologie. Cela consiste à ne pas travailler le sol et à ajouter du paillis (matière organique) que les êtres vivants du sol vont manger.
+('', "Le maraîchage sol vivant (msv) découle des principes de Permaculture et d'agroécologie. Cela consiste à ne pas travailler le sol et à ajouter du paillis (matière organique) que les êtres vivants du sol vont manger.
  Les plantes vont ensuite se nourrir de leur digestat, au fur et à mesure de leurs besoins en nutriments. 
 Cela donne des légumes pleins et vitamines et minéraux, avec du goût. 
 Il y a énormément d'avantages à cette méthode que vous pouvez retrouver dans bon nombre d'ouvrages, mais en voici quelques-uns :
   •	Plus de vie du sol = plus de goût et de nutriments
 	•	Énorme stockage de carbone dans le sol (le sol stocke plus de carbone que l'atmosphère et l'ensemble des êtres vivants), donc réduction du CO2 d’ans l’air
 	•	Pas d'érosion ni de lessivage des argiles et engrais (quand on en met, ce n’est pas mon cas ) puisque l'eau pénètre dans le sol plus facilement = moins de risques d'inondation
-	•	Moins d'arrosage ", 'methode', 2);
+	•	Moins d'arrosage ", 'methode', 2),
 
-INSERT INTO `text`(`body`, `page`, `textSection`) 
-VALUES 
-('Plus de 50 variétés de légumes et de fruits sont cultivés sur 1000 m2 de sol vivant.
+('', 'Plus de 50 variétés de légumes et de fruits sont cultivés sur 1000 m2 de sol vivant.
 « The smaller the better » est la devise de Richard Perkins, référence dans le domaine de l’Agriculture Régénérative.
 Plus la surface cultivée est petite, plus le jardin est maîtrisé. Cela permet de commencer avec des plus petits investissements et on obtient une rentabilité au m2 supérieure. 
-C’est aussi un plaisir de travailler à la main, sans le bruit des machines et de bouger son corps.', 'methode', 3);
+C’est aussi un plaisir de travailler à la main, sans le bruit des machines et de bouger son corps.', 'methode', 3),
 
-INSERT INTO `text`(`body`, `page`, `textSection`) 
-VALUES 
-('Autour du jardin seront prochainement plantées des arbres aux multiples bénéfices :
+('', 'Autour du jardin seront prochainement plantées des arbres aux multiples bénéfices :
   Favorisent la biodiversité
 	Limitent le vent
 	Produisent des fruits (miam !) et du bois
