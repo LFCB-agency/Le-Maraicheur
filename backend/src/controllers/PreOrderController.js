@@ -26,27 +26,27 @@ class PreOrderController {
       });
   };
 
-  //   static edit = (req, res) => {
-  //     const item = req.body;
+  // static edit = (req, res) => {
+  //   const item = req.body;
 
-  //     // TODO validations (length, format...)
+  //   // TODO validations (length, format...)
 
-  //     item.id = parseInt(req.params.id, 10);
+  //   item.id = parseInt(req.params.id, 10);
 
-  //     models.item
-  //       .update(item)
-  //       .then(([result]) => {
-  //         if (result.affectedRows === 0) {
-  //           res.sendStatus(404);
-  //         } else {
-  //           res.sendStatus(204);
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //         res.sendStatus(500);
-  //       });
-  //   };
+  //   models.item
+  //     .update(item)
+  //     .then(([result]) => {
+  //       if (result.affectedRows === 0) {
+  //         res.sendStatus(404);
+  //       } else {
+  //         res.sendStatus(204);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       res.sendStatus(500);
+  //     });
+  // };
 
   static add = (req, res) => {
     const preorder = req.body;
