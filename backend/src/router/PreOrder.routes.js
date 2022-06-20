@@ -4,10 +4,6 @@ const { PreOrderController } = require("../controllers");
 
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//   return res.send("yooooo");
-// });
-
 router.get("/", PreOrderController.browse);
 router.get("/:id", PreOrderController.read);
 router.post("/", PreOrderController.add);
