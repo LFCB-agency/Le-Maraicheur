@@ -10,7 +10,7 @@ const { PictureController } = require("../controllers");
 const storage = multer.diskStorage({
   // on defini le chemin ou les fichiers seront stockés
   destination: (_req, _file, cb) => {
-    cb(null, "backend/public/assets/images");
+    cb(null, "public/assets/images");
   },
   // filename defini le nom du fichier dans le dossier
   // dans ce cas là il sera nommé ex : "2022-20-06-nom-du-fichier"
@@ -35,19 +35,19 @@ router.post(
       const pictureData = JSON.parse(req.body.pictureData);
 
       req.pictureData = {
-        pictureFile: req.file.filename,
+        file: req.file.filename,
         alt: pictureData.alt,
       };
       return next();
     });
   },
-  PictureController.edit
+  PictureController.editPicture
 );
 
 router.get("/", PictureController.browse);
-router.get("/:id", PictureController.read);
-router.post("/", PictureController.add);
-router.put("/:id", PictureController.edit);
-router.delete("/:id", PictureController.delete);
+// router.get("/:id", PictureController.read);
+// router.post("/", PictureController.add);
+// router.put("/:id", PictureController.edit);
+// router.delete("/:id", PictureController.delete);
 
 module.exports = router;

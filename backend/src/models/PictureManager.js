@@ -51,8 +51,8 @@ class PictureManager extends AbstractManager {
 
   update(pictures) {
     return this.connection.query(
-      `UPDATE ${this.table} SET file = ?, categories = ? WHERE picSection = ?`,
-      [pictures.file, pictures.categories, pictures.picSection]
+      `UPDATE ${this.table} SET file = ?, alt = ?, categories = ? WHERE picSection = ?`,
+      [pictures.file, pictures.alt, pictures.categories, pictures.picSection]
     );
   }
 

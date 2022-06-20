@@ -1,12 +1,17 @@
+import { Route, Routes } from "react-router-dom";
 import Home from "@pages/Home";
-
+import Navbar from "@components/Navbar";
+import Upload from "@pages/Upload";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/upload" element={<Upload />} />
+      </Routes>
     </div>
   );
 }

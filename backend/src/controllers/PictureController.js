@@ -35,7 +35,7 @@ class PictureController {
 
     pictures.id = parseInt(req.params.id, 10);
 
-    models.pictures
+    models.text
       .update(pictures)
       .then(([result]) => {
         if (result.affectedRows === 0) {
@@ -62,7 +62,7 @@ class PictureController {
     }
 
     models.pictures
-      .insert(pictures)
+      .insert(text)
       .then(([result]) => {
         return res.status(201).send({ ...pictures, id: result.insertId });
       })
@@ -82,6 +82,24 @@ class PictureController {
         console.error(err);
         res.sendStatus(500);
       });
+  };
+
+  static editPicture = async (req, res) => {
+    try {
+      const [result] = await models.pictures.update({
+        file: req.pictures.file,
+        alt: req.pictures.alt,
+        categories: req.pictures.categories,
+        picSection: req.pictures.picSection,
+      });
+      if (result.affectedRows === 0) {
+        return res.status(404).send("Picture not found");
+      }
+      const [[pictureUpdated]] = await models.pictures.find(file);
+      return res.status(201).json(pictureUpdated);
+    } catch (err) {
+      return res.status(500).send(err.message);
+    }
   };
 }
 module.exports = PictureController;
