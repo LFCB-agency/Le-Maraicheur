@@ -31,10 +31,13 @@ class PictureController {
   };
 
   static add = async (req, res) => {
-    const pictures = req.body;
+    let picture = req.body;
+    if (req.picture) {
+      picture = req.picture;
+    }
 
     const picturesIsValid = await models.pictures.validPicturesToCreate(
-      pictures
+      picture
     );
 
     if (!picturesIsValid) {
@@ -42,9 +45,9 @@ class PictureController {
     }
 
     models.pictures
-      .insert(pictures)
+      .insert(picture)
       .then(([result]) => {
-        return res.status(201).send({ ...pictures, id: result.insertId });
+        return res.status(201).send({ ...picture, id: result.insertId });
       })
       .catch((err) => {
         console.error(err);
@@ -88,9 +91,9 @@ class PictureController {
   // static editPicture = async (req, res) => {
   //   try {
   //     const [result] = await models.pictures.update({
-  //       id: req.pictures.id,
-  //       file: req.pictures.file,
-  //       alt: req.pictures.alt,
+  //       id: 3,
+  //       file: req.picture.file,
+  //       alt: req.picture.alt,
   //     });
   //     if (result.affectedRows === 0) {
   //       return res.status(404).send("Picture not found");

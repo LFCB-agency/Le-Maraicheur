@@ -9,7 +9,7 @@ const picturesSchema = Joi.object({
   alt: Joi.string().max(255).required(),
   pictogram: Joi.string().max(255),
   categories: Joi.string().valid(...pics),
-  picSection: Joi.number().required(),
+  picSection: Joi.number(),
 });
 
 class PictureManager extends AbstractManager {

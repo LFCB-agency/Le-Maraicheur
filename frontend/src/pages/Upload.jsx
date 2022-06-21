@@ -24,6 +24,7 @@ export default function Upload() {
       const { data } = await axios.post("pictures/upload", formData);
       return setFileCreated(data);
     } catch (err) {
+      console.warn(err);
       return alert(err.message);
     }
   };
@@ -51,8 +52,8 @@ export default function Upload() {
       <button type="submit"> Upload Pic</button>
       {fileCreated && (
         <img
-          src={`${import.meta.env.VITE_IMAGES_URL}${fileCreated.pictures}`}
-          alt={fileCreated.description}
+          src={`${import.meta.env.VITE_IMAGES_URL}${fileCreated.file}`}
+          alt={fileCreated.alt}
         />
       )}
     </form>
