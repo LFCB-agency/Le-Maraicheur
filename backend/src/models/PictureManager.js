@@ -15,13 +15,18 @@ const picturesSchema = Joi.object({
 class PictureManager extends AbstractManager {
   static table = "pictures";
 
-  // ! ---------- Ecrase le findAll d'AbstractManager ----------
+  find(id) {
+    return this.connection.query(
+      `select id, file, alt, pictogram, categories, picSection from  ${this.table} where id = ?`,
+      [id]
+    );
+  }
+
   findAll() {
     return this.connection.query(
       `SELECT file, alt, pictogram, categories, picSection FROM  ${this.table}`
     );
   }
-  // !  ----------_ ----------_ ----------_ ----------_ ----------
 
   get(pictures) {
     return this.connection.query(

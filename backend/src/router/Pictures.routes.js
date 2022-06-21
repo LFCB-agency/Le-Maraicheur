@@ -32,7 +32,7 @@ router.post(
         return res.status(500).send(err.message);
       }
 
-      const pictureData = JSON.parse(req.body.pictureData);
+      const pictureData = JSON.parse(req.body.pictures);
 
       req.pictureData = {
         file: req.file.filename,
@@ -43,11 +43,11 @@ router.post(
   },
   PictureController.editPicture
 );
-
 router.get("/", PictureController.browse);
-// router.get("/:id", PictureController.read);
+router.get("/:id", PictureController.read);
+
 // router.post("/", PictureController.add);
-// router.put("/:id", PictureController.edit);
-// router.delete("/:id", PictureController.delete);
+router.put("/:id", PictureController.edit);
+router.delete("/:id", PictureController.delete);
 
 module.exports = router;
