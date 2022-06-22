@@ -7,7 +7,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <section>
+    <section className="background">
       <div className="container">
         <div className="logo-position">
           <img src={logo} alt="Logo du Maraîcheur" className="logo-property" />
