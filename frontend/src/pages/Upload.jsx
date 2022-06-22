@@ -10,6 +10,7 @@ export default function Upload() {
   const handleInput = (e) => {
     const file = e.target.files[0];
     if (file.type !== "image/png" && file.type !== "image/jpeg") {
+      // eslint-disable-next-line no-alert
       return alert("Select a jpeg or a png image");
     }
     return setSelectedFile(e.target.files[0]);
@@ -25,6 +26,7 @@ export default function Upload() {
       return setFileCreated(data);
     } catch (err) {
       console.warn(err);
+      // eslint-disable-next-line no-alert
       return alert(err.message);
     }
   };
