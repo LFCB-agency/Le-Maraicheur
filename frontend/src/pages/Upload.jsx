@@ -1,9 +1,11 @@
 import { useState } from "react";
+
 import axios from "@services/axios";
 
 export default function Upload() {
   const [selectedFile, setSelectedFile] = useState();
   const [fileCreated, setFileCreated] = useState();
+  // const [updateFile, setUpdateFile] = useState();
   const [description, setDescription] = useState("");
 
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
@@ -29,6 +31,18 @@ export default function Upload() {
     }
   };
 
+  // const handleUpdate = async (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("file", updateFile);
+  //   formData.append("alt", JSON.stringify({ description }));
+  //   try {
+  //     const { data } = await axios.post("images/put", formData);
+  //     return setUpdateFile(data);
+  //   } catch (err) {
+  //     return alert(err.message);
+  //   }
+  // };
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="upload-picture">
@@ -56,6 +70,14 @@ export default function Upload() {
           alt={fileCreated.alt}
         />
       )}
+
+      {/* <button type="submit"> Update Pic</button>
+      {updateFile && (
+        <img
+          src={`${import.meta.env.VITE_IMAGES_URL}${updateFile.file}`}
+          alt={updateFile.alt}
+        />
+      )} */}
     </form>
   );
 }

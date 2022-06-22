@@ -54,10 +54,23 @@ class PictureManager extends AbstractManager {
     );
   }
 
+  // update(pictures) {
+  //   return this.connection.query(
+  //     `UPDATE ${this.table} SET file = ?, alt = ?, categories = ? WHERE picSection = ?`,
+  //     [pictures.file, pictures.alt, pictures.categories, pictures.picSection]
+  //   );
+  // }
+
   update(pictures) {
     return this.connection.query(
-      `UPDATE ${this.table} SET file = ?, alt = ?, categories = ? WHERE picSection = ?`,
-      [pictures.file, pictures.alt, pictures.categories, pictures.picSection]
+      `UPDATE ${this.table} SET file = ?, alt = ?, categories = ?, picSection = ? WHERE id = ?`,
+      [
+        pictures.file,
+        pictures.alt,
+        pictures.categories,
+        pictures.picSection,
+        pictures.id,
+      ]
     );
   }
 

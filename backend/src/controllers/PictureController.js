@@ -66,34 +66,35 @@ class PictureController {
         res.sendStatus(500);
       });
   };
-  // static edit = (req, res) => {
-  //   const pictures = req.body;
 
-  //   // TODO validations (length, format...)
+  static edit = (req, res) => {
+    const pictures = req.body;
 
-  //   pictures.id = parseInt(req.params.id, 10);
+    // TODO validations (length, format...)
 
-  //   models.pictures
-  //     .update(pictures)
-  //     .then(([result]) => {
-  //       if (result.affectedRows === 0) {
-  //         res.sendStatus(404);
-  //       } else {
-  //         res.sendStatus(204);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //       res.sendStatus(500);
-  //     });
-  // };
+    pictures.id = parseInt(req.params.id, 10);
+
+    models.pictures
+      .update(pictures)
+      .then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.sendStatus(404).send("Picture not found");
+        } else {
+          res.sendStatus(204);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
 
   // static editPicture = async (req, res) => {
   //   try {
   //     const [result] = await models.pictures.update({
-  //       id: 3,
-  //       file: req.picture.file,
-  //       alt: req.picture.alt,
+  //       // id: req.id,
+  //       file: req.file,
+  //       alt: req.alt,
   //     });
   //     if (result.affectedRows === 0) {
   //       return res.status(404).send("Picture not found");
