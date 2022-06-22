@@ -1,13 +1,14 @@
-import Home from "@pages/Home";
+import AdminLogin from "@pages/AdminLogin";
 
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-      <p>coucou</p>
-    </div>
+    <section>
+      <div className="background">
+        <AdminLogin />
+      </div>
+    </section>
   );
 }
 
