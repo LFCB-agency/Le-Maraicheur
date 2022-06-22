@@ -22,7 +22,11 @@ app.use(express.json());
 
 // Serve the public folder for public resources
 app.use("/public", express.static(path.join(__dirname, "../public")));
-
+// public folder images
+app.use(
+  "/public/images",
+  express.static(path.join(__dirname, "../public/assets/images"))
+);
 // Serve REACT APP
 app.use(express.static(path.join(__dirname, "..", "..", "frontend", "dist")));
 

@@ -9,19 +9,24 @@ const picturesSchema = Joi.object({
   alt: Joi.string().max(255).required(),
   pictogram: Joi.string().max(255),
   categories: Joi.string().valid(...pics),
-  picSection: Joi.number().required(),
+  picSection: Joi.number(),
 });
 
 class PictureManager extends AbstractManager {
   static table = "pictures";
 
-  // ! ---------- Ecrase le findAll d'AbstractManager ----------
+  find(id) {
+    return this.connection.query(
+      `select id, file, alt, pictogram, categories, picSection from  ${this.table} where id = ?`,
+      [id]
+    );
+  }
+
   findAll() {
     return this.connection.query(
       `SELECT file, alt, pictogram, categories, picSection FROM  ${this.table}`
     );
   }
-  // !  ----------_ ----------_ ----------_ ----------_ ----------
 
   get(pictures) {
     return this.connection.query(
@@ -51,8 +56,8 @@ class PictureManager extends AbstractManager {
 
   update(pictures) {
     return this.connection.query(
-      `UPDATE ${this.table} SET file = ?, categories = ? WHERE picSection = ?`,
-      [pictures.file, pictures.categories, pictures.picSection]
+      `UPDATE ${this.table} SET file = ?, alt = ?, categories = ? WHERE picSection = ?`,
+      [pictures.file, pictures.alt, pictures.categories, pictures.picSection]
     );
   }
 

@@ -30,31 +30,14 @@ class PictureController {
       });
   };
 
-  static edit = (req, res) => {
-    const pictures = req.body;
-
-    pictures.id = parseInt(req.params.id, 10);
-
-    models.pictures
-      .update(pictures)
-      .then(([result]) => {
-        if (result.affectedRows === 0) {
-          res.sendStatus(404);
-        } else {
-          res.sendStatus(204);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  };
-
   static add = async (req, res) => {
-    const pictures = req.body;
+    let picture = req.body;
+    if (req.picture) {
+      picture = req.picture;
+    }
 
     const picturesIsValid = await models.pictures.validPicturesToCreate(
-      pictures
+      picture
     );
 
     if (!picturesIsValid) {
@@ -62,9 +45,9 @@ class PictureController {
     }
 
     models.pictures
-      .insert(pictures)
+      .insert(picture)
       .then(([result]) => {
-        return res.status(201).send({ ...pictures, id: result.insertId });
+        return res.status(201).send({ ...picture, id: result.insertId });
       })
       .catch((err) => {
         console.error(err);
@@ -83,5 +66,43 @@ class PictureController {
         res.sendStatus(500);
       });
   };
+  // static edit = (req, res) => {
+  //   const pictures = req.body;
+
+  //   // TODO validations (length, format...)
+
+  //   pictures.id = parseInt(req.params.id, 10);
+
+  //   models.pictures
+  //     .update(pictures)
+  //     .then(([result]) => {
+  //       if (result.affectedRows === 0) {
+  //         res.sendStatus(404);
+  //       } else {
+  //         res.sendStatus(204);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       res.sendStatus(500);
+  //     });
+  // };
+
+  // static editPicture = async (req, res) => {
+  //   try {
+  //     const [result] = await models.pictures.update({
+  //       id: 3,
+  //       file: req.picture.file,
+  //       alt: req.picture.alt,
+  //     });
+  //     if (result.affectedRows === 0) {
+  //       return res.status(404).send("Picture not found");
+  //     }
+  //     const [[pictureUpdated]] = await models.pictures.find(pictures.id);
+  //     return res.status(201).json(pictureUpdated);
+  //   } catch (err) {
+  //     return res.status(500).send(err.message);
+  //   }
+  // };
 }
 module.exports = PictureController;
