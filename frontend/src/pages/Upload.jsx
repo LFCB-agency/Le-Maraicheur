@@ -1,5 +1,6 @@
-import { useState } from "react";
+// eslint-disable-next-line import/no-unresolved
 import axios from "@services/axios";
+import { useState } from "react";
 
 export default function Upload() {
   const [selectedFile, setSelectedFile] = useState();
