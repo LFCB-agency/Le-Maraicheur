@@ -1,14 +1,18 @@
-import AdminLogin from "@pages/AdminLogin";
-
+import { Route, Routes } from "react-router-dom";
+import Home from "@pages/Home";
+import Navbar from "@components/Navbar";
+import Upload from "@pages/Upload";
 import "./App.css";
 
 function App() {
   return (
-    <section>
-      <div className="background">
-        <AdminLogin />
-      </div>
-    </section>
+    <div className="App">
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/upload" element={<Upload />} />
+      </Routes>
+    </div>
   );
 }
 
