@@ -1,13 +1,46 @@
 import "../assets/sass/adminlogin.scss";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { userContext } from "@contexts/UserContext";
 import logo from "../assets/pictures/logo1.png";
 
+import axios from "../services/axios";
+
 export default function AdminLogin() {
-  const handleSubmit = (e) => {
+  const { dispatch } = userContext();
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    setUserData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!userData.email || !userData.password) {
+      return alert("You must provide an email and a password");
+    }
+    try {
+      const { data } = await axios.post("adm/login", userData, {
+        withCredentials: true,
+      });
+      // console.log(data);
+      setUserData({ email: "", password: "" });
+      dispatch({ type: "LOGIN", payload: data });
+      return navigate("adm/logout");
+    } catch (err) {
+      return alert(err.message);
+    }
   };
 
   return (
-    <section>
+    <section className="background">
       <div className="container">
         <div className="logo-position">
           <img src={logo} alt="Logo du Maraîcheur" className="logo-property" />
@@ -21,17 +54,23 @@ export default function AdminLogin() {
         </div>
         <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="email">
-            Email *{" "}
-            <input id="email" placeholder="monemail@gmail.com" type="email" />
+            Email:{" "}
+            <input
+              id="email"
+              placeholder="monemail@gmail.com"
+              type="email"
+              value={userData.email}
+              onChange={handleInputChange}
+            />
           </label>
           <label htmlFor="password">
-            Mot de passe *{/* <a href="#"> */}
-            <p className="lostpassword">Mot de passe oublié ?</p>
-            {/* </a> */}
+            Password:{" "}
             <input
               id="password"
-              placeholder="*****************************"
+              placeholder="Mot de passe"
               type="password"
+              value={userData.password}
+              onChange={handleInputChange}
             />
           </label>
           <button className="login-btn" type="submit">
