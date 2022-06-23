@@ -25,10 +25,9 @@ export default function AdminLogin() {
             <input id="email" placeholder="monemail@gmail.com" type="email" />
           </label>
           <label htmlFor="password">
-            Mot de passe *
-            <a href="#">
-              <p className="lostpassword">Mot de passe oublié ?</p>
-            </a>
+            Mot de passe *{/* <a href="#"> */}
+            <p className="lostpassword">Mot de passe oublié ?</p>
+            {/* </a> */}
             <input
               id="password"
               placeholder="*****************************"
