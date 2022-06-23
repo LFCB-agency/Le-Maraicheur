@@ -11,6 +11,9 @@ export default function Navbar() {
           <li>
             <NavLink to="/upload">Upload</NavLink>
           </li>
+          <li>
+            <NavLink to="/login">Login</NavLink>
+          </li>
         </ul>
       </nav>
     </header>

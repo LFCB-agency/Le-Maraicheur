@@ -31,7 +31,7 @@ CREATE TABLE `adm` (
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
 INSERT INTO `adm`(`email`, `password`, `question`) 
-VALUES ('antoine@debay.com', 'antoine@1234.', 'tofu' );
+VALUES ('antoine@debay.com', 'Antoine@1234.', 'tofu' );
 
 
 CREATE TABLE `preorder` (

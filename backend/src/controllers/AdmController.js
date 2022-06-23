@@ -125,6 +125,7 @@ class AdmController {
           expiresIn: process.env.ACCESS_JWT_EXPIRESIN,
         });
         return res
+
           .cookie("accessToken", token, {
             httpOnly: true,
             secure: process.env.ACCESS_JWT_SECURE === "true",
