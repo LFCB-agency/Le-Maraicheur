@@ -7,7 +7,7 @@ ul {
 a {
   text-decoration: none;
 }
-
+/* menu dekstop */
 .menu-burger {
   display: flex;
   flex-wrap: wrap;
@@ -36,9 +36,14 @@ a {
   background: transparent;
   border: none;
   color: inherit;
-  display: none;
+ 
 }
 
+.menu-logo {
+  display: flex;
+}
+
+/* menu mobile */
 @media screen and (max-width: 767px) {
   .menu-links {
     flex-direction: column;
@@ -53,9 +58,12 @@ a {
     visibility: hidden;
     background-color: black;
   }
+  .menu-burger {
+    justify-content: space-between;
+  }
 
   .show-nav .menu-links {
-    width: 100vw;
+    width: 60vw;
     right: 0;
     visibility: visible;
   }
@@ -79,6 +87,7 @@ a {
     position: relative;
     border-radius: 3px;
     background: white;
+    transition: all 0.5s ease-in-out;
   }
 
   .burger-bar::before,
@@ -93,5 +102,16 @@ a {
 
   .burger-bar::after {
     transform: translateY(12px);
+  }
+  /* fermeture menu burger */
+  .show-nav .burger-bar {
+    background: transparent;
+  }
+  .show-nav .burger-bar::before {
+    transform: rotate(45deg);
+  }
+
+  .show-nav .burger-bar::after {
+    transform: rotate(-45deg);
   }
 }

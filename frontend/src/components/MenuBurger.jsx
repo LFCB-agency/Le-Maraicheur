@@ -19,17 +19,17 @@ export default function MenuBurger() {
         </li>
         <li className="menu-items">
           <a href="/" className="menu-link">
-            A Propos
-          </a>
-        </li>
-        <li className="menu-items">
-          <a href="/" className="menu-link">
             La Méthode
           </a>
         </li>
         <li className="menu-items">
           <a href="/" className="menu-link">
             Nos Produits
+          </a>
+        </li>
+        <li className="menu-items">
+          <a href="/" className="menu-link">
+            A Propos
           </a>
         </li>
         <li className="menu-items">
