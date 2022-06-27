@@ -45,7 +45,7 @@ router.post(
         categories: pictureData.categories,
         picSection: pictureData.picSection,
       };
-      console.log(req.pictureData);
+      // console.log(req.pictureData);
       return next();
     });
   },
