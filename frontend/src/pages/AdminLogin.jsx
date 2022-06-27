@@ -65,10 +65,10 @@ export default function AdminLogin({ setAdm }) {
             />
           </label>
           <label htmlFor="password">
-            Password:{" "}
+            Mot de passe *{" "}
             <input
               id="password"
-              placeholder="Mot de passe"
+              placeholder="Tapez ici votre mot de passe"
               type="password"
               value={admData.password}
               onChange={handleInputChange}
