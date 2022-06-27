@@ -25,26 +25,27 @@ const storage = multer.diskStorage({
 const upload = multer({ storage }).single("file");
 
 router.get("/", PictureController.browse);
+// router.get("/:id", PictureController.read);
+
 router.get("/:id", PictureController.read);
 
 // router.post("/", PictureController.add);
 router.post(
   "/upload",
-
   (req, res, next) => {
-    // res.sendStatus(201);
     upload(req, res, (err) => {
       if (err) {
         return res.status(500).send(err.message);
       }
-
-      const pictureData = JSON.parse(req.body.alt);
-
+      const pictureData = JSON.parse(req.body.pictureData);
       req.picture = {
+        // Tout decoule de pictureData
         file: req.file.filename,
         alt: pictureData.description,
-        picSection: 2,
+        categories: pictureData.categories,
+        picSection: pictureData.picSection,
       };
+      // console.log(req.pictureData);
       return next();
     });
   },
