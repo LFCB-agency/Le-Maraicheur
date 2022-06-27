@@ -3,39 +3,40 @@
 import "../assets/sass/adminlogin.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { userContext } from "@contexts/UserContext";
 import logo from "../assets/pictures/logo1.png";
 
 import axios from "../services/axios";
 
-export default function AdminLogin() {
-  const { dispatch } = userContext();
+export default function AdminLogin({ setAdm }) {
+  // const { dispatch } = userContext();
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({
+  const [admData, setAdmData] = useState({
     email: "",
     password: "",
   });
 
   const handleInputChange = (e) => {
-    setUserData((prevState) => ({
+    setAdmData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
   };
 
+  // eslint-disable-next-line consistent-return
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!userData.email || !userData.password) {
+    if (!admData.email || !admData.password) {
       return alert("You must provide an email and a password");
     }
     try {
-      const { data } = await axios.post("adm/login", userData, {
+      const { data } = await axios.post("adm/login", admData, {
         withCredentials: true,
       });
       // console.log(data);
-      setUserData({ email: "", password: "" });
-      dispatch({ type: "LOGIN", payload: data });
-      return navigate("adm/logout");
+      setAdmData({ email: "", password: "" });
+      setAdm({ email: data.email });
+      navigate("/admin/log");
+      // dispatch({ type: "LOGIN", payload: data });
     } catch (err) {
       return alert(err.message);
     }
@@ -61,7 +62,7 @@ export default function AdminLogin() {
               id="email"
               placeholder="monemail@gmail.com"
               type="email"
-              value={userData.email}
+              value={admData.email}
               onChange={handleInputChange}
             />
           </label>
@@ -71,7 +72,7 @@ export default function AdminLogin() {
               id="password"
               placeholder="Tapez ici votre mot de passe"
               type="password"
-              value={userData.password}
+              value={admData.password}
               onChange={handleInputChange}
             />
           </label>

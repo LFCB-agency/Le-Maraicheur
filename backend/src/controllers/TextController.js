@@ -3,15 +3,35 @@ const models = require("../models");
 
 class TextController {
   static browse = (req, res) => {
-    models.text
-      .findAll()
-      .then(([rows]) => {
-        res.send(rows);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
+    const { page } = req.query;
+    const filter = {};
+    if (page) {
+      filter.page = page;
+    }
+    // if (textSection) {
+    //   filter.textSection = textSection;
+    // }
+    if (filter) {
+      models.text
+        .findAllTextWithFilter(filter)
+        .then(([rows]) => {
+          res.send(rows);
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+    } else {
+      models.text
+        .findAll()
+        .then(([rows]) => {
+          res.send(rows);
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+    }
   };
 
   static read = (req, res) => {

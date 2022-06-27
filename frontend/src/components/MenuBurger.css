@@ -42,7 +42,6 @@ a {
 
 .menu-logo {
   display: flex;
-  width: 100%;
   background-color: #F9F9F9;
   z-index: 1;
   padding: 1rem;
@@ -77,6 +76,7 @@ a {
   
   .menu-logo{
     height: 5.5rem;
+    width: 100%;
     
   }
   .menu-logo img{

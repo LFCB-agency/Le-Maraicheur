@@ -17,14 +17,21 @@ class PictureManager extends AbstractManager {
 
   find(id) {
     return this.connection.query(
-      `select id, file, alt, pictogram, categories, picSection from  ${this.table} where id = ?`,
+      `select file, alt, pictogram, categories, picSection from  ${this.table} where picSection = ? `,
       [id]
     );
   }
 
   findAll() {
     return this.connection.query(
-      `SELECT file, alt, pictogram, categories, picSection FROM  ${this.table}`
+      `SELECT id, file, alt, pictogram, categories, picSection FROM  ${this.table}`
+    );
+  }
+
+  findAllWithFilter(filter) {
+    return this.connection.query(
+      `SELECT id, file, alt, pictogram, categories, picSection FROM ${this.table} WHERE picSection=? AND categories=?`,
+      [filter.picSection, filter.categories]
     );
   }
 
@@ -54,10 +61,23 @@ class PictureManager extends AbstractManager {
     );
   }
 
+  // update(pictures) {
+  //   return this.connection.query(
+  //     `UPDATE ${this.table} SET file = ?, alt = ?, categories = ? WHERE picSection = ?`,
+  //     [pictures.file, pictures.alt, pictures.categories, pictures.picSection]
+  //   );
+  // }
+
   update(pictures) {
     return this.connection.query(
-      `UPDATE ${this.table} SET file = ?, alt = ?, categories = ? WHERE picSection = ?`,
-      [pictures.file, pictures.alt, pictures.categories, pictures.picSection]
+      `UPDATE ${this.table} SET file = ?, alt = ?, categories = ?, picSection = ? WHERE id = ?`,
+      [
+        pictures.file,
+        pictures.alt,
+        pictures.categories,
+        pictures.picSection,
+        pictures.id,
+      ]
     );
   }
 
