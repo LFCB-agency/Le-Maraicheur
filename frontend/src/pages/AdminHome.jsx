@@ -1,4 +1,3 @@
-import "../assets/sass/adminhome.scss";
 import logo from "../assets/pictures/logo1.png";
 import home from "../assets/pictures/house.png";
 import method from "../assets/pictures/plantadmin.png";

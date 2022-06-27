@@ -1,4 +1,3 @@
-import "../assets/sass/adminlogin.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/pictures/logo1.png";
