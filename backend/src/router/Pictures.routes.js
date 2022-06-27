@@ -52,7 +52,7 @@ router.post(
   PictureController.add
 );
 
-router.put("/:id", PictureController.edit);
+// router.put("/:id", PictureController.edit);
 router.delete("/:id", PictureController.delete);
 
 module.exports = router;
