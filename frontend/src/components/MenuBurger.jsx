@@ -3,6 +3,12 @@
 import React, { useState } from "react";
 import "./MenuBurger.css";
 import logo1 from "@assets/pictures/logo1.png";
+import house from "@assets/pictures/house.png";
+import produit from "@assets/pictures/radish.png";
+import methode from "@assets/pictures/plantadmin.png";
+import propos from "@assets/pictures/people.png";
+import contact from "@assets/pictures/email.png";
+import { NavLink } from "react-router-dom";
 
 export default function MenuBurger() {
   const [showLinks, setShowLinks] = useState(false);
@@ -20,29 +26,24 @@ export default function MenuBurger() {
       </div>
       <ul className="menu-links">
         <li className="menu-items">
-          <a href="/" className="menu-link">
-            Accueil
-          </a>
+          <img src={house} alt="logo accueil" />
+          <NavLink to="/">Accueil</NavLink>
         </li>
         <li className="menu-items">
-          <a href="/" className="menu-link">
-            La Méthode
-          </a>
+          <img src={methode} alt="logo méthode" />
+          <NavLink to="/methode">La Methode</NavLink>
         </li>
         <li className="menu-items">
-          <a href="/" className="menu-link">
-            Nos Produits
-          </a>
+          <img src={produit} alt="logo produit" />
+          <NavLink to="/produit">Nos Produits</NavLink>
         </li>
         <li className="menu-items">
-          <a href="/" className="menu-link">
-            A Propos
-          </a>
+          <img src={propos} alt="logo à propos" />
+          <NavLink to="/propos">A propos</NavLink>
         </li>
         <li className="menu-items">
-          <a href="/" className="menu-link">
-            Contact
-          </a>
+          <img src={contact} alt="logo contact" />
+          <NavLink to="/contact">Contact</NavLink>
         </li>
       </ul>
     </nav>
