@@ -17,14 +17,21 @@ class PictureManager extends AbstractManager {
 
   find(id) {
     return this.connection.query(
-      `select id, file, alt, pictogram, categories, picSection from  ${this.table} where id = ?`,
+      `select file, alt, pictogram, categories, picSection from  ${this.table} where picSection = ? `,
       [id]
     );
   }
 
   findAll() {
     return this.connection.query(
-      `SELECT file, alt, pictogram, categories, picSection FROM  ${this.table}`
+      `SELECT id, file, alt, pictogram, categories, picSection FROM  ${this.table}`
+    );
+  }
+
+  findAllWithFilter(filter) {
+    return this.connection.query(
+      `SELECT id, file, alt, pictogram, categories, picSection FROM ${this.table} WHERE picSection=? AND categories=?`,
+      [filter.picSection, filter.categories]
     );
   }
 

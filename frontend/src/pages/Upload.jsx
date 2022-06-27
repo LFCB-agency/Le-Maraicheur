@@ -1,12 +1,14 @@
 import { useState } from "react";
-
 import axios from "@services/axios";
+import Update from "@components/Update";
 
 export default function Upload() {
   const [selectedFile, setSelectedFile] = useState();
   const [fileCreated, setFileCreated] = useState();
   // const [updateFile, setUpdateFile] = useState();
   const [description, setDescription] = useState("");
+  const [categories, setCategories] = useState("");
+  const [section, setSection] = useState("");
 
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
   const handleInput = (e) => {
@@ -21,9 +23,14 @@ export default function Upload() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", selectedFile);
-    formData.append("alt", JSON.stringify({ description }));
+    formData.append(
+      "pictureData",
+      JSON.stringify({ description, categories, picSection: section })
+    );
+
     try {
       const { data } = await axios.post("pictures/upload", formData);
+      // console.log(data);
       return setFileCreated(data);
     } catch (err) {
       console.warn(err);
@@ -35,7 +42,10 @@ export default function Upload() {
   //   e.preventDefault();
   //   const formData = new FormData();
   //   formData.append("file", updateFile);
-  //   formData.append("alt", JSON.stringify({ description }));
+  //   formData.append(
+  //     "pictureData",
+  //     JSON.stringify({ description, categories, picSection: section })
+  //   );
   //   try {
   //     const { data } = await axios.post("images/put", formData);
   //     return setUpdateFile(data);
@@ -63,6 +73,31 @@ export default function Upload() {
           onChange={(e) => setDescription(e.target.value)}
         />
       </label>
+      <label htmlFor="picture-categories">
+        Select a categorie :
+        <select
+          value={categories}
+          onChange={(e) => setCategories(e.target.value)}
+        >
+          <option value="select">Select</option>
+          <option value="carousel">carousel</option>
+          <option value="home">home</option>
+          <option value="methode">methode</option>
+          <option value="produit">produit</option>
+          <option value="propos">propos</option>
+          <option value="contact">contact</option>
+        </select>
+      </label>
+      <label htmlFor="picture-section">
+        Select a section :
+        <select value={section} onChange={(e) => setSection(e.target.value)}>
+          <option value="select">Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </label>
       <button type="submit"> Upload Pic</button>
       {fileCreated && (
         <img
@@ -74,10 +109,11 @@ export default function Upload() {
       {/* <button type="submit"> Update Pic</button>
       {updateFile && (
         <img
-          src={`${import.meta.env.VITE_IMAGES_URL}${updateFile.file}`}
-          alt={updateFile.alt}
+        src={`${import.meta.env.VITE_IMAGES_URL}${updateFile.file}`}
+        alt={updateFile.alt}
         />
       )} */}
+      <Update />
     </form>
   );
 }

@@ -43,6 +43,13 @@ class TextManager extends AbstractManager {
     );
   }
 
+  findAllTextWithFilter(filter) {
+    return this.connection.query(
+      `SELECT id, title, body, page, textSection FROM  ${this.table} WHERE page = ?`,
+      [filter.page]
+    );
+  }
+
   async validTextToCreate(text) {
     try {
       await textSchema.validateAsync(text);
