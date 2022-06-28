@@ -40,6 +40,7 @@ a {
   border: none;
   color: inherit;
   margin-top: 10px;
+  display: none;
 }
 
 .menu-logo {
@@ -56,6 +57,9 @@ a {
   height: 6rem;
 }
 
+.titre-home{
+  display: none;
+}
 /* menu mobile */
 @media screen and (max-width: 767px) {
   a {
@@ -71,7 +75,8 @@ a {
     height: 100vh;
     padding: 2rem;
     visibility: hidden;
-    background-color: #2c2f33;
+    background: rgba(44, 47, 51, 0.6);
+    backdrop-filter: blur(30px);
   }
 
   .menu-burger {
@@ -89,7 +94,7 @@ a {
     justify-content: space-between;
   }
   .menu-logo img {
-    opacity: calc(0%);
+    display: none;
   }
 
   .menu-items {
@@ -152,4 +157,14 @@ a {
   .show-nav .burger-bar::after {
     transform: rotate(-45deg);
   }
+  .titre-home{
+    color: black;
+    opacity: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+  }
 }
+

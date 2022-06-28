@@ -19,6 +19,7 @@ export default function MenuBurger() {
   return (
     <nav className={`menu-burger ${showLinks ? "show-nav" : "hide-nav"}`}>
       <div className="menu-logo">
+        <p className="titre-home">Le Maraicheur</p>
         <img src={logo1} alt="logo maraicheur" />
         <button className="nav-burger" onClick={handleShowLinks}>
           <span className="burger-bar" />
