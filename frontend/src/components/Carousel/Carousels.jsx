@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import axios from "axios";
 import "./carousel.css";
+
 export default function Carousels() {
   const settings = {
     dots: true,
@@ -50,7 +51,7 @@ export default function Carousels() {
   }, []);
 
   return (
-    <>
+    <div>
       <Slider {...settings}>
         {imageCarousel.map((image) => (
           <div key={image.id} className="carousel">
@@ -65,6 +66,6 @@ export default function Carousels() {
           </div>
         ))}
       </Slider>
-    </>
+    </div>
   );
 }
