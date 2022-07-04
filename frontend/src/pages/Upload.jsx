@@ -1,20 +1,22 @@
 // eslint-disable-next-line import/no-unresolved
 import axios from "@services/axios";
-import Update from "@components/Update";
-import { useState } from "react";
+// import Update from "@components/Update";
+import { useState, useEffect } from "react";
 
 export default function Upload() {
   const [selectedFile, setSelectedFile] = useState();
   const [fileCreated, setFileCreated] = useState();
-  // const [updateFile, setUpdateFile] = useState();
   const [description, setDescription] = useState("");
   const [categories, setCategories] = useState("");
   const [section, setSection] = useState("");
+  const [updateFile, setUpdateFile] = useState();
+  const [image, setImage] = useState([]);
 
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
   const handleInput = (e) => {
     const file = e.target.files[0];
     if (file.type !== "image/png" && file.type !== "image/jpeg") {
+      // eslint-disable-line
       return alert("Select a jpeg or a png image");
     }
     return setSelectedFile(e.target.files[0]);
@@ -35,25 +37,52 @@ export default function Upload() {
       return setFileCreated(data);
     } catch (err) {
       console.warn(err);
+      // eslint-disable-line
       return alert(err.message);
     }
   };
 
-  // const handleUpdate = async (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append("file", updateFile);
-  //   formData.append(
-  //     "pictureData",
-  //     JSON.stringify({ description, categories, picSection: section })
-  //   );
-  //   try {
-  //     const { data } = await axios.post("images/put", formData);
-  //     return setUpdateFile(data);
-  //   } catch (err) {
-  //     return alert(err.message);
-  //   }
-  // };
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    formData.append(
+      "pictureData",
+      JSON.stringify({ description, categories, picSection: section })
+    );
+    const id = updateFile;
+    try {
+      const { data } = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}pictures/update/${id}`,
+        formData
+      );
+      // console.log(data);
+      return setUpdateFile(data);
+    } catch (err) {
+      console.warn(err);
+      // eslint-disable-line
+      return alert(err.message);
+    }
+  };
+
+  const getImage = async () => {
+    try {
+      const data = await axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}pictures?categories=methode`)
+        .then((response) => response.data);
+      // console.log(data);
+      setImage(data);
+    } catch (err) {
+      if (err.response.status === 401) {
+        // eslint-disable-line
+        alert("Picture doesn't exists");
+      }
+    }
+  };
+  useEffect(() => {
+    getImage();
+  }, []);
+
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="upload-picture">
@@ -99,6 +128,7 @@ export default function Upload() {
           <option value="4">4</option>
         </select>
       </label>
+
       <button type="submit"> Upload Pic</button>
       {fileCreated && (
         <img
@@ -107,14 +137,26 @@ export default function Upload() {
         />
       )}
 
-      {/* <button type="submit"> Update Pic</button>
+      {/* <Update /> */}
+      <label htmlFor="picture-id">
+        <select onChange={(e) => setUpdateFile(e.target.value)}>
+          {image.map((img) => (
+            <option value={img.id} key={img.id}>
+              {img.file}
+            </option>
+          ))}
+        </select>
+      </label>
       {updateFile && (
         <img
-        src={`${import.meta.env.VITE_IMAGES_URL}${updateFile.file}`}
-        alt={updateFile.alt}
+          src={`${import.meta.env.VITE_IMAGES_URL}${updateFile.file}`}
+          alt={updateFile.alt}
         />
-      )} */}
-      <Update />
+      )}
+      <button type="button" onClick={handleUpdate}>
+        {" "}
+        Update Pic
+      </button>
     </form>
   );
 }
