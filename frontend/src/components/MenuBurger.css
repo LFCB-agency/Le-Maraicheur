@@ -34,7 +34,7 @@ a {
   color: inherit;
 }
 
-.menu-burger hide-nav{
+.menu-burger hide-nav {
   justify-content: space-evenly;
 }
 .nav-burger {
@@ -61,15 +61,15 @@ a {
   height: 6rem;
 }
 
-.titre-home{
+.titre-home {
   display: none;
 }
-
 
 /* menu mobile */
 @media screen and (max-width: 767px) {
   a {
     color: white;
+    margin: 2rem;
   }
   .menu-links {
     flex-direction: column;
@@ -163,14 +163,12 @@ a {
   .show-nav .burger-bar::after {
     transform: rotate(-45deg);
   }
-  .titre-home{
+  .titre-home {
     color: black;
     opacity: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    
   }
 }
-
