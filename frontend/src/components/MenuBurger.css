@@ -1,3 +1,7 @@
+.header-container {
+  position: relative;
+}
+
 ul {
   list-style: none;
   padding: 0%;
@@ -17,7 +21,7 @@ a {
   justify-content: center;
   position: fixed;
   width: 100%;
-  min-height: 75px;
+  min-height: 6rem;
   background-color: #f9f9f9;
   color: black;
 }
@@ -56,7 +60,14 @@ a {
   margin-top: -0.5rem;
 }
 
-.menu-logo img {
+.logo1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.logo1 img {
   width: 6rem;
   height: 6rem;
 }
@@ -69,7 +80,7 @@ a {
 @media screen and (max-width: 767px) {
   a {
     color: white;
-    margin: 2rem;
+
   }
   .menu-links {
     flex-direction: column;
@@ -82,7 +93,6 @@ a {
     padding: 2rem;
     visibility: hidden;
     background: rgba(44, 47, 51, 0.6);
-    backdrop-filter: blur(30px);
   }
 
   .menu-burger {
@@ -99,7 +109,7 @@ a {
     width: 100%;
     justify-content: space-between;
   }
-  .menu-logo img {
+  .logo1 {
     display: none;
   }
 

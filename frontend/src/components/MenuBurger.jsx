@@ -17,36 +17,40 @@ export default function MenuBurger() {
     setShowLinks(!showLinks);
   };
   return (
-    <nav className={`menu-burger ${showLinks ? "show-nav" : "hide-nav"}`}>
-      <div className="menu-logo">
-        <p className="titre-home">Le Maraicheur</p>
+    <header className="header-container">
+      <div className="logo1">
         <img src={logo1} alt="logo maraicheur" />
-        <button className="nav-burger" onClick={handleShowLinks}>
-          <span className="burger-bar" />
-        </button>
       </div>
-      <ul className="menu-links">
-        <li className="menu-items">
-          <img src={house} alt="logo accueil" />
-          <NavLink to="/">Accueil</NavLink>
-        </li>
-        <li className="menu-items">
-          <img src={methode} alt="logo méthode" />
-          <NavLink to="/methode">La Methode</NavLink>
-        </li>
-        <li className="menu-items">
-          <img src={produit} alt="logo produit" />
-          <NavLink to="/produit">Nos Produits</NavLink>
-        </li>
-        <li className="menu-items">
-          <img src={propos} alt="logo à propos" />
-          <NavLink to="/propos">A propos</NavLink>
-        </li>
-        <li className="menu-items">
-          <img src={contact} alt="logo contact" />
-          <NavLink to="/contact">Contact</NavLink>
-        </li>
-      </ul>
-    </nav>
+      <nav className={`menu-burger ${showLinks ? "show-nav" : "hide-nav"}`}>
+        <div className="menu-logo">
+          <p className="titre-home">Le Maraicheur</p>
+          <button className="nav-burger" onClick={handleShowLinks}>
+            <span className="burger-bar" />
+          </button>
+        </div>
+        <ul className="menu-links">
+          <li className="menu-items">
+            <img src={house} alt="logo accueil" />
+            <NavLink to="/">Accueil</NavLink>
+          </li>
+          <li className="menu-items">
+            <img src={methode} alt="logo méthode" />
+            <NavLink to="/methode">La Methode</NavLink>
+          </li>
+          <li className="menu-items">
+            <img src={produit} alt="logo produit" />
+            <NavLink to="/produit">Nos Produits</NavLink>
+          </li>
+          <li className="menu-items">
+            <img src={propos} alt="logo à propos" />
+            <NavLink to="/propos">A propos</NavLink>
+          </li>
+          <li className="menu-items">
+            <img src={contact} alt="logo contact" />
+            <NavLink to="/contact">Contact</NavLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 }
