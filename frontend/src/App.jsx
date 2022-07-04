@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom";
-import Accueil from "@pages/Accueil";
 import Methode from "@pages/Methode";
 import Upload from "@pages/Upload";
 import Produit from "@pages/Produits";
 import Propos from "@pages/Propos";
-import Contact from "@pages/Contact";
+import Accueil from "@pages/Accueil";
 import { useState } from "react";
 import AdminLogin from "@pages/AdminLogin";
 import AdminHome from "@pages/AdminHome";
 import Error404 from "@pages/Error404";
 import "./App.css";
+import Contact from "@pages/Contact";
 
 function App() {
   const [adm, setAdm] = useState({ email: "", id: null });
