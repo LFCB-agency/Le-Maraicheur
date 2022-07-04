@@ -27,8 +27,7 @@ CREATE TABLE `adm` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `question` varchar(255) NOT NULL,
-  `role` ENUM('ADMIN') NOT NULL,
+  `question` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
 INSERT INTO `adm`(`email`, `password`, `question`) 
