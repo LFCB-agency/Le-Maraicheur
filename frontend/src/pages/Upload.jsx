@@ -68,7 +68,9 @@ export default function Upload() {
   const getImage = async () => {
     try {
       const data = await axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}pictures?categories=methode`)
+        .get(
+          `${import.meta.env.VITE_BACKEND_URL}pictures?categories=${categories}`
+        )
         .then((response) => response.data);
       // console.log(data);
       setImage(data);
@@ -81,7 +83,7 @@ export default function Upload() {
   };
   useEffect(() => {
     getImage();
-  }, []);
+  }, [categories]);
 
   return (
     <form onSubmit={handleSubmit}>
