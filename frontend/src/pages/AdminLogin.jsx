@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/pictures/logo1.png";
 
 import axios from "../services/axios";
@@ -64,7 +64,10 @@ export default function AdminLogin({ setAdm }) {
             />
           </label>
           <label htmlFor="password">
-            Mot de passe *{" "}
+            Mot de passe *
+            <NavLink to="/">
+              <p className="lostpassword">Mot de passe oublié ?</p>
+            </NavLink>
             <input
               id="password"
               placeholder="Tapez ici votre mot de passe"

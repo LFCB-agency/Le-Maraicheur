@@ -7,7 +7,18 @@
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 0px 50px 50px 0px;
+  animation-name: slidelefttoright;
+  animation-duration: 4s;
 
+  @keyframes slidelefttoright {
+    0% {
+      transform: translate(-200%);
+    }
+
+    50% {
+      transform: translate(10%);
+    }
+  }
   .logo-position-home {
     display: flex;
     justify-content: center;
@@ -85,4 +96,10 @@
     width: 70px;
     cursor: pointer;
   }
+}
+.nav-admin-active {
+  p {
+    border-bottom: $red solid 3px;
+  }
+  text-decoration: none;
 }
