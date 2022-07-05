@@ -58,30 +58,36 @@ export default function AdminLogin({ setAdm }) {
     }
   };
 
-  // const handlePasswordForgotten = async () => {
-  //   if (!admData.email) {
-  //     return alert("You must provide an email");
-  //   }
+  const handlePasswordForgotten = async () => {
+    if (!admData.email) {
+      return alert("You must provide an email");
+    }
 
-  //   try {
-  //     const { data } = await axios.post(
-  //       "adm/password-forgotten",
-  //       {
-  //         email: admData.email,
-  //       },
-  //       { withCredentials: true }
-  //     );
-  //     return alert(JSON.stringify(data));
-  //   } catch (err) {
-  //     return alert(err.message);
-  //   }
-  // };
+    try {
+      const { data } = await axios.post(
+        "adm/password-forgotten",
+        {
+          email: admData.email,
+        },
+        { withCredentials: true }
+      );
+      return alert(JSON.stringify(data));
+    } catch (err) {
+      return alert(err.message);
+    }
+  };
 
   return (
     <section className="background">
       <div className="container">
         <div className="logo-position">
-          <img src={logo} alt="Logo du Maraîcheur" className="logo-property" />
+          <NavLink to="/">
+            <img
+              src={logo}
+              alt="Logo du Maraîcheur"
+              className="logo-property"
+            />
+          </NavLink>
         </div>
         <div className="introduction">
           <h1>Le Maraîcheur - Administration</h1>
@@ -104,7 +110,9 @@ export default function AdminLogin({ setAdm }) {
           <label htmlFor="password">
             Mot de passe *{" "}
             <NavLink to="/reset">
-              <p className="lostpassword">Mot de passe oublié ?</p>
+              <p className="lostpassword" onClick={handlePasswordForgotten}>
+                Mot de passe oublié ?
+              </p>
             </NavLink>
             <input
               id="password"

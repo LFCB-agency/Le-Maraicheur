@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "@services/axios";
 import * as yup from "yup";
 import logo from "../assets/pictures/logo1.png";
@@ -109,7 +109,13 @@ export default function ResetPassword() {
     <section className="background">
       <div className="container">
         <div className="logo-position">
-          <img src={logo} alt="Logo du Maraîcheur" className="logo-property" />
+          <NavLink to="/admin">
+            <img
+              src={logo}
+              alt="Logo du Maraîcheur"
+              className="logo-property"
+            />
+          </NavLink>
         </div>
         <div className="introduction">
           <h1>Le Maraîcheur - Mot de passe oublié</h1>
