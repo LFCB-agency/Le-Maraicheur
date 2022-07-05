@@ -1,4 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import LeftSlide from "@components/Leftslide";
+import TextEditor from "@components/TextEditor";
 import Topslide from "@components/Topslide";
 
 export default function AdminHome() {
@@ -6,8 +8,10 @@ export default function AdminHome() {
     <section className="background-home">
       <LeftSlide />
       <Topslide />
-      <div>
-        <h1>HELL</h1>
+      <div className="position-admin--editor">
+        <div className="hello">
+          <TextEditor />
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/no-unresolved */
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import MenuBurger from "@components/MenuBurger";
 import AdminLogin from "@pages/AdminLogin";
 import Accueil from "@pages/Accueil";
@@ -11,6 +11,7 @@ import Produit from "@pages/Produits";
 import Propos from "@pages/Propos";
 import Contact from "@pages/Contact";
 import AdminHome from "@pages/AdminHome";
+import ResetPassword from "@pages/ResetPassword";
 import Error404 from "@pages/Error404";
 import Footer from "@components/Footer";
 import "./App.css";
@@ -28,25 +29,10 @@ function App() {
         <Route path="/produit" element={<Produit />} />
         <Route path="/propos" element={<Propos />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/reset" element={<ResetPassword />} />
         <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
-        {adm.email && adm.email === "antoine@debray.com" && (
-          <Route path="/admin/log" element={<AdminHome />} />
-        )}
-        {adm.email && adm.email === "antoine@debray.com" && (
-          <Route path="/admin/log/methode" element={<AdminHome />} />
-        )}
-        {adm.email && adm.email === "antoine@debray.com" && (
-          <Route path="/admin/log/produit" element={<AdminHome />} />
-        )}
-        {adm.email && adm.email === "antoine@debray.com" && (
-          <Route path="/admin/log/propos" element={<AdminHome />} />
-        )}
-        {adm.email && adm.email === "antoine@debray.com" && (
-          <Route path="/admin/log/contact" element={<AdminHome />} />
-        )}
-        {adm.email && adm.email === "antoine@debray.com" && (
-          <Route path="/admin/log/popup" element={<AdminHome />} />
-        )}
+        {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
+        <Route path="*" element={<Navigate to="/" />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
