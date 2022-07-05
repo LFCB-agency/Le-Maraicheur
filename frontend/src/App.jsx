@@ -7,6 +7,8 @@ import Propos from "@pages/Propos";
 import Contact from "@pages/Contact";
 import { useState } from "react";
 import AdminLogin from "@pages/AdminLogin";
+import AdminHome from "@pages/AdminHome";
+import ResetPassword from "@pages/ResetPassword";
 
 import "./App.css";
 
@@ -22,11 +24,10 @@ function App() {
         <Route path="/produit" element={<Produit />} />
         <Route path="/propos" element={<Propos />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/reset" element={<ResetPassword />} />
         <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
-        {adm.email && adm.email === "antoine@debray.com" && (
-          <Route path="/admin/log" element={<Upload />} />
-        )}
-        <Route path="*" element={<Navigate to="/upload" />} />
+        {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

@@ -27,6 +27,25 @@ const schemaForUpdate = Joi.object({
     .max(32)
     .required(),
 });
+const schemaForReset = Joi.object({
+  id: Joi.number().required(),
+  password: Joi.string()
+    .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/)
+    .min(8)
+    .max(32)
+    .required(),
+  temporaryPassword: Joi.string()
+    .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/)
+    .min(8)
+    .max(32)
+    .required(),
+  email: Joi.string()
+    .email({
+      minDomainSegments: 2,
+      // tlds: { allow: ["com", "net"] },
+    })
+    .required(),
+});
 
 class AdmManager extends AbstractManager {
   static table = "adm";
@@ -70,6 +89,16 @@ class AdmManager extends AbstractManager {
       } else {
         await schemaForUpdate.validateAsync(adm);
       }
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  async validateReset(adm) {
+    try {
+      await schemaForReset.validateAsync(adm);
+
       return true;
     } catch (err) {
       return false;
