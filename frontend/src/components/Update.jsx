@@ -13,7 +13,8 @@ export default function Update() {
       // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
-        alert("what");
+        // eslint-disable-line
+        alert("Data can't be reached");
       }
     }
   };
