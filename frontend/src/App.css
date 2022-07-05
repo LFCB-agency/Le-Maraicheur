@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Poppins:wght@200;500&display=swap');
+:root {
+  /* Main colors */
+
+  --primary-color: #21492b;
+  --second-color:  #2c2f33;
+  --third-color: #F58348;
+  --white: #ffffff;
+  --light-grey: #f9f9f9;
+  --purple-color: #68324c;
+
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,4 +35,28 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.panierTitle {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0px 10px 0px;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+}
+
+.spanLine{
+  margin-top: 10px;
+  width: 90px;
+  height: 2px;
+  background-color: #cccccc;
+}
+
+.mep {
+  padding-top: 100px;
+  display: flex;
+  align-items: center;
+  align-content: space-around;
 }

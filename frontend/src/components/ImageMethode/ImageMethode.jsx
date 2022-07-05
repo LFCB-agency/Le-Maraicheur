@@ -5,7 +5,7 @@ export default function ImageMethode() {
   const [imageMethode, setImageMethode] = useState([]);
   // const [imageHome, setImageHome] = useState([]);
 
-  const getText = async () => {
+  const getImage = async () => {
     try {
       const data = await axios
         .get(`${import.meta.env.VITE_BACKEND_URL}pictures?categories=methode`)
@@ -20,7 +20,7 @@ export default function ImageMethode() {
     }
   };
   useEffect(() => {
-    getText();
+    getImage();
   }, []);
   return (
     <div>
