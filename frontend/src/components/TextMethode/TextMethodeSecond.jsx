@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./textMethode.scss";
 
-export default function TextMethode() {
+export default function TextMethodeSecond() {
   const [textMethode, setTextMethode] = useState([]);
 
   const getText = async () => {
     try {
       const data = await axios
         .get(
-          `${import.meta.env.VITE_BACKEND_URL}text?page=methode&textSection=1`
+          `${import.meta.env.VITE_BACKEND_URL}text?page=methode&textSection=2`
         )
         .then((response) => response.data);
       setTextMethode(data);
@@ -28,7 +27,8 @@ export default function TextMethode() {
     <div>
       {textMethode.map((text) => (
         <div key={text.id}>
-          <p className="body1">{text.body}</p>
+          <h1 key="title2">{text.title}</h1>
+          <p key="body2">{text.body}</p>
         </div>
       ))}
     </div>

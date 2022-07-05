@@ -132,11 +132,16 @@ export default function Upload() {
       </label>
       <label htmlFor="picture-id">
         <select onChange={(e) => setUpdateFile(e.target.value)}>
-          {image.map((img) => (
-            <option value={img.id} key={img.id}>
-              {img.file}
-            </option>
-          ))}
+          <option value="Select">Select</option>
+          {image.length ? (
+            image.map((img) => (
+              <option value={img.id} key={img.id}>
+                {img.file}
+              </option>
+            ))
+          ) : (
+            <option value="Select">Select</option>
+          )}
         </select>
       </label>
 

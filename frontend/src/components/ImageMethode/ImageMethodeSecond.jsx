@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./imageMethode.scss";
-export default function ImageMethode() {
+export default function ImageMethodeSecond() {
   const [imageMethode, setImageMethode] = useState([]);
 
   const getImage = async () => {
@@ -10,7 +10,7 @@ export default function ImageMethode() {
         .get(
           `${
             import.meta.env.VITE_BACKEND_URL
-          }pictures?categories=methode&picSection=1`
+          }pictures?categories=methode&picSection=2`
         )
         .then((response) => response.data);
       setImageMethode(data);
@@ -30,7 +30,7 @@ export default function ImageMethode() {
       {imageMethode.map((image) => (
         <div key={image.id}>
           <img
-            className="imageMethode"
+            className="imageMethodeSecond"
             src={`${import.meta.env.VITE_IMAGES_URL}${image.file}`}
             alt={image.alt}
           />
