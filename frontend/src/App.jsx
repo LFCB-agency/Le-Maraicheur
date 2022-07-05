@@ -2,7 +2,6 @@
 /* eslint-disable import/no-unresolved */
 import { useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import MenuBurger from "@components/MenuBurger";
 import AdminLogin from "@pages/AdminLogin";
 import Accueil from "@pages/Accueil";
 import Methode from "@pages/Methode";
@@ -21,7 +20,6 @@ function App() {
 
   return (
     <div className="App">
-      <MenuBurger />
       <Routes>
         <Route exact path="/" element={<Accueil />} />
         <Route path="/upload" element={<Upload />} />
@@ -32,7 +30,6 @@ function App() {
         <Route path="/reset" element={<ResetPassword />} />
         <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
         {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
-        <Route path="*" element={<Navigate to="/" />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
