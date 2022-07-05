@@ -70,7 +70,7 @@ const Topslide = () => {
           <br />
           <br />
           <button className="button-modal-admin-2">
-            <NavLink to="/">CHANGER MON MOT DE PASSE</NavLink>
+            <NavLink to="/reset">CHANGER MON MOT DE PASSE</NavLink>
           </button>
         </ModalBody>
         <ModalFooter>

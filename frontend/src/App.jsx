@@ -10,9 +10,6 @@ import Upload from "@pages/Upload";
 import Produit from "@pages/Produits";
 import Propos from "@pages/Propos";
 import Contact from "@pages/Contact";
-
-import { useState } from "react";
-import AdminLogin from "@pages/AdminLogin";
 import AdminHome from "@pages/AdminHome";
 import ResetPassword from "@pages/ResetPassword";
 import Error404 from "@pages/Error404";
@@ -35,7 +32,6 @@ function App() {
         <Route path="/reset" element={<ResetPassword />} />
         <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
         {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
-        <Route path="*" element={<Navigate to="/" />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
