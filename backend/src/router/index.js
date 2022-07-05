@@ -4,7 +4,9 @@ const AdminRoutes = require("./Adm.routes");
 const PicturesRoutes = require("./Pictures.routes");
 // const PopUpRoutes = require("./PopUp.routes");
 const TextRoutes = require("./Text.routes");
+const emailRoutes = require("./email.routes");
 const PreOrderRoutes = require("./PreOrder.routes");
+
 // const ProductsRoutes = require("./Products.routes");
 
 const router = express.Router();
@@ -15,5 +17,6 @@ router.use("/pictures", PicturesRoutes);
 // router.use("/products", ProductsRoutes);
 router.use("/text", TextRoutes);
 router.use("/preorder", PreOrderRoutes);
+router.use("/emails", emailRoutes);
 
 module.exports = router;
