@@ -45,8 +45,22 @@ class TextManager extends AbstractManager {
 
   findAllTextWithFilter(filter) {
     return this.connection.query(
-      `SELECT id, title, body, page, textSection FROM  ${this.table} WHERE page = ?`,
+      `SELECT id, title, body, page, textSection FROM  ${this.table} WHERE page = ? AND textSection = ?`,
+      [filter.page, filter.textSection]
+    );
+  }
+
+  findAllByPage(filter) {
+    return this.connection.query(
+      `SELECT id, title, body, page, textSection FROM ${this.table} WHERE page = ?`,
       [filter.page]
+    );
+  }
+
+  findAllBySection(filter) {
+    return this.connection.query(
+      `SELECT id, title, body, page, textSection FROM ${this.table} WHERE textSection = ?`,
+      [filter.textSection]
     );
   }
 
