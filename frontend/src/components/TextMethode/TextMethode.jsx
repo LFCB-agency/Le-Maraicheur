@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function TextAccueil() {
-  const [textHome, setTextHome] = useState([]);
+export default function TextMethode() {
+  const [textMethode, setTextMethode] = useState([]);
   // const [imageHome, setImageHome] = useState([]);
 
   const getText = async () => {
     try {
       const data = await axios
-        .get("http://localhost:8000/api/text?page=home")
+        .get(`${import.meta.env.VITE_BACKEND_URL}text?page=methode`)
         .then((response) => response.data);
-      setTextHome(data);
+      setTextMethode(data);
       // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
+        // eslint-disable-line
         alert("text doesn't exists");
       }
     }
@@ -23,7 +24,7 @@ export default function TextAccueil() {
   }, []);
   return (
     <div>
-      {textHome.map((text) => (
+      {textMethode.map((text) => (
         <div key={text.id}>
           <h1 key="title1">{text.title}</h1>
           <p key="body1">{text.body}</p>

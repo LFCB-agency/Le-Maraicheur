@@ -4,15 +4,16 @@ const models = require("../models");
 
 class PictureController {
   static browse = (req, res) => {
-    const { picSection, categories } = req.query;
+    const { categories, picSection } = req.query;
     const filter = {};
     if (picSection) {
-      filter.picSection = picSection;
+      filter.picSection = parseInt(picSection, 10);
     }
     if (categories) {
       filter.categories = categories;
     }
-    if (filter) {
+    if (filter.picSection || filter.categories) {
+      // console.log(filter);
       models.pictures
         .findAllWithFilter(filter)
         .then(([rows]) => {
@@ -23,10 +24,12 @@ class PictureController {
           res.sendStatus(500);
         });
     } else {
+      // console.log("all");
       models.pictures
         .findAll()
         .then(([rows]) => {
           res.send(rows);
+          // console.log(rows);
         })
         .catch((err) => {
           console.error(err);
@@ -51,23 +54,23 @@ class PictureController {
       });
   };
 
-  // static add = async (req, res) => {
-  //   try {
-  //     const [result] = await models.pictures.insert({
-  //       file: req.pictureData.file,
-  //       alt: req.pictureData.alt,
-  //       // categories: req.pictureData.categories,
-  //       // picSection: parseInt(req.pictureData.picSection, 10),
-  //     });
-  //     if (result.affectedRows === 0) {
-  //       return res.status(404).send("Couldn't insert pictures");
-  //     }
-  //     const [[imageCreated]] = await models.pictures.insert(...picture);
-  //     return res.status(201).json(imageCreated);
-  //   } catch (err) {
-  //     return res.status(500).send(err.message);
-  //   }
-  // };
+  static readToUpdate = (req, res, next) => {
+    models.pictures
+      .find(req.params.id)
+      .then(([rows]) => {
+        if (rows[0] == null) {
+          res.sendStatus(404);
+        } else {
+          /* eslint prefer-destructuring: ["error", {VariableDeclarator: {object: true}}] */
+          req.pictureToUpdate = rows[0];
+          next();
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
 
   static add = async (req, res) => {
     let picture = req.body;
@@ -94,6 +97,28 @@ class PictureController {
       });
   };
 
+  static edit = (req, res) => {
+    const { picture } = req;
+
+    // TODO validations (length, format...)
+
+    picture.id = parseInt(req.params.id, 10);
+
+    models.pictures
+      .update(picture)
+      .then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(204);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   static delete = (req, res) => {
     models.pictures
       .delete(req.params.id)
@@ -105,44 +130,5 @@ class PictureController {
         res.sendStatus(500);
       });
   };
-
-  static edit = (req, res) => {
-    const pictures = req.body;
-
-    // TODO validations (length, format...)
-
-    pictures.id = parseInt(req.params.id, 10);
-
-    models.pictures
-      .update(pictures)
-      .then(([result]) => {
-        if (result.affectedRows === 0) {
-          res.sendStatus(404).send("Picture not found");
-        } else {
-          res.sendStatus(204);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  };
-
-  // static editPicture = async (req, res) => {
-  //   try {
-  //     const [result] = await models.pictures.update({
-  //       // id: req.id,
-  //       file: req.file,
-  //       alt: req.alt,
-  //     });
-  //     if (result.affectedRows === 0) {
-  //       return res.status(404).send("Picture not found");
-  //     }
-  //     const [[pictureUpdated]] = await models.pictures.find(pictures.id);
-  //     return res.status(201).json(pictureUpdated);
-  //   } catch (err) {
-  //     return res.status(500).send(err.message);
-  //   }
-  // };
 }
 module.exports = PictureController;

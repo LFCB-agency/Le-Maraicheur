@@ -17,7 +17,7 @@ class TextManager extends AbstractManager {
   // ! ---------- Ecrase le findAll d'AbstractManager ----------
   findAll() {
     return this.connection.query(
-      `SELECT title, body, page, textSection FROM  ${this.table}`
+      `SELECT id, title, body, page, textSection FROM  ${this.table}`
     );
   }
   // !  ----------_ ----------_ ----------_ ----------_ ----------

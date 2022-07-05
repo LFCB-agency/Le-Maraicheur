@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useRef } from "react";
+/* eslint-disable import/no-extraneous-dependencies */
+import { useState, useRef } from "react";
 import JoditEditor from "jodit-react";
 
 const TextEditor = () => {
@@ -81,7 +81,7 @@ const TextEditor = () => {
     <div className="text-editor">
       <JoditEditor
         ref={editor}
-        // value={content}
+        value={content}
         config={config}
         onBlur={handleUpdate}
         onChange={(newContent) => setContent(newContent)}

@@ -1,3 +1,4 @@
+/* eslint-disable */
 const express = require("express");
 
 const router = express.Router();
@@ -21,15 +22,12 @@ const storage = multer.diskStorage({
 
 // on configure multer pour sauvegarder un seul fichier
 // qui est dans le req.body.file
-
 const upload = multer({ storage }).single("file");
 
 router.get("/", PictureController.browse);
-// router.get("/:id", PictureController.read);
 
 router.get("/:id", PictureController.read);
 
-// router.post("/", PictureController.add);
 router.post(
   "/upload",
   (req, res, next) => {
@@ -45,14 +43,49 @@ router.post(
         categories: pictureData.categories,
         picSection: pictureData.picSection,
       };
-      // console.log(req.pictureData);
       return next();
     });
   },
   PictureController.add
 );
 
-// router.put("/:id", PictureController.edit);
+router.put(
+  "/update/:id",
+  PictureController.readToUpdate,
+  (req, res, next) => {
+    const storage = multer.diskStorage({
+      // on defini le chemin ou les fichiers seront stockés
+      destination: (_req, _file, cb) => {
+        cb(null, "public/assets/images");
+      },
+      // filename defini le nom du fichier dans le dossier
+      // dans ce cas là il sera nommé ex : "2022-20-06-nom-du-fichier"
+      filename: (_, file, cb) => {
+        cb(null, req.pictureToUpdate.file);
+      },
+    });
+
+    const uploadToUpdate = multer({ storage }).single("file");
+
+    uploadToUpdate(req, res, (err) => {
+      if (err) {
+        return res.status(500).send(err.message);
+      }
+      const pictureData = JSON.parse(req.body.pictureData);
+      // console.log({ pictureData });
+      req.picture = {
+        file: req.file.filename,
+        alt: pictureData.description,
+        categories: pictureData.categories,
+        picSection: pictureData.picSection,
+      };
+
+      return next();
+    });
+  },
+  PictureController.edit
+);
+
 router.delete("/:id", PictureController.delete);
 
 module.exports = router;

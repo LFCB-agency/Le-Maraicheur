@@ -1,4 +1,4 @@
-import TextProduits from "@components/TextProduits";
+import TextProduits from "@components/TextProduits/TextProduits";
 
 export default function Produits() {
   return <TextProduits />;
