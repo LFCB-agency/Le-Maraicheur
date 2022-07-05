@@ -14,8 +14,9 @@ export default function Carousels() {
     slidesToScroll: 1,
     initialSlide: 0,
     autoplay: true,
-    autoplayspeed: 4000,
+    autoplayspeed: 3500,
     pauseOnHover: true,
+    adaptiveHeight: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -25,8 +26,9 @@ export default function Carousels() {
           infinite: true,
           dots: true,
           autoplay: true,
-          autoplayspeed: 4000,
+          autoplayspeed: 3500,
           pauseOnHover: true,
+          adaptiveHeight: true,
         },
       },
     ],
@@ -51,13 +53,18 @@ export default function Carousels() {
   }, []);
 
   return (
-    <div>
+    <div className="carouselDiv">
+      <h2 className="carouselTitle">
+        GOUTER AU VIVANT
+        <span className="spanLine" />
+      </h2>
       <Slider {...settings}>
         {imageCarousel.map((image) => (
           <div key={image.id} className="carousel">
             <div className="card">
               <div className="card-top">
                 <img
+                  className="imgCarousel"
                   src={`${import.meta.env.VITE_IMAGES_URL}${image.file}`}
                   alt="a"
                 />

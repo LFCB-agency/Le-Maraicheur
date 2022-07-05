@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import axios from "@services/axios";
-// import Update from "@components/Update";
 import { useState, useEffect } from "react";
+import "../App.css";
 
 export default function Upload() {
   const [selectedFile, setSelectedFile] = useState();
@@ -86,7 +86,7 @@ export default function Upload() {
   }, [categories]);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="mep" onSubmit={handleSubmit}>
       <label htmlFor="upload-picture">
         Select a pic :
         <input
@@ -130,6 +130,15 @@ export default function Upload() {
           <option value="4">4</option>
         </select>
       </label>
+      <label htmlFor="picture-id">
+        <select onChange={(e) => setUpdateFile(e.target.value)}>
+          {image.map((img) => (
+            <option value={img.id} key={img.id}>
+              {img.file}
+            </option>
+          ))}
+        </select>
+      </label>
 
       <button type="submit"> Upload Pic</button>
       {fileCreated && (
@@ -140,15 +149,6 @@ export default function Upload() {
       )}
 
       {/* <Update /> */}
-      <label htmlFor="picture-id">
-        <select onChange={(e) => setUpdateFile(e.target.value)}>
-          {image.map((img) => (
-            <option value={img.id} key={img.id}>
-              {img.file}
-            </option>
-          ))}
-        </select>
-      </label>
       {updateFile && (
         <img
           src={`${import.meta.env.VITE_IMAGES_URL}${updateFile.file}`}

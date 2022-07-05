@@ -12,6 +12,7 @@ import Propos from "@pages/Propos";
 import Contact from "@pages/Contact";
 import AdminHome from "@pages/AdminHome";
 import Error404 from "@pages/Error404";
+import Footer from "@components/Footer";
 import "./App.css";
 
 function App() {
@@ -20,7 +21,6 @@ function App() {
   return (
     <div className="App">
       <MenuBurger />
-
       <Routes>
         <Route exact path="/" element={<Accueil />} />
         <Route path="/upload" element={<Upload />} />
@@ -49,6 +49,7 @@ function App() {
         )}
         <Route path="*" element={<Error404 />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
