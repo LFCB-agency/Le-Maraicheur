@@ -14,7 +14,7 @@ export default function TextPropos() {
       // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
-        // eslint-disable-line
+        // eslint-disable-next-line
         alert("text doesn't exists");
       }
     }

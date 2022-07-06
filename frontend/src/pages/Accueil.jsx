@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable import/no-unresolved */
 import TextAccueil from "@components/TextAccueil/TextAccueil";
 import TextAccueilSecond from "@components/TextAccueil/TextAccueilSecond";
@@ -15,6 +16,7 @@ export default function Accueil() {
         <span className="spanLine" />
       </h2>
       <TextAccueilSecond />
+      <Footer />
     </>
   );
 }

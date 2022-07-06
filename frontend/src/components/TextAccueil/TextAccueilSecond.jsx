@@ -13,7 +13,7 @@ export default function TextAccueilSecond() {
       // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
-        // eslint-disable-line
+        // eslint-disable-next-line
         alert("text doesn't exists");
       }
     }
@@ -32,7 +32,7 @@ export default function TextAccueilSecond() {
         <div className="body2" key={text.id}>
           <p key={text.id}>{text.body}</p>
           <button type="button" className="buttonPanier">
-            Plus de details
+            <p>Plus de détails</p>
           </button>
         </div>
       ))}

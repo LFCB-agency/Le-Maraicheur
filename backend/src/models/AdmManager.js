@@ -64,14 +64,14 @@ class AdmManager extends AbstractManager {
   }
 
   update(adm) {
-    if (adm) {
+    if (adm.temporaryPassword) {
       return this.connection.query(
-        `update ${AdmManager.table} set password = ? where id = ?`,
-        [adm.password, adm.id]
+        `update ${AdmManager.table} set temporaryPassword = ?  where id = ?`,
+        [adm.temporaryPassword, adm.id]
       );
     }
     return this.connection.query(
-      `update ${AdmManager.table} set password = ? where id = ?`,
+      `update ${AdmManager.table} set password = ?, temporaryPassword = null where id = ?`,
       [adm.password, adm.id]
     );
   }

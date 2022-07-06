@@ -36,10 +36,20 @@ class PictureManager extends AbstractManager {
   }
 
   findAllWithFilter(filter) {
-    return this.connection.query(
-      `SELECT id, file, alt, pictogram, categories, picSection FROM ${this.table} WHERE categories=? OR picSection= ?`,
-      [filter.categories, filter.picSection]
-    );
+    const sqlValues = [];
+    let sql = `SELECT id, file, alt, pictogram, categories, picSection FROM ${this.table}`;
+    if (filter.categories && !filter.picSection) {
+      sql += " WHERE categories= ?";
+      sqlValues.push(filter.categories);
+    } else if (!filter.categories && filter.picSection) {
+      sql += " WHERE picSection = ?";
+      sqlValues.push(filter.picSection);
+    } else {
+      sql += " WHERE categories = ? AND picSection = ? ";
+      sqlValues.push(filter.categories, filter.picSection);
+    }
+    // console.log(sql, sqlValues);
+    return this.connection.query(sql, sqlValues);
   }
 
   get(pictures) {

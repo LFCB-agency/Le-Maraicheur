@@ -17,7 +17,7 @@ export default function Upload() {
   const handleInput = (e) => {
     const file = e.target.files[0];
     if (file.type !== "image/png" && file.type !== "image/jpeg") {
-      // eslint-disable-line
+      // eslint-disable-next-line
       return alert("Select a jpeg or a png image");
     }
     return setSelectedFile(e.target.files[0]);
@@ -38,7 +38,7 @@ export default function Upload() {
       return setFileCreated(data);
     } catch (err) {
       console.warn(err);
-      // eslint-disable-line
+      // eslint-disable-next-line
       return alert(err.message);
     }
   };
@@ -61,7 +61,7 @@ export default function Upload() {
       return setUpdateFile(data);
     } catch (err) {
       console.warn(err);
-      // eslint-disable-line
+      // eslint-disable-next-line
       return alert(err.message);
     }
   };
@@ -77,7 +77,7 @@ export default function Upload() {
       setImage(data);
     } catch (err) {
       if (err.response.status === 401) {
-        // eslint-disable-line
+        // eslint-disable-next-line
         alert("Picture doesn't exists");
       }
     }
@@ -133,11 +133,16 @@ export default function Upload() {
       </label>
       <label htmlFor="picture-id">
         <select onChange={(e) => setUpdateFile(e.target.value)}>
-          {image.map((img) => (
-            <option value={img.id} key={img.id}>
-              {img.file}
-            </option>
-          ))}
+          <option value="Select">Select</option>
+          {image.length ? (
+            image.map((img) => (
+              <option value={img.id} key={img.id}>
+                {img.file}
+              </option>
+            ))
+          ) : (
+            <option value="Select">Select</option>
+          )}
         </select>
       </label>
 
