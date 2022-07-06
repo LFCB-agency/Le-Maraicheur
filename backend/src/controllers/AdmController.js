@@ -198,11 +198,15 @@ class AdmController {
   };
 
   static createTemporaryPassword = async (req, res, next) => {
-    // il faudrait une fonction pour générer un mot de passe aléatoire
     const temporaryPassword = generatePassword();
     try {
-      const hashedPassword = await models.adm.hashPassword(temporaryPassword);
-      await models.adm.update({ id: req.adm.id, password: hashedPassword });
+      const temporaryHashedPassword = await models.adm.hashPassword(
+        temporaryPassword
+      );
+      await models.adm.update({
+        id: req.adm.id,
+        temporaryPassword: temporaryHashedPassword,
+      });
       req.adm.temporaryPassword = temporaryPassword;
 
       const token = jwt.sign(
@@ -258,7 +262,7 @@ class AdmController {
       // check temporary password
       const valideTemporaryPassword = await models.adm.verifyPassword(
         admData.temporaryPassword,
-        adm.password
+        adm.temporaryPassword
       );
 
       if (!adm || req.id !== adm.id || !valideTemporaryPassword) {
