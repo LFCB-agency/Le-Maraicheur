@@ -43,6 +43,7 @@ export default function Carousels() {
       // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
+        // eslint-disable-next-line
         alert("Can't fetch pictures");
       }
     }

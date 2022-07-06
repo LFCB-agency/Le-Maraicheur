@@ -101,6 +101,7 @@ export default function ResetPassword() {
 
       return navigate("/admin");
     } catch (err) {
+      // eslint-disable-next-line
       return alert(err.message);
     }
   };
