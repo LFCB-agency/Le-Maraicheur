@@ -18,7 +18,7 @@ export default function ImageMethodeThird() {
       // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
-        // eslint-disable-line
+        // eslint-disable-next-line
         alert("Picture doesn't exists");
       }
     }

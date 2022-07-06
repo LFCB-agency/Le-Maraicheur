@@ -41,7 +41,7 @@ export default function AdminLogin({ setAdm }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!admData.email || !admData.password) {
-      // eslint-disable-line
+      // eslint-disable-next-line
       return alert("You must provide an email and a password");
     }
     try {
@@ -54,7 +54,7 @@ export default function AdminLogin({ setAdm }) {
       navigate("/admin/log");
       // dispatch({ type: "LOGIN", payload: data });
     } catch (err) {
-      // eslint-disable-line
+      // eslint-disable-next-line
       return alert(err.message);
     }
   };
@@ -72,8 +72,10 @@ export default function AdminLogin({ setAdm }) {
         },
         { withCredentials: true }
       );
+      // eslint-disable-next-line
       return alert(JSON.stringify(data));
     } catch (err) {
+      // eslint-disable-next-line
       return alert(err.message);
     }
   };

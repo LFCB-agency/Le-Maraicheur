@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import "../../styles/components/methode.scss";
+
 export default function ImageMethodeSecond() {
   const [imageMethode, setImageMethode] = useState([]);
 
