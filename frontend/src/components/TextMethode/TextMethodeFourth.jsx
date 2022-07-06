@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "../../styles/components/methode.scss";
 
 export default function TextMethodeFourth() {
   const [textMethode, setTextMethode] = useState([]);
@@ -27,8 +28,7 @@ export default function TextMethodeFourth() {
     <div>
       {textMethode.map((text) => (
         <div key={text.id}>
-          <h1 key="title2">{text.title}</h1>
-          <p key="body2">{text.body}</p>
+          <p className="body4">{text.body}</p>
         </div>
       ))}
     </div>

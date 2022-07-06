@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./imageMethode.scss";
+
+import "../../styles/components/methode.scss";
 export default function ImageMethodeSecond() {
   const [imageMethode, setImageMethode] = useState([]);
 
@@ -17,7 +18,7 @@ export default function ImageMethodeSecond() {
       // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
-        // eslint-disable-line
+        // eslint-disable-next-line
         alert("Picture doesn't exists");
       }
     }

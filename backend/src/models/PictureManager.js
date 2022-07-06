@@ -48,7 +48,7 @@ class PictureManager extends AbstractManager {
       sql += " WHERE categories = ? AND picSection = ? ";
       sqlValues.push(filter.categories, filter.picSection);
     }
-    console.log(sql, sqlValues);
+    // console.log(sql, sqlValues);
     return this.connection.query(sql, sqlValues);
   }
 

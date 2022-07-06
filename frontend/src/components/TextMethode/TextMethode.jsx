@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./textMethode.scss";
+import "../../styles/components/methode.scss";
 
 export default function TextMethode() {
   const [textMethode, setTextMethode] = useState([]);

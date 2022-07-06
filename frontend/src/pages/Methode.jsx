@@ -4,8 +4,12 @@ import MenuBurger from "@components/MenuBurger";
 import Footer from "@components/Footer";
 import TextMethode from "@components/TextMethode/TextMethode";
 import TextMethodeSecond from "@components/TextMethode/TextMethodeSecond";
-import "../components/TextMethode/textMethode.scss";
 import ImageMethodeSecond from "@components/ImageMethode/ImageMethodeSecond";
+import ImageMethodeThird from "@components/ImageMethode/ImageMethodeThird";
+import ImageMethodeFourth from "@components/ImageMethode/ImageMethodeFourth";
+import TextMethodeThird from "@components/TextMethode/TextMethodeThird";
+import TextMethodeFourth from "@components/TextMethode/TextMethodeFourth";
+import "../styles/components/methode.scss";
 
 export default function Methode() {
   return (
@@ -14,8 +18,26 @@ export default function Methode() {
       <ImageMethode />
       <TextMethode />
       <span className="textUnderline" />
-      <ImageMethodeSecond />
-      <TextMethodeSecond />
+      <div className="methodeGrid">
+        <div className="gridimg2">
+          <ImageMethodeSecond />
+        </div>
+        <div className="gridtext2">
+          <TextMethodeSecond />
+        </div>
+        <div className="gridimg3">
+          <ImageMethodeThird />
+        </div>
+        <div className="gridtext3">
+          <TextMethodeThird />
+        </div>
+        <div className="gridimg4">
+          <ImageMethodeFourth />
+        </div>
+        <div className="gridtext4">
+          <TextMethodeFourth />
+        </div>
+      </div>
       <Footer />
     </>
   );

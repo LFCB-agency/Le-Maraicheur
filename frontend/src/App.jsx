@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/no-unresolved */
 import { useState } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AdminLogin from "@pages/AdminLogin";
 import Accueil from "@pages/Accueil";
 import Methode from "@pages/Methode";
