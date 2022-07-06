@@ -3,7 +3,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import axios from "axios";
-import "./carousel.css";
 
 export default function Carousels() {
   const settings = {
@@ -55,8 +54,8 @@ export default function Carousels() {
 
   return (
     <div className="carouselDiv">
-      <h2 className="carouselTitle">
-        GOUTER AU VIVANT
+      <h2 className="carouseltitle">
+        GOÛTER AU VIVANT
         <span className="spanLine" />
       </h2>
       <Slider {...settings}>

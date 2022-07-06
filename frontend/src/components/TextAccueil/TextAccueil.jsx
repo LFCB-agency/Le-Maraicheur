@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./textAccueil.css";
 
 export default function TextAccueil() {
   const [textHome, setTextHome] = useState([]);
@@ -23,7 +22,7 @@ export default function TextAccueil() {
     getText();
   }, []);
   return (
-    <div>
+    <div className="body1">
       {textHome.map((text) => (
         <div key={text.id}>
           <p key="body1">{text.body}</p>

@@ -32,7 +32,7 @@ export default function TextAccueilSecond() {
         <div className="body2" key={text.id}>
           <p key={text.id}>{text.body}</p>
           <button type="button" className="buttonPanier">
-            Plus de details
+            <p>Plus de détails</p>
           </button>
         </div>
       ))}
