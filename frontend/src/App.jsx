@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/no-unresolved */
 import { useState } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AdminLogin from "@pages/AdminLogin";
 import Accueil from "@pages/Accueil";
 import Methode from "@pages/Methode";
@@ -12,7 +12,6 @@ import Contact from "@pages/Contact";
 import AdminHome from "@pages/AdminHome";
 import ResetPassword from "@pages/ResetPassword";
 import Error404 from "@pages/Error404";
-import Footer from "@components/Footer";
 import "./App.css";
 
 function App() {
@@ -32,7 +31,6 @@ function App() {
         {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
         <Route path="*" element={<Error404 />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
