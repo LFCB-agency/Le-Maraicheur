@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const models = require("../models");
+const generatePassword = require("../helpers/generatePassword");
 
 class AdmController {
   static browse = async (req, res) => {
@@ -29,7 +30,7 @@ class AdmController {
 
   static edit = async (req, res) => {
     const { password } = req.body;
-    const id = parseInt(req.params.id, 10);
+    const id = req.body.id ? req.body.id : parseInt(req.params.id, 10);
 
     try {
       // TODO validations (length, format...)
@@ -173,6 +174,102 @@ class AdmController {
     }
 
     return next();
+  };
+
+  static checkEmail = async (req, res, next) => {
+    const { email } = req.body;
+    if (!email) {
+      return res.sendStatus(400);
+    }
+
+    try {
+      const [[adm]] = await models.adm.findByEmail(email);
+
+      if (!adm) {
+        return res.sendStatus(400);
+      }
+
+      delete adm.password;
+      req.adm = adm;
+      return next();
+    } catch (err) {
+      return res.status(500).send(err.message);
+    }
+  };
+
+  static createTemporaryPassword = async (req, res, next) => {
+    // il faudrait une fonction pour générer un mot de passe aléatoire
+    const temporaryPassword = generatePassword();
+    try {
+      const hashedPassword = await models.adm.hashPassword(temporaryPassword);
+      await models.adm.update({ id: req.adm.id, password: hashedPassword });
+      req.adm.temporaryPassword = temporaryPassword;
+
+      const token = jwt.sign(
+        { id: req.adm.id },
+        process.env.RESET_PASSWORD_JWT_SECRET,
+        { expiresIn: process.env.RESET_PASSWORD_JWT_EXPIRESIN }
+      );
+
+      res.cookie("resetPasswordToken", token, {
+        httpOnly: true,
+        secure: process.env.RESET_PASSWORD_JWT_SECURE === "true",
+        maxAge: parseInt(process.env.RESET_PASSWORD_JWT_COOKIE_MAXAGE, 10),
+      });
+      return next();
+    } catch (err) {
+      return res.status(500).send(err.message);
+    }
+  };
+
+  static verifyResetPasswordToken = async (req, res, next) => {
+    const token = req.cookies.resetPasswordToken;
+    if (!token) {
+      return res.sendStatus(401);
+    }
+
+    try {
+      const decoded = jwt.verify(token, process.env.RESET_PASSWORD_JWT_SECRET);
+      req.id = decoded.id;
+      return next();
+    } catch (err) {
+      return res.status(500).send(err.message);
+    }
+  };
+
+  static verifyUser = async (req, res, next) => {
+    const admData = {
+      id: req.id,
+      email: req.body.email,
+      password: req.body.password,
+      temporaryPassword: req.body.temporaryPassword,
+    };
+    // eslint-disable-next-line no-restricted-syntax
+    // le bug vient de Adm
+    try {
+      const valideData = await models.adm.validateReset(admData);
+      if (!valideData) {
+        console.warn(valideData);
+        return res.sendStatus(400);
+      }
+
+      const [[adm]] = await models.adm.findByEmail(admData.email);
+
+      // check temporary password
+      const valideTemporaryPassword = await models.adm.verifyPassword(
+        admData.temporaryPassword,
+        adm.password
+      );
+
+      if (!adm || req.id !== adm.id || !valideTemporaryPassword) {
+        return res.status(401).send("You are not the right user");
+      }
+
+      req.body = { id: adm.id, password: admData.password };
+      return next();
+    } catch (err) {
+      return res.status(500).send(err.message);
+    }
   };
 }
 

@@ -15,14 +15,15 @@ a {
 }
 /* menu dekstop */
 .menu-burger {
+  z-index: 1;
+  box-shadow: 0px 2px 0px #cccccc;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  position: fixed;
   width: 100%;
-  min-height: 5.5rem;
-  background-color: #f9f9f9;
+  min-height: 6rem;
+  background-color: #ffffff;
   color: black;
 }
 
@@ -62,7 +63,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .logo1 img {
@@ -79,7 +80,6 @@ a {
 @media screen and (max-width: 767px) {
   a {
     color: white;
-
   }
   .menu-links {
     flex-direction: column;
@@ -88,7 +88,7 @@ a {
     position: fixed;
     right: -100vw;
     bottom: 0;
-    height: 100vh;
+    height: 91% ;
     padding: 2rem;
     visibility: hidden;
     background: rgba(44, 47, 51, 0.6);
@@ -96,6 +96,7 @@ a {
 
   .menu-burger {
     justify-content: space-between;
+    min-height: 0;
   }
 
   .menu-links img {

@@ -3,15 +3,15 @@ const models = require("../models");
 
 class TextController {
   static browse = (req, res) => {
-    const { page } = req.query;
+    const { page, textSection } = req.query;
     const filter = {};
     if (page) {
       filter.page = page;
     }
-    // if (textSection) {
-    //   filter.textSection = textSection;
-    // }
-    if (filter) {
+    if (textSection) {
+      filter.textSection = parseInt(textSection, 10);
+    }
+    if (filter.page || filter.textSection) {
       models.text
         .findAllTextWithFilter(filter)
         .then(([rows]) => {

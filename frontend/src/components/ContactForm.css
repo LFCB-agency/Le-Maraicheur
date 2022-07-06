@@ -1,0 +1,35 @@
+.contact{
+   /* margin: 0 auto;  */
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.contact_form{
+    display: wrap;
+    flex-wrap: wrap;
+    /* padding: 10rem; */
+    
+}
+.contact_form input,
+.contact_form textarea
+.contact_form button{
+   /* margin: 0.3rem 0 1rem;
+   padding: .3rem; */
+}
+
+.contact_form button{
+    font-size: 1.2rem;
+    background-color: #68324C;
+    color: white;
+}
+
+.contact_form input{
+    border-radius: 4px;
+}
+
+.image-contact{
+    width: 30rem;
+    height: 30rem;
+    border-radius: 0 0 2rem 0;
+}
