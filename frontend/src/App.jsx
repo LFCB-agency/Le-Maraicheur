@@ -2,7 +2,6 @@
 /* eslint-disable import/no-unresolved */
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import MenuBurger from "@components/MenuBurger";
 import AdminLogin from "@pages/AdminLogin";
 import Accueil from "@pages/Accueil";
 import Methode from "@pages/Methode";
@@ -13,7 +12,6 @@ import Contact from "@pages/Contact";
 import AdminHome from "@pages/AdminHome";
 import ResetPassword from "@pages/ResetPassword";
 import Error404 from "@pages/Error404";
-import Footer from "@components/Footer";
 import "./App.css";
 
 function App() {
@@ -21,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <MenuBurger />
+
 
       <Routes>
         <Route exact path="/" element={<Accueil />} />
@@ -35,7 +33,6 @@ function App() {
         {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
         <Route path="*" element={<Error404 />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
