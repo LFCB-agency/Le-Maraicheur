@@ -61,6 +61,7 @@ export default function AdminLogin({ setAdm }) {
 
   const handlePasswordForgotten = async () => {
     if (!admData.email) {
+      // eslint-disable-next-line
       return alert("You must provide an email");
     }
 
