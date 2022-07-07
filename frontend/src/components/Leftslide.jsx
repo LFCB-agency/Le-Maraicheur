@@ -62,7 +62,7 @@ export default function LeftSlide() {
             </div>
           </NavLink>
           <NavLink
-            to="/"
+            to="/admin/popup"
             className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
           >
             <div className="icon-container">

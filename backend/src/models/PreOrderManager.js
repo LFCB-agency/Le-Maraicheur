@@ -38,7 +38,9 @@ class PreOrderManager extends AbstractManager {
   }
 
   findAll() {
-    return this.connection.query(`SELECT * FROM ${this.table}`);
+    return this.connection.query(
+      `SELECT id, lastname, firstname, email, paymentMethod, date FROM ${this.table}`
+    );
   }
 
   find(id) {

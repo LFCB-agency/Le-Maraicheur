@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import useModal from "@services/useModal";
+import Modal from "@components/Modal";
 
 export default function TextAccueilSecond() {
   const [textHome, setTextHome] = useState([]);
+  const { isShowing, toggle } = useModal();
 
   const getText = async () => {
     try {
@@ -31,9 +34,18 @@ export default function TextAccueilSecond() {
       {textHome.map((text) => (
         <div className="body2" key={text.id}>
           <p key={text.id}>{text.body}</p>
-          <button type="button" className="buttonPanier">
+          <button type="button" onClick={toggle} className="buttonPanier">
             <p>Plus de détails</p>
           </button>
+          <div className="modal-container">
+            <Modal
+              isShowing={isShowing}
+              hide={toggle}
+              key={text.id}
+              title={text.title}
+              body={text.body}
+            />
+          </div>
         </div>
       ))}
       <span className="panierUnderline" />
