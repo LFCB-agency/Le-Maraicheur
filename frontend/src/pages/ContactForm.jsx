@@ -34,11 +34,11 @@ const Contact = () => {
               </label>
             </div>
             <label>
-              Email* <input type="email" name="email" />
+              Email* <input className="email" type="email" name="email" />
             </label>
 
             <label>
-              Message* <textarea name="message"></textarea>
+              Message* <textarea name="message" rows="10" cols="50"></textarea>
             </label>
 
             <button type="submit">Soumettre</button>

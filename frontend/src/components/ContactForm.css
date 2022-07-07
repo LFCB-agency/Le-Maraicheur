@@ -29,6 +29,7 @@ hr{
 
 h3{
   text-align: left;
+  padding-left: 13%;
 }
 
 .form label{
@@ -42,4 +43,37 @@ h3{
 .name-contact label{
   width: 700vh;
 
+}
+
+.email{
+  width: 39vw !important;
+}
+
+input{
+margin: 0 !important;
+padding: 0 !important;
+}
+
+label{
+  display:block;
+    width:2px;
+}
+
+textarea{
+  border-radius: 15px;
+  width: 39vw !important;
+}
+
+button{
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 10vw;
+height: 2rem;
+text-decoration: underline;
+color: white;
+background-color: #68324C;
+border-radius: 10px;
+border-color: transparent;
+box-shadow: 1px 1px 3px black;
 }
