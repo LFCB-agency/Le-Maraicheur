@@ -1,33 +1,45 @@
-.contact {
-  /* margin: 0 auto;  */
+.wrapper{
+  display: grid;
+  grid-template-columns: 50rem 3rem;
+}
+
+.img-contact img{
+  height: 450px;
+  width: 350px;
+}
+
+.logo-maraicheur{
+  width: auto;
+  height: 75px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titre{
+  text-align: center;
+}
+
+hr{
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+h3{
+  text-align: left;
+}
+
+.form label{
+  color: black
+}
+
+.name-contact{
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
 }
 
-.contact_form {
-  display: wrap;
-  flex-wrap: wrap;
-  /* padding: 10rem; */
-}
-.contact_form input,
-.contact_form textarea .contact_form button {
-  /* margin: 0.3rem 0 1rem;
-   padding: .3rem; */
-}
+.name-contact label{
+  width: 700vh;
 
-.contact_form button {
-  font-size: 1.2rem;
-  background-color: #68324c;
-  color: white;
-}
-
-.contact_form input {
-  border-radius: 4px;
-}
-
-.image-contact {
-  width: 30rem;
-  height: 30rem;
-  border-radius: 0 0 2rem 0;
 }
