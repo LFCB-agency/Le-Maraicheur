@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 import "../styles/components/modal.scss";
 
-const Modal = ({ isShowing, hide, title, body }) =>
+const Modal = ({ isShowing, toggle, hide, title, body }) =>
   isShowing
     ? ReactDOM.createPortal(
         <div className="modal-wrapper">
@@ -25,7 +25,11 @@ const Modal = ({ isShowing, hide, title, body }) =>
             </div>
             <div className="button-modal-container">
               <Link to="/preorder">
-                <button type="button" className="modal-button-preorder">
+                <button
+                  type="button"
+                  onClick={toggle}
+                  className="modal-button-preorder"
+                >
                   {" "}
                   JE COMMANDE{" "}
                 </button>

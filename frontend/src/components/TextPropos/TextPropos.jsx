@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import parse from "html-react-parser";
 import axios from "axios";
 
 export default function TextPropos() {
@@ -27,7 +28,7 @@ export default function TextPropos() {
       {textPropos.map((text) => (
         <div key={text.id}>
           <h1 key="title1">{text.title}</h1>
-          <p key="body1">{text.body}</p>
+          <p key="body1">{parse(text.body)}</p>
         </div>
       ))}
     </div>

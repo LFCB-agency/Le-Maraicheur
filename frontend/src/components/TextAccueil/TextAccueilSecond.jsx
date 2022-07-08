@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import parse from "html-react-parser";
 import axios from "axios";
 import useModal from "@services/useModal";
 import Modal from "@components/Modal";
@@ -33,8 +34,8 @@ export default function TextAccueilSecond() {
       />
       {textHome.map((text) => (
         <div className="body2" key={text.id}>
-          <p key={text.id}>{text.body}</p>
-          <button type="button" onClick={toggle} className="buttonPanier">
+          <p key={text.id}>{parse(text.body)}</p>
+          <button type="button" className="buttonPanier" onClick={toggle}>
             <p>Plus de détails</p>
           </button>
           <div className="modal-container">

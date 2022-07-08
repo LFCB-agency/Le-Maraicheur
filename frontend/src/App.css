@@ -36,6 +36,22 @@
   background-size: cover;
 }
 
+.panierTitle {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0px 10px 0px;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.spanLine {
+  margin-top: 10px;
+  width: 90px;
+  height: 2px;
+  background-color: #cccccc;
+}
+
 .mep {
   padding-top: 100px;
   display: flex;

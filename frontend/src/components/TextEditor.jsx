@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-extraneous-dependencies */
 import { useState, useRef } from "react";
 import axios from "axios";
 import JoditEditor from "jodit-react";
@@ -110,6 +112,25 @@ const TextEditor = () => {
       <button type="button" onClick={() => fetchTextById(4)}>
         text4
       </button>
+      <button type="button" onClick={() => fetchTextById(5)}>
+        text5
+      </button>
+      <button type="button" onClick={() => fetchTextById(6)}>
+        text6
+      </button>
+      <button type="button" onClick={() => fetchTextById(7)}>
+        text7
+      </button>
+      <button type="button" onClick={() => fetchTextById(8)}>
+        text8
+      </button>
+      <button type="button" onClick={() => fetchTextById(9)}>
+        text9
+      </button>
+      <button type="button" onClick={() => fetchTextById(10)}>
+        text10
+      </button>
+
       <JoditEditor
         ref={editor}
         value={content}
