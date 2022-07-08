@@ -3,7 +3,6 @@ import axios from "axios";
 
 export default function TextProduits() {
   const [textProduit, setTextProduit] = useState([]);
-  // const [imageHome, setImageHome] = useState([]);
 
   const getText = async () => {
     try {
