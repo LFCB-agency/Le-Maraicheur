@@ -4,7 +4,6 @@ import parse from "html-react-parser";
 
 export default function TextProduits() {
   const [textProduit, setTextProduit] = useState([]);
-  // const [imageHome, setImageHome] = useState([]);
 
   const getText = async () => {
     try {

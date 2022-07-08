@@ -4,6 +4,7 @@ class PreOrderController {
   static browse = async (req, res) => {
     try {
       const [results] = await models.preorder.findAll();
+      // console.log(results);
       return res.status(200).json(results);
     } catch (err) {
       return res.status(500).send(err.message);
