@@ -31,11 +31,7 @@ function App() {
         <Route path="/preorder" element={<Preorder />} />
         <Route path="/reset" element={<ResetPassword />} />
         <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
-        {adm.email && (
-          <div>
-            <Route path="/admin/log" element={<AdminHome />} />
-          </div>
-        )}
+        {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
         <Route path="/admin/popup" element={<AdminPopup />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
