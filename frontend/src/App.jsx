@@ -19,8 +19,6 @@ function App() {
 
   return (
     <div className="App">
-
-
       <Routes>
         <Route exact path="/" element={<Accueil />} />
         <Route path="/upload" element={<Upload />} />

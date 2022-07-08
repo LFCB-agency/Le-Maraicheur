@@ -54,7 +54,6 @@ class TextController {
     const text = req.body;
 
     text.id = parseInt(req.params.id, 10);
-
     models.text
       .update(text)
       .then(([result]) => {
@@ -64,6 +63,7 @@ class TextController {
           res.sendStatus(204);
         }
       })
+
       .catch((err) => {
         console.error(err);
         res.sendStatus(500);
