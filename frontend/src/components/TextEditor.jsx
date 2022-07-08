@@ -1,10 +1,13 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { useState, useRef } from "react";
+import axios from "axios";
 import JoditEditor from "jodit-react";
 
 const TextEditor = () => {
   const editor = useRef(null);
   const [content, setContent] = useState("");
+  let updatedContent = "";
+  const [currentId, setCurrentId] = useState();
+
   const config = {
     readonly: false,
     height: 400,
@@ -72,20 +75,53 @@ const TextEditor = () => {
       },
     },
   };
-  const handleUpdate = (e) => {
-    const editorContent = e.target.value;
-    setContent(editorContent);
+  // const handleUpdate = (e) => {
+  //   const editorContent = e.target.value;
+  //   updatedContent = editorContent;
+  // };
+
+  const fetchTextById = (id) => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/text/${id}`)
+      .then((result) => {
+        setCurrentId(result.data.id);
+        updatedContent = result.data.body;
+        return setContent(result.data.body);
+      });
+  };
+
+  const insertTextById = (id) => {
+    axios.put(`${import.meta.env.VITE_BACKEND_URL}text/${id}`, {
+      body: updatedContent,
+    });
   };
 
   return (
     <div className="text-editor">
+      <button type="button" onClick={() => fetchTextById(1)}>
+        text1
+      </button>
+      <button type="button" onClick={() => fetchTextById(2)}>
+        text2
+      </button>
+      <button type="button" onClick={() => fetchTextById(3)}>
+        text3
+      </button>
+      <button type="button" onClick={() => fetchTextById(4)}>
+        text4
+      </button>
       <JoditEditor
         ref={editor}
         value={content}
         config={config}
-        onBlur={handleUpdate}
-        onChange={(newContent) => setContent(newContent)}
+        // onBlur={handleUpdate}
+        onChange={(newContent) => {
+          updatedContent = newContent;
+        }}
       />
+      <button type="button" onClick={() => insertTextById(currentId)}>
+        Submit
+      </button>
     </div>
   );
 };
