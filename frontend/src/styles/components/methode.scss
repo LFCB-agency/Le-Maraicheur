@@ -31,26 +31,26 @@
   margin: 10px 10px 15px 10px;
 }
 
-.body1 {
+.bodyMain {
   margin: 10px 10px 15px 10px;
   // max-height: 14ch;
   overflow: hidden;
   padding: 0;
 }
 
-.body2 {
+.bodySec {
   margin: 10px 10px 15px 10px;
   max-height: 21ch;
   overflow: hidden;
   padding: 0;
 }
 
-.body3 {
+.bodyThird {
   margin: 10px 10px 15px 10px;
   padding: 0;
 }
 
-.body4 {
+.bodyFourth {
   margin: 10px 10px 15px 10px;
   padding: 0;
 }
@@ -84,14 +84,14 @@
     flex-direction: column;
   }
 
-  .body1 {
+  .bodyMain {
     margin: 10px 10px 15px 10px;
     max-height: 14ch;
     overflow: hidden;
     padding: 0;
   }
 
-  .body2 {
+  .bodySec {
     margin: 10px 10px 15px 10px;
     max-height: 21ch;
     overflow: hidden;
@@ -102,7 +102,7 @@
     width: 100%;
   }
 
-  .body3 {
+  .bodyThird {
     margin: 10px 10px 15px 10px;
     padding: 0;
   }
@@ -111,7 +111,7 @@
     width: 100%;
   }
 
-  .body4 {
+  .bodyFourth {
     margin: 10px 10px 15px 10px;
     padding: 0;
   }

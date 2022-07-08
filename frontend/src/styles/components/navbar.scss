@@ -25,10 +25,10 @@
       color: $black;
       font-family: "Montserrat";
       text-transform: uppercase;
-      transition: 1s;
+      transition: 200ms;
 
       &:hover {
-        transition: 1s;
+        transition: 200ms;
         color: $orange;
       }
     }

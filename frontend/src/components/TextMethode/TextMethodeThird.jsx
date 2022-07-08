@@ -28,7 +28,7 @@ export default function TextMethodeThird() {
     <div>
       {textMethode.map((text) => (
         <div key={text.id}>
-          <p className="body3">{text.body}</p>
+          <p className="bodyThird">{text.body}</p>
         </div>
       ))}
     </div>
