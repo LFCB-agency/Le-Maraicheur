@@ -3,7 +3,7 @@
 
 export default function Preorder() {
   //   const [register, setRegister] = useState();
-  //   const [firstname, setFirstname] = useState();
+  //   const [firstname, setFirstname] = useState("");
   //   const [lastname, setLastname] = useState("");
   //   const [payment, setPayment] = useState("");
   //   const [email, setEmail] = useState("");
