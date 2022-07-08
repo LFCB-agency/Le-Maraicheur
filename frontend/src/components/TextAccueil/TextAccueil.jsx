@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import parse from "html-react-parser";
 import axios from "axios";
 
 export default function TextAccueil() {
@@ -10,7 +11,6 @@ export default function TextAccueil() {
         .get(`${import.meta.env.VITE_BACKEND_URL}text?page=home&textSection=1`)
         .then((response) => response.data);
       setTextHome(data);
-      // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
         // eslint-disable-next-line
@@ -24,9 +24,7 @@ export default function TextAccueil() {
   return (
     <div className="body1">
       {textHome.map((text) => (
-        <div key={text.id}>
-          <p key="body1">{text.body}</p>
-        </div>
+        <div key={text.id}>{parse(text.body)}</div>
       ))}
     </div>
   );
