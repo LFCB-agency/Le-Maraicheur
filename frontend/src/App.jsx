@@ -9,7 +9,7 @@ import Upload from "@pages/Upload";
 import Produit from "@pages/Produits";
 import Propos from "@pages/Propos";
 import Preorder from "@pages/Preorder";
-import Contact from "@pages/Contact";
+import Contact from "@pages/ContactForm";
 import AdminHome from "@pages/AdminHome";
 import AdminPopup from "@pages/AdminPopup";
 import ResetPassword from "@pages/ResetPassword";

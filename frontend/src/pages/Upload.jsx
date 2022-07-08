@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 // eslint-disable-next-line import/no-unresolved
 import axios from "@services/axios";
 import { useState, useEffect } from "react";

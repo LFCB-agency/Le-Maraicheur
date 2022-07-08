@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-extraneous-dependencies */
 import { useState, useRef } from "react";
 import axios from "axios";
 import JoditEditor from "jodit-react";

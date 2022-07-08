@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const nodemailer = require("nodemailer");
 const path = require("path");
 const nodemailerHbs = require("nodemailer-express-handlebars");

@@ -35,7 +35,7 @@ export default function TextAccueilSecond() {
       {textHome.map((text) => (
         <div className="body2" key={text.id}>
           <p key={text.id}>{parse(text.body)}</p>
-          <button type="button" className="buttonPanier">
+          <button type="button" className="buttonPanier" onClick={toggle}>
             <p>Plus de détails</p>
           </button>
           <div className="modal-container">

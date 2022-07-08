@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-undef */
+/* eslint-disable import/no-unresolved */
 import TextAccueil from "@components/TextAccueil/TextAccueil";
 import TextAccueilSecond from "@components/TextAccueil/TextAccueilSecond";
 import Carousels from "@components/Carousels";
