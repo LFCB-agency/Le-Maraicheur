@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import parse from "html-react-parser";
 
 export default function TextProduits() {
   const [textProduit, setTextProduit] = useState([]);
@@ -27,7 +28,7 @@ export default function TextProduits() {
       {textProduit.map((text) => (
         <div key={text.id}>
           <h1 key="title1">{text.title}</h1>
-          <p key="body1">{text.body}</p>
+          <p key="body1">{parse(text.body)}</p>
         </div>
       ))}
     </div>

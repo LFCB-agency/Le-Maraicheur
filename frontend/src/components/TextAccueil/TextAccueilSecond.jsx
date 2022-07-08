@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import parse from "html-react-parser";
 import axios from "axios";
 
 export default function TextAccueilSecond() {
@@ -30,7 +31,7 @@ export default function TextAccueilSecond() {
       />
       {textHome.map((text) => (
         <div className="body2" key={text.id}>
-          <p key={text.id}>{text.body}</p>
+          <p key={text.id}>{parse(text.body)}</p>
           <button type="button" className="buttonPanier">
             <p>Plus de détails</p>
           </button>
