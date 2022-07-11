@@ -3,48 +3,26 @@ import { NavLink } from "react-router-dom";
 
 const Error404 = () => {
   return (
-    <div className="scene">
-      <div className="garden">
-        <div className="error404">
-          <h1>ERREUR 404</h1>
-          <p>Page non trouvée</p>
-          <NavLink to="/">Revenir sur le site</NavLink>
+    <section>
+      <div className="wrap">
+        <h1 className="error404">
+          <span className="style-4">4</span>0
+          <span className="style-4bis">4</span>
+        </h1>
+        <div className="base">
+          <div className="flowerpot" />
+          <div className="blade blade-center" />
+          <div className="blade blade-left-s" />
+          <div className="blade blade-right-s" />
+          <div className="blade blade-left-l" />
+          <div className="blade blade-right-l" />
         </div>
-        <div className="dirt" />
-        <div className="seed" />
-        <div className="carrot">
-          <div className="leaf">
-            <span />
-            <span />
-            <span />
-          </div>
-          <div className="root">
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-        </div>
-        <div className="beet">
-          <div className="leaf">
-            <span />
-          </div>
-          <div className="root" />
-        </div>
-        <div className="garlic">
-          <div className="leaf">
-            <span />
-            <span />
-            <span />
-          </div>
-          <div className="root">
-            <span />
-            <span />
-            <span />
-          </div>
+        <div className="return404">
+          <h2>Il n'y a qu'une plante ici...</h2>
+          <NavLink to="/">Retourner dans la serre</NavLink>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
