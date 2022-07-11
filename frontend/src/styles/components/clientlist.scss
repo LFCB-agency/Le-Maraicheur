@@ -1,8 +1,65 @@
 .client-list-container {
-  display: grid;
+  display: flex;
+
+  border-radius: 8px;
+  line-height: 10px;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.client-list-display {
+  display: flex;
+  background: rgb(205, 70, 70);
+  border-radius: 8px;
+  line-height: 10px;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.client-list-display-done {
+  display: flex;
+  background: rgb(84, 216, 80);
+  border-radius: 8px;
+  line-height: 10px;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .client-list-num {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  column-gap: 4px;
+  row-gap: 2px;
+  align-items: center;
+}
+
+.clientId {
+  grid-area: 1/1/2/2;
+}
+
+.clientFn {
+  grid-area: 2/1;
+}
+.clientLn {
+  grid-area: 3/1/3/2;
+}
+.clientEmail {
+  grid-area: 4/1/4/1;
+}
+
+.clientPayment {
+  grid-area: 3/2/4/2;
+}
+
+.clientStatus {
+  grid-area: 4/3/3/3;
+}
+
+.clientDate {
+  grid-area: 1/-3/2/3;
+}
+
+.clientDelete {
+  grid-area: 2/4/1/4;
 }

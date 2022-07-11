@@ -40,7 +40,7 @@ CREATE TABLE `preorder` (
   `email` varchar(255) NOT NULL,
   `paymentMethod` enum("1x", "3x", "12x") NOT NULL,
   `checkboxStatus` boolean NOT NULL DEFAULT 0,
-  `date` datetime DEFAULT now() 
+  `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
 -- datetime default now fait un timestamp et inject automatiquement une date quand une donnée est créée
