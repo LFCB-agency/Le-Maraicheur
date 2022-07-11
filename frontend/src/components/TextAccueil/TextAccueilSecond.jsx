@@ -44,7 +44,7 @@ export default function TextAccueilSecond() {
               hide={toggle}
               key={text.id}
               title={text.title}
-              body={text.body}
+              body={parse(text.body)}
             />
           </div>
         </div>

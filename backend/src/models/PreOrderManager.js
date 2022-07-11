@@ -39,12 +39,25 @@ class PreOrderManager extends AbstractManager {
 
   findAll() {
     return this.connection.query(
-      `SELECT id, lastname, firstname, email, paymentMethod, date FROM ${this.table}`
+      `SELECT id, lastname, firstname, email, paymentMethod, checkboxStatus, date FROM ${this.table}`
     );
   }
 
   find(id) {
     return this.connection.query(`SELECT * FROM ${this.table} WHERE id = ?`, [
+      id,
+    ]);
+  }
+
+  update(preorder) {
+    return this.connection.query(
+      `UPDATE ${this.table} SET checkboxStatus = ? WHERE id = ? `,
+      [preorder.checkboxStatus, preorder.id]
+    );
+  }
+
+  delete(id) {
+    return this.connection.query(`delete from ${this.table} where id = ?`, [
       id,
     ]);
   }
