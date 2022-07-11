@@ -1,11 +1,28 @@
-/* .wrapper {
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+/* Desktop */
+
+.contact_form {
+  background: #f9f9f9;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px 0px 0px 0px;
+  height: 60vh;
+}
+.wrapper {
+
   display: grid;
   grid-template-columns: 50rem 3rem;
+  justify-content: center;
+  margin-left: -20rem;
+  margin-top: 2rem;
 }
 
 .img-contact img {
-  height: 450px;
-  width: 350px;
+
+  height: 60vh;
+  width: auto;
+  border-radius: 0px 0px 50px 0px;
+
 }
 
 .logo-maraicheur {
@@ -16,18 +33,29 @@
   margin-right: auto;
 }
 
-.titre {
+.titre-contact {
+
   text-align: center;
+  margin-top: 2rem;
+  font-family: "Poppins";
+  font-style:normal;
+  font-weight: 100;
+  font-size: 32px;
+  line-height: 48px;
+  text-transform: uppercase;
 }
 
-hr {
+.hr-contact {
+
   width: 100px;
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
 
-h3 {
+
+.info-contact {
+
   text-align: left;
   padding-left: 13%;
 }
@@ -38,35 +66,41 @@ h3 {
 
 .name-contact {
   display: flex;
+  margin-left: -0.5rem;
 }
 
 .name-contact label {
   width: 700vh;
+
 }
 
 .email {
-  width: 39vw !important;
-}
+  width: 39.8vw !important;
 
-input {
+  margin-left: 6rem !important;
+}
+.nom-prenom {
   margin: 0 !important;
   padding: 0 !important;
 }
 
-label {
+.contact-label {
   display: block;
   width: 2px;
 }
 
-textarea {
+.message-contact textarea {
   border-radius: 15px;
-  width: 39vw !important;
+  resize: none;
+  width: 39.8vw !important;
+  margin-left: 6rem;
 }
 
-button {
+.button-contact {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2rem;
   width: 10vw;
   height: 2rem;
   text-decoration: underline;
@@ -75,4 +109,110 @@ button {
   border-radius: 10px;
   border-color: transparent;
   box-shadow: 1px 1px 3px black;
-} */
+}
+
+.map-contact {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Mobile */
+
+@media screen and (max-width: 700px) {
+  .contact_form {
+    background: #f9f9f9;
+    box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50px 0px 0px 0px;
+    height: 60vh;
+  }
+  .wrapper {
+    display: grid;
+    grid-template-columns: 50rem 3rem;
+    box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+    justify-content: center;
+    margin-left: -20rem;
+  }
+
+  .img-contact img {
+    height: 60vh;
+    width: auto;
+    border-radius: 0px 0px 50px 0px;
+  }
+
+  .logo-maraicheur {
+    width: auto;
+    height: 75px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .titre-contact {
+    text-align: center;
+  }
+
+  .hr-contact {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .info-contact {
+    text-align: left;
+    padding-left: 13%;
+  }
+
+  .form label {
+    color: black;
+  }
+
+  .name-contact {
+    display: flex;
+    margin-left: -0.5rem;
+  }
+
+  .name-contact label {
+    width: 700vh;
+  }
+
+  .email {
+    width: 39.8vw !important;
+
+    margin-left: 6rem !important;
+  }
+  .nom-prenom {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .contact-label {
+    display: block;
+    width: 2px;
+  }
+
+  .message-contact textarea {
+    border-radius: 15px;
+    resize: none;
+    width: 39.8vw !important;
+    margin-left: 6rem;
+  }
+
+  .button-contact {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    width: 10vw;
+    height: 2rem;
+    text-decoration: underline;
+    color: white;
+    background-color: #68324c;
+    border-radius: 10px;
+    border-color: transparent;
+    box-shadow: 1px 1px 3px black;
+  }
+}
+
