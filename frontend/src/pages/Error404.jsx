@@ -18,7 +18,7 @@ const Error404 = () => {
           <div className="blade blade-right-l" />
         </div>
         <div className="return404">
-          <h2>Il n'y a qu'une plante ici...</h2>
+          <h2>Il n'y a qu'une plante ici..</h2>
           <NavLink to="/">Retourner dans la serre</NavLink>
         </div>
       </div>
