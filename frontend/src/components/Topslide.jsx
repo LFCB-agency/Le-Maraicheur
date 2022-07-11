@@ -42,11 +42,11 @@ const Topslide = () => {
           <h1>Menu Administrateur / </h1>
           <span className="animation-title--topslide">
             {location.pathname === "/admin/log" ? menu[0] : null}
-            {location.pathname === "/admin/log/methode" ? menu[1] : null}
-            {location.pathname === "/admin/log/produit" ? menu[2] : null}
-            {location.pathname === "/admin/log/propos" ? menu[3] : null}
-            {location.pathname === "/admin/log/contact" ? menu[4] : null}
-            {location.pathname === "/admin/log/popup" ? menu[5] : null}
+            {location.pathname === "/admin/methode" ? menu[1] : null}
+            {location.pathname === "/admin/produit" ? menu[2] : null}
+            {location.pathname === "/admin/propos" ? menu[3] : null}
+            {location.pathname === "/admin/client" ? menu[4] : null}
+            {location.pathname === "/admin/popup" ? menu[5] : null}
           </span>
         </div>
         <div className="position-settings">

@@ -1,37 +1,85 @@
 .client-list-container {
   display: flex;
-
-  border-radius: 8px;
-  line-height: 10px;
+  margin-top: -740px;
+  margin-left: 170px;
+  color: $white;
+  margin-bottom: 25px;
+  margin-right: 15px;
   flex-direction: column;
-  align-items: stretch;
 }
-
+.nothinghere {
+  margin-top: 100px;
+  text-decoration: underline;
+  font-family: "Montserrat";
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+  height: 250px;
+  border-radius: 50px 0px;
+  font-size: 2rem;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 1px 22px 0 rgba(253, 253, 253, 0.37);
+  -webkit-backdrop-filter: blur(4px);
+}
 .client-list-display {
-  display: flex;
-  background: rgb(205, 70, 70);
-  border-radius: 8px;
-  line-height: 10px;
-  flex-direction: column;
-  align-items: stretch;
+  background: $red;
+  animation: pulse 2s infinite;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
 }
-
 .client-list-display-done {
-  display: flex;
-  background: rgb(84, 216, 80);
-  border-radius: 8px;
-  line-height: 10px;
-  flex-direction: column;
-  align-items: stretch;
+  background: $vert;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
 }
-
+.client-list {
+  justify-content: center;
+  display: flex;
+}
 .client-list-num {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  column-gap: 4px;
-  row-gap: 2px;
+  margin-top: 15px;
+  font-family: "Montserrat", sans-serif;
+  border: solid 1px grey;
+  display: flex;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 1px 22px 0 rgba(253, 253, 253, 0.37);
+  -webkit-backdrop-filter: blur(4px);
+  padding-left: 25px;
+  padding-right: 15px;
+  height: 50px;
+  width: 100%;
   align-items: center;
+  transition: 0.25s;
+
+  &:hover {
+    transition: 1s;
+    border: solid 1px lightgrey;
+  }
+
+  li {
+    margin-left: 25px;
+  }
+  select {
+    margin-left: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+  }
 }
 
 .clientId {
@@ -61,5 +109,16 @@
 }
 
 .clientDelete {
-  grid-area: 2/4/1/4;
+  background: $white;
+  border-radius: 50%;
+  height: 20px;
+  cursor: pointer;
+  width: 20px;
+  border: none;
+  transition: 1s;
+
+  &:hover {
+    transition: 1s;
+    transform: scale(1.2);
+  }
 }

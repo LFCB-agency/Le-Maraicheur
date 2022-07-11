@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "../styles/components/clientlist.scss";
 import moment from "moment/min/moment-with-locales";
 import "moment/locale/fr";
 // ^ specify moment like this due to a bug we need to point out the dir
@@ -45,42 +44,50 @@ export default function ClientList() {
 
   return (
     <div className="client-list-container">
-      {clientList.map((clients) => {
-        const dateFormat = moment().format("l");
-        const clientStyle =
-          clients.checkboxStatus === 0
-            ? "client-list-display"
-            : "client-list-display-done";
-        return (
-          <div className={clientStyle} key={clients.id}>
-            <ul className="client-list-num">
-              <li className="clientId">#{clients.id}</li>
-              <li className="clientFn">Nom :{clients.firstname}</li>
-              <li className="clientLn">Prenom :{clients.lastname}</li>
-              <li className="clientEmail">Email :{clients.email}</li>
-              <li className="clientPayment">
-                {" "}
-                Payment :{clients.paymentMethod}
-              </li>
-              <li className="clientDate">Date d'inscription : {dateFormat}</li>
-              <select
-                value={clients.checkboxStatus}
-                onChange={(event) => updateStatus(clients.id, event)}
-              >
-                <option value="0">A contacter</option>
-                <option value="1">Deja Contacté</option>
-              </select>
-              <button
-                className="clientDelete"
-                type="button"
-                onClick={() => deleteClient(clients.id)}
-              >
-                Delete
-              </button>
-            </ul>
-          </div>
-        );
-      })}
+      {clientList.length === 0 ? (
+        <p className="nothinghere">
+          Il n'y à rien par ici... <br />
+          <br />
+          Reviens plus-tard lorsque des clients auront faim..
+        </p>
+      ) : (
+        clientList.map((clients) => {
+          const dateFormat = moment().format("l");
+          const clientStyle =
+            clients.checkboxStatus === 0
+              ? "client-list-display"
+              : "client-list-display-done";
+          return (
+            <section className="client-list">
+              <ul className="client-list-num">
+                <div className={clientStyle} key={clients.id} />
+                <li className="clientId">#{clients.id}</li>
+                <li className="clientFn">Prénom: {clients.firstname}</li>
+                <li className="clientLn">Nom: {clients.lastname}</li>
+                <li className="clientEmail">E-mail: {clients.email}</li>
+                <li className="clientPayment">{clients.paymentMethod} €</li>
+                <li className="clientDate">Date d'inscription: {dateFormat}</li>
+                <select
+                  value={clients.checkboxStatus}
+                  onChange={(event) => updateStatus(clients.id, event)}
+                >
+                  <option value="0">A contacter</option>
+                  <option value="1">Déjà Contacté</option>
+                </select>
+                <button
+                  className="clientDelete"
+                  type="button"
+                  onClick={() => deleteClient(clients.id)}
+                >
+                  X
+                </button>
+              </ul>
+              <br />
+              <br />
+            </section>
+          );
+        })
+      )}
     </div>
   );
 }
