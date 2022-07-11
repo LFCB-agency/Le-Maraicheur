@@ -14,8 +14,8 @@ const Contact = () => {
     <div>
       <Navbar />
       <MenuBurger />
-      <h1 className="titre">Nous contacter</h1>
-      <hr></hr>
+      <h1 className="titre-contact">Nous contacter</h1>
+      <hr className="hr-contact"></hr>
       <div className="wrapper">
         <div className="form">
           <form name="contact" method="post" className="contact_form">
@@ -23,25 +23,28 @@ const Contact = () => {
               className="logo-maraicheur"
               src="./src/assets/pictures/logo2.png"
             />
-            <h3>Informations personnelles : </h3>
+            <h3 className="info-contact">Informations personnelles : </h3>
             <div className="name-contact">
-              <label>
-                Prénom* <input type="text" name="prénom" />
+              <label className="contact-label">
+                Prénom*{" "}
+                <input className="nom-prenom" type="text" name="prénom" />
               </label>
 
-              <label>
-                Nom* <input type="text" name="nom" />
+              <label className="contact-label">
+                Nom* <input className="nom-prenom" type="text" name="nom" />
               </label>
             </div>
             <label>
               Email* <input className="email" type="email" name="email" />
             </label>
 
-            <label>
+            <label className="message-contact">
               Message* <textarea name="message" rows="10" cols="50"></textarea>
             </label>
 
-            <button type="submit">Soumettre</button>
+            <button className="button-contact" type="submit">
+              Soumettre
+            </button>
           </form>
         </div>
         <div className="img-contact">
