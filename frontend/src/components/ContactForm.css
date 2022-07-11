@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
 /* Desktop */
 
@@ -8,6 +9,7 @@
   height: 60vh;
 }
 .wrapper {
+
   display: grid;
   grid-template-columns: 50rem 3rem;
   justify-content: center;
@@ -16,9 +18,11 @@
 }
 
 .img-contact img {
+
   height: 60vh;
   width: auto;
   border-radius: 0px 0px 50px 0px;
+
 }
 
 .logo-maraicheur {
@@ -30,6 +34,7 @@
 }
 
 .titre-contact {
+
   text-align: center;
   margin-top: 2rem;
   font-family: "Poppins";
@@ -41,13 +46,16 @@
 }
 
 .hr-contact {
+
   width: 100px;
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
 
+
 .info-contact {
+
   text-align: left;
   padding-left: 13%;
 }
@@ -63,6 +71,7 @@
 
 .name-contact label {
   width: 700vh;
+
 }
 
 .email {
@@ -206,3 +215,4 @@
     box-shadow: 1px 1px 3px black;
   }
 }
+
