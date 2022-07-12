@@ -1,10 +1,12 @@
 .carouselDiv {
   padding-top: 15px;
+  @include shadows;
 }
 .carouseltitle {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  letter-spacing: 3px;
   align-items: center;
   font-family: "Poppins", sans-serif;
   font-weight: lighter;
@@ -36,17 +38,16 @@
 }
 .card {
   max-width: fit-content;
-    height: 30vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .carousel {
   margin-top: 0px;
   margin-bottom: 10px;
 }
-
 
 .nouv {
   max-width: 100%;
@@ -71,6 +72,9 @@
   }
 }
 @media (max-width: 600px) {
+  .carouselDiv {
+    @include shadows;
+  }
   .carouseltitle {
     display: flex;
     justify-content: center;
@@ -85,12 +89,11 @@
   .slick-list {
     max-height: 75vh;
   }
-  
+
   .slick-slide {
     img {
       width: 100vw;
       object-fit: cover;
     }
   }
- 
 }
