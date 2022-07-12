@@ -17,6 +17,12 @@
   }
   .footerLink {
     margin: 0;
+    transition: 1s;
+
+    &:hover {
+      transition: 1s;
+      transform: scale(1.09);
+    }
   }
   .footerTitle {
     font-family: "Poppins", sans-serif;

@@ -11,6 +11,9 @@ import Propos from "@pages/Propos";
 import Preorder from "@pages/Preorder";
 import Contact from "@pages/ContactForm";
 import AdminHome from "@pages/AdminHome";
+import AdminPopup from "@pages/AdminPopup";
+import AdminMethode from "@pages/AdminMethode";
+import AdminPropos from "@pages/AdminPropos";
 import ResetPassword from "@pages/ResetPassword";
 import Error404 from "@pages/Error404";
 import "./App.css";
@@ -32,6 +35,11 @@ function App() {
         <Route path="/reset" element={<ResetPassword />} />
         <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
         {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
+        {adm.email && <Route path="/admin/popup" element={<AdminPopup />} />}
+        {adm.email && (
+          <Route path="/admin/methode" element={<AdminMethode />} />
+        )}
+        {adm.email && <Route path="/admin/apropos" element={<AdminPropos />} />}
         {adm.email && <Route path="/admin/client" element={<AdminClient />} />}
         <Route path="*" element={<Error404 />} />
       </Routes>
