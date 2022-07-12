@@ -6,6 +6,7 @@ import Carousels from "@components/Carousels";
 import MenuBurger from "@components/MenuBurger";
 import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
+import Newsletter from "@components/Newsletter";
 
 export default function Accueil() {
   return (
@@ -19,6 +20,11 @@ export default function Accueil() {
         <span className="spanLine" />
       </h2>
       <TextAccueilSecond />
+      <h2 className="panierTitle">
+        NEWSLETTER
+        <span className="spanLine" />
+      </h2>
+      <Newsletter />
       <Footer />
     </>
   );

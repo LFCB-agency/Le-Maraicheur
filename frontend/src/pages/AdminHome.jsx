@@ -10,7 +10,7 @@ export default function AdminHome() {
       <LeftSlide />
       <Topslide />
       <div className="position-admin--editor">
-        <div className="hello">
+        <div className="background-texteditor">
           <TextEditor />
           <Upload />
         </div>

@@ -1,10 +1,12 @@
 .carouselDiv {
   padding-top: 15px;
+  @include shadows;
 }
 .carouseltitle {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  letter-spacing: 3px;
   align-items: center;
   font-family: "Poppins", sans-serif;
   font-weight: lighter;
@@ -70,6 +72,9 @@
   }
 }
 @media (max-width: 600px) {
+  .carouselDiv {
+    @include shadows;
+  }
   .carouseltitle {
     display: flex;
     justify-content: center;
