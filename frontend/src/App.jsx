@@ -6,7 +6,7 @@ import AdminLogin from "@pages/AdminLogin";
 import Accueil from "@pages/Accueil";
 import Methode from "@pages/Methode";
 import Upload from "@pages/Upload";
-import Produit from "@pages/Produits";
+import Produit from "@pages/Produit";
 import Propos from "@pages/Propos";
 import Preorder from "@pages/Preorder";
 import Contact from "@pages/ContactForm";

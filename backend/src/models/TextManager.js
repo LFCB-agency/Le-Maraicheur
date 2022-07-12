@@ -44,10 +44,20 @@ class TextManager extends AbstractManager {
   }
 
   findAllTextWithFilter(filter) {
-    return this.connection.query(
-      `SELECT id, title, body, page, textSection FROM  ${this.table} WHERE page = ? AND textSection = ?`,
-      [filter.page, filter.textSection]
-    );
+    const sqlValues = [];
+    let sql = `SELECT id, title, body, page, textSection FROM ${this.table}`;
+    if (filter.page && !filter.textSection) {
+      sql += " WHERE page= ?";
+      sqlValues.push(filter.page);
+    } else if (!filter.page && filter.textSection) {
+      sql += " WHERE textSection = ? ";
+      sqlValues.push(filter.textSection);
+    } else {
+      sql += " WHERE page = ? AND textSection = ?";
+      sqlValues.push(filter.page, filter.textSection);
+    }
+
+    return this.connection.query(sql, sqlValues);
   }
 
   findAllByPage(filter) {
