@@ -13,7 +13,9 @@ export default function LeftSlide() {
     <section>
       <div className="leftpannel">
         <div className="logo-position-home">
-          <img src={logo} alt="" className="logo-size-home" />
+          <NavLink to="/admin/log">
+            <img src={logo} alt="" className="logo-size-home" />
+          </NavLink>
         </div>
         <nav>
           <NavLink
@@ -53,12 +55,12 @@ export default function LeftSlide() {
             </div>
           </NavLink>
           <NavLink
-            to="/"
+            to="/admin/client"
             className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
           >
             <div className="icon-container">
               <img src={contact} alt="icon contact" className="icon-contact" />
-              <p>Contact</p>
+              <p>Clients</p>
             </div>
           </NavLink>
           <NavLink

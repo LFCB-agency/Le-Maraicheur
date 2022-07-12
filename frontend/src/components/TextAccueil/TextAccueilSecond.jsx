@@ -49,7 +49,6 @@ export default function TextAccueilSecond() {
           </div>
         </div>
       ))}
-      <span className="panierUnderline" />
     </div>
   );
 }

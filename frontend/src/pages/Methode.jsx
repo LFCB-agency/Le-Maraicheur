@@ -19,7 +19,6 @@ export default function Methode() {
       <MenuBurger />
       <ImageMethode />
       <TextMethode />
-      <span className="textUnderline" />
       <div className="methodeGrid">
         <div className="gridimg2">
           <ImageMethodeSecond />

@@ -51,10 +51,10 @@
   text-align: left;
   padding-left: 13%;
 }
-
-.form label {
+/* 
+.form  label {
   color: black;
-}
+} */
 
 .name-contact {
   display: flex;

@@ -17,6 +17,7 @@ import AdminPropos from "@pages/AdminPropos";
 import ResetPassword from "@pages/ResetPassword";
 import Error404 from "@pages/Error404";
 import "./App.css";
+import AdminClient from "@pages/AdminClient";
 
 function App() {
   const [adm, setAdm] = useState({ email: "", id: null });
@@ -39,6 +40,7 @@ function App() {
           <Route path="/admin/methode" element={<AdminMethode />} />
         )}
         {adm.email && <Route path="/admin/apropos" element={<AdminPropos />} />}
+        {adm.email && <Route path="/admin/client" element={<AdminClient />} />}
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
