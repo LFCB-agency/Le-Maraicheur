@@ -9,6 +9,7 @@ import "@components/ContactForm.css";
 import MenuBurger from "@components/MenuBurger";
 import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
+import logo3 from "@assets/pictures/logo3.png";
 
 const Contact = () => {
   return (
@@ -18,12 +19,15 @@ const Contact = () => {
       <h1 className="titre-contact">Nous contacter</h1>
       <hr className="hr-contact"></hr>
       <div className="wrapper">
-        <div className="form">
+        <div className="form-contact">
           <form name="contact" method="post" className="contact_form">
             <img
               className="logo-maraicheur"
               src="./src/assets/pictures/logo2.png"
             />
+            <div className="logo-mobile">
+              <img className="logo-maraicheur2" src={logo3} />
+            </div>
             <h3 className="info-contact">Informations personnelles : </h3>
             <div className="name-contact">
               <label className="contact-label">
@@ -35,7 +39,7 @@ const Contact = () => {
                 Nom* <input className="nom-prenom" type="text" name="nom" />
               </label>
             </div>
-            <label>
+            <label className="email-label">
               Email* <input className="email" type="email" name="email" />
             </label>
 
