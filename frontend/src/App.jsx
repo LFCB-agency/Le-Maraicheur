@@ -11,10 +11,10 @@ import Propos from "@pages/Propos";
 import Preorder from "@pages/Preorder";
 import Contact from "@pages/ContactForm";
 import AdminHome from "@pages/AdminHome";
-import AdminPopup from "@pages/AdminPopup";
 import ResetPassword from "@pages/ResetPassword";
 import Error404 from "@pages/Error404";
 import "./App.css";
+import AdminClient from "@pages/AdminClient";
 
 function App() {
   const [adm, setAdm] = useState({ email: "", id: null });
@@ -32,7 +32,7 @@ function App() {
         <Route path="/reset" element={<ResetPassword />} />
         <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
         {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
-        <Route path="/admin/popup" element={<AdminPopup />} />
+        {adm.email && <Route path="/admin/client" element={<AdminClient />} />}
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
