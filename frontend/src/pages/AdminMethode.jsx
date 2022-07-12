@@ -8,7 +8,7 @@ export default function AdminMethode() {
       <LeftSlide />
       <Topslide />
       <div className="position-admin--editor">
-        <div className="hello">
+        <div className="background-texteditor">
           <MethodeEditor />
         </div>
       </div>

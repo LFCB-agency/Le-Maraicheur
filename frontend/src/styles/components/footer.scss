@@ -38,7 +38,14 @@
     font-size: 13px;
     line-height: 21px;
     color: $white;
+    cursor: pointer;
     padding-bottom: 10px;
+    transition: 1s;
+
+    &:hover {
+      transition: 1s;
+      text-decoration: underline;
+    }
   }
 
   .footerUnderline {

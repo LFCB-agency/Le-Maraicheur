@@ -3,7 +3,6 @@ import parse from "html-react-parser";
 import axios from "axios";
 import useModal from "@services/useModal";
 import Modal from "@components/Modal";
-import { Link } from "react-router-dom";
 
 export default function TextAccueilSecond() {
   const [textHome, setTextHome] = useState([]);
