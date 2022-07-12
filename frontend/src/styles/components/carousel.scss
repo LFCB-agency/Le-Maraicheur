@@ -36,17 +36,16 @@
 }
 .card {
   max-width: fit-content;
-    height: 30vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .carousel {
   margin-top: 0px;
   margin-bottom: 10px;
 }
-
 
 .nouv {
   max-width: 100%;
@@ -85,12 +84,11 @@
   .slick-list {
     max-height: 75vh;
   }
-  
+
   .slick-slide {
     img {
       width: 100vw;
       object-fit: cover;
     }
   }
- 
 }

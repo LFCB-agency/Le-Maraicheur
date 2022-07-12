@@ -37,7 +37,7 @@
   margin-left: auto;
   margin-right: auto;
 }
-.logo-maraicheur2{
+.logo-maraicheur2 {
   display: none;
 }
 .titre-contact {
@@ -87,7 +87,6 @@
   flex-direction: column;
 }
 .email-label input {
-
   border-radius: 5px;
   height: 2rem;
   margin-bottom: 1rem;
@@ -95,7 +94,6 @@
 
 .contact-label {
   display: block;
-
 }
 
 .message-contact textarea {
@@ -103,7 +101,6 @@
   resize: none;
   height: 12rem;
   margin-bottom: -1rem;
-
 }
 .message-contact {
   color: black;
@@ -136,7 +133,6 @@
 /* Mobile */
 
 @media screen and (max-width: 700px) {
-
   .img-contact img {
     display: none;
     background: #f9f9f9;
@@ -147,7 +143,6 @@
   }
   .wrapper {
     display: inline;
-
   }
   .titre-contact {
     padding-top: 5rem;
@@ -164,38 +159,37 @@
   .logo-maraicheur {
     display: none;
   }
-  .logo-mobile{
+  .logo-mobile {
     display: flex;
     justify-content: center;
   }
-  .logo-maraicheur2{
+  .logo-maraicheur2 {
     display: block;
     height: 5rem;
     width: 5rem;
   }
-  .nom-prenom{
+  .nom-prenom {
     width: 7rem;
   }
 
-  .name-contact label{
+  .name-contact label {
     padding-right: 9rem;
   }
-  .info-contact{
+  .info-contact {
     padding-left: 0;
   }
 
-  .email-label input{
+  .email-label input {
     width: 16rem;
   }
-  .message-contact textarea{
+  .message-contact textarea {
     height: 8rem;
     width: 16rem;
   }
-  
+
   .map-contact {
     display: flex;
     justify-content: center;
     margin: 2rem;
-
   }
 }

@@ -1,84 +1,82 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-extraneous-dependencies */
-import { useState, useRef } from "react";
+import { useState } from "react";
 import axios from "axios";
-import JoditEditor from "jodit-react";
 
 const TextEditor = () => {
-  const editor = useRef(null);
+  // const editor = useRef(null);
   const [content, setContent] = useState("");
-  let updatedContent = "";
-  const [currentId, setCurrentId] = useState();
+  // const [currentId, setCurrentId] = useState();
   const [categories, setCategories] = useState("");
   const [section, setSection] = useState("");
 
-  const config = {
-    readonly: false,
-    height: 400,
-    buttons: [
-      "source",
-      "|",
-      "bold",
-      "strikethrough",
-      "underline",
-      "italic",
-      "|",
-      "outdent",
-      "indent",
-      "|",
-      "font",
-      "fontsize",
-      "brush",
-      "|",
-      "table",
-      "link",
-      "|",
-      "align",
-      "undo",
-      "redo",
-      "|",
-      "hr",
-      "eraser",
-      "|",
-      "symbol",
-      "print",
-    ],
-    buttonsXS: [
-      "source",
-      "|",
-      "bold",
-      "strikethrough",
-      "underline",
-      "italic",
-      "|",
-      "outdent",
-      "indent",
-      "|",
-      "font",
-      "fontsize",
-      "brush",
-      "|",
-      "table",
-      "link",
-      "|",
-      "align",
-      "undo",
-      "redo",
-      "|",
-      "hr",
-      "eraser",
-      "|",
-      "symbol",
-      "print",
-    ],
-    controls: {
-      font: {
-        list: {
-          "Montserrat,sans-serif": "Montserrat",
-        },
-      },
-    },
-  };
+  // const config = {
+  //   readonly: false,
+  //   height: 400,
+  //   buttons: [
+  //     "source",
+  //     "|",
+  //     "bold",
+  //     "strikethrough",
+  //     "underline",
+  //     "italic",
+  //     "|",
+  //     "outdent",
+  //     "indent",
+  //     "|",
+  //     "font",
+  //     "fontsize",
+  //     "brush",
+  //     "|",
+  //     "table",
+  //     "link",
+  //     "|",
+  //     "align",
+  //     "undo",
+  //     "redo",
+  //     "|",
+  //     "hr",
+  //     "eraser",
+  //     "|",
+  //     "symbol",
+  //     "print",
+  //   ],
+  //   buttonsXS: [
+  //     "source",
+  //     "|",
+  //     "bold",
+  //     "strikethrough",
+  //     "underline",
+  //     "italic",
+  //     "|",
+  //     "outdent",
+  //     "indent",
+  //     "|",
+  //     "font",
+  //     "fontsize",
+  //     "brush",
+  //     "|",
+  //     "table",
+  //     "link",
+  //     "|",
+  //     "align",
+  //     "undo",
+  //     "redo",
+  //     "|",
+  //     "hr",
+  //     "eraser",
+  //     "|",
+  //     "symbol",
+  //     "print",
+  //   ],
+  //   controls: {
+  //     font: {
+  //       list: {
+  //         "Montserrat,sans-serif": "Montserrat",
+  //       },
+  //     },
+  //   },
+  // };
   // const handleUpdate = (e) => {
   //   const editorContent = e.target.value;
   //   updatedContent = editorContent;
@@ -94,18 +92,11 @@ const TextEditor = () => {
   //     });
   // };
 
-  const insertTextById = (id) => {
-    axios.put(`${import.meta.env.VITE_BACKEND_URL}text/${id}`, {
-      body: updatedContent,
-    });
-  };
-
   const insertText = () => {
     const data = { body: content, textSection: section, page: categories };
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}text`, data)
       .then((result) => {
-        content = result.data.body;
         return setContent(result.data.body);
       });
   };
@@ -150,9 +141,9 @@ const TextEditor = () => {
           updatedContent = setContent(value);
         }}
       /> */}
-      <button type="button" onClick={() => insertTextById(currentId)}>
+      {/* <button type="button" onClick={() => insertTextById(currentId)}>
         Submit
-      </button>
+      </button> */}
       <button type="button" onClick={() => insertText()}>
         Submit new text
       </button>

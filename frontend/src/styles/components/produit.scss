@@ -1,55 +1,50 @@
 .products-picto {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .legume-product {
-    font-family: "Poppins";
-    font-weight: 300;
-    margin-top: 25px;
-    color: black;
-    
+  font-family: "Poppins";
+  font-weight: 300;
+  margin-top: 25px;
+  color: black;
 }
 
 .product-image {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 80px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 80px;
 }
 
 .imageprod1 {
-    width: 60%;
+  width: 60%;
 }
 .imageprod2 {
-    width: 60%;
+  width: 60%;
 }
 .imageprod3 {
-    width: 60%;
+  width: 60%;
 }
 .imageprod4 {
-    width: 60%;
+  width: 60%;
 }
 
 .spanLine {
-    margin-top: 10px;
-    width: 65px;
-    height: 1px;
-    background-color: #2c2f33 
+  margin-top: 10px;
+  width: 65px;
+  height: 1px;
+  background-color: #2c2f33;
 }
 
 @media screen and (min-width: 700px) {
-    .product-image{
-        display: grid;
-grid-template-columns: repeat(2, 1fr);
-grid-template-rows: repeat(2, 1fr);
-grid-column-gap: 0px;
-grid-row-gap: 0px;
-
-}
-
-
-
+  .product-image {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
 }
