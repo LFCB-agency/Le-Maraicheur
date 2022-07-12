@@ -44,7 +44,7 @@ const Contact = () => {
             </label>
 
             <label className="message-contact">
-              Message* <textarea name="message" rows="10" cols="50"></textarea>
+              Message* <textarea rows="10" cols="50"></textarea>
             </label>
 
             <button className="button-contact" type="submit">
