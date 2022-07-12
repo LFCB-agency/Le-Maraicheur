@@ -27,20 +27,19 @@
   }
 }
 
+.imgCarousel {
+  height: 30vh;
+}
+
 .slick-track {
   margin-top: 30px;
 }
 .card {
-  border-radius: 8px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  height: 100%;
   max-width: fit-content;
-  display: flex;
-  align-items: center;
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .carousel {
@@ -48,9 +47,7 @@
   margin-bottom: 10px;
 }
 
-.slick-slider {
-  border-radius: 8px;
-}
+
 .nouv {
   max-width: 100%;
   border-radius: 8px;
@@ -88,8 +85,12 @@
   .slick-list {
     max-height: 75vh;
   }
-
-  .slick-slider {
-    border-radius: 8px;
+  
+  .slick-slide {
+    img {
+      width: 100vw;
+      object-fit: cover;
+    }
   }
+ 
 }

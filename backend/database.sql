@@ -29,7 +29,6 @@ CREATE TABLE `adm` (
   `password` varchar(255) NOT NULL,
   `temporaryPassword` varchar(255) ,
   `question` varchar(255) NOT NULL,
-  `role` ENUM('ADMIN') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
 

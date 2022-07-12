@@ -11,6 +11,7 @@ class TextController {
     if (textSection) {
       filter.textSection = parseInt(textSection, 10);
     }
+
     if (filter.page || filter.textSection) {
       models.text
         .findAllTextWithFilter(filter)
