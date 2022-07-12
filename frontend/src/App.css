@@ -9,14 +9,19 @@
   --light-grey: #f9f9f9;
   --purple-color: #68324c;
 }
-
+.App {
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex;
+  min-height: 100vh;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 .background {
-  z-index: -2;
+  /* z-index: -2; */
   padding: 90px 0px;
   background-image: url("./assets/pictures/backgroundadmin.png");
   width: 100%;
@@ -26,7 +31,7 @@
   background-size: cover;
 }
 .background-home {
-  z-index: -2;
+  /* z-index: -2; */
   padding: 25px 0px;
   background-image: url("./assets/pictures/backgroundadmin.png");
   width: 100%;
