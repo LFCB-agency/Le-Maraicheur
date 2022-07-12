@@ -28,7 +28,7 @@ CREATE TABLE `adm` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `temporaryPassword` varchar(255) ,
-  `question` varchar(255) NOT NULL,
+  `question` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
 
@@ -49,13 +49,6 @@ INSERT INTO `preorder` (lastname, firstname, email, paymentMethod)
 VALUES ('Userlastname1', 'Userfirstname1', 'Useremail1', '1x'),
        ('Userlastname2', 'Userfirstname2', 'Useremail2', '3x'),
        ('Userlastname3', 'Userfirstname3', 'Useremail3', '12x');
-
-
-
-CREATE TABLE `popup` (
-  `id` int AUTO_INCREMENT PRIMARY KEY,
-  `titlePopup` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
 
 CREATE TABLE `pictures` (
@@ -138,10 +131,9 @@ C’est aussi un plaisir de travailler à la main, sans le bruit des machines et
 	Améliorent le paysage
 	Et tant d’autres !', 'methode', 4);
 
-CREATE TABLE `products` (
+CREATE TABLE `team` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` enum("legume", "fermier", "panier", "plant"),
-  `popupId` int, FOREIGN KEY (`popupId`) REFERENCES `popup`(`id`),
+  `title` varchar(255) NULL,
   `pictureId` int, FOREIGN KEY (`pictureId`) REFERENCES `pictures`(`id`),
   `textId` int, FOREIGN KEY (`textId`) REFERENCES `text`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;

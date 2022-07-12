@@ -1,8 +1,8 @@
 const models = require("../models");
 
-class ProductsController {
+class TeamController {
   static browse = (req, res) => {
-    models.products
+    models.team
       .findAll()
       .then(([rows]) => {
         res.send(rows);
@@ -14,7 +14,7 @@ class ProductsController {
   };
 
   static read = (req, res) => {
-    models.products
+    models.team
       .find(req.params.id)
       .then(([rows]) => {
         if (rows[0] == null) {
@@ -30,14 +30,14 @@ class ProductsController {
   };
 
   static edit = (req, res) => {
-    const products = req.body;
+    const team = req.body;
 
     // TODO validations (length, format...)
 
-    products.id = parseInt(req.params.id, 10);
+    team.id = parseInt(req.params.id, 10);
 
-    models.products
-      .update(products)
+    models.team
+      .update(team)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
@@ -52,14 +52,14 @@ class ProductsController {
   };
 
   static add = (req, res) => {
-    const products = req.body;
+    const team = req.body;
 
     // TODO validations (length, format...)
 
-    models.products
-      .insert(products)
+    models.team
+      .insert(team)
       .then(([result]) => {
-        res.status(201).send({ ...products, id: result.insertId });
+        res.status(201).send({ ...team, id: result.insertId });
       })
       .catch((err) => {
         console.error(err);
@@ -68,7 +68,7 @@ class ProductsController {
   };
 
   static delete = (req, res) => {
-    models.products
+    models.team
       .delete(req.params.id)
       .then(() => {
         res.sendStatus(204);
@@ -80,4 +80,4 @@ class ProductsController {
   };
 }
 
-module.exports = ProductsController;
+module.exports = TeamController;
