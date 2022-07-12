@@ -26,7 +26,7 @@ export default function LeftSlide() {
             </div>
           </NavLink>
           <NavLink
-            to="/"
+            to="/admin/methode"
             className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
           >
             <div className="icon-container">
@@ -44,7 +44,7 @@ export default function LeftSlide() {
             </div>
           </NavLink>
           <NavLink
-            to="/"
+            to="/admin/apropos"
             className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
           >
             <div className="icon-container">

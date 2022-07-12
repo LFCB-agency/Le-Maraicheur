@@ -100,12 +100,19 @@ const TextEditor = () => {
 
   return (
     <div className="text-editor">
-      <button type="button" onClick={() => fetchTextById(1)}>
-        text1
+      <button type="button" onClick={() => fetchTextById(7)}>
+        Methode/1
       </button>
-      <button type="button" onClick={() => fetchTextById(2)}>
-        text2
+      <button type="button" onClick={() => fetchTextById(8)}>
+        Methode/2
       </button>
+      <button type="button" onClick={() => fetchTextById(9)}>
+        Methode/3
+      </button>
+      <button type="button" onClick={() => fetchTextById(10)}>
+        Methode/4
+      </button>
+
       <JoditEditor
         ref={editor}
         value={content}
