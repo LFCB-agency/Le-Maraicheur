@@ -4,20 +4,30 @@ export default function Footer() {
   return (
     <div className="footerGeneral">
       <div className="footerImg">
-        <NavLink to="/" className="footerLink">
+        <a
+          href="https://www.facebook.com/lemaraicheur"
+          target="_blank"
+          rel="noreferrer"
+          className="footerLink"
+        >
           <img
             className="socials"
             src="src/assets/pictures/social-network.png"
             alt="Facebook icon"
           />
-        </NavLink>
-        <NavLink to="/" className="footerLink">
+        </a>
+        <a
+          href="https://www.instagram.com/lemaraicheur/"
+          target="_blank"
+          rel="noreferrer"
+          className="footerLink"
+        >
           <img
             className="socials"
             src="src/assets/pictures/instagram.png"
             alt="instagram icon"
           />
-        </NavLink>
+        </a>
       </div>
       <h3 className="footerTitle">Le Maraicheur</h3>
       <p className="footerAddress">
