@@ -11,6 +11,9 @@
     "fix": "prettier --write . && eslint --fix --ext .jsx ."
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.9.0",
     "axios": "^0.27.2",
     "google-map-react": "^2.2.0",
     "html-react-parser": "^3.0.0",

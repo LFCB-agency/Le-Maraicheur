@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
-import "../styles/components/modal.scss";
 
 const Modal = ({ isShowing, toggle, hide, title, body }) =>
   isShowing
@@ -24,7 +23,7 @@ const Modal = ({ isShowing, toggle, hide, title, body }) =>
               </div>
             </div>
             <div className="button-modal-container">
-              <Link to="/preorder">
+              <Link to="/contact">
                 <button
                   type="button"
                   onClick={toggle}

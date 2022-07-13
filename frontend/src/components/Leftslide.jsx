@@ -6,7 +6,6 @@ import method from "../assets/pictures/plantadmin.png";
 import product from "../assets/pictures/radish.png";
 import about from "../assets/pictures/people.png";
 import contact from "../assets/pictures/email.png";
-import modal from "../assets/pictures/pop-up.png";
 
 export default function LeftSlide() {
   return (
@@ -61,15 +60,6 @@ export default function LeftSlide() {
             <div className="icon-container">
               <img src={contact} alt="icon contact" className="icon-contact" />
               <p>Clients</p>
-            </div>
-          </NavLink>
-          <NavLink
-            to="/admin/popup"
-            className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
-          >
-            <div className="icon-container">
-              <img src={modal} alt="icon modal" className="icon-modal" />
-              <p>Pop-up</p>
             </div>
           </NavLink>
         </nav>
