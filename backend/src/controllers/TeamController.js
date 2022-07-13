@@ -3,7 +3,7 @@ const models = require("../models");
 class TeamController {
   static browse = (req, res) => {
     models.team
-      .findAll()
+      .findByTeam()
       .then(([rows]) => {
         res.send(rows);
       })
