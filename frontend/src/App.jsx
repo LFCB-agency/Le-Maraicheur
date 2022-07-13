@@ -15,6 +15,7 @@ import AdminPopup from "@pages/AdminPopup";
 import AdminMethode from "@pages/AdminMethode";
 import AdminPropos from "@pages/AdminPropos";
 import ResetPassword from "@pages/ResetPassword";
+import AdminTeam from "@pages/AdminTeam";
 import Error404 from "@pages/Error404";
 import "./App.css";
 import AdminClient from "@pages/AdminClient";
@@ -34,13 +35,16 @@ function App() {
         <Route path="/preorder" element={<Preorder />} />
         <Route path="/reset" element={<ResetPassword />} />
         <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
-        {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
-        {adm.email && <Route path="/admin/popup" element={<AdminPopup />} />}
         {adm.email && (
-          <Route path="/admin/methode" element={<AdminMethode />} />
+          <>
+            <Route path="/admin/log" element={<AdminHome />} />
+            <Route path="/admin/popup" element={<AdminPopup />} />
+            <Route path="/admin/methode" element={<AdminMethode />} />
+            <Route path="/admin/apropos" element={<AdminPropos />} />
+            <Route path="/admin/client" element={<AdminClient />} />
+          </>
         )}
-        {adm.email && <Route path="/admin/apropos" element={<AdminPropos />} />}
-        {adm.email && <Route path="/admin/client" element={<AdminClient />} />}
+        <Route path="/admin/team" element={<AdminTeam />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>

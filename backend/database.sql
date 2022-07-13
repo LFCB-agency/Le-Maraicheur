@@ -28,7 +28,7 @@ CREATE TABLE `adm` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `temporaryPassword` varchar(255) ,
-  `question` varchar(255) NOT NULL,
+  `question` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
 
@@ -51,13 +51,6 @@ VALUES ('Userlastname1', 'Userfirstname1', 'Useremail1', '1x'),
        ('Userlastname3', 'Userfirstname3', 'Useremail3', '12x');
 
 
-
-CREATE TABLE `popup` (
-  `id` int AUTO_INCREMENT PRIMARY KEY,
-  `titlePopup` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET= utf8;
-
-
 CREATE TABLE `pictures` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `file` varchar(255) NOT NULL,
@@ -66,6 +59,22 @@ CREATE TABLE `pictures` (
   `categories` enum("carousel", "home", "methode", "produit", "propos", "contact"),
   `picSection` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
+
+INSERT INTO `pictures`(`file`, `alt`, `categories`, `picSection`)
+VALUES 
+('1657637017342-Carroussel1.JPG', 'Antoine champs', 'carousel', 1),
+('1657637032509-Carroussel2.JPG', 'Aubergine', 'carousel', 2),
+('1657637047615-Carroussel3.jpg', 'Panier legumes', 'carousel', 3),
+('1657637108827-Carroussel4.jpg', 'Serres', 'carousel', 4),
+
+
+('1657637414428-methode1.jpg', 'Plan drone', 'methode', 1),
+('1657637509587-Carroussel4.jpg', 'Serre', 'methode', 2),
+('1657637539532-methode3.png', 'cycle fertilise', 'methode', 3),
+('1657637557592-methode4.jpg', 'Arbres et fruits', 'methode', 4);
+
+
+
 
 
 CREATE TABLE `text` (
@@ -138,10 +147,9 @@ C’est aussi un plaisir de travailler à la main, sans le bruit des machines et
 	Améliorent le paysage
 	Et tant d’autres !', 'methode', 4);
 
-CREATE TABLE `products` (
+CREATE TABLE `team` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` enum("legume", "fermier", "panier", "plant"),
-  `popupId` int, FOREIGN KEY (`popupId`) REFERENCES `popup`(`id`),
+  `title` varchar(255) NULL,
   `pictureId` int, FOREIGN KEY (`pictureId`) REFERENCES `pictures`(`id`),
   `textId` int, FOREIGN KEY (`textId`) REFERENCES `text`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
