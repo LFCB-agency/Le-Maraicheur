@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-extraneous-dependencies */
 import { useState, useRef } from "react";
@@ -73,6 +75,7 @@ const TextEditor = () => {
       font: {
         list: {
           "Montserrat,sans-serif": "Montserrat",
+          "Poppins, sans-serif": "Poppins",
         },
       },
     },
@@ -93,32 +96,55 @@ const TextEditor = () => {
   };
 
   const insertTextById = (id) => {
-    axios.put(`${import.meta.env.VITE_BACKEND_URL}text/${id}`, {
-      body: updatedContent,
-    });
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    ) {
+      axios.put(`${import.meta.env.VITE_BACKEND_URL}text/${id}`, {
+        body: updatedContent,
+      });
+    }
   };
-
+  const buttonStyle = (id) =>
+    currentId === id ? "button-admin-choice" : "button-admin-choice-disable";
   return (
-    <div className="text-editor">
-      <button type="button" onClick={() => fetchTextById(1)}>
-        text1
+    <section>
+      <button
+        type="button"
+        onClick={() => fetchTextById(1)}
+        className={buttonStyle(1)}
+      >
+        Présentation
       </button>
-      <button type="button" onClick={() => fetchTextById(2)}>
-        text2
+      <button
+        type="button"
+        onClick={() => fetchTextById(2)}
+        className={buttonStyle(2)}
+      >
+        Panier
       </button>
-      <JoditEditor
-        ref={editor}
-        value={content}
-        config={config}
-        // onBlur={handleUpdate}
-        onChange={(newContent) => {
-          updatedContent = newContent;
-        }}
-      />
-      <button type="button" onClick={() => insertTextById(currentId)}>
-        Submit
-      </button>
-    </div>
+      <div className="text-editor">
+        <JoditEditor
+          ref={editor}
+          value={content}
+          config={config}
+          // onBlur={handleUpdate}
+          onChange={(newContent) => {
+            updatedContent = newContent;
+          }}
+        />
+      </div>
+      <div className="button-container--adminhome">
+        <button
+          type="button"
+          onClick={() => insertTextById(currentId)}
+          className="editor-btn"
+        >
+          Submit
+        </button>
+      </div>
+    </section>
   );
 };
 

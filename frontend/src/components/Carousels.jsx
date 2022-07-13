@@ -63,13 +63,11 @@ export default function Carousels() {
         {imageCarousel.map((image) => (
           <div key={image.id} className="carousel">
             <div className="card">
-              <div className="card-top">
-                <img
-                  className="imgCarousel"
-                  src={`${import.meta.env.VITE_IMAGES_URL}${image.file}`}
-                  alt="a"
-                />
-              </div>
+              <img
+                className="imgCarousel"
+                src={`${import.meta.env.VITE_IMAGES_URL}${image.file}`}
+                alt="a"
+              />
             </div>
           </div>
         ))}

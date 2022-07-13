@@ -60,6 +60,22 @@ CREATE TABLE `pictures` (
   `picSection` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET= utf8;
 
+INSERT INTO `pictures`(`file`, `alt`, `categories`, `picSection`)
+VALUES 
+('1657637017342-Carroussel1.JPG', 'Antoine champs', 'carousel', 1),
+('1657637032509-Carroussel2.JPG', 'Aubergine', 'carousel', 2),
+('1657637047615-Carroussel3.jpg', 'Panier legumes', 'carousel', 3),
+('1657637108827-Carroussel4.jpg', 'Serres', 'carousel', 4),
+
+
+('1657637414428-methode1.jpg', 'Plan drone', 'methode', 1),
+('1657637509587-Carroussel4.jpg', 'Serre', 'methode', 2),
+('1657637539532-methode3.png', 'cycle fertilise', 'methode', 3),
+('1657637557592-methode4.jpg', 'Arbres et fruits', 'methode', 4);
+
+
+
+
 
 CREATE TABLE `text` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,

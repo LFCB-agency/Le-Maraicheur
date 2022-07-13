@@ -2,6 +2,7 @@
 import LeftSlide from "@components/Leftslide";
 import TextEditor from "@components/TextEditor";
 import Topslide from "@components/Topslide";
+import Upload from "./Upload";
 
 export default function AdminHome() {
   return (
@@ -9,8 +10,9 @@ export default function AdminHome() {
       <LeftSlide />
       <Topslide />
       <div className="position-admin--editor">
-        <div className="hello">
+        <div className="background-texteditor">
           <TextEditor />
+          <Upload />
         </div>
       </div>
     </section>
