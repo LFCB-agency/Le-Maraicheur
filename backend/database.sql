@@ -32,9 +32,10 @@ CREATE TABLE `adm` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `temporaryPassword` varchar(255),
+  `temporaryPassword` varchar(255) ,
   `question` varchar(255) NOT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+) ENGINE=InnoDB DEFAULT CHARSET= utf8;
+
 
 CREATE TABLE `preorder` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -48,32 +49,11 @@ CREATE TABLE `preorder` (
 
 -- datetime default now fait un timestamp et inject automatiquement une date quand une donnée est créée
 -- on ne specifie pas dans la query les champs id,checkboxStatus et date car id est auto incrémenté, checkbox par défaut est 0 et date est remplis avec l'explication au dessus
-INSERT INTO
-  `preorder` (lastname, firstname, email, paymentMethod)
-VALUES
-  (
-    'Userlastname1',
-    'Userfirstname1',
-    'Useremail1',
-    '1x'
-  ),
-  (
-    'Userlastname2',
-    'Userfirstname2',
-    'Useremail2',
-    '3x'
-  ),
-  (
-    'Userlastname3',
-    'Userfirstname3',
-    'Useremail3',
-    '12x'
-  );
 
-CREATE TABLE `popup` (
-  `id` int AUTO_INCREMENT PRIMARY KEY,
-  `titlePopup` varchar(255) NOT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+INSERT INTO `preorder` (lastname, firstname, email, paymentMethod)
+VALUES ('Userlastname1', 'Userfirstname1', 'Useremail1', '1x'),
+       ('Userlastname2', 'Userfirstname2', 'Useremail2', '3x'),
+       ('Userlastname3', 'Userfirstname3', 'Useremail3', '12x');
 
 CREATE TABLE `pictures` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -89,7 +69,6 @@ CREATE TABLE `pictures` (
     "contact"
   ),
   `picSection` int NOT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 CREATE TABLE `text` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -195,13 +174,10 @@ C’est aussi un plaisir de travailler à la main, sans le bruit des machines et
     4
   );
 
-CREATE TABLE `products` (
+CREATE TABLE `team` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` enum("legume", "fermier", "panier", "plant"),
-  `popupId` int,
-  FOREIGN KEY (`popupId`) REFERENCES `popup`(`id`),
-  `pictureId` int,
-  FOREIGN KEY (`pictureId`) REFERENCES `pictures`(`id`),
-  `textId` int,
-  FOREIGN KEY (`textId`) REFERENCES `text`(`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+  `title` varchar(255) NULL,
+  `pictureId` int, FOREIGN KEY (`pictureId`) REFERENCES `pictures`(`id`),
+  `textId` int, FOREIGN KEY (`textId`) REFERENCES `text`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET= utf8;
+
