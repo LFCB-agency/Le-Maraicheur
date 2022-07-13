@@ -6,7 +6,6 @@ import method from "../assets/pictures/plantadmin.png";
 import product from "../assets/pictures/radish.png";
 import about from "../assets/pictures/people.png";
 import contact from "../assets/pictures/email.png";
-import modal from "../assets/pictures/pop-up.png";
 
 export default function LeftSlide() {
   return (

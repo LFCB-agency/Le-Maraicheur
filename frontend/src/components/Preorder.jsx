@@ -10,7 +10,7 @@ export default function ClientList() {
   const [paymentMethod, setPaymentMethod] = useState("");
   const [succes, setSucces] = useState(false);
 
-  const postClient = async (e) => {
+  const postClient = async () => {
     axios.post(`${import.meta.env.VITE_BACKEND_URL}preorder`, {
       lastname,
       firstname,

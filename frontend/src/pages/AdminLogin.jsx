@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/no-unresolved */
@@ -5,7 +6,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 
 import InformationLoginAlert from "@components/InformationLoginAlert";
