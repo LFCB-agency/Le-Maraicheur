@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
-import parse from "html-react-parser";
 import axios from "axios";
 
 export default function TextPropos() {
   const [textPropos, setTextPropos] = useState([]);
-  // const [imageHome, setImageHome] = useState([]);
 
   const getText = async () => {
     try {
       const data = await axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}text?page=propos`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}team`)
         .then((response) => response.data);
       setTextPropos(data);
       // console.log(data);
@@ -25,12 +23,19 @@ export default function TextPropos() {
   }, []);
   return (
     <div>
-      {textPropos.map((text) => (
-        <div key={text.id}>
-          <h1 key="title1">{text.title}</h1>
-          <p key="body1">{parse(text.body)}</p>
-        </div>
-      ))}
+      {textPropos.map((text) => {
+        return (
+          <div className="team-container" key={text.id}>
+            <img
+              className="team-image"
+              src={`${import.meta.env.VITE_IMAGES_URL}${text.file}`}
+              alt={text.alt}
+            />
+            <h3 className="team-title">{text.title}</h3>
+            <p className="team-body">{text.body}</p>
+          </div>
+        );
+      })}
     </div>
   );
 }

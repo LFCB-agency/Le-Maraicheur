@@ -5,6 +5,7 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import JoditEditor from "jodit-react";
+import Upload from "@pages/Upload";
 
 const TextEditor = () => {
   const editor = useRef(null);
@@ -150,6 +151,7 @@ const TextEditor = () => {
         />
       </div>
       <div className="button-container--adminhome">
+        <Upload />
         <button
           type="button"
           onClick={() => insertTextById(currentId)}

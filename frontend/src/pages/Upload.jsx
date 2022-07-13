@@ -106,7 +106,7 @@ export default function Upload() {
   }, [categories]);
   // console.log(text);
   return (
-    <form className="mep" onSubmit={handleSubmit}>
+    <form className="upload-container" onSubmit={handleSubmit}>
       <label htmlFor="upload-picture">
         Select a pic :
         <input
@@ -173,12 +173,6 @@ export default function Upload() {
       </label>
 
       <button type="submit"> Upload Pic</button>
-      {fileCreated && (
-        <img
-          src={`${import.meta.env.VITE_IMAGES_URL}${fileCreated.file}`}
-          alt={fileCreated.alt}
-        />
-      )}
 
       {/* <Update /> */}
       {updateFile && (
@@ -191,6 +185,13 @@ export default function Upload() {
         {" "}
         Update Pic
       </button>
+      {fileCreated && (
+        <img
+          className="upload-image"
+          src={`${import.meta.env.VITE_IMAGES_URL}${fileCreated.file}`}
+          alt={fileCreated.alt}
+        />
+      )}
     </form>
   );
 }
