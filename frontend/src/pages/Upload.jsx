@@ -104,7 +104,7 @@ export default function Upload() {
     getImage();
     getText();
   }, [categories]);
-  console.log(text);
+  // console.log(text);
   return (
     <form className="mep" onSubmit={handleSubmit}>
       <label htmlFor="upload-picture">
