@@ -11,6 +11,9 @@ export default function Upload() {
   const [categories, setCategories] = useState("");
   const [section, setSection] = useState("");
   const [updateFile, setUpdateFile] = useState();
+  const [text, setText] = useState();
+  const [textId, setTextId] = useState();
+
   const [image, setImage] = useState([]);
 
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
@@ -29,7 +32,7 @@ export default function Upload() {
     formData.append("file", selectedFile);
     formData.append(
       "pictureData",
-      JSON.stringify({ description, categories, picSection: section })
+      JSON.stringify({ description, categories, textId, picSection: section })
     );
 
     try {
@@ -82,10 +85,26 @@ export default function Upload() {
       }
     }
   };
+
+  const getText = async () => {
+    try {
+      const data = await axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}text`)
+        .then((response) => response.data);
+      // console.log(data);
+      setText(data.filter((item) => item.page === "propos"));
+    } catch (err) {
+      if (err.response.status === 401) {
+        // eslint-disable-next-line
+        alert("Picture doesn't exists");
+      }
+    }
+  };
   useEffect(() => {
     getImage();
+    getText();
   }, [categories]);
-
+  // console.log(text);
   return (
     <form className="mep" onSubmit={handleSubmit}>
       <label htmlFor="upload-picture">
@@ -120,6 +139,13 @@ export default function Upload() {
           <option value="propos">propos</option>
           <option value="contact">contact</option>
         </select>
+        {categories === "propos" && (
+          <select onChange={(e) => setTextId(e.target.value)}>
+            {text.map((item) => (
+              <option value={item.id}>{item.body.substring(0, 50)}</option>
+            ))}
+          </select>
+        )}
       </label>
       <label htmlFor="picture-section">
         Select a section :
