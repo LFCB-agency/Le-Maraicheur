@@ -7,6 +7,7 @@
 import React from "react";
 import "@components/ContactForm.css";
 import MenuBurger from "@components/MenuBurger";
+import Preorder from "@components/Preorder";
 import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
 import logo3 from "@assets/pictures/logo3.png";
@@ -46,10 +47,11 @@ const Contact = () => {
             <label className="message-contact">
               Message* <textarea rows="10" cols="50"></textarea>
             </label>
-
-            <button className="button-contact" type="submit">
-              Soumettre
-            </button>
+            <div className="container-button-contact">
+              <button className="button-contact" type="submit">
+                Soumettre
+              </button>
+            </div>
           </form>
         </div>
         <div className="img-contact">
@@ -59,6 +61,11 @@ const Contact = () => {
             alt="image-antoine"
           ></img>
         </div>
+      </div>
+      <h1 className="titre-contact">Précommander un panier</h1>
+      <hr className="hr-contact"></hr>
+      <div className="container-preorder">
+        <Preorder />
       </div>
       <div className="map-contact">
         <iframe

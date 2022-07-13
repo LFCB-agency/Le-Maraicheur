@@ -1,11 +1,16 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 import { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment/min/moment-with-locales";
 import "moment/locale/fr";
+import AlertSucces from "./AlertSucces";
 // ^ specify moment like this due to a bug we need to point out the dir
 // to change the local timezone of moment.js
 export default function ClientList() {
   const [clientList, setClientList] = useState([]);
+  const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState("");
 
   const getClient = async () => {
     try {
@@ -27,11 +32,22 @@ export default function ClientList() {
   }, []);
 
   const deleteClient = async (id) => {
-    axios
-      .delete(`${import.meta.env.VITE_BACKEND_URL}preorder/${id}`, {
-        body: clientList,
-      })
-      .then(() => getClient());
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    ) {
+      axios
+        .delete(`${import.meta.env.VITE_BACKEND_URL}preorder/${id}`, {
+          body: clientList,
+        })
+        .then((response) => {
+          setMessage(response.data);
+          setSuccess(true);
+          getClient();
+        });
+    }
+    setSuccess(false);
   };
 
   const updateStatus = async (id, event) => {
@@ -58,32 +74,37 @@ export default function ClientList() {
               ? "client-list-display"
               : "client-list-display-done";
           return (
-            <section className="client-list">
-              <ul className="client-list-num">
-                <div className={clientStyle} key={clients.id} />
-                <li className="clientId">#{clients.id}</li>
-                <li className="clientFn">Prénom: {clients.firstname}</li>
-                <li className="clientLn">Nom: {clients.lastname}</li>
-                <li className="clientEmail">E-mail: {clients.email}</li>
-                <li className="clientPayment">{clients.paymentMethod} €</li>
-                <li className="clientDate">Date d'inscription: {dateFormat}</li>
-                <select
-                  value={clients.checkboxStatus}
-                  onChange={(event) => updateStatus(clients.id, event)}
-                >
-                  <option value="0">A contacter</option>
-                  <option value="1">Déjà Contacté</option>
-                </select>
-                <button
-                  className="clientDelete"
-                  type="button"
-                  onClick={() => deleteClient(clients.id)}
-                >
-                  X
-                </button>
-              </ul>
-              <br />
-              <br />
+            <section>
+              {success ? <AlertSucces message={message} /> : ""}
+              <div className="client-list">
+                <ul className="client-list-num">
+                  <div className={clientStyle} key={clients.id} />
+                  <li className="clientId">#{clients.id}</li>
+                  <li className="clientFn">Prénom: {clients.firstname}</li>
+                  <li className="clientLn">Nom: {clients.lastname}</li>
+                  <li className="clientEmail">E-mail: {clients.email}</li>
+                  <li className="clientPayment">{clients.paymentMethod} €</li>
+                  <li className="clientDate">
+                    Date d'inscription: {dateFormat}
+                  </li>
+                  <select
+                    value={clients.checkboxStatus}
+                    onChange={(event) => updateStatus(clients.id, event)}
+                  >
+                    <option value="0">A contacter</option>
+                    <option value="1">Déjà Contacté</option>
+                  </select>
+                  <button
+                    className="clientDelete"
+                    type="button"
+                    onClick={() => deleteClient(clients.id)}
+                  >
+                    X
+                  </button>
+                </ul>
+                <br />
+                <br />
+              </div>
             </section>
           );
         })

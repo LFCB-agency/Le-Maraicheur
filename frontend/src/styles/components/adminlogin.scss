@@ -91,7 +91,7 @@
   }
 
   label {
-    margin-left: 105px;
+    margin-left: 120px;
     color: $white;
     font-family: "Montserrat";
     font-style: normal;
@@ -100,21 +100,17 @@
     line-height: 24px;
     letter-spacing: 0.05em;
     text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
-
-    a {
-      color: #ffff;
-      transition: 1s;
-
-      &:hover {
-        color: #f58348;
-        transition: 1s;
-      }
-    }
   }
   .lostpassword {
     float: right;
-    margin-right: 105px;
+    margin-right: 125px;
     text-decoration-line: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: #f58348;
+      transition: 1s;
+    }
   }
 
   .login-btn {

@@ -149,15 +149,20 @@ button.modal-toggle {
   .modal-button-preorder {
     font-family: "Montserrat", sans-serif;
     width: 250px;
+    text-decoration: underline;
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
     border: none;
     height: 50px;
-
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     transition: 1s;
+
+    &:hover {
+      transition: 1s;
+      transform: scale(1.05);
+    }
   }
 
   .button-modal-container {

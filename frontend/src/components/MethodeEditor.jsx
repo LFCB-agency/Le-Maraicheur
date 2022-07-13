@@ -5,12 +5,15 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import JoditEditor from "jodit-react";
+import AlertSucces from "./AlertSucces";
 
 const TextEditor = () => {
   const editor = useRef(null);
   const [content, setContent] = useState("");
   let updatedContent = "";
   const [currentId, setCurrentId] = useState();
+  const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState("");
 
   const config = {
     readonly: false,
@@ -27,7 +30,6 @@ const TextEditor = () => {
       "indent",
       "|",
       "font",
-      "fontsize",
       "brush",
       "|",
       "table",
@@ -55,7 +57,6 @@ const TextEditor = () => {
       "indent",
       "|",
       "font",
-      "fontsize",
       "brush",
       "|",
       "table",
@@ -101,15 +102,22 @@ const TextEditor = () => {
         "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
       )
     ) {
-      axios.put(`${import.meta.env.VITE_BACKEND_URL}text/${id}`, {
-        body: updatedContent,
-      });
+      axios
+        .put(`${import.meta.env.VITE_BACKEND_URL}text/${id}`, {
+          body: updatedContent,
+        })
+        .then((response) => {
+          setMessage(response.data);
+          setSuccess(true);
+        });
+      setSuccess(false);
     }
   };
   const buttonStyle = (id) =>
     currentId === id ? "button-admin-choice" : "button-admin-choice-disable";
   return (
     <section>
+      {success ? <AlertSucces message={message} /> : ""}
       <button
         type="button"
         onClick={() => fetchTextById(7)}

@@ -15,8 +15,7 @@ const Topslide = () => {
     "La Méthode",
     "Nos Produits",
     "À Propos",
-    "Contact",
-    "Pop-up",
+    "Clients",
   ];
   const location = useLocation();
   const [onHover, setOnHover] = useState(settings);
@@ -44,9 +43,8 @@ const Topslide = () => {
             {location.pathname === "/admin/log" ? menu[0] : null}
             {location.pathname === "/admin/methode" ? menu[1] : null}
             {location.pathname === "/admin/produit" ? menu[2] : null}
-            {location.pathname === "/admin/propos" ? menu[3] : null}
+            {location.pathname === "/admin/apropos" ? menu[3] : null}
             {location.pathname === "/admin/client" ? menu[4] : null}
-            {location.pathname === "/admin/popup" ? menu[5] : null}
           </span>
         </div>
         <div className="position-settings">
