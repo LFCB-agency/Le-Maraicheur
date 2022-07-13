@@ -1,10 +1,16 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable import/no-unresolved */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 
+import InformationLoginAlert from "@components/InformationLoginAlert";
+import WarningAlert from "@components/WarningAlert";
+import SuccesEmailAlert from "@components/SuccesEmailAlert";
 import logo from "../assets/pictures/logo1.png";
 import eyesHidden from "../assets/pictures/invisible.png";
 import eyesUnhidden from "../assets/pictures/yeux.png";
@@ -17,6 +23,10 @@ export default function AdminLogin({ setAdm }) {
   const [eyesVisible, setEyesVisible] = useState(eyesHidden);
   const [eyesStyle, setEyesStyle] = useState(true);
   const [passwordShown, setPasswordShown] = useState(false);
+  const [info, setInfo] = useState(false);
+  const [warning, setWarning] = useState(false);
+  const [succes, setSucces] = useState(false);
+
   const [admData, setAdmData] = useState({
     email: "",
     password: "",
@@ -41,9 +51,9 @@ export default function AdminLogin({ setAdm }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!admData.email || !admData.password) {
-      // eslint-disable-next-line
-      return alert("You must provide an email and a password");
+      setInfo(true);
     }
+
     try {
       const { data } = await axios.post("adm/login", admData, {
         withCredentials: true,
@@ -60,29 +70,33 @@ export default function AdminLogin({ setAdm }) {
   };
 
   const handlePasswordForgotten = async () => {
-    if (!admData.email) {
-      // eslint-disable-next-line
-      return alert("You must provide an email");
+    if (admData.email) {
+      try {
+        const { data } = await axios.post(
+          "adm/password-forgotten",
+          {
+            email: admData.email,
+          },
+          { withCredentials: true }
+        );
+        // eslint-disable-next-line
+        setSucces(true);
+        const timer = setTimeout(() => {
+          return navigate("/reset");
+        }, 9000);
+      } catch (err) {
+        // eslint-disable-next-line
+        return alert(err.message);
+      }
     }
-
-    try {
-      const { data } = await axios.post(
-        "adm/password-forgotten",
-        {
-          email: admData.email,
-        },
-        { withCredentials: true }
-      );
-      // eslint-disable-next-line
-      return alert(JSON.stringify(data));
-    } catch (err) {
-      // eslint-disable-next-line
-      return alert(err.message);
-    }
+    return setWarning(true);
   };
 
   return (
     <section className="background">
+      {info ? <InformationLoginAlert /> : ""}
+      {warning ? <WarningAlert /> : ""}
+      {succes ? <SuccesEmailAlert /> : ""}
       <div className="container">
         <div className="logo-position">
           <NavLink to="/">
@@ -113,11 +127,9 @@ export default function AdminLogin({ setAdm }) {
           </label>
           <label htmlFor="password">
             Mot de passe *{" "}
-            <NavLink to="/reset">
-              <p className="lostpassword" onClick={handlePasswordForgotten}>
-                Mot de passe oublié ?
-              </p>
-            </NavLink>
+            <p className="lostpassword" onClick={handlePasswordForgotten}>
+              Mot de passe oublié ?
+            </p>
             <input
               id="password"
               placeholder="Tapez ici votre mot de passe"

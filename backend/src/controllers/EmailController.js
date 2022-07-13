@@ -29,7 +29,7 @@ class EmailController {
 
     try {
       await transporter.sendMail(message);
-      res.status(200).send("Email sent with success");
+      res.status(200);
     } catch (err) {
       res.status(500).send(err.message);
     }
@@ -149,11 +149,11 @@ class EmailController {
       from: EMAIL_USER,
       to: EMAIL_USER,
       // to: user.email,
-      subject: "Password Forgotten",
+      subject: "Mot de passe oublié - Maraîcheur Administration",
       html: `
-      <h1 style='color: red; background-color: green'>Password Forgotten</h1>
-      <p>Your temporary password: ${adm.temporaryPassword}</p>
-       <a href="http://localhost:3000/reset-password">Click to reset your password</a>
+      <h1>Mot de passe oublié</h1>
+      <p>Votre mot de passe temporaire: ${adm.temporaryPassword}</p>
+       <a href="http://localhost:3000/reset">Cliquer ici pour changer votre mot de passe</a>
     `,
     };
 

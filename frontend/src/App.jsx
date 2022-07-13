@@ -8,7 +8,7 @@ import Methode from "@pages/Methode";
 import Upload from "@pages/Upload";
 import Produit from "@pages/Produit";
 import Propos from "@pages/Propos";
-import Preorder from "@pages/Preorder";
+import Preorder from "@components/Preorder";
 import Contact from "@pages/ContactForm";
 import AdminHome from "@pages/AdminHome";
 import AdminPopup from "@pages/AdminPopup";
@@ -31,7 +31,6 @@ function App() {
         <Route path="/produit" element={<Produit />} />
         <Route path="/propos" element={<Propos />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/preorder" element={<Preorder />} />
         <Route path="/reset" element={<ResetPassword />} />
         <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
         {adm.email && <Route path="/admin/log" element={<AdminHome />} />}
