@@ -15,7 +15,6 @@ export default function Carousels() {
     initialSlide: 0,
     autoplay: true,
     autoplayspeed: 3500,
-    pauseOnHover: true,
     adaptiveHeight: true,
     responsive: [
       {
@@ -27,7 +26,6 @@ export default function Carousels() {
           dots: true,
           autoplay: true,
           autoplayspeed: 3500,
-          pauseOnHover: true,
           adaptiveHeight: true,
         },
       },
