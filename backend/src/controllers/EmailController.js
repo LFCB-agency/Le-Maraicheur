@@ -158,7 +158,7 @@ class EmailController {
 
     const message = {
       from: EMAIL_USER,
-      to: EMAIL_USER,
+      to: adm.email,
       // to: user.email,
       subject: "Mot de passe oublié - Maraîcheur Administration",
       html: `
