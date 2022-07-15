@@ -1,0 +1,142 @@
+.methodeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  align-items: center;
+}
+
+.gridimg2 {
+  margin: 10px 10px 15px 10px;
+}
+.gridtext2 {
+  font-family: "Poppins";
+  font-weight: 300;
+  line-height: 26px;
+  margin: 10px 10px 15px 10px;
+}
+
+.gridimg3 {
+  margin: 10px 10px 15px 10px;
+  grid-area: 2 / 2 / 3 / 2;
+}
+
+.gridtext3 {
+  font-family: "Poppins";
+  font-weight: 300;
+  margin: 10px 10px 15px 10px;
+  grid-area: 2 / 0 / 3 / 3;
+}
+
+.gridimg4 {
+  margin: 10px 10px 15px 10px;
+}
+
+.gridtext4 {
+  font-family: "Poppins";
+  margin: 10px 10px 15px 10px;
+}
+
+.bodyMain {
+  font-family: "Poppins";
+  font-weight: 300;
+  line-height: 26px;
+  margin: 10px 10px 15px 10px;
+  padding: 0;
+}
+
+.bodySec {
+  font-family: "Poppins";
+  font-weight: 300;
+  margin: 10px 10px 15px 10px;
+  line-height: 26px;
+  padding: 0;
+}
+
+.bodyThird {
+  font-family: "Poppins";
+  font-weight: 300;
+  margin: 10px 10px 15px 10px;
+  line-height: 26px;
+  padding: 0;
+}
+
+.bodyFourth {
+  font-family: "Poppins";
+  font-weight: 300;
+  margin: 10px 10px 15px 10px;
+  line-height: 26px;
+  padding: 0;
+}
+
+.textUnderline {
+  width: 90%;
+  height: 1px;
+  background-color: #cccccc;
+}
+
+.imageMethode {
+  display: flex;
+  height: 55vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.imageMethodeSecond {
+  width: 100%;
+}
+.imageMethodeThird {
+  width: 100%;
+}
+.imageMethodeFourth {
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .methodeGrid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bodyMain {
+    margin: 10px 10px 15px 10px;
+    padding: 0;
+  }
+
+  .bodySec {
+    margin: 10px 10px 15px 10px;
+    padding: 0;
+  }
+
+  .imageMethodeSecond {
+    width: 100%;
+  }
+
+  .bodyThird {
+    margin: 10px 10px 15px 10px;
+    padding: 0;
+  }
+
+  .imageMethodeThird {
+    width: 100%;
+  }
+
+  .bodyFourth {
+    margin: 10px 10px 15px 10px;
+    padding: 0;
+  }
+
+  .imageMethodeFourth {
+    width: 100%;
+  }
+
+  .textUnderline {
+    width: 90%;
+    height: 1px;
+    background-color: #cccccc;
+  }
+
+  .imageMethode {
+    height: 30vh;
+  }
+}
