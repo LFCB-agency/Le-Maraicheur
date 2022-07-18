@@ -22,7 +22,7 @@
   width: 60%;
 }
 .teamtitle {
-  margin-top: 10px;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -53,6 +53,11 @@
     justify-content: space-around;
     align-items: center;
     margin: 0;
+  }
+
+  .teamtitle{
+    // nice
+    margin-top: 69px;
   }
   .team-body {
     margin: 20px 0px 20px 0px;
