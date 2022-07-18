@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "./TextPropos.css";
 import axios from "axios";
 import parse from "html-react-parser";
 
@@ -25,7 +24,9 @@ export default function TextPropos() {
     getText();
   }, []);
   return (
-    <div>
+    <div className="team-main">
+      <h2 className="teamtitle">Notre Equipe</h2>
+      <span className="spanLine" />
       {textPropos.map((text) => (
         <div className="team-container" key={text.id}>
           <img

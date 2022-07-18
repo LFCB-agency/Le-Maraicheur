@@ -1,7 +1,6 @@
 .methodeGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   align-items: center;
 }
@@ -138,5 +137,11 @@
 
   .imageMethode {
     height: 30vh;
+  }
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 }

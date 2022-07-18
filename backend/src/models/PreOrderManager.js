@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 const Joi = require("joi");
 const AbstractManager = require("./AbstractManager");
 
@@ -39,7 +40,7 @@ class PreOrderManager extends AbstractManager {
 
   findAll() {
     return this.connection.query(
-      `SELECT id, lastname, firstname, email, paymentMethod, checkboxStatus, date FROM ${this.table}`
+      `SELECT id, lastname, firstname, email, paymentMethod, checkboxStatus, archived, date FROM ${this.table}`
     );
   }
 
@@ -56,20 +57,29 @@ class PreOrderManager extends AbstractManager {
     );
   }
 
+  archived(preorder) {
+    return this.connection.query(
+      `UPDATE ${this.table} SET archived = ? WHERE id = ? `,
+      [preorder.archived, preorder.id]
+    );
+  }
+
   delete(id) {
     return this.connection.query(`delete from ${this.table} where id = ?`, [
       id,
     ]);
   }
 
-  // async validPreorderToCreate(preorder) {
-  //   try {
-  //     await schemaForCreation.validateAsync(preorder);
-  //     return true;
-  //   } catch (err) {
-  //     return false;
-  //   }
-  // }
+  async validPreorderToCreate(preorder, creation = true) {
+    try {
+      if (creation) {
+        await schemaForCreation.validateAsync(preorder);
+      }
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
 }
 
 module.exports = PreOrderManager;

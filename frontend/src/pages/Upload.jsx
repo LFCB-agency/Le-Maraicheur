@@ -15,7 +15,6 @@ export default function Upload() {
   const [updateFile, setUpdateFile] = useState();
   const [text, setText] = useState();
   const [textId, setTextId] = useState();
-
   const [image, setImage] = useState([]);
 
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
@@ -45,8 +44,10 @@ export default function Upload() {
     try {
       const { data } = await axios.post("pictures/upload", formData);
       // console.log(data);
-      getImage();
-      getText();
+      // eslint-disable-next-line no-undef
+      setImage([]);
+      // eslint-disable-next-line no-undef
+      setText();
       return setFileCreated(data);
     } catch (err) {
       console.warn(err);
@@ -61,7 +62,6 @@ export default function Upload() {
     formData.append("file", selectedFile);
     formData.append(
       "pictureData",
-
       JSON.stringify({
         description,
         categories,
@@ -69,6 +69,7 @@ export default function Upload() {
         picSection: section,
       })
     );
+    // console.log(text);
     const id = updateFile;
     try {
       const { data } = await axios.put(
@@ -77,6 +78,7 @@ export default function Upload() {
       );
       // console.log(data);
       getImage();
+      // eslint-disable-next-line no-use-before-define
       getText();
       return setUpdateFile(data);
     } catch (err) {
@@ -89,9 +91,7 @@ export default function Upload() {
   const getImage = async () => {
     try {
       const data = await axios
-        .get(
-          `${import.meta.env.VITE_BACKEND_URL}pictures?categories=${categories}`
-        )
+        .get(`pictures?categories=${categories}`)
         .then((response) => response.data);
       // console.log(data);
       setImage(data);
@@ -117,11 +117,12 @@ export default function Upload() {
       }
     }
   };
+
   useEffect(() => {
     getImage();
     getText();
   }, [categories]);
-  // console.log(text);
+
   return (
     <form className="upload-container" onSubmit={handleSubmit}>
       <label htmlFor="upload-picture">
@@ -152,7 +153,6 @@ export default function Upload() {
           <option value="carousel">carousel</option>
           <option value="home">home</option>
           <option value="methode">methode</option>
-          <option value="produit">produit</option>
           <option value="propos">propos</option>
           <option value="contact">contact</option>
         </select>
@@ -180,15 +180,13 @@ export default function Upload() {
       <label htmlFor="picture-id">
         <select onChange={(e) => setUpdateFile(e.target.value)}>
           <option value="Select">Select</option>
-          {image.length ? (
-            image.map((img) => (
-              <option value={img.id} key={img.id}>
-                {img.file}
-              </option>
-            ))
-          ) : (
-            <option value="Select">Select</option>
-          )}
+          {image.length
+            ? image.map((img) => (
+                <option value={img.id} key={img.id}>
+                  {img.file}
+                </option>
+              ))
+            : ""}
         </select>
       </label>
 

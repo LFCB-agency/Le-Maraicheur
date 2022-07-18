@@ -42,7 +42,8 @@ CREATE TABLE `preorder` (
   `firstname` varchar(80) NOT NULL,
   `email` varchar(255) NOT NULL,
   `paymentMethod` enum("1x", "3x", "12x") NOT NULL,
-  `checkboxStatus` boolean NOT NULL DEFAULT 0,
+  `checkboxStatus` boolean NULL DEFAULT 0,
+  `archived` boolean NULL DEFAULT 0,
   `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 

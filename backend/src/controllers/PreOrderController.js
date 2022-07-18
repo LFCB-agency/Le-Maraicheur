@@ -41,6 +41,7 @@ class PreOrderController {
         } else {
           res.sendStatus(204);
         }
+        // console.log(preorder);
       })
       .catch((err) => {
         console.error(err);
@@ -48,20 +49,50 @@ class PreOrderController {
       });
   };
 
-  static add = (req, res) => {
+  static archived = (req, res) => {
     const preorder = req.body;
-
+    // console.log(preorder);
     // TODO validations (length, format...)
+    preorder.id = parseInt(req.params.id, 10);
 
     models.preorder
-      .insert(preorder)
+      .archived(preorder)
       .then(([result]) => {
-        res.status(201).send({ ...preorder, id: result.insertId });
+        if (result.affectedRows === 0) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(204);
+        }
+        // console.log(preorder);
       })
       .catch((err) => {
         console.error(err);
         res.sendStatus(500);
       });
+  };
+
+  static add = async (req, res) => {
+    const preorder = req.body;
+    try {
+      const validOrder = await models.preorder.validPreorderToCreate({
+        ...preorder,
+      });
+      if (!validOrder) {
+        return res
+          .status(400)
+          .send(
+            "You must provide a valid lastname, firstname, email and payment"
+          );
+      }
+      return models.preorder.insert(preorder).then(([result]) => {
+        return res.status(201).send({ ...preorder, id: result.insertId });
+      });
+    } catch (err) {
+      console.error(err);
+      return res.sendStatus(500);
+    }
+
+    // TODO validations (length, format...)
   };
 
   static delete = (req, res) => {
