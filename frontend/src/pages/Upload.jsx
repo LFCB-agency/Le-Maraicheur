@@ -15,7 +15,6 @@ export default function Upload() {
   const [updateFile, setUpdateFile] = useState();
   const [text, setText] = useState();
   const [textId, setTextId] = useState();
-
   const [image, setImage] = useState([]);
 
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
@@ -46,7 +45,7 @@ export default function Upload() {
       const { data } = await axios.post("pictures/upload", formData);
       // console.log(data);
       // eslint-disable-next-line no-undef
-      setImage();
+      setImage([]);
       // eslint-disable-next-line no-undef
       setText();
       return setFileCreated(data);
@@ -63,7 +62,6 @@ export default function Upload() {
     formData.append("file", selectedFile);
     formData.append(
       "pictureData",
-
       JSON.stringify({
         description,
         categories,
@@ -71,47 +69,7 @@ export default function Upload() {
         picSection: section,
       })
     );
-
-    const getImage = async () => {
-      try {
-        const data = await axios
-          .get(
-            `${
-              import.meta.env.VITE_BACKEND_URL
-            }pictures?categories=${categories}`
-          )
-          .then((response) => response.data);
-        // console.log(data);
-        setImage(data);
-      } catch (err) {
-        if (err.response.status === 401) {
-          // eslint-disable-next-line
-          alert("Picture doesn't exists");
-        }
-      }
-    };
-
-    const getText = async () => {
-      try {
-        const data = await axios
-          .get(`${import.meta.env.VITE_BACKEND_URL}text`)
-          .then((response) => response.data);
-        // console.log(data);
-        setText(data.filter((item) => item.page === "propos"));
-      } catch (err) {
-        if (err.response.status === 401) {
-          // eslint-disable-next-line
-          alert("Picture doesn't exists");
-        }
-      }
-    };
-
-    useEffect(() => {
-      getImage();
-      getText();
-    }, [categories]);
     // console.log(text);
-
     const id = updateFile;
     try {
       const { data } = await axios.put(
@@ -129,6 +87,41 @@ export default function Upload() {
       return alert(err.message);
     }
   };
+
+  const getImage = async () => {
+    try {
+      const data = await axios
+        .get(`pictures?categories=${categories}`)
+        .then((response) => response.data);
+      // console.log(data);
+      setImage(data);
+    } catch (err) {
+      if (err.response.status === 401) {
+        // eslint-disable-next-line
+        alert("Picture doesn't exists");
+      }
+    }
+  };
+
+  const getText = async () => {
+    try {
+      const data = await axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}text`)
+        .then((response) => response.data);
+      // console.log(data);
+      setText(data.filter((item) => item.page === "propos"));
+    } catch (err) {
+      if (err.response.status === 401) {
+        // eslint-disable-next-line
+        alert("Picture doesn't exists");
+      }
+    }
+  };
+
+  useEffect(() => {
+    getImage();
+    getText();
+  }, [categories]);
 
   return (
     <form className="upload-container" onSubmit={handleSubmit}>
@@ -160,7 +153,6 @@ export default function Upload() {
           <option value="carousel">carousel</option>
           <option value="home">home</option>
           <option value="methode">methode</option>
-          <option value="produit">produit</option>
           <option value="propos">propos</option>
           <option value="contact">contact</option>
         </select>
@@ -188,15 +180,13 @@ export default function Upload() {
       <label htmlFor="picture-id">
         <select onChange={(e) => setUpdateFile(e.target.value)}>
           <option value="Select">Select</option>
-          {image.length ? (
-            image.map((img) => (
-              <option value={img.id} key={img.id}>
-                {img.file}
-              </option>
-            ))
-          ) : (
-            <option value="Select">Select</option>
-          )}
+          {image.length
+            ? image.map((img) => (
+                <option value={img.id} key={img.id}>
+                  {img.file}
+                </option>
+              ))
+            : ""}
         </select>
       </label>
 
