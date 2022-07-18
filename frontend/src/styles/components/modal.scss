@@ -35,7 +35,7 @@
   border-radius: 8px;
   color: #ffff;
   position: absolute;
-  top: 25%;
+  top: 100%;
   left: 0;
   // cet index v
   z-index: 1050;
@@ -46,7 +46,26 @@
   align-items: center;
   justify-content: space-around;
 }
-
+.modal-wrapper2 {
+  background: rgba(44, 47, 51, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(253, 253, 253, 0.37);
+  backdrop-filter: blur(10px);
+  margin: 15px;
+  background-color: #2c2f33b7;
+  border-radius: 8px;
+  color: #ffff;
+  position: absolute;
+  top: 35%;
+  left: 0;
+  // cet index v
+  z-index: 1050;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 .modal-container {
   height: 50%;
   width: 50%;
@@ -68,6 +87,12 @@
   cursor: pointer;
   border: none;
   background: transparent;
+  transition: 1s;
+
+  &:hover {
+    transition: 1s;
+    transform: scale(1.1);
+  }
 }
 
 button.modal-toggle {
@@ -85,7 +110,7 @@ button.modal-toggle {
   margin-bottom: 10px;
   border: none;
   height: 50px;
-
+  text-decoration: underline;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   transition: 1s;
@@ -96,7 +121,7 @@ button.modal-toggle {
   justify-content: space-around;
 }
 
-@media (min-width: 600px) {
+@media (max-width: 900px) {
   .modal-body {
     font-family: "Montserrat", sans-serif;
     display: flex;
@@ -120,7 +145,26 @@ button.modal-toggle {
     top: 100%;
     // bottom: 0;
   }
-
+  .modal-wrapper2 {
+    background: rgba(44, 47, 51, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(253, 253, 253, 0.37);
+    backdrop-filter: blur(10px);
+    margin: 15px;
+    background-color: #2c2f33b7;
+    border-radius: 8px;
+    color: #ffff;
+    position: absolute;
+    top: 120%;
+    left: 0;
+    // cet index v
+    z-index: 1050;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
   .modal-header {
     flex-direction: column;
     align-items: flex-end;
@@ -137,6 +181,12 @@ button.modal-toggle {
     cursor: pointer;
     border: none;
     background: transparent;
+    transition: none;
+
+    &:hover {
+      transition: none;
+      transform: none;
+    }
   }
 
   button.modal-toggle {
@@ -166,6 +216,8 @@ button.modal-toggle {
   }
 
   .button-modal-container {
+    margin-top: 95px;
+    margin-bottom: 25px;
     display: flex;
     justify-content: space-around;
   }

@@ -25,12 +25,13 @@
 }
 .body1 {
   padding-top: 30px;
+  margin: 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 36px;
 
   p {
@@ -42,9 +43,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 36px;
 }
 .panierTitle {
@@ -103,7 +104,7 @@
     font-weight: 300;
     border-bottom: solid 1px $black;
     font-family: "Poppins", sans-serif;
-    font-size: 15px;
+    font-size: 16px;
   }
 
   button {
