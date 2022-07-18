@@ -200,6 +200,7 @@ C’est aussi un plaisir de travailler à la main, sans le bruit des machines et
 	Améliorent le paysage
 	Et tant d’autres !',
     'methode',
+<<<<<<< HEAD
     4),
   ('Membre 5', '', 'propos', 4),
   ('Membre 6', '', 'propos', 5),
@@ -207,3 +208,16 @@ C’est aussi un plaisir de travailler à la main, sans le bruit des machines et
   ('Membre 8', '', 'propos', 7),
   ('Membre 9', '', 'propos', 8)
   ;
+=======
+    4
+  );
+
+CREATE TABLE `team` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `title` varchar(255) NULL,
+  `pictureId` int,
+  FOREIGN KEY (`pictureId`) REFERENCES `pictures`(`id`),
+  `textId` int,
+  FOREIGN KEY (`textId`) REFERENCES `text`(`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+>>>>>>> 0c8d0155e2e2a358c1f8d5eaa9e0bee2c50a3b88

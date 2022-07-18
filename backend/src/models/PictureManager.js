@@ -74,7 +74,6 @@ class PictureManager extends AbstractManager {
   }
 
   update(pictures) {
-    console.log(pictures);
     return this.connection.query(`UPDATE ${this.table} SET ? WHERE id=?`, [
       pictures,
       pictures.id,

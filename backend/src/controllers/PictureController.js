@@ -108,7 +108,6 @@ class PictureController {
       .update(picture)
       .then(([result]) => {
         if (result.affectedRows === 0) {
-          console.log(result);
           res.sendStatus(404);
         } else {
           res.sendStatus(204);
