@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+ -- phpMyAdmin SQL Dump
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
@@ -75,6 +75,7 @@ CREATE TABLE `pictures` (
   `file` varchar(255) NOT NULL,
   `alt` varchar(255) NOT NULL,
   `pictogram` varchar(255) NULL,
+  `text_id` int NULL,
   `categories` enum(
     "carousel",
     "home",
@@ -86,57 +87,18 @@ CREATE TABLE `pictures` (
   `picSection` int NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-INSERT INTO
-  `pictures`(`file`, `alt`, `categories`, `picSection`)
-VALUES
-  (
-    '1657637017342-Carroussel1.JPG',
-    'Antoine champs',
-    'carousel',
-    1
-  ),
-  (
-    '1657637032509-Carroussel2.JPG',
-    'Aubergine',
-    'carousel',
-    2
-  ),
-  (
-    '1657637047615-Carroussel3.jpg',
-    'Panier legumes',
-    'carousel',
-    3
-  ),
-  (
-    '1657637108827-Carroussel4.jpg',
-    'Serres',
-    'carousel',
-    4
-  ),
-  (
-    '1657637414428-methode1.jpg',
-    'Plan drone',
-    'methode',
-    1
-  ),
-  (
-    '1657637509587-Carroussel4.jpg',
-    'Serre',
-    'methode',
-    2
-  ),
-  (
-    '1657637539532-methode3.png',
-    'cycle fertilise',
-    'methode',
-    3
-  ),
-  (
-    '1657637557592-methode4.jpg',
-    'Arbres et fruits',
-    'methode',
-    4
-  );
+INSERT INTO `pictures`(`file`, `alt`, `categories`, `picSection`)
+VALUES 
+('1657637017342-Carroussel1.JPG', 'Antoine champs', 'carousel', 1),
+('1657637032509-Carroussel2.JPG', 'Aubergine', 'carousel', 2),
+('1657637047615-Carroussel3.jpg', 'Panier legumes', 'carousel', 3),
+('1657637108827-Carroussel4.jpg', 'Serres', 'carousel', 4),
+
+
+('1657637414428-methode1.jpg', 'Plan drone', 'methode', 1),
+('1657637509587-Carroussel4.jpg', 'Serre', 'methode', 2),
+('1657637539532-methode3.png', 'cycle fertilise', 'methode', 3),
+('1657637557592-methode4.jpg', 'Arbres et fruits', 'methode', 4);
 
 CREATE TABLE `text` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -172,7 +134,7 @@ VALUES
   ),
   -- text pour la page a propos
   (
-    'Un peu d’histoire',
+    'Membre 1',
     'Pourquoi m’être lancé dans la maraîchage ?
 -- Depuis mes 15 ans, j’ai toujours voulu reprendre l’entreprise familiale de poules pondeuses élevées en plein air. Après des études d’entrepreneuriat et de commerce,
  je suis parti en Irlande pendant deux ans où j’ai travaillé en tant que commercial.
@@ -185,13 +147,12 @@ VALUES
     'propos',
     1
   ),
-  ('', 'Antoine Debray', 'propos', 2),
+  ('Membre 2', '', 'propos', 2),
   -- exemple insertion d'un membre d'équipe à supprimer plus tard
-  ('Jean Michel', '', 'propos', 3),
+  ('Membre 3', '', 'propos', 3),
   (
+    'Membre 4',
     '',
-    'Lorem ipsum dolor sit amet. Sit voluptatem minima ut internos error impedit nulla et quia optio ut dolor iste sed eveniet facere animi quisquam.
- Ex itaque quia et culpa fuga aut porro fuga et ipsa commodi.',
     'propos',
     2
   ),
@@ -239,6 +200,15 @@ C’est aussi un plaisir de travailler à la main, sans le bruit des machines et
 	Améliorent le paysage
 	Et tant d’autres !',
     'methode',
+<<<<<<< HEAD
+    4),
+  ('Membre 5', '', 'propos', 4),
+  ('Membre 6', '', 'propos', 5),
+  ('Membre 7', '', 'propos', 6),
+  ('Membre 8', '', 'propos', 7),
+  ('Membre 9', '', 'propos', 8)
+  ;
+=======
     4
   );
 
@@ -250,3 +220,4 @@ CREATE TABLE `team` (
   `textId` int,
   FOREIGN KEY (`textId`) REFERENCES `text`(`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+>>>>>>> 0c8d0155e2e2a358c1f8d5eaa9e0bee2c50a3b88

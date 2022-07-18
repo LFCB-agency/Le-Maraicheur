@@ -42,6 +42,7 @@ router.post(
         alt: pictureData.description,
         categories: pictureData.categories,
         picSection: pictureData.picSection,
+        text_id: pictureData.text_id,
       };
       return next();
     });
@@ -61,7 +62,7 @@ router.put(
       // filename defini le nom du fichier dans le dossier
       // dans ce cas là il sera nommé ex : "2022-20-06-nom-du-fichier"
       filename: (_, file, cb) => {
-        cb(null, req.pictureToUpdate.file);
+        cb(null, `${Date.now()}-${file.originalname}`);
       },
     });
 
@@ -74,10 +75,12 @@ router.put(
       const pictureData = JSON.parse(req.body.pictureData);
       // console.log({ pictureData });
       req.picture = {
+        id: req.params.id,
         file: req.file.filename,
         alt: pictureData.description,
         categories: pictureData.categories,
         picSection: pictureData.picSection,
+        text_id: pictureData.text_id,
       };
 
       return next();

@@ -146,6 +146,34 @@ const TextEditor = () => {
       >
         À propos: 4
       </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(11)}
+        className={buttonStyle(11)}
+      >
+        À propos: 5
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(12)}
+        className={buttonStyle(12)}
+      >
+        À propos: 6
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(13)}
+        className={buttonStyle(13)}
+      >
+        À propos: 7
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(14)}
+        className={buttonStyle(14)}
+      >
+        À propos: 8
+      </button>
       <div className="text-editor">
         <JoditEditor
           ref={editor}
