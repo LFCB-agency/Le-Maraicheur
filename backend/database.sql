@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+ -- phpMyAdmin SQL Dump
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
@@ -76,6 +76,7 @@ CREATE TABLE `pictures` (
   `file` varchar(255) NOT NULL,
   `alt` varchar(255) NOT NULL,
   `pictogram` varchar(255) NULL,
+  `text_id` int NULL,
   `categories` enum(
     "carousel",
     "home",
@@ -85,7 +86,7 @@ CREATE TABLE `pictures` (
     "contact"
   ),
   `picSection` int NOT NULL
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 INSERT INTO `pictures`(`file`, `alt`, `categories`, `picSection`)
 VALUES 
@@ -134,7 +135,7 @@ VALUES
   ),
   -- text pour la page a propos
   (
-    'Un peu d’histoire',
+    'Membre 1',
     'Pourquoi m’être lancé dans la maraîchage ?
 -- Depuis mes 15 ans, j’ai toujours voulu reprendre l’entreprise familiale de poules pondeuses élevées en plein air. Après des études d’entrepreneuriat et de commerce,
  je suis parti en Irlande pendant deux ans où j’ai travaillé en tant que commercial.
@@ -147,13 +148,12 @@ VALUES
     'propos',
     1
   ),
-  ('', 'Antoine Debray', 'propos', 2),
+  ('Membre 2', '', 'propos', 2),
   -- exemple insertion d'un membre d'équipe à supprimer plus tard
-  ('Jean Michel', '', 'propos', 3),
+  ('Membre 3', '', 'propos', 3),
   (
+    'Membre 4',
     '',
-    'Lorem ipsum dolor sit amet. Sit voluptatem minima ut internos error impedit nulla et quia optio ut dolor iste sed eveniet facere animi quisquam.
- Ex itaque quia et culpa fuga aut porro fuga et ipsa commodi.',
     'propos',
     2
   ),
@@ -201,14 +201,10 @@ C’est aussi un plaisir de travailler à la main, sans le bruit des machines et
 	Améliorent le paysage
 	Et tant d’autres !',
     'methode',
-    4
-  );
-
-CREATE TABLE `team` (
-  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `title` varchar(255) NULL,
-  `pictureId` int,
-  FOREIGN KEY (`pictureId`) REFERENCES `pictures`(`id`),
-  `textId` int,
-  FOREIGN KEY (`textId`) REFERENCES `text`(`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+    4),
+  ('Membre 5', '', 'propos', 4),
+  ('Membre 6', '', 'propos', 5),
+  ('Membre 7', '', 'propos', 6),
+  ('Membre 8', '', 'propos', 7),
+  ('Membre 9', '', 'propos', 8)
+  ;

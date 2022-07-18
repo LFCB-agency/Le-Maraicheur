@@ -6,7 +6,7 @@ const nodemailerHbs = require("nodemailer-express-handlebars");
 const { EMAIL_HOST, EMAIL_PORT, EMAIL_SECURE, EMAIL_USER, EMAIL_PASSWORD } =
   process.env;
 
-const emailConfiguration = {
+let emailConfiguration = {
   host: EMAIL_HOST,
   port: EMAIL_PORT,
   secure: EMAIL_SECURE,
@@ -15,6 +15,17 @@ const emailConfiguration = {
     pass: EMAIL_PASSWORD,
   },
 };
+
+if (process.env.EMAIL_HOST.includes("mailhog")) {
+  emailConfiguration = {
+    host: EMAIL_HOST,
+    port: EMAIL_PORT,
+    secureConnection: false,
+    tls: {
+      ciphers: "SSLv3",
+    },
+  };
+}
 
 const transporter = nodemailer.createTransport(emailConfiguration);
 
@@ -147,7 +158,7 @@ class EmailController {
 
     const message = {
       from: EMAIL_USER,
-      to: EMAIL_USER,
+      to: adm.email,
       // to: user.email,
       subject: "Mot de passe oublié - Maraîcheur Administration",
       html: `
