@@ -8,7 +8,7 @@ export default function Propos() {
     <div>
       <Navbar />
       <MenuBurger />
-      <TextPropos />;
+      <TextPropos />
       <Footer />
     </div>
   );
