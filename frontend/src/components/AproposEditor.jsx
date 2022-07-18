@@ -18,9 +18,12 @@ const TextEditor = () => {
   const config = {
     readonly: false,
     height: 400,
+    allowResizeX: false,
+    allowResizeY: false,
+    showCharsCounter: false,
+    showWordsCounter: false,
+    showXPathInStatusbar: false,
     buttons: [
-      "source",
-      "|",
       "bold",
       "strikethrough",
       "underline",
@@ -46,8 +49,6 @@ const TextEditor = () => {
       "print",
     ],
     buttonsXS: [
-      "source",
-      "|",
       "bold",
       "strikethrough",
       "underline",

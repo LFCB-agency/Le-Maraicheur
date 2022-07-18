@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-alert */
 // eslint-disable-next-line import/no-unresolved
 import axios from "@services/axios";
@@ -105,6 +106,12 @@ export default function Upload() {
       }
     };
 
+    useEffect(() => {
+      getImage();
+      getText();
+    }, [categories]);
+    // console.log(text);
+
     const id = updateFile;
     try {
       const { data } = await axios.put(
@@ -123,11 +130,6 @@ export default function Upload() {
     }
   };
 
-  useEffect(() => {
-    setImage();
-    setText();
-  }, [categories]);
-  // console.log(text);
   return (
     <form className="upload-container" onSubmit={handleSubmit}>
       <label htmlFor="upload-picture">
