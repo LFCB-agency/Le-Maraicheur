@@ -29,19 +29,39 @@ export default function TextMethodeSecond() {
     getText();
   }, []);
   return (
-    <div>
+    <section>
       {textMethode.map((text) => (
-        <div className="text-container" key={text.id}>
-          {showMore ? (
-            <p className="bodySec">{parse(text.body)}</p>
-          ) : (
-            `${text.body.substring(0, 250)}...`
-          )}
-          <Button className="showbutton" onClick={() => setShowMore(!showMore)}>
-            {showMore ? "Less" : "More"}
-          </Button>
-        </div>
+        <section key={text.id}>
+          <div className="text-container">
+            {showMore ? (
+              <p className="bodySec">{parse(text.body)}</p>
+            ) : (
+              `${text.body.substring(0, 250)}...`
+            )}
+            <Button
+              variant="outlined"
+              id="buttondisabled"
+              onClick={() => setShowMore(!showMore)}
+            >
+              {showMore ? "Voir moins" : "Voir plus"}
+            </Button>
+          </div>
+          <div className="text-container2">
+            {showMore ? (
+              <p className="bodySec">{parse(text.body)}</p>
+            ) : (
+              `${text.body.substring(0)}...`
+            )}
+            <Button
+              variant="outlined"
+              id="buttondisabled"
+              onClick={() => setShowMore(!showMore)}
+            >
+              {showMore ? "Voir moins" : "Voir plus"}
+            </Button>
+          </div>
+        </section>
       ))}
-    </div>
+    </section>
   );
 }
