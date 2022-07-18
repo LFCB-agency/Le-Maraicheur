@@ -3,6 +3,7 @@
 import axios from "@services/axios";
 import { useState, useEffect } from "react";
 import "../App.css";
+import parse from "html-react-parser";
 
 export default function Upload() {
   const [selectedFile, setSelectedFile] = useState();
@@ -32,12 +33,19 @@ export default function Upload() {
     formData.append("file", selectedFile);
     formData.append(
       "pictureData",
-      JSON.stringify({ description, categories, textId, picSection: section })
+      JSON.stringify({
+        description,
+        categories,
+        text_id: parseInt(textId, 10),
+        picSection: section,
+      })
     );
 
     try {
       const { data } = await axios.post("pictures/upload", formData);
       // console.log(data);
+      getImage();
+      getText();
       return setFileCreated(data);
     } catch (err) {
       console.warn(err);
@@ -52,7 +60,13 @@ export default function Upload() {
     formData.append("file", selectedFile);
     formData.append(
       "pictureData",
-      JSON.stringify({ description, categories, picSection: section })
+
+      JSON.stringify({
+        description,
+        categories,
+        text_id: parseInt(textId, 10),
+        picSection: section,
+      })
     );
     const id = updateFile;
     try {
@@ -61,6 +75,8 @@ export default function Upload() {
         formData
       );
       // console.log(data);
+      getImage();
+      getText();
       return setUpdateFile(data);
     } catch (err) {
       console.warn(err);
@@ -141,8 +157,11 @@ export default function Upload() {
         </select>
         {categories === "propos" && (
           <select onChange={(e) => setTextId(e.target.value)}>
+            <option value="select">Select</option>
             {text.map((item) => (
-              <option value={item.id}>{item.body.substring(0, 50)}</option>
+              <option value={item.id}>
+                {parse(item.title.substring(0, 50))}
+              </option>
             ))}
           </select>
         )}
