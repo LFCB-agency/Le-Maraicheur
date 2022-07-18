@@ -1,10 +1,10 @@
 .products-picto {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    padding: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  padding: 1rem;
 }
 
 .legume-product {
@@ -40,45 +40,42 @@
   height: 1px;
   background-color: #2c2f33;
 }
-.titre-product{
-    display: flex;
-    justify-content: center;
-    margin-top: 5rem;
-    font-family: 'Poppins', sans-serif;
-    
+.titre-product {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  font-family: "Poppins", sans-serif;
 }
 
-.product-hr{
-    width: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+.product-hr {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
-#legume{
-    grid-area: legume;
-
+#legume {
+  grid-area: legume;
 }
-#fermier{
-    grid-area: fermier;
+#fermier {
+  grid-area: fermier;
 }
-#plant{
-    grid-area: plant;
+#plant {
+  grid-area: plant;
 }
-#panier{
-    grid-area: panier;
+#panier {
+  grid-area: panier;
 }
 @media screen and (min-width: 700px) {
-.titre-product{
+  .titre-product {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
-}
-.products-picto{
-  display: grid;    
-  grid-template-rows: 0.2fr 0.2fr;
-  grid-template-columns: 0.2fr 0.2fr;
-  grid-template-areas: "legume fermier" "plant panier";
-}
-
+  }
+  .products-picto {
+    display: grid;
+    grid-template-rows: 0.2fr 0.2fr;
+    grid-template-columns: 0.2fr 0.2fr;
+    grid-template-areas: "legume fermier" "plant panier";
+  }
 }

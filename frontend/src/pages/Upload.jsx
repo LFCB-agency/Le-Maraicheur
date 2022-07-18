@@ -32,8 +32,16 @@ export default function Upload() {
     formData.append("file", selectedFile);
     formData.append(
       "pictureData",
-      JSON.stringify({ description, categories, textId, picSection: section })
+      JSON.stringify({
+        description,
+        categories,
+        textId,
+        // pictureId,
+        picSection: section,
+      })
     );
+
+    // console.log(formData);
 
     try {
       const { data } = await axios.post("pictures/upload", formData);

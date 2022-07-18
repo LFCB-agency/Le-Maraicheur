@@ -18,6 +18,7 @@ import AdminTeam from "@pages/AdminTeam";
 import Error404 from "@pages/Error404";
 import "./App.css";
 import AdminClient from "@pages/AdminClient";
+import TeamUpload from "@components/TeamUpload";
 
 function App() {
   const [adm, setAdm] = useState({ email: "", id: null });
@@ -42,6 +43,7 @@ function App() {
             <Route path="/admin/client" element={<AdminClient />} />
           </>
         )}
+        <Route path="/Teamupload" element={<TeamUpload />} />
         <Route path="/admin/team" element={<AdminTeam />} />
         <Route path="*" element={<Error404 />} />
       </Routes>

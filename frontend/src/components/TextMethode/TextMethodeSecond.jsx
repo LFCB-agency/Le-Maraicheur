@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import parse from "html-react-parser";
 import "../../styles/components/methode.scss";
+import { Button } from "@mui/material";
 
 export default function TextMethodeSecond() {
   const [textMethode, setTextMethode] = useState([]);
+  const [showMore, setShowMore] = useState(false);
+  // const mobile = window.screen.width <= 700;
 
   const getText = async () => {
     try {
@@ -28,8 +31,15 @@ export default function TextMethodeSecond() {
   return (
     <div>
       {textMethode.map((text) => (
-        <div key={text.id}>
-          <p className="bodySec">{parse(text.body)}</p>
+        <div className="text-container" key={text.id}>
+          {showMore ? (
+            <p className="bodySec">{parse(text.body)}</p>
+          ) : (
+            `${text.body.substring(0, 250)}...`
+          )}
+          <Button className="showbutton" onClick={() => setShowMore(!showMore)}>
+            {showMore ? "Less" : "More"}
+          </Button>
         </div>
       ))}
     </div>
