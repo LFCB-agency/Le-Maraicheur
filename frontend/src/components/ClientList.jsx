@@ -11,6 +11,7 @@ export default function ClientList() {
   const [clientList, setClientList] = useState([]);
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
+  const [isArchived, setIsArchived] = useState(0);
 
   const getClient = async () => {
     try {
@@ -67,11 +68,15 @@ export default function ClientList() {
       .then(() => getClient());
   };
 
+  const handleStatus = () => {
+    setIsArchived(isArchived === 0 ? 1 : 0);
+  };
+
   return (
     <div className="client-list-container">
-      {/* <button type="button" onClick={() => fetchByStatus()}>
-        Archives
-      </button> */}
+      <button type="button" onClick={handleStatus}>
+        Clients Archivés
+      </button>
       {clientList.length === 1 ? (
         <p className="nothinghere">
           Il n'y à rien par ici... <br />
@@ -79,16 +84,18 @@ export default function ClientList() {
           Reviens plus-tard lorsque des clients auront faim..
         </p>
       ) : (
-        clientList.map((clients) => {
-          const dateFormat = moment().format("l");
-          const clientStyle =
-            clients.checkboxStatus === 0
-              ? "client-list-display"
-              : "client-list-display-done";
-          return (
-            <section key={clients.id}>
-              {success ? <AlertSucces message={message} /> : ""}
-              {clients.archived === 0 ? (
+        clientList
+          .filter((client) => client.archived === isArchived)
+          .map((clients) => {
+            const dateFormat = moment().format("l");
+            const clientStyle =
+              clients.checkboxStatus === 0
+                ? "client-list-display"
+                : "client-list-display-done";
+            return (
+              <section key={clients.id}>
+                {success ? <AlertSucces message={message} /> : ""}
+
                 <div className="client-list">
                   <ul className="client-list-num">
                     <div className={clientStyle} key={clients.id} />
@@ -127,12 +134,9 @@ export default function ClientList() {
                   <br />
                   <br />
                 </div>
-              ) : (
-                ""
-              )}
-            </section>
-          );
-        })
+              </section>
+            );
+          })
       )}
     </div>
   );
