@@ -9,7 +9,6 @@ import ImageMethodeThird from "@components/ImageMethode/ImageMethodeThird";
 import ImageMethodeFourth from "@components/ImageMethode/ImageMethodeFourth";
 import TextMethodeThird from "@components/TextMethode/TextMethodeThird";
 import TextMethodeFourth from "@components/TextMethode/TextMethodeFourth";
-import "../styles/components/methode.scss";
 import Navbar from "@components/Navbar";
 
 export default function Methode() {

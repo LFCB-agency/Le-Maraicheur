@@ -53,7 +53,7 @@ export default function ClientList() {
           />
         </label>
         <div>
-          Paiement :
+          <p>Paiement :</p>
           <select
             className="clientStatus"
             value={paymentMethod}

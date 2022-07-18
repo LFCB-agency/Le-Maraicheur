@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 import axios from "axios";
 import useModal from "@services/useModal";
 import Modal from "@components/Modal";
-import vegetables from "@assets/pictures/legumes.png";
+import vegetables from "@assets/pictures/IMG_0349.png";
 
 export default function TextAccueilSecond() {
   const [textHome, setTextHome] = useState([]);
