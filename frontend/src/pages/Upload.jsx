@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-alert */
 // eslint-disable-next-line import/no-unresolved
 import axios from "@services/axios";
@@ -27,71 +28,6 @@ export default function Upload() {
     return setSelectedFile(e.target.files[0]);
   };
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-    formData.append(
-      "pictureData",
-
-      JSON.stringify({
-        description,
-        categories,
-        text_id: parseInt(textId, 10),
-        picSection: section,
-      })
-    );
-
-    const getImage = async () => {
-      try {
-        const data = await axios
-          .get(
-            `${
-              import.meta.env.VITE_BACKEND_URL
-            }pictures?categories=${categories}`
-          )
-          .then((response) => response.data);
-        // console.log(data);
-        setImage(data);
-      } catch (err) {
-        if (err.response.status === 401) {
-          // eslint-disable-next-line
-          alert("Picture doesn't exists");
-        }
-      }
-    };
-
-    const getText = async () => {
-      try {
-        const data = await axios
-          .get(`${import.meta.env.VITE_BACKEND_URL}text`)
-          .then((response) => response.data);
-        // console.log(data);
-        setText(data.filter((item) => item.page === "propos"));
-      } catch (err) {
-        if (err.response.status === 401) {
-          // eslint-disable-next-line
-          alert("Picture doesn't exists");
-        }
-      }
-    };
-    const id = updateFile;
-    try {
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}pictures/update/${id}`,
-        formData
-      );
-      // console.log(data);
-      getImage();
-      // eslint-disable-next-line no-use-before-define
-      getText();
-      return setUpdateFile(data);
-    } catch (err) {
-      console.warn(err);
-      // eslint-disable-next-line
-      return alert(err.message);
-    }
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -109,10 +45,8 @@ export default function Upload() {
     try {
       const { data } = await axios.post("pictures/upload", formData);
       // console.log(data);
-      // eslint-disable-next-line no-undef
-      setImage();
-      // eslint-disable-next-line no-undef
-      setText();
+      getImage();
+      getText();
       return setFileCreated(data);
     } catch (err) {
       console.warn(err);
@@ -120,9 +54,72 @@ export default function Upload() {
       return alert(err.message);
     }
   };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    formData.append(
+      "pictureData",
+
+      JSON.stringify({
+        description,
+        categories,
+        text_id: parseInt(textId, 10),
+        picSection: section,
+      })
+    );
+    const id = updateFile;
+    try {
+      const { data } = await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}pictures/update/${id}`,
+        formData
+      );
+      // console.log(data);
+      getImage();
+      getText();
+      return setUpdateFile(data);
+    } catch (err) {
+      console.warn(err);
+      // eslint-disable-next-line
+      return alert(err.message);
+    }
+  };
+
+  const getImage = async () => {
+    try {
+      const data = await axios
+        .get(
+          `${import.meta.env.VITE_BACKEND_URL}pictures?categories=${categories}`
+        )
+        .then((response) => response.data);
+      // console.log(data);
+      setImage(data);
+    } catch (err) {
+      if (err.response.status === 401) {
+        // eslint-disable-next-line
+        alert("Picture doesn't exists");
+      }
+    }
+  };
+
+  const getText = async () => {
+    try {
+      const data = await axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}text`)
+        .then((response) => response.data);
+      // console.log(data);
+      setText(data.filter((item) => item.page === "propos"));
+    } catch (err) {
+      if (err.response.status === 401) {
+        // eslint-disable-next-line
+        alert("Picture doesn't exists");
+      }
+    }
+  };
   useEffect(() => {
-    setImage();
-    setText();
+    getImage();
+    getText();
   }, [categories]);
   // console.log(text);
   return (
