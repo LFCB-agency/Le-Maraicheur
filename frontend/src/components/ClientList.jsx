@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment/min/moment-with-locales";
 import "moment/locale/fr";
-import AlertSucces from "./AlertSucces";
+import RemoveSucces from "./RemoveSucces";
 // ^ specify moment like this due to a bug we need to point out the dir
 // to change the local timezone of moment.js
 export default function ClientList() {
@@ -115,7 +115,7 @@ export default function ClientList() {
                 : "client-list-display-done";
             return (
               <section key={clients.id}>
-                {success ? <AlertSucces message={message} /> : ""}
+                {success ? <RemoveSucces message={message} /> : ""}
 
                 <div className="client-list">
                   <ul className="client-list-num">

@@ -145,7 +145,7 @@ const TextEditor = () => {
         Submit
       </button> */}
       <button type="button" onClick={() => insertText()}>
-        Submit new text
+        Soumettre un nouveau texte
       </button>
     </div>
   );
