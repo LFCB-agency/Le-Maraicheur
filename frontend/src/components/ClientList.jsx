@@ -74,9 +74,30 @@ export default function ClientList() {
 
   return (
     <div className="client-list-container">
-      <button type="button" onClick={handleStatus}>
-        Clients Archivés
-      </button>
+      <div className="client-list-button">
+        <button
+          className={
+            isArchived === 1
+              ? "button-admin-choice"
+              : "button-admin-choice-disable"
+          }
+          type="button"
+          onClick={handleStatus}
+        >
+          Client Archivés
+        </button>
+        <button
+          className={
+            isArchived === 0
+              ? "button-admin-choice"
+              : "button-admin-choice-disable"
+          }
+          type="button"
+          onClick={handleStatus}
+        >
+          Commandes Clients
+        </button>
+      </div>
       {clientList.length === 1 ? (
         <p className="nothinghere">
           Il n'y à rien par ici... <br />

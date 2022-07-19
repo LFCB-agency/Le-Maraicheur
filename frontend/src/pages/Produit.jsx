@@ -1,4 +1,7 @@
 /* eslint-disable react/self-closing-comp */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable */
+
 import { Link } from "react-router-dom";
 import parse from "html-react-parser";
 import MenuBurger from "@components/MenuBurger";
@@ -73,6 +76,7 @@ export default function Produit() {
           <p className="legume-product">LE PANIER</p>
           <span className="spanLine" />
         </div>
+
         {textHome.map((text) => (
           <div className="modal-container">
             <Modal2

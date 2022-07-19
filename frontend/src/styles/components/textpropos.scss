@@ -8,11 +8,11 @@
 }
 .team-image {
   box-shadow: 5px 10px 30px rgb(0 0 0 / 25%);
-    width: 15%;
-    height: 210px;
-    border-radius: 50%;
-    /* clip-path: ellipse(50% 40%); */
-    object-fit: cover;
+  width: 15%;
+  height: 210px;
+  border-radius: 50%;
+  /* clip-path: ellipse(50% 40%); */
+  object-fit: cover;
 }
 .team-body {
   margin: 20px 0px 20px 0px;
@@ -55,7 +55,7 @@
     margin: 0;
   }
 
-  .teamtitle{
+  .teamtitle {
     // nice
     margin-top: 69px;
   }
@@ -64,7 +64,7 @@
     width: 90%;
   }
   .team-image {
-    margin:  20px 0 20px 0;
+    margin: 20px 0 20px 0;
     box-shadow: 5px 10px 30px rgb(0 0 0 / 25%);
     width: 50%;
     height: 190px;
