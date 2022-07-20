@@ -126,7 +126,7 @@ export default function Upload() {
   return (
     <form className="upload-container" onSubmit={handleSubmit}>
       <label htmlFor="upload-picture">
-        Select a pic :
+        Choisir une image:
         <input
           type="file"
           accept="image/png, image/jpeg"
@@ -135,30 +135,29 @@ export default function Upload() {
       </label>
       <label htmlFor="picture-description">
         {" "}
-        Picture Description :
+        Description de l'image:
         <input
           type="text"
-          placeholder="picture description"
+          placeholder="Description de l'image"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
       </label>
       <label htmlFor="picture-categories">
-        Select a categorie :
         <select
           value={categories}
           onChange={(e) => setCategories(e.target.value)}
         >
-          <option value="select">Select</option>
-          <option value="carousel">carousel</option>
-          <option value="home">home</option>
-          <option value="methode">methode</option>
-          <option value="propos">propos</option>
-          <option value="contact">contact</option>
+          <option value="select">Choisir une catégorie: </option>
+          <option value="home">Accueil</option>
+          <option value="carousel">Carrousel</option>
+          <option value="methode">Méthode</option>
+          <option value="propos">À Propos</option>
+          <option value="contact">Contact</option>
         </select>
         {categories === "propos" && (
           <select onChange={(e) => setTextId(e.target.value)}>
-            <option value="select">Select</option>
+            <option value="select">Choisir: </option>
             {text.map((item) => (
               <option value={item.id}>
                 {parse(item.title.substring(0, 50))}
@@ -168,9 +167,8 @@ export default function Upload() {
         )}
       </label>
       <label htmlFor="picture-section">
-        Select a section :
         <select value={section} onChange={(e) => setSection(e.target.value)}>
-          <option value="select">Select</option>
+          <option value="select">Choisir une section: </option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -179,7 +177,7 @@ export default function Upload() {
       </label>
       <label htmlFor="picture-id">
         <select onChange={(e) => setUpdateFile(e.target.value)}>
-          <option value="Select">Select</option>
+          <option value="Select">Choisir une image existante:</option>
           {image.length
             ? image.map((img) => (
                 <option value={img.id} key={img.id}>
@@ -190,7 +188,7 @@ export default function Upload() {
         </select>
       </label>
 
-      <button type="submit"> Upload Pic</button>
+      <button type="submit">Ajouter une image</button>
 
       {/* <Update /> */}
       {updateFile && (
@@ -201,7 +199,7 @@ export default function Upload() {
       )}
       <button type="button" onClick={handleUpdate}>
         {" "}
-        Update Pic
+        Mettre à jour une image
       </button>
       {fileCreated && (
         <img
