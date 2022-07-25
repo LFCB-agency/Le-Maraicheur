@@ -5,8 +5,8 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import JoditEditor from "jodit-react";
-import AlertSucces from "./AlertSucces";
 import Upload from "@pages/Upload";
+import AlertSucces from "./AlertSucces";
 
 const TextEditor = () => {
   const editor = useRef(null);
