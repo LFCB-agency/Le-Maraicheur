@@ -12,6 +12,11 @@ export default function ClientList() {
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
   const [isArchived, setIsArchived] = useState(0);
+  const [showClass, setShowClass] = useState(false);
+
+  const toggleClass = () => {
+    setShowClass(!showClass);
+  };
 
   const getClient = async () => {
     try {
@@ -74,7 +79,11 @@ export default function ClientList() {
 
   return (
     <div className="client-list-container">
-      <button type="button" onClick={handleStatus}>
+      <button
+        type="button"
+        onClick={(handleStatus, toggleClass)}
+        className={showClass ? "ok" : "no"}
+      >
         Clients Archivés
       </button>
       {clientList.length === 1 ? (
