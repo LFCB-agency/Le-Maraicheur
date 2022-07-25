@@ -15,6 +15,7 @@ const TextEditor = () => {
   const [currentId, setCurrentId] = useState();
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
+  // const [title, setTitle] = useState("");
 
   const config = {
     readonly: false,
@@ -83,10 +84,6 @@ const TextEditor = () => {
       },
     },
   };
-  // const handleUpdate = (e) => {
-  //   const editorContent = e.target.value;
-  //   updatedContent = editorContent;
-  // };
 
   const fetchTextById = (id) => {
     axios
@@ -109,6 +106,7 @@ const TextEditor = () => {
           body: updatedContent,
         })
         .then((response) => {
+          // console.log(response);
           setMessage(response.data);
           setSuccess(true);
         });
@@ -176,6 +174,14 @@ const TextEditor = () => {
       >
         À propos: 8
       </button>
+      {/* <div>
+        <input
+          type="text"
+          placeholder="Nom Equipier"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div> */}
       <div className="text-editor">
         <JoditEditor
           ref={editor}

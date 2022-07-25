@@ -34,6 +34,7 @@ export default function TextPropos() {
             src={`${import.meta.env.VITE_IMAGES_URL}${text.file}`}
             alt={text.alt}
           />
+          <p className="team-title">{text.title}</p>
           <p className="team-body">{parse(text.text)}</p>
         </div>
       ))}

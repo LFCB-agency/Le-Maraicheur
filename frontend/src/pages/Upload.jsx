@@ -31,15 +31,16 @@ export default function Upload() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", selectedFile);
-    formData.append(
-      "pictureData",
-      JSON.stringify({
-        description,
-        categories,
-        text_id: parseInt(textId, 10),
-        picSection: section,
-      })
-    );
+    // eslint-disable-next-line
+    const dataT = {
+      description,
+      categories,
+      picSection: parseInt(section, 10),
+    };
+    if (textId) {
+      dataT.text_id = parseInt(textId, 10);
+    }
+    formData.append("pictureData", JSON.stringify(dataT));
 
     try {
       const { data } = await axios.post("pictures/upload", formData);
