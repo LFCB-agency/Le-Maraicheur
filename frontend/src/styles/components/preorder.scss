@@ -74,7 +74,6 @@
     width: 250px;
     margin-top: 25px;
     margin-bottom: 25px;
-    margin-left: 55px;
     cursor: pointer;
     text-transform: uppercase;
     font-family: "Montserrat", sans-serif;
@@ -102,6 +101,11 @@
 
     button {
       margin-left: 0px;
+
+      &:hover {
+        transition: none;
+        transform: none;
+      }
     }
 
     select {

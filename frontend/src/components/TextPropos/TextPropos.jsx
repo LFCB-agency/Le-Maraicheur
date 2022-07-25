@@ -25,7 +25,7 @@ export default function TextPropos() {
   }, []);
   return (
     <div className="team-main">
-      <h2 className="teamtitle">Notre Equipe</h2>
+      <h2 className="teamtitle">Notre Équipe</h2>
       <span className="spanLine" />
       {textPropos.map((text) => (
         <div className="team-container" key={text.id}>
