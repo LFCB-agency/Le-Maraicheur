@@ -4,15 +4,22 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable import/newline-after-import */
 /* eslint-disable import/no-unresolved */
-import React from "react";
 import "@components/ContactForm.css";
 import MenuBurger from "@components/MenuBurger";
 import Preorder from "@components/Preorder";
 import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
 import logo3 from "@assets/pictures/logo3.png";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useState } from "react";
 
 const Contact = () => {
+  const [verified, setVerified] = useState(false);
+
+  const onSubmit = () => {
+    // console.log("Captcha value:", value);
+    setVerified(true);
+  };
   return (
     <div>
       <Navbar />
@@ -21,7 +28,12 @@ const Contact = () => {
       <hr className="hr-contact"></hr>
       <div className="wrapper">
         <div className="form-contact">
-          <form name="contact" method="post" className="contact_form">
+          <form
+            onSubmit={onSubmit}
+            name="contact"
+            method="post"
+            className="contact_form"
+          >
             <img
               className="logo-maraicheur"
               src="./src/assets/pictures/logo2.png"
@@ -48,7 +60,16 @@ const Contact = () => {
               Message* <textarea rows="10" cols="50"></textarea>
             </label>
             <div className="container-button-contact">
-              <button className="button-contact" type="submit">
+              <ReCAPTCHA
+                style={{ marginTop: 20 }}
+                sitekey="6Lcv1_0gAAAAAGFIJMCtmoB62_PXuLLrOSc9KSOm"
+                onChange={onSubmit}
+              />
+              <button
+                disabled={!verified}
+                className="button-contact"
+                type="submit"
+              >
                 Soumettre
               </button>
             </div>
