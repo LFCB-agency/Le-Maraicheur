@@ -8,7 +8,6 @@ const picturesSchema = Joi.object({
   id: Joi.number(),
   file: Joi.string().max(255),
   alt: Joi.string().max(255).required(),
-  pictogram: Joi.string().max(255),
   categories: Joi.string().valid(...pics),
   picSection: Joi.number(),
   text_id: Joi.number(),
@@ -33,7 +32,7 @@ class PictureManager extends AbstractManager {
 
   findAll() {
     return this.connection.query(
-      `SELECT i.id, i.file, i.alt, i.pictogram, i.categories, i.picSection, t.body as text FROM ${this.table} as i LEFT JOIN text as t ON t.id=i.text_id`
+      `SELECT i.id, i.file, i.alt, i.pictogram, i.categories, i.picSection, t.title, t.body as text FROM ${this.table} as i LEFT JOIN text as t ON t.id=i.text_id`
     );
   }
 
