@@ -39,10 +39,10 @@ function App() {
             <Route path="/admin/log" element={<AdminHome />} />
             <Route path="/admin/popup" element={<AdminPopup />} />
             <Route path="/admin/methode" element={<AdminMethode />} />
-            <Route path="/admin/apropos" element={<AdminPropos />} />
             <Route path="/admin/client" element={<AdminClient />} />
           </>
         )}
+        <Route path="/admin/apropos" element={<AdminPropos />} />
         <Route path="/Teamupload" element={<TeamUpload />} />
         <Route path="/admin/team" element={<AdminTeam />} />
         <Route path="*" element={<Error404 />} />

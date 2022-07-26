@@ -36,14 +36,19 @@ router.post(
         return res.status(500).send(err.message);
       }
       const pictureData = JSON.parse(req.body.pictureData);
+      console.log({ pictureData });
+
       req.picture = {
         // Tout decoule de pictureData
         file: req.file.filename,
         alt: pictureData.description,
         categories: pictureData.categories,
         picSection: pictureData.picSection,
-        text_id: pictureData.text_id,
       };
+
+      if (pictureData.text_id) {
+        req.picture.text_id = pictureData.text_id;
+      }
       return next();
     });
   },

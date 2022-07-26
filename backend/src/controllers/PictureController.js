@@ -74,10 +74,10 @@ class PictureController {
 
   static add = async (req, res) => {
     let picture = req.body;
+    // console.log("1", picture);
     if (req.picture) {
       picture = req.picture;
     }
-
     const picturesIsValid = await models.pictures.validPicturesToCreate(
       picture
     );
