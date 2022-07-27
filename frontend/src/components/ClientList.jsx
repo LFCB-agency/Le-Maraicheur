@@ -79,17 +79,6 @@ export default function ClientList() {
       <div className="client-list-button">
         <button
           className={
-            isArchived === 1
-              ? "button-admin-choice"
-              : "button-admin-choice-disable"
-          }
-          type="button"
-          onClick={handleStatus}
-        >
-          Client Archivés
-        </button>
-        <button
-          className={
             isArchived === 0
               ? "button-admin-choice"
               : "button-admin-choice-disable"
@@ -98,6 +87,17 @@ export default function ClientList() {
           onClick={handleStatus}
         >
           Commandes Clients
+        </button>
+        <button
+          className={
+            isArchived === 1
+              ? "button-admin-choice"
+              : "button-admin-choice-disable"
+          }
+          type="button"
+          onClick={handleStatus}
+        >
+          Client Archivés
         </button>
       </div>
       {clientList.length === 1 ? (
