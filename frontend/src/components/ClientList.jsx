@@ -86,7 +86,18 @@ export default function ClientList() {
           type="button"
           onClick={handleStatus}
         >
-          Commandes Clients
+          Clients
+        </button>
+        <button
+          className={
+            isArchived === 1
+              ? "button-admin-choice"
+              : "button-admin-choice-disable"
+          }
+          type="button"
+          onClick={handleStatus}
+        >
+          Archivés
         </button>
         <button
           className={
@@ -100,7 +111,7 @@ export default function ClientList() {
           Client Archivés
         </button>
       </div>
-      {clientList.length === 1 ? (
+      {clientList.length === 0 ? (
         <p className="nothinghere">
           Il n'y à rien par ici... <br />
           <br />

@@ -40,9 +40,9 @@ const Topslide = () => {
         <div className="title-style">
           <h1>Menu Administrateur / </h1>
           <span className="animation-title--topslide">
-            {location.pathname === "/admin/log" ? menu[0] : null}
+            {location.pathname === "/admin/home" ? menu[0] : null}
             {location.pathname === "/admin/methode" ? menu[1] : null}
-            {location.pathname === "/admin/produit" ? menu[2] : null}
+            {location.pathname === "/admin/produits" ? menu[2] : null}
             {location.pathname === "/admin/apropos" ? menu[3] : null}
             {location.pathname === "/admin/client" ? menu[4] : null}
           </span>
