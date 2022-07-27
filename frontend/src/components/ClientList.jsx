@@ -16,6 +16,7 @@ export default function ClientList() {
   const [isArchived, setIsArchived] = useState(0);
   const [showClass, setShowClass] = useState(false);
 
+  // eslint-disable-next-line no-unused-vars
   const toggleClass = () => {
     setShowClass(!showClass);
   };
