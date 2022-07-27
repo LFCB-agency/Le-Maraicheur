@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/self-closing-comp */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable */
+
 import { Link } from "react-router-dom";
 import parse from "html-react-parser";
 import MenuBurger from "@components/MenuBurger";
@@ -72,9 +75,12 @@ export default function Produit() {
             src="src/assets/pictures/basket.png"
             onClick={toggle}
           />
-          <p className="legume-product">LE PANIER</p>
+          <p className="legume-product" onClick={toggle}>
+            LE PANIER
+          </p>
           <span className="spanLine" />
         </div>
+
         {textHome.map((text) => (
           <div className="modal-container">
             <Modal2

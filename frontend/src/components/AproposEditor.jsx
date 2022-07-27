@@ -5,6 +5,7 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import JoditEditor from "jodit-react";
+import Upload from "@pages/Upload";
 import AlertSucces from "./AlertSucces";
 
 const TextEditor = () => {
@@ -14,10 +15,11 @@ const TextEditor = () => {
   const [currentId, setCurrentId] = useState();
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
+  // const [title, setTitle] = useState("");
 
   const config = {
     readonly: false,
-    height: 400,
+    height: 350,
     allowResizeX: false,
     allowResizeY: false,
     showCharsCounter: false,
@@ -82,10 +84,6 @@ const TextEditor = () => {
       },
     },
   };
-  // const handleUpdate = (e) => {
-  //   const editorContent = e.target.value;
-  //   updatedContent = editorContent;
-  // };
 
   const fetchTextById = (id) => {
     axios
@@ -108,6 +106,7 @@ const TextEditor = () => {
           body: updatedContent,
         })
         .then((response) => {
+          // console.log(response);
           setMessage(response.data);
           setSuccess(true);
         });
@@ -175,6 +174,14 @@ const TextEditor = () => {
       >
         À propos: 8
       </button>
+      {/* <div>
+        <input
+          type="text"
+          placeholder="Nom Equipier"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div> */}
       <div className="text-editor">
         <JoditEditor
           ref={editor}
@@ -186,13 +193,14 @@ const TextEditor = () => {
           }}
         />
       </div>
+      <Upload />
       <div className="button-container--adminhome">
         <button
           type="button"
           onClick={() => insertTextById(currentId)}
           className="editor-btn"
         >
-          Submit
+          Soumettre
         </button>
       </div>
     </section>

@@ -20,7 +20,7 @@ const TextEditor = () => {
 
   const config = {
     readonly: false,
-    height: 400,
+    height: 350,
     allowResizeX: false,
     allowResizeY: false,
     showCharsCounter: false,
@@ -147,14 +147,14 @@ const TextEditor = () => {
           }}
         />
       </div>
+      <Upload />
       <div className="button-container--adminhome">
-        <Upload />
         <button
           type="button"
           onClick={() => insertTextById(currentId)}
           className="editor-btn"
         >
-          Submit
+          Soumettre
         </button>
       </div>
     </section>
