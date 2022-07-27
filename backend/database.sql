@@ -1,4 +1,4 @@
- -- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
@@ -88,18 +88,57 @@ CREATE TABLE `pictures` (
   `picSection` int NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-INSERT INTO `pictures`(`file`, `alt`, `categories`, `picSection`)
-VALUES 
-('1657637017342-Carroussel1.JPG', 'Antoine champs', 'carousel', 1),
-('1657637032509-Carroussel2.JPG', 'Aubergine', 'carousel', 2),
-('1657637047615-Carroussel3.jpg', 'Panier legumes', 'carousel', 3),
-('1657637108827-Carroussel4.jpg', 'Serres', 'carousel', 4),
-
-
-('1657637414428-methode1.jpg', 'Plan drone', 'methode', 1),
-('1657637509587-Carroussel4.jpg', 'Serre', 'methode', 2),
-('1657637539532-methode3.png', 'cycle fertilise', 'methode', 3),
-('1657637557592-methode4.jpg', 'Arbres et fruits', 'methode', 4);
+INSERT INTO
+  `pictures`(`file`, `alt`, `categories`, `picSection`)
+VALUES
+  (
+    '1657637017342-Carroussel1.JPG',
+    'Antoine champs',
+    'carousel',
+    1
+  ),
+  (
+    '1657637032509-Carroussel2.JPG',
+    'Aubergine',
+    'carousel',
+    2
+  ),
+  (
+    '1657637047615-Carroussel3.jpg',
+    'Panier legumes',
+    'carousel',
+    3
+  ),
+  (
+    '1657637108827-Carroussel4.jpg',
+    'Serres',
+    'carousel',
+    4
+  ),
+  (
+    '1657637414428-methode1.jpg',
+    'Plan drone',
+    'methode',
+    1
+  ),
+  (
+    '1657637509587-Carroussel4.jpg',
+    'Serre',
+    'methode',
+    2
+  ),
+  (
+    '1657637539532-methode3.png',
+    'cycle fertilise',
+    'methode',
+    3
+  ),
+  (
+    '1657637557592-methode4.jpg',
+    'Arbres et fruits',
+    'methode',
+    4
+  );
 
 CREATE TABLE `text` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -135,7 +174,7 @@ VALUES
   ),
   -- text pour la page a propos
   (
-    'Membre 1',
+    'Antoine Debray',
     'Pourquoi m’être lancé dans la maraîchage ?
 -- Depuis mes 15 ans, j’ai toujours voulu reprendre l’entreprise familiale de poules pondeuses élevées en plein air. Après des études d’entrepreneuriat et de commerce,
  je suis parti en Irlande pendant deux ans où j’ai travaillé en tant que commercial.
@@ -148,15 +187,10 @@ VALUES
     'propos',
     1
   ),
-  ('Membre 2', '', 'propos', 2),
+  ('Équipier: N°1', '', 'propos', 2),
   -- exemple insertion d'un membre d'équipe à supprimer plus tard
-  ('Membre 3', '', 'propos', 3),
-  (
-    'Membre 4',
-    '',
-    'propos',
-    2
-  ),
+  ('Équipier: N°2', '', 'propos', 3),
+  ('Équipier: N°3', '', 'propos', 2),
   -- text pour la page methode
   (
     'Sol vivant',
@@ -201,10 +235,9 @@ C’est aussi un plaisir de travailler à la main, sans le bruit des machines et
 	Améliorent le paysage
 	Et tant d’autres !',
     'methode',
-    4),
-  ('Membre 5', '', 'propos', 4),
-  ('Membre 6', '', 'propos', 5),
-  ('Membre 7', '', 'propos', 6),
-  ('Membre 8', '', 'propos', 7),
-  ('Membre 9', '', 'propos', 8)
-  ;
+    4
+  ),
+  ('Équipier: N°4', '', 'propos', 4),
+  ('Équipier: N°5', '', 'propos', 5),
+  ('Équipier: N°6', '', 'propos', 6),
+  ('Équipier: N°7', '', 'propos', 7),

@@ -5,6 +5,8 @@ import axios from "@services/axios";
 import { useState, useEffect } from "react";
 import "../App.css";
 import parse from "html-react-parser";
+import AlertError from "@components/AlertError";
+import AlertSucces from "@components/AlertSucces";
 
 export default function Upload() {
   const [selectedFile, setSelectedFile] = useState();
@@ -16,6 +18,8 @@ export default function Upload() {
   const [text, setText] = useState();
   const [textId, setTextId] = useState();
   const [image, setImage] = useState([]);
+  const [error, setError] = useState(false);
+  const [succes, setSucces] = useState(false);
 
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
   const handleInput = (e) => {
@@ -44,16 +48,16 @@ export default function Upload() {
 
     try {
       const { data } = await axios.post("pictures/upload", formData);
-      // console.log(data);
       // eslint-disable-next-line no-undef
       setImage([]);
       // eslint-disable-next-line no-undef
       setText();
+      setSucces(true);
       return setFileCreated(data);
     } catch (err) {
-      console.warn(err);
-      // eslint-disable-next-line
-      return alert(err.message);
+      if (err) {
+        setError(true);
+      }
     }
   };
 
@@ -81,11 +85,12 @@ export default function Upload() {
       getImage();
       // eslint-disable-next-line no-use-before-define
       getText();
+      setSucces(true);
       return setUpdateFile(data);
     } catch (err) {
-      console.warn(err);
-      // eslint-disable-next-line
-      return alert(err.message);
+      if (err) {
+        setError(true);
+      }
     }
   };
 
@@ -97,9 +102,8 @@ export default function Upload() {
       // console.log(data);
       setImage(data);
     } catch (err) {
-      if (err.response.status === 401) {
-        // eslint-disable-next-line
-        alert("Picture doesn't exists");
+      if (err) {
+        setError(true);
       }
     }
   };
@@ -112,9 +116,8 @@ export default function Upload() {
       // console.log(data);
       setText(data.filter((item) => item.page === "propos"));
     } catch (err) {
-      if (err.response.status === 401) {
-        // eslint-disable-next-line
-        alert("Picture doesn't exists");
+      if (err) {
+        setError(true);
       }
     }
   };
@@ -125,90 +128,94 @@ export default function Upload() {
   }, [categories]);
 
   return (
-    <form className="upload-container" onSubmit={handleSubmit}>
-      <label htmlFor="upload-picture">
-        Choisir une image:
-        <input
-          type="file"
-          accept="image/png, image/jpeg"
-          onChange={handleInput}
-        />
-      </label>
-      <label htmlFor="picture-description">
-        {" "}
-        Description de l'image:
-        <input
-          type="text"
-          placeholder="Description de l'image"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </label>
-      <label htmlFor="picture-categories">
-        <select
-          value={categories}
-          onChange={(e) => setCategories(e.target.value)}
-        >
-          <option value="select">Choisir une catégorie: </option>
-          <option value="home">Accueil</option>
-          <option value="carousel">Carrousel</option>
-          <option value="methode">Méthode</option>
-          <option value="propos">À Propos</option>
-          <option value="contact">Contact</option>
-        </select>
-        {categories === "propos" && (
-          <select onChange={(e) => setTextId(e.target.value)}>
-            <option value="select">Choisir: </option>
-            {text.map((item) => (
-              <option value={item.id}>
-                {parse(item.title.substring(0, 50))}
-              </option>
-            ))}
+    <section>
+      {error ? <AlertError /> : ""}
+      {succes ? <AlertSucces /> : ""}
+      <form className="upload-container" onSubmit={handleSubmit}>
+        <label htmlFor="upload-picture">
+          Choisir une image:
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
+            onChange={handleInput}
+          />
+        </label>
+        <label htmlFor="picture-description">
+          {" "}
+          Description de l'image:
+          <input
+            type="text"
+            placeholder="Description de l'image"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </label>
+        <label htmlFor="picture-categories">
+          <select
+            value={categories}
+            onChange={(e) => setCategories(e.target.value)}
+          >
+            <option value="select">Choisir une catégorie: </option>
+            <option value="home">Accueil</option>
+            <option value="carousel">Carrousel</option>
+            <option value="methode">Méthode</option>
+            <option value="propos">À Propos</option>
+            <option value="contact">Contact</option>
           </select>
-        )}
-      </label>
-      <label htmlFor="picture-section">
-        <select value={section} onChange={(e) => setSection(e.target.value)}>
-          <option value="select">Choisir une section: </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select>
-      </label>
-      <label htmlFor="picture-id">
-        <select onChange={(e) => setUpdateFile(e.target.value)}>
-          <option value="Select">Choisir une image existante:</option>
-          {image.length
-            ? image.map((img) => (
-                <option value={img.id} key={img.id}>
-                  {img.file}
+          {categories === "propos" && (
+            <select onChange={(e) => setTextId(e.target.value)}>
+              <option value="select">Choisir: </option>
+              {text?.map((item) => (
+                <option value={item.id} key={item.id}>
+                  {parse(item.title.substring(0, 50))}
                 </option>
-              ))
-            : ""}
-        </select>
-      </label>
+              ))}
+            </select>
+          )}
+        </label>
+        <label htmlFor="picture-section">
+          <select value={section} onChange={(e) => setSection(e.target.value)}>
+            <option value="select">Choisir une section: </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </label>
+        <label htmlFor="picture-id">
+          <select onChange={(e) => setUpdateFile(e.target.value)}>
+            <option value="Select">Choisir une image existante:</option>
+            {image.length
+              ? image.map((img) => (
+                  <option value={img.id} key={img.id}>
+                    {img.file}
+                  </option>
+                ))
+              : ""}
+          </select>
+        </label>
 
-      <button type="submit">Ajouter une image</button>
+        <button type="submit">Ajouter une image</button>
 
-      {/* <Update /> */}
-      {updateFile && (
-        <img
-          src={`${import.meta.env.VITE_IMAGES_URL}${updateFile.file}`}
-          alt={updateFile.alt}
-        />
-      )}
-      <button type="button" onClick={handleUpdate}>
-        {" "}
-        Mettre à jour une image
-      </button>
-      {fileCreated && (
-        <img
-          className="upload-image"
-          src={`${import.meta.env.VITE_IMAGES_URL}${fileCreated.file}`}
-          alt={fileCreated.alt}
-        />
-      )}
-    </form>
+        {/* <Update /> */}
+        {updateFile && (
+          <img
+            src={`${import.meta.env.VITE_IMAGES_URL}${updateFile.file}`}
+            alt={updateFile.alt}
+          />
+        )}
+        <button type="button" onClick={handleUpdate}>
+          {" "}
+          Mettre à jour une image
+        </button>
+        {fileCreated && (
+          <img
+            className="upload-image"
+            src={`${import.meta.env.VITE_IMAGES_URL}${fileCreated.file}`}
+            alt={fileCreated.alt}
+          />
+        )}
+      </form>
+    </section>
   );
 }

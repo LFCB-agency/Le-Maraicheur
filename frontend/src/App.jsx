@@ -19,6 +19,7 @@ import Error404 from "@pages/Error404";
 import "./App.css";
 import AdminClient from "@pages/AdminClient";
 import TeamUpload from "@components/TeamUpload";
+import AdminProduits from "@pages/AdminProduits";
 
 function App() {
   const [adm, setAdm] = useState({ email: "", id: null });
@@ -36,15 +37,17 @@ function App() {
         <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
         {adm.email && (
           <>
-            <Route path="/admin/log" element={<AdminHome />} />
+            <Route path="/admin/home" element={<AdminHome />} />
             <Route path="/admin/popup" element={<AdminPopup />} />
             <Route path="/admin/methode" element={<AdminMethode />} />
+            <Route path="/admin/produits" element={<AdminProduits />} />
+            <Route path="/admin/apropos" element={<AdminPropos />} />
             <Route path="/admin/client" element={<AdminClient />} />
           </>
         )}
-        <Route path="/admin/apropos" element={<AdminPropos />} />
+        {/* <Route path="/admin/apropos" element={<AdminPropos />} />
         <Route path="/Teamupload" element={<TeamUpload />} />
-        <Route path="/admin/team" element={<AdminTeam />} />
+        <Route path="/admin/team" element={<AdminTeam />} /> */}
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>

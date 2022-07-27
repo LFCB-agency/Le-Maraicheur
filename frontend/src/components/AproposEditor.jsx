@@ -40,7 +40,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -65,7 +64,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -123,56 +121,56 @@ const TextEditor = () => {
         onClick={() => fetchTextById(3)}
         className={buttonStyle(3)}
       >
-        À propos: 1
+        Antoine Debray
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(4)}
         className={buttonStyle(4)}
       >
-        À propos: 2
+        Équipier: N°1
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(5)}
         className={buttonStyle(5)}
       >
-        À propos: 3
+        Équipier: N°2
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(6)}
         className={buttonStyle(6)}
       >
-        À propos: 4
+        Équipier: N°3
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(11)}
         className={buttonStyle(11)}
       >
-        À propos: 5
+        Équipier: N°4
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(12)}
         className={buttonStyle(12)}
       >
-        À propos: 6
+        Équipier: N°5
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(13)}
         className={buttonStyle(13)}
       >
-        À propos: 7
+        Équipier: N°6
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(14)}
         className={buttonStyle(14)}
       >
-        À propos: 8
+        Équipier: N°7
       </button>
       {/* <div>
         <input
@@ -193,7 +191,6 @@ const TextEditor = () => {
           }}
         />
       </div>
-      <Upload />
       <div className="button-container--adminhome">
         <button
           type="button"
@@ -203,6 +200,7 @@ const TextEditor = () => {
           Soumettre
         </button>
       </div>
+      <Upload />
     </section>
   );
 };
