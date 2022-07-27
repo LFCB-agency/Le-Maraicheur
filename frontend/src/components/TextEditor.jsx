@@ -27,6 +27,7 @@ const TextEditor = () => {
     showWordsCounter: false,
     showXPathInStatusbar: false,
     buttons: [
+      "source",
       "bold",
       "strikethrough",
       "underline",
@@ -41,7 +42,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -66,7 +66,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -129,13 +128,6 @@ const TextEditor = () => {
       >
         Présentation
       </button>
-      <button
-        type="button"
-        onClick={() => fetchTextById(2)}
-        className={buttonStyle(2)}
-      >
-        Panier
-      </button>
       <div className="text-editor">
         <JoditEditor
           ref={editor}
@@ -147,7 +139,6 @@ const TextEditor = () => {
           }}
         />
       </div>
-      <Upload />
       <div className="button-container--adminhome">
         <button
           type="button"
@@ -157,6 +148,7 @@ const TextEditor = () => {
           Soumettre
         </button>
       </div>
+      <Upload />
     </section>
   );
 };

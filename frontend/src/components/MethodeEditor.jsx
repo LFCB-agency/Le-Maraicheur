@@ -39,7 +39,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -64,7 +63,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -159,7 +157,6 @@ const TextEditor = () => {
           }}
         />
       </div>
-      <Upload />
       <div className="button-container--adminhome">
         <button
           type="button"
@@ -169,6 +166,7 @@ const TextEditor = () => {
           Soumettre
         </button>
       </div>
+      <Upload />
     </section>
   );
 };

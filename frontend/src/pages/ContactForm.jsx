@@ -46,19 +46,41 @@ const Contact = () => {
               <div className="name-contact">
                 <label className="contact-label">
                   Prénom*{" "}
-                  <input className="nom-prenom" type="text" name="prénom" />
+                  <input
+                    className="nom-prenom"
+                    type="text"
+                    name="prénom"
+                    placeholder="Prénom"
+                  />
                 </label>
 
                 <label className="contact-label">
-                  Nom* <input className="nom-prenom" type="text" name="nom" />
+                  Nom*{" "}
+                  <input
+                    className="nom-prenom"
+                    type="text"
+                    name="nom"
+                    placeholder="Nom"
+                  />
                 </label>
               </div>
               <label className="email-label">
-                Email* <input className="email" type="email" name="email" />
+                Email*{" "}
+                <input
+                  className="email"
+                  type="email"
+                  name="email"
+                  placeholder="monemail@gmail.com"
+                />
               </label>
 
               <label className="message-contact">
-                Message* <textarea rows="10" cols="50"></textarea>
+                Message*{" "}
+                <textarea
+                  rows="10"
+                  cols="50"
+                  placeholder="Saisissez votre message ici..."
+                ></textarea>
               </label>
               <div className="container-button-contact">
                 <ReCAPTCHA

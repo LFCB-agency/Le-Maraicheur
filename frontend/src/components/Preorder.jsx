@@ -82,7 +82,11 @@ export default function ClientList() {
           }}
         >
           <ReCAPTCHA
-            style={{ display: "flex", justifyContent: "center" }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "300px",
+            }}
             sitekey="6Lcv1_0gAAAAAGFIJMCtmoB62_PXuLLrOSc9KSOm"
             onChange={onSubmit}
           />
