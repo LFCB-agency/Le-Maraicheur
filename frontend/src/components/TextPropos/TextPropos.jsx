@@ -25,16 +25,20 @@ export default function TextPropos() {
   }, []);
   return (
     <div className="team-main">
-      <h2 className="teamtitle">Notre Equipe</h2>
+      <h2 className="teamtitle">Notre Équipe</h2>
       <span className="spanLine" />
       {textPropos.map((text) => (
         <div className="team-container" key={text.id}>
-          <img
-            className="team-image"
-            src={`${import.meta.env.VITE_IMAGES_URL}${text.file}`}
-            alt={text.alt}
-          />
-          <p className="team-title">{text.title}</p>
+          <div className="container-image-propos">
+            <div className="container--paragraphe-propos">
+              <p className="team-title">{text.title}</p>
+            </div>
+            <img
+              className="team-image"
+              src={`${import.meta.env.VITE_IMAGES_URL}${text.file}`}
+              alt={text.alt}
+            />
+          </div>
           <p className="team-body">{parse(text.text)}</p>
         </div>
       ))}

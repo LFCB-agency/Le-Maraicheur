@@ -14,7 +14,7 @@ const RemoveSucces = () => {
     <div>
       <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          La client à bien été supprimé.
+          Le client à bien été supprimé.
         </Alert>
       </Snackbar>
     </div>

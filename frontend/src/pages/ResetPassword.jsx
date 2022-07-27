@@ -6,6 +6,7 @@ import * as yup from "yup";
 import logo from "../assets/pictures/logo1.png";
 import eyesHidden from "../assets/pictures/invisible.png";
 import eyesUnhidden from "../assets/pictures/yeux.png";
+import AlertError from "@components/AlertError";
 
 // password must contain almost one upper case, one lower case, a number and a special character contained in [!@#$%^&*], and have 8 to 32 characters
 const schemaForResetPassword = yup.object().shape({
@@ -47,6 +48,7 @@ const schemaForResetPassword = yup.object().shape({
 });
 
 export default function ResetPassword() {
+  const [error, setError] = useState(false);
   const [eyesVisible, setEyesVisible] = useState(eyesHidden);
   const [eyesStyle, setEyesStyle] = useState(true);
   const [passwordShown, setPasswordShown] = useState(false);
@@ -101,13 +103,15 @@ export default function ResetPassword() {
 
       return navigate("/admin");
     } catch (err) {
-      // eslint-disable-next-line
-      return alert(err.message);
+      if (err) {
+        setError(true);
+      }
     }
   };
 
   return (
     <section className="background">
+      {error ? <AlertError /> : ""}
       <div className="container">
         <div className="logo-position">
           <NavLink to="/admin">
