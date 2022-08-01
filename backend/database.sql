@@ -240,4 +240,4 @@ C’est aussi un plaisir de travailler à la main, sans le bruit des machines et
   ('Équipier: N°4', '', 'propos', 4),
   ('Équipier: N°5', '', 'propos', 5),
   ('Équipier: N°6', '', 'propos', 6),
-  ('Équipier: N°7', '', 'propos', 7),
+  ('Équipier: N°7', '', 'propos', 7)
