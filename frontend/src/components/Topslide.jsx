@@ -61,9 +61,11 @@ const Topslide = () => {
       <Modal show={showModal}>
         <ModalBody>
           <h2 className="title-modal-admin">OPTIONS ADMINISTRATEUR</h2>
-          <button className="button-modal-admin-1">
-            <NavLink to="/admin">SE DECONNECTER DE L'ADMINISTRATION</NavLink>
-          </button>
+          <NavLink to="/admin">
+            <button className="button-modal-admin-1">
+              SE DECONNECTER DE L'ADMINISTRATION
+            </button>
+          </NavLink>
           <br />
           <br />
           <br />

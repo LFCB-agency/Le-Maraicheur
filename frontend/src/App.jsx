@@ -43,9 +43,6 @@ function App() {
             <Route path="/admin/client" element={<AdminClient />} />
           </>
         )}
-        {/* <Route path="/admin/apropos" element={<AdminPropos />} />
-        <Route path="/Teamupload" element={<TeamUpload />} />
-        <Route path="/admin/team" element={<AdminTeam />} /> */}
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
