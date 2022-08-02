@@ -3,10 +3,10 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "@services/axios";
 import * as yup from "yup";
+import AlertError from "@components/AlertError";
 import logo from "../assets/pictures/logo1.png";
 import eyesHidden from "../assets/pictures/invisible.png";
 import eyesUnhidden from "../assets/pictures/yeux.png";
-import AlertError from "@components/AlertError";
 
 // password must contain almost one upper case, one lower case, a number and a special character contained in [!@#$%^&*], and have 8 to 32 characters
 const schemaForResetPassword = yup.object().shape({
@@ -101,7 +101,7 @@ export default function ResetPassword() {
         confirmPassword: "",
       });
 
-      return navigate("/admin");
+      navigate("/admin");
     } catch (err) {
       if (err) {
         setError(true);

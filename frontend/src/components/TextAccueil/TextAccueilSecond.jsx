@@ -7,7 +7,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Link } from "react-router-dom";
-import { string } from "prop-types";
 
 export default function TextAccueilSecond() {
   const style = {

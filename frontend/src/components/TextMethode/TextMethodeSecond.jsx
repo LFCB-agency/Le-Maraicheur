@@ -7,7 +7,6 @@ import { Button } from "@mui/material";
 export default function TextMethodeSecond() {
   const [textMethode, setTextMethode] = useState([]);
   const [showMore, setShowMore] = useState(false);
-  // const mobile = window.screen.width <= 700;
 
   const getText = async () => {
     try {
