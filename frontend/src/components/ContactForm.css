@@ -5,8 +5,7 @@
   background: #fdfafa;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 50px 0px 0px 0px;
-  height: 79vh;
-  width: 800px;
+  width: 550px;
   padding: 1rem 4rem;
 }
 .form-contact {
@@ -32,7 +31,7 @@
   margin-top: 25px;
 }
 .img-contact img {
-  height: 79vh;
+  height: 740px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   width: auto;
   border-radius: 0px 0px 50px 0px;

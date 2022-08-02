@@ -53,7 +53,7 @@ export default function Upload() {
       // eslint-disable-next-line no-undef
       setText();
       setSucces(true);
-      return setFileCreated(data);
+      setFileCreated(data);
     } catch (err) {
       if (err) {
         setError(true);
@@ -86,7 +86,7 @@ export default function Upload() {
       // eslint-disable-next-line no-use-before-define
       getText();
       setSucces(true);
-      return setUpdateFile(data);
+      setUpdateFile(data);
     } catch (err) {
       if (err) {
         setError(true);

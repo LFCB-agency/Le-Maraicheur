@@ -14,12 +14,10 @@ import AdminPopup from "@pages/AdminPopup";
 import AdminMethode from "@pages/AdminMethode";
 import AdminPropos from "@pages/AdminPropos";
 import ResetPassword from "@pages/ResetPassword";
-import AdminTeam from "@pages/AdminTeam";
 import Error404 from "@pages/Error404";
-import "./App.css";
 import AdminClient from "@pages/AdminClient";
-import TeamUpload from "@components/TeamUpload";
 import AdminProduits from "@pages/AdminProduits";
+import "./App.css";
 
 function App() {
   const [adm, setAdm] = useState({ email: "", id: null });
