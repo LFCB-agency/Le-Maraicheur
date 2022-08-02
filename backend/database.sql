@@ -36,6 +36,15 @@ CREATE TABLE `adm` (
   `question` varchar(255) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+CREATE TABLE `articles` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `title` varchar(255) NULL,
+  `link` mediumtext NULL,
+  `image` varchar(255) NOT NULL,
+  `alt` varchar(255) NOT NULL,
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+
 CREATE TABLE `preorder` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `lastname` varchar(80) NOT NULL,
