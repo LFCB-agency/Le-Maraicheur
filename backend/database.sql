@@ -36,12 +36,12 @@ CREATE TABLE `adm` (
   `question` varchar(255) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-CREATE TABLE `articles` (
+CREATE TABLE `article` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `title` varchar(255) NULL,
   `link` mediumtext NULL,
   `image` varchar(255) NOT NULL,
-  `alt` varchar(255) NOT NULL,
+  `alt` varchar(255) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 

@@ -6,28 +6,23 @@
   overflow: hidden;
 }
 
-.swiper-container {
-  margin: 50px 10px 30px 10px;
-  height: 320px;
+.card-main-container {
+  display: flex;
+  justify-content: space-around;
 }
 
-.swiper {
-  width: 100%;
-  height: 100%;
+.card-image-article {
+  max-height: 150px;
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: rgb(74, 73, 73);
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.card-container-article {
+  background-color: rgba(119, 117, 117, 0.208);
+  max-height: 250px;
+  margin: 20px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  border-radius: 20px;
 }
 
 .textHome2 {
@@ -163,6 +158,12 @@
 }
 
 @media screen and (max-width: 767px) {
+
+  .card-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .title1 {
     font-family: "Poppins", sans-serif;
   }
