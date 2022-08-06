@@ -14,10 +14,10 @@ class ArticleManager extends AbstractManager {
   }
 
   update(article) {
-    return this.connection.query(
-      `update ${ArticleManager.table} set title = ? where id = ?`,
-      [article.title, article.id]
-    );
+    return this.connection.query(`UPDATE ${this.table} SET ? WHERE id = ?`, [
+      article,
+      article.id,
+    ]);
   }
 }
 

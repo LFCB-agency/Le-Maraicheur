@@ -30,14 +30,19 @@ export default function ArticleCard() {
       {article?.map((items) => (
         <section key={items.id} className="card-container-article">
           <CardContent key={items.id}>
-            <a href={items.link} alt={items.alt}>
-              <h2 className="card-article-title">{items.title}</h2>
-            </a>
-            <img
-              className="card-image-article"
-              src={`${import.meta.env.VITE_IMAGES_URL}${items.image}`}
+            <h2 className="card-article-title">{items.title}</h2>
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href={items.link}
               alt={items.alt}
-            />
+            >
+              <img
+                className="card-image-article"
+                src={`${import.meta.env.VITE_IMAGES_URL}${items.image}`}
+                alt={items.alt}
+              />
+            </a>
           </CardContent>
         </section>
       ))}

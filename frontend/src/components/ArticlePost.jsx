@@ -59,20 +59,20 @@ export default function Upload() {
   const handleUpdate = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("file", selectedFile);
+    formData.append("image", selectedFile);
     formData.append(
       "pictureData",
       JSON.stringify({
-        title: articleTitle,
-        link: articleLink,
-        alt: description,
+        articleTitle,
+        articleLink,
+        description,
       })
     );
     // console.log(text);
     const id = updateFile;
     try {
       const { data } = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}article/update${id}`,
+        `${import.meta.env.VITE_BACKEND_URL}article/update/${id}`,
         formData
       );
       // console.log(data);

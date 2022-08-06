@@ -29,8 +29,26 @@ class ArticleController {
       });
   };
 
+  static readToUpdate = (req, res, next) => {
+    models.article
+      .find(req.params.id)
+      .then(([rows]) => {
+        if (rows[0] == null) {
+          res.sendStatus(404);
+        } else {
+          /* eslint prefer-destructuring: ["error", {VariableDeclarator: {object: true}}] */
+          req.articleToUpdate = rows[0];
+          next();
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
+
   static edit = (req, res) => {
-    const article = req.body;
+    const { article } = req;
 
     // TODO validations (length, format...)
 

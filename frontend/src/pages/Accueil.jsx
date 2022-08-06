@@ -21,12 +21,15 @@ export default function Accueil() {
         <span className="spanLine" />
       </h2>
       <TextAccueilSecond />
+      <h2 className="panierTitle">
+        PRESSE
+        <span className="spanLine" />
+      </h2>
       <ArticleCard />
       <h2 className="panierTitle">
         NEWSLETTER
         <span className="spanLine" />
       </h2>
-
       <Newsletter />
       <Footer />
     </>
