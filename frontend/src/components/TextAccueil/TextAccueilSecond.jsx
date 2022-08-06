@@ -32,7 +32,6 @@ export default function TextAccueilSecond() {
         .get(`${import.meta.env.VITE_BACKEND_URL}text?page=home&textSection=2`)
         .then((response) => response.data);
       setTextHome(data);
-      // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
         // eslint-disable-next-line

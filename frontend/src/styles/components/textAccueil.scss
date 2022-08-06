@@ -5,6 +5,44 @@
 .slick-slider {
   overflow: hidden;
 }
+
+.card-main-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card-article-title {
+  margin-bottom: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.card-container-article {
+    max-width: 300px;
+    max-height: 385px;
+    margin: 20px 10px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: center;
+    border-radius: 50px 0px;
+    -webkit-backdrop-filter: blur(6px) saturate(180%);
+    background-color: rgb(238 240 244 / 70%);
+    border: 1px solid rgb(191 187 187);
+}
+
+.card-image-article {
+  border: 1px solid rgb(0 0 0 / 30%);
+  width: 250px;
+  height: 300px;
+  border-radius: 50px 0px;
+  object-fit: cover;
+}
+
 .textHome2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -138,6 +176,12 @@
 }
 
 @media screen and (max-width: 767px) {
+
+  .card-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .title1 {
     font-family: "Poppins", sans-serif;
   }

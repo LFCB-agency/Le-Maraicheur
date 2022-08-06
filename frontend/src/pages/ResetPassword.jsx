@@ -102,7 +102,7 @@ export default function ResetPassword() {
         confirmPassword: "",
       });
 
-      return navigate("/admin");
+      navigate("/admin");
     } catch (err) {
       if (err) {
         setError(true);

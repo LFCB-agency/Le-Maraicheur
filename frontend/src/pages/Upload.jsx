@@ -4,6 +4,7 @@
 // eslint-disable-next-line import/no-unresolved
 import axios from "@services/axios";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "../App.css";
 import parse from "html-react-parser";
 import AlertError from "@components/AlertError";
@@ -21,6 +22,7 @@ export default function Upload() {
   const [image, setImage] = useState([]);
   const [error, setError] = useState(false);
   const [succes, setSucces] = useState(false);
+  const [ridImage] = useState("");
 
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
   const handleInput = (e) => {
@@ -54,7 +56,7 @@ export default function Upload() {
       // eslint-disable-next-line no-undef
       setText();
       setSucces(true);
-      return setFileCreated(data);
+      setFileCreated(data);
     } catch (err) {
       if (err) {
         setError(true);
@@ -87,7 +89,7 @@ export default function Upload() {
       // eslint-disable-next-line no-use-before-define
       getText();
       setSucces(true);
-      return setUpdateFile(data);
+      setUpdateFile(data);
     } catch (err) {
       if (err) {
         setError(true);
@@ -109,6 +111,21 @@ export default function Upload() {
     }
   };
 
+  const imageDelete = async (id) => {
+    const data = await axios
+      .delete(`${import.meta.env.VITE_BACKEND_URL}pictures/${id}`, {
+        body: image,
+      })
+      .then((response) => {
+        ridImage(response.data);
+        getImage(data);
+      });
+  };
+
+  useEffect(() => {
+    getImage();
+  }, []);
+
   const getText = async () => {
     try {
       const data = await axios
@@ -127,6 +144,8 @@ export default function Upload() {
     getImage();
     getText();
   }, [categories]);
+
+  const location = useLocation();
 
   return (
     <section>
@@ -157,11 +176,15 @@ export default function Upload() {
             onChange={(e) => setCategories(e.target.value)}
           >
             <option value="select">Choisir une catégorie: </option>
-            <option value="home">Accueil</option>
-            <option value="carousel">Carrousel</option>
-            <option value="methode">Méthode</option>
-            <option value="propos">À Propos</option>
-            <option value="contact">Contact</option>
+            {location.pathname === "/admin/home" && (
+              <option value="carousel">Carrousel</option>
+            )}
+            {location.pathname === "/admin/methode" && (
+              <option value="methode">Méthode</option>
+            )}
+            {location.pathname === "/admin/apropos" && (
+              <option value="propos">À Propos</option>
+            )}
           </select>
           {categories === "propos" && (
             <select onChange={(e) => setTextId(e.target.value)}>
@@ -192,7 +215,7 @@ export default function Upload() {
                     {img.file}
                   </option>
                 ))
-              : ""}
+              : "Il n'y a pas d'images"}
           </select>
         </label>
 
@@ -201,13 +224,17 @@ export default function Upload() {
         {/* <Update /> */}
         {updateFile && (
           <img
-            src={`${import.meta.env.VITE_IMAGES_URL}${updateFile.file}`}
+            src={`${import.meta.env.VITE_IMAGES_URL}${image.file}`}
             alt={updateFile.alt}
           />
         )}
         <button type="button" onClick={handleUpdate}>
           {" "}
           Mettre à jour une image
+        </button>
+        <button type="button" onClick={() => imageDelete(updateFile)}>
+          {" "}
+          Supprimer une image
         </button>
         {fileCreated && (
           <img
