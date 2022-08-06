@@ -15,7 +15,6 @@ const TextEditor = () => {
   const [currentId, setCurrentId] = useState();
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
-  // const [title, setTitle] = useState("");
 
   const config = {
     readonly: false,

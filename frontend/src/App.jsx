@@ -13,6 +13,7 @@ import AdminHome from "@pages/AdminHome";
 import AdminPopup from "@pages/AdminPopup";
 import AdminMethode from "@pages/AdminMethode";
 import AdminPropos from "@pages/AdminPropos";
+import AdminNews from "@pages/AdminNews";
 import ResetPassword from "@pages/ResetPassword";
 import Error404 from "@pages/Error404";
 import AdminClient from "@pages/AdminClient";
@@ -41,6 +42,7 @@ function App() {
             <Route path="/admin/produits" element={<AdminProduits />} />
             <Route path="/admin/apropos" element={<AdminPropos />} />
             <Route path="/admin/client" element={<AdminClient />} />
+            <Route path="/admin/articles" element={<AdminNews />} />
           </>
         )}
         <Route path="*" element={<Error404 />} />
