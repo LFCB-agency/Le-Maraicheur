@@ -158,6 +158,7 @@ CREATE TABLE `text` (
     "methode",
     "produit",
     "propos",
+    "amap",
     "contact"
   ) NOT NULL,
   `textSection` int NOT NULL
@@ -246,6 +247,34 @@ C’est aussi un plaisir de travailler à la main, sans le bruit des machines et
     'methode',
     4
   ),
+
+  ('', 'Qu’est-ce qu’une AMAP ?
+ Une Association pour le Maintien de l’Agriculture Paysanne (AMAP) est un partenariat entre un groupe de consommateurs et une ferme,
+ basé sur un système de distribution de « paniers » composés des produits de la ferme. C’est un contrat solidaire, basé sur un engagement financier des consommateurs,
+ qui paient à l’avance une part de la production sur une période définie par le type de production et le lieu géographique.', 'amap', 1),
+
+ ('', 'L’AMAP comporte plusieurs avantages : tout d’abord le côté social, je rêve de constituer une petite communauté autour du jardin et de participer à la dynamisation des campagnes. Cela me permet également d’aborder la saison plus sereinement,
+avec une certaine sécurité grâce au soutien financier (et moral!) des membres.
+Avec une AMAP, vous soutenez l’agriculture paysanne, locale et de saison, avec peu de transports (lieu de distribution à 3km de la ferme).
+Vous prenez soin de l’environnement et des paysans!', 'amap', 2),
+
+('', 'Et l’AMAP Le Maraîcheur ?
+Un panier de légumes naturels, sur sol vivant et de saison chaque semaine
+Composé d’au moins 6 variétés de légumes (selon saisonnalité)
+De début mai à fin novembre
+Participation à des évènements collectifs pendant la saison
+Retrait des paniers à Thiron-Gardais chez HD Ebénisterie, 2 place du marché à Thiron-Gardais, chaque samedi de 10h à 13h', 'amap', 3),
+
+('', 'Comme vous pouvez le constater, la valeur du panier varie en fonction de la saison, mais il y aura plus de paniers « pleins », d’une valeur supérieure à 20 euros,
+ que de paniers comme celui de mai. 
+Pour quel prix ? Vous aurez accès pour 20€ par semaine à un panier de ce type, ce qui correspond à 600 euros par an. 
+L’abonnement comprend l’approvisionnement en légumes naturels sur sol vivant pendant 30 semaines, de début mai à fin novembre.', 'amap', 4),
+
+('', 'Le Maraîcheur propose des légumes riches en nutriments, qui ont poussé dans une terre vivante. Cultivés avec beaucoup damour et de passion, en harmonie avec la nature. Récoltés avec soin et lavés pour vous. 
+Le meilleur dans tout ça ? A chaque abonnement, vous protégez activement l’environnement et contribuez à la transition agricole.
+Et quand vous partez en vacances ?
+Faites profiter votre panier à vos proches ! Vous pouvez le faire récupérer par vos amis, voisins, un membre de votre famille … qui aura la chance de déguster de délicieux légumes', 'amap', 5),
+
   ('Équipier: N°4', '', 'propos', 4),
   ('Équipier: N°5', '', 'propos', 5),
   ('Équipier: N°6', '', 'propos', 6),

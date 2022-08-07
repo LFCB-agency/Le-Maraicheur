@@ -7,6 +7,7 @@ import Accueil from "@pages/Accueil";
 import Methode from "@pages/Methode";
 import Upload from "@pages/Upload";
 import Produit from "@pages/Produit";
+import Amap from "@pages/Amap";
 import Propos from "@pages/Propos";
 import Contact from "@pages/ContactForm";
 import AdminHome from "@pages/AdminHome";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/upload" element={<Upload />} />
         <Route path="/methode" element={<Methode />} />
         <Route path="/produit" element={<Produit />} />
+        <Route path="/amap" element={<Amap />} />
         <Route path="/propos" element={<Propos />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reset" element={<ResetPassword />} />

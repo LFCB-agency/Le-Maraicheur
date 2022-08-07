@@ -124,6 +124,41 @@ const ProduitsEditor = () => {
       >
         Pop-Up Panier
       </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(11)}
+        className={buttonStyle(11)}
+      >
+        AMAP
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(12)}
+        className={buttonStyle(12)}
+      >
+        MES AVANTAGES
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(13)}
+        className={buttonStyle(13)}
+      >
+        MARAICHEUR
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(14)}
+        className={buttonStyle(14)}
+      >
+        ABONNEMENTS
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(15)}
+        className={buttonStyle(15)}
+      >
+        CONTENU PANIER
+      </button>
       <div className="text-editor">
         <JoditEditor
           ref={editor}
