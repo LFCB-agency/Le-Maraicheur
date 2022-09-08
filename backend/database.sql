@@ -92,6 +92,7 @@ CREATE TABLE `pictures` (
     "methode",
     "produit",
     "propos",
+    "amap",
     "contact"
   ),
   `picSection` int NOT NULL

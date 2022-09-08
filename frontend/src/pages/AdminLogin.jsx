@@ -21,7 +21,6 @@ import eyesUnhidden from "../assets/pictures/yeux.png";
 import axios from "../services/axios";
 
 export default function AdminLogin({ setAdm }) {
-  // const { dispatch } = userContext();
   const navigate = useNavigate();
   const [eyesVisible, setEyesVisible] = useState(eyesHidden);
   const [eyesStyle, setEyesStyle] = useState(true);

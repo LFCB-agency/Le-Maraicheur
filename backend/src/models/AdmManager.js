@@ -122,6 +122,12 @@ class AdmManager extends AbstractManager {
     );
   }
 
+  findById(id) {
+    return this.connection.query(`SELECT * FROM ${this.table} WHERE id = ?`, [
+      id,
+    ]);
+  }
+
   findAll() {
     return this.connection.query(`select id, email from  ${this.table}`);
   }

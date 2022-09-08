@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable import/no-unresolved */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import AdminLogin from "@pages/AdminLogin";
 import Accueil from "@pages/Accueil";
@@ -20,9 +20,29 @@ import Error404 from "@pages/Error404";
 import "./App.css";
 import AdminClient from "@pages/AdminClient";
 import AdminProduits from "@pages/AdminProduits";
+import axios from "axios";
 
 function App() {
   const [adm, setAdm] = useState({ email: "", id: null });
+
+  const checkConnection = async () => {
+    try {
+      const data = await axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}adm/refreshToken/1`, {
+          withCredentials: true,
+        })
+        .then((result) => result.data);
+      return setAdm(data);
+    } catch (err) {
+      // eslint-disable-next-line
+      return alert(err);
+    }
+  };
+  // console.warn(adm);
+
+  useEffect(() => {
+    checkConnection();
+  }, []);
 
   return (
     <div className="App">

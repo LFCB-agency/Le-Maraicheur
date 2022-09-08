@@ -7,6 +7,7 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import JoditEditor from "jodit-react";
+import Upload from "@pages/Upload";
 import AlertSucces from "./AlertSucces";
 
 const ProduitsEditor = () => {
@@ -180,6 +181,7 @@ const ProduitsEditor = () => {
           Soumettre
         </button>
       </div>
+      <Upload />
     </section>
   );
 };
