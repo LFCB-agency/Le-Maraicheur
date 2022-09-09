@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   padding-top: 25px;
-  width: 70%;
+  width: 75%;
   flex-direction: column;
   background: #fdfafa;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -28,7 +28,7 @@
     border-radius: 5px;
     font-family: "Poppins", sans-serif;
     border: none;
-    width: 800px;
+    width: 100%;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     height: 45px;
     margin-bottom: 1.5rem;
@@ -39,6 +39,7 @@
   }
 
   label {
+    width: 65%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -96,11 +97,11 @@
 
 @media (max-width: 900px) {
   .mep {
-    width: 100%;
+    width: 65%;
     border-radius: 0px 0px 0px 0px;
 
     input {
-      width: 340px;
+      width: auto;
     }
 
     button {
@@ -115,7 +116,7 @@
     select {
       margin: 0 15px;
       height: 45px;
-      width: 340px;
+      width: 100%;
       border: none;
       border-radius: 5px;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -126,14 +127,19 @@
       }
     }
 
-    div {
+    .payment {
+      width: 65%;
       display: flex;
       flex-direction: column;
+      align-items: center;
 
       p {
-        margin-left: 1.1em;
+        align-self: flex-start;
+        margin-left: 0;
         padding-bottom: 2px;
       }
     }
   }
+
+
 }

@@ -108,12 +108,9 @@
 
 
 
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: 1000px) {
 
-  .amap-container{
-  margin-left: 10%;
-  margin-right: 10%;
-}
+
 
   .amapTitle {
     display: flex;
@@ -217,11 +214,11 @@
   }
 
   .imageAmapSecond{
-    width: 90%;
+    width: 80%;
   }
 
   .imageAmapFourth{
-    width: 65%;
+    width: 70%;
     margin-bottom: 40px;
   }
   .amap-grid-1{
