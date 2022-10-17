@@ -38,7 +38,6 @@ function App() {
       return alert(err);
     }
   };
-  // console.warn(adm);
 
   useEffect(() => {
     checkConnection();
