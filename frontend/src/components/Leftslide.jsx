@@ -7,6 +7,7 @@ import product from "../assets/pictures/radish.png";
 import about from "../assets/pictures/people.png";
 import contact from "../assets/pictures/email.png";
 import news from "../assets/pictures/news-paper.png";
+import market from "../assets/pictures/paniershop.png";
 
 export default function LeftSlide() {
   return (
@@ -59,8 +60,17 @@ export default function LeftSlide() {
             className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
           >
             <div className="icon-container">
-              <img src={news} alt="icon contact" className="icon-contact" />
+              <img src={news} alt="icon articles" className="icon-contact" />
               <p>Articles</p>
+            </div>
+          </NavLink>
+          <NavLink
+            to="/admin/market"
+            className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
+          >
+            <div className="icon-container">
+              <img src={market} alt="icon market" className="icon-contact" />
+              <p>Market</p>
             </div>
           </NavLink>
           <NavLink

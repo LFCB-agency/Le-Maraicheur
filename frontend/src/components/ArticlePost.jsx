@@ -8,7 +8,7 @@ import "../App.css";
 import AlertError from "@components/AlertError";
 import AlertSucces from "@components/AlertSucces";
 
-export default function Upload() {
+export default function ArticlePost() {
   const [selectedFile, setSelectedFile] = useState();
   const [fileCreated, setFileCreated] = useState();
   const [description, setDescription] = useState("");

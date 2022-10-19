@@ -3,6 +3,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 0px 0px;
   align-items: center;
+  text-align: justify;
 }
 
 .text-container2 {
@@ -41,6 +42,7 @@
 }
 
 .bodyMain {
+  text-align: justify;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 300;
@@ -129,7 +131,7 @@
     flex-direction: column;
   }
   .bodyMain {
-    margin: 10px 10px 15px 10px;
+    margin: 30px 30px 15px 30px;
     padding: 0;
   }
   .bodySec {

@@ -59,7 +59,7 @@ export default function ArticleCard() {
     <div className="article-carousel-container">
       <Slider {...settings}>
         {article?.map((items) => (
-          <div className="card-main-container">
+          <div key={items.id} className="card-main-container">
             <h2 className="card-article-title">{items.title}</h2>
             <a
               rel="noreferrer"

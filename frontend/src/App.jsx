@@ -17,9 +17,10 @@ import AdminPropos from "@pages/AdminPropos";
 import AdminNews from "@pages/AdminNews";
 import ResetPassword from "@pages/ResetPassword";
 import Error404 from "@pages/Error404";
-import "./App.css";
 import AdminClient from "@pages/AdminClient";
 import AdminProduits from "@pages/AdminProduits";
+import AdminMarket from "@pages/AdminMarket";
+import "./App.css";
 import axios from "axios";
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
             <Route path="/admin/apropos" element={<AdminPropos />} />
             <Route path="/admin/client" element={<AdminClient />} />
             <Route path="/admin/articles" element={<AdminNews />} />
+            <Route path="/admin/market" element={<AdminMarket />} />
           </>
         )}
         <Route path="*" element={<Error404 />} />

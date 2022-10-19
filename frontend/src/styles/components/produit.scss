@@ -1,13 +1,10 @@
 .products-picto {
-  display: grid;
+  display: flex;
   justify-content: center;
   flex-direction: column;
-  grid-template-rows: 0.2fr 0.2fr;
-  grid-template-columns: 0.2fr 0.2fr;
-  grid-template-areas: "legume fermier" "plant panier";
   align-items: center;
   font-family: "Poppins", sans-serif;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .legume-product {
@@ -31,12 +28,12 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .imageprod1 {
   filter: drop-shadow(5px 5px 4px rgba(44, 47, 51, 0.4));
-  width: 60%;
+  width: 70%;
   transition: 1s;
   cursor: pointer;
 
@@ -45,39 +42,7 @@
     transform: scale(1.05);
   }
 }
-.imageprod2 {
-  filter: drop-shadow(5px 5px 4px rgba(44, 47, 51, 0.4));
-  width: 60%;
-  transition: 1s;
-  cursor: pointer;
 
-  &:hover {
-    transition: 1s;
-    transform: scale(1.05);
-  }
-}
-.imageprod3 {
-  filter: drop-shadow(5px 5px 4px rgba(44, 47, 51, 0.4));
-  width: 60%;
-  transition: 1s;
-  cursor: pointer;
-
-  &:hover {
-    transition: 1s;
-    transform: scale(1.05);
-  }
-}
-.imageprod4 {
-  filter: drop-shadow(5px 5px 4px rgba(44, 47, 51, 0.4));
-  width: 60%;
-  transition: 1s;
-  cursor: pointer;
-
-  &:hover {
-    transition: 1s;
-    transform: scale(1.05);
-  }
-}
 
 .spanLine {
   margin-top: 10px;
@@ -115,6 +80,7 @@
 #panier {
   grid-area: panier;
 }
+
 @media screen and (max-width: 900px) {
   .titre-product {
     display: flex;
@@ -123,10 +89,7 @@
   }
   .products-picto {
     display: flex;
-    flex-direction: column;
-    // grid-template-rows: 0.2fr 0.2fr;
-    // grid-template-columns: 0.2fr 0.2fr;
-    // grid-template-areas: "legume fermier" "plant panier";
+    flex-direction: row;
   }
 
   .legume-product {

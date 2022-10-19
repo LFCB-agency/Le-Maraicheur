@@ -47,8 +47,8 @@ CREATE TABLE `article` (
 CREATE TABLE `product` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `title` varchar(255) NULL,
-  `link` mediumtext NULL,
-  `image` varchar(255) NOT NULL,
+  `link` varchar(255) NULL,
+  `image` mediumtext NOT NULL,
   `alt` varchar(255) NOT NULL,
   `visible` boolean NULL DEFAULT 0
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
