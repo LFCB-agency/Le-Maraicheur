@@ -26,6 +26,12 @@ class ProductManager extends AbstractManager {
     );
   }
 
+  findProductById(productId) {
+    return this.connection
+      .query(`SELECT * FROM ${ProductManager.table} WHERE id = ?`, [productId])
+      .then((result) => result[0]);
+  }
+
   update(product) {
     return this.connection.query(
       `UPDATE ${ProductManager.table} SET ? WHERE id = ?`,
@@ -33,7 +39,7 @@ class ProductManager extends AbstractManager {
     );
   }
 
-  delete(productId) {
+  deleteProduct(productId) {
     return this.connection.query(
       `DELETE FROM ${ProductManager.table} WHERE id =?`,
       [productId]

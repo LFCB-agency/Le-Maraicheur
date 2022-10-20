@@ -1,5 +1,8 @@
 /* eslint-disable no-alert */
 // eslint-disable-next-line import/no-unresolved
+/* eslint-disable no-restricted-globals */
+/* eslint-disable consistent-return */
+
 import axios from "@services/axios";
 import { useState, useEffect } from "react";
 import "../App.css";
@@ -120,16 +123,27 @@ export default function Upload() {
     );
 
     // console.log(formData);
-
-    try {
-      const { data } = await axios.post("team/upload", formData);
-      // console.log(data);
-      return setFileCreated(data);
-    } catch (err) {
-      console.warn(err);
-      // eslint-disable-next-line
-      return alert(err.message);
-    }
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    )
+      try {
+        const { data } = await axios.post("team/upload", formData);
+        // console.log(data);
+        return (
+          setFileCreated(data),
+          alert(
+            "Text Equipier ajouté !",
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          )
+        );
+      } catch (err) {
+        console.warn(err);
+        // eslint-disable-next-line
+      }
   };
 
   const handleUpdate = async (e) => {
@@ -141,18 +155,31 @@ export default function Upload() {
       JSON.stringify({ description, categories, picSection: section })
     );
     const id = updateFile;
-    try {
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}pictures/update/${id}`,
-        formData
-      );
-      // console.log(data);
-      return setUpdateFile(data);
-    } catch (err) {
-      console.warn(err);
-      // eslint-disable-next-line
-      return alert(err.message);
-    }
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    )
+      try {
+        const { data } = await axios.put(
+          `${import.meta.env.VITE_BACKEND_URL}pictures/update/${id}`,
+          formData
+        );
+        // console.log(data);
+        return (
+          setUpdateFile(data),
+          alert(
+            "Equipier ajouté !",
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          )
+        );
+      } catch (err) {
+        console.warn(err);
+        // eslint-disable-next-line
+        return alert(err.message);
+      }
   };
 
   const getImage = async () => {

@@ -2,12 +2,12 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-alert */
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-restricted-globals */
+
 // eslint-disable-next-line import/no-unresolved
 import axios from "@services/axios";
 import { useState, useEffect } from "react";
 import "../App.css";
-// import AlertError from "@components/AlertError";
-// import AlertSucces from "@components/AlertSucces";
 
 export default function MarketPost() {
   const [selectedFile, setSelectedFile] = useState();
@@ -53,7 +53,12 @@ export default function MarketPost() {
       const { data } = await axios.post("product/upload", formData);
       setProductImage([]);
       setFileCreated(data);
-      return alert("Product created with success");
+      return alert(
+        "Produit ajouter !",
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500)
+      );
     } catch (err) {
       return "Une erreur s'est produite lors de l'ajout";
     }
@@ -71,23 +76,50 @@ export default function MarketPost() {
 
   const visibleProduct = async () => {
     const id = selectedFile;
-    try {
-      const data = await axios
-        .put(`product/${id}`, {
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    )
+      try {
+        const data = await axios
+          .put(`product/${id}`, {
+            id,
+            visible: parseInt(visible, 10),
+          })
+          .then((res) => res.data);
+        setVisible(data);
+        return alert(
+          "Produit mis a jour !",
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        );
+      } catch (err) {
+        console.error(err);
+      }
+  };
+
+  const deleteProduct = async () => {
+    const id = selectedFile;
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    )
+      try {
+        const data = await axios.delete(`product/${id}`, {
           id,
-          visible: parseInt(visible, 10),
-        })
-        .then((res) => res.data);
-      setVisible(data);
-      return alert(
-        "Produit mis a jour !",
-        setTimeout(() => {
-          window.location.reload();
-        }, 1500)
-      );
-    } catch (err) {
-      console.error(err);
-    }
+        });
+        return alert(
+          `Produit numero ${id} supprimer !`,
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        );
+      } catch (err) {
+        console.error(err);
+      }
   };
 
   useEffect(() => {
@@ -95,8 +127,8 @@ export default function MarketPost() {
   }, []);
 
   return (
-    <>
-      <form className="upload-container" onSubmit={handleSubmit}>
+    <div className="market-container">
+      <form className="upload-container-market" onSubmit={handleSubmit}>
         <label htmlFor="upload-picture">
           Choisir un fichier :
           <input
@@ -133,26 +165,63 @@ export default function MarketPost() {
           />
         </label>
         <button type="submit">Ajouter un produit</button>
-        <select
-          name="produits"
-          onChange={(e) => setSelectedFile(e.target.value)}
-        >
-          <option value="select">Selectionner un produit</option>
-          {productsGet.map((prod) => (
-            <option key={prod.id} value={prod.id}>
-              {prod.title}
-            </option>
-          ))}
-        </select>
-        <select name="visible" onChange={(e) => setVisible(e.target.value)}>
-          Produit masquer ? <option> Status</option>
-          <option value="0">Masquer</option>
-          <option value="1">Visible</option>
-        </select>
       </form>
-      <button type="button" onClick={() => visibleProduct(idProd)}>
-        Mettre à jour
-      </button>
-    </>
+      <div className="update-sup-container">
+        <div className="update-products">
+          <p className="update-text"> Mettre à jour un produit :</p>
+          <select
+            className="update-selector"
+            name="produits"
+            onChange={(e) => setSelectedFile(e.target.value)}
+          >
+            <option value="select">Selectionner un produit</option>
+            {productsGet.map((prod) => (
+              <option key={prod.id} value={prod.id}>
+                {prod.title}
+              </option>
+            ))}
+          </select>
+          <p className="update-text">Produit visible ou masquer ?</p>
+          <select
+            className="update-selector"
+            name="visible"
+            onChange={(e) => setVisible(e.target.value)}
+          >
+            <option> Status</option>
+            <option value="0">Masquer</option>
+            <option value="1">Visible</option>
+          </select>
+          <button
+            className="update-button"
+            type="button"
+            onClick={() => visibleProduct(idProd)}
+          >
+            Mettre à jour
+          </button>
+        </div>
+        <div className="suppress-product">
+          <p className="update-text">Supprimer un produit :</p>
+          <select
+            className="update-selector"
+            name="produits"
+            onChange={(e) => setSelectedFile(e.target.value)}
+          >
+            <option value="select">Selectionner un produit</option>
+            {productsGet.map((prod) => (
+              <option key={prod.id} value={prod.id}>
+                {prod.title}
+              </option>
+            ))}
+          </select>
+          <button
+            className="update-button"
+            type="button"
+            onClick={() => deleteProduct(idProd)}
+          >
+            Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }

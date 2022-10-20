@@ -107,7 +107,12 @@ const TextEditor = () => {
         })
         .then((response) => {
           setMessage(response.data);
-          setSuccess(true);
+          return (
+            setSuccess(true),
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          );
         });
       setSuccess(false);
     }

@@ -13,7 +13,12 @@ const TextEditor = () => {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}text`, data)
       .then((result) => {
-        return setContent(result.data.body);
+        return (
+          setContent(result.data.body),
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        );
       });
   };
 
@@ -48,9 +53,6 @@ const TextEditor = () => {
           <option value="4">4</option>
         </select>
       </label>
-      {/* <button type="button" onClick={() => insertTextById(currentId)}>
-        Submit
-      </button> */}
       <button type="button" onClick={() => insertText()}>
         Soumettre un nouveau texte
       </button>

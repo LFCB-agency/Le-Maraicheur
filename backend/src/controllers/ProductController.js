@@ -1,6 +1,6 @@
 const multer = require("multer");
-// const path = require("path");
-// const fs = require("fs");
+const path = require("path");
+const fs = require("fs");
 const models = require("../models");
 
 const storage = multer.diskStorage({
@@ -13,13 +13,13 @@ const storage = multer.diskStorage({
   },
 });
 
-// const deleteMarket = (pathMarket) => {
-//   try {
-//     fs.unlinkSync(pathMarket);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
+const deleteProduct = (pathProduct) => {
+  try {
+    fs.unlinkSync(pathProduct);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 const upload = multer({ storage }).single("image");
 
@@ -119,16 +119,37 @@ class ProductController {
       });
   };
 
-  static delete = (req, res) => {
-    models.product
-      .delete(req.params.id)
-      .then(() => {
-        res.sendStatus(204);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
+  // static delete = (req, res) => {
+  //   models.product
+  //     .delete(req.params.id)
+  //     .then(() => {
+  //       res.sendStatus(204);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       res.sendStatus(500);
+  //     });
+  // };
+
+  static delete = async (req, res) => {
+    const productId = parseInt(req.params.id, 10);
+    try {
+      const [product] = await models.product.findProductById(productId);
+      if (!product) {
+        return res.status(404).send(`Product with id : ${productId} not found`);
+      }
+
+      const deletedProduct = await models.product.delete(productId);
+      if (deletedProduct.affectedRows === 0) {
+        return res.status(404).send("error deleting the related image");
+      }
+      deleteProduct(
+        path.join(__dirname, `../../public/assets/images/${product.image}`)
+      );
+      return res.status(204).send("Product deleted successfully");
+    } catch (err) {
+      return res.status(500).send(err.message);
+    }
   };
 }
 
