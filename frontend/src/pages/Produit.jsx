@@ -6,12 +6,19 @@
 import MenuBurger from "@components/MenuBurger";
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography, Modal } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import parse from "html-react-parser";
+import { Link } from "react-router-dom";
 
 export default function Produit() {
   const [products, setProducts] = useState([]);
+  const [textModal, setTextModal] = useState([]);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const getProducts = async () => {
     try {
@@ -25,9 +32,37 @@ export default function Produit() {
     }
   };
 
+  const getText = async () => {
+    try {
+      const data = await axios
+        .get(`${import.meta.env.VITE_BACKEND_URL}text?page=home&textSection=2`)
+        .then((response) => response.data);
+      setTextModal(data);
+    } catch (err) {
+      if (err.response.status === 401) {
+        // eslint-disable-next-line
+        alert("text doesn't exists");
+      }
+    }
+  };
+
   useEffect(() => {
     getProducts();
+    getText();
   }, []);
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    height: "auto",
+    backdropFilter: "blur(30px)",
+    transform: "translate(-50%, -50%)",
+    width: "90%",
+    borderRadius: "8px",
+    background: "rgba( 255, 255, 255, 0.2 )",
+    boxShadow: "0 8px 32px 0 rgba(253, 253, 253, 0.37)",
+  };
 
   return (
     <section>
@@ -58,21 +93,96 @@ export default function Produit() {
                 key={items.id}
                 sx={{ margin: 0 }}
               >
-                <a
-                  key={items.id}
-                  className="product-image "
-                  id="legume"
-                  to={items.link}
-                  target="_blank"
-                >
-                  <img
-                    className="imageprod1"
-                    src={`${import.meta.env.VITE_IMAGES_URL}${items.image}`}
-                    alt={items.alt}
-                  />
-                  <p className="legume-product">{items.title}</p>
-                  <span className="spanLine" />
-                </a>
+                {items.title !== "LE PANIER" ? (
+                  <a
+                    key={items.id}
+                    className="product-image "
+                    id="legume"
+                    to={items.link}
+                    target="_blank"
+                  >
+                    <img
+                      className="imageprod1"
+                      src={`${import.meta.env.VITE_IMAGES_URL}${items.image}`}
+                      alt={items.alt}
+                    />
+                    <p className="legume-product">{items.title}</p>
+                    <span className="spanLine" />
+                  </a>
+                ) : (
+                  textModal.map((text) => (
+                    <>
+                      <div className="product-image">
+                        <img
+                          className="imageprod1"
+                          src={`${import.meta.env.VITE_IMAGES_URL}${
+                            items.image
+                          }`}
+                          alt={items.alt}
+                          onClick={handleOpen}
+                        />
+                        <p className="legume-product" onClick={handleOpen}>
+                          {items.title}
+                        </p>
+                        <span className="spanLine" />
+                      </div>
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={style}>
+                          <CloseIcon
+                            onClick={handleClose}
+                            style={{
+                              color: "white",
+                              float: "right",
+                              marginRight: "5px",
+                              marginTop: "5px",
+                              cursor: "pointer",
+                            }}
+                          />
+                          <Typography
+                            style={{
+                              fontFamily: "Montserrat, sans-serif",
+                              color: "white",
+                              display: "flex",
+                              justifyContent: "center",
+                              marginTop: "25px",
+                            }}
+                          >
+                            {parse(text.title)}
+                          </Typography>
+                          <Typography
+                            style={{
+                              fontFamily: "Montserrat, sans-serif",
+                              color: "white",
+                              textAlign: "center",
+                              marginTop: "3em",
+                              marginLeft: "15px",
+                              marginRight: "15px",
+                            }}
+                          >
+                            {parse(text.body)}
+                          </Typography>
+                          <div className="button-modal-container">
+                            <Link to="/amap">
+                              <button
+                                type="button"
+                                className="modal-button-preorder"
+                                style={{ marginTop: "3em" }}
+                              >
+                                {" "}
+                                JE COMMANDE{" "}
+                              </button>
+                            </Link>
+                          </div>
+                        </Box>
+                      </Modal>
+                    </>
+                  ))
+                )}
               </Grid>
             ))}
           </Grid>

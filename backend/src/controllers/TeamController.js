@@ -31,9 +31,6 @@ class TeamController {
 
   static edit = (req, res) => {
     const team = req.body;
-
-    // TODO validations (length, format...)
-
     team.id = parseInt(req.params.id, 10);
 
     models.team
@@ -53,9 +50,6 @@ class TeamController {
 
   static add = (req, res) => {
     const team = req.body;
-
-    // TODO validations (length, format...)
-
     models.team
       .insert(team)
       .then(([result]) => {

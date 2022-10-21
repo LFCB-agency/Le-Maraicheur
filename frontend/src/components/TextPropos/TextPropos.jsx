@@ -21,9 +21,11 @@ export default function TextPropos() {
       }
     }
   };
+
   useEffect(() => {
     getText();
   }, []);
+
   return (
     <div className="team-main">
       <h2 className="teamtitle">Notre Équipe</h2>
@@ -41,7 +43,7 @@ export default function TextPropos() {
             />
           </div>
           {showMore ? (
-            <p className="team-body">
+            <p key={text.id} className="team-body">
               {parse(text.text.substring(0, 250).concat("..."))}
             </p>
           ) : (

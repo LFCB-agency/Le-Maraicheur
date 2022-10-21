@@ -53,6 +53,15 @@ CREATE TABLE `product` (
   `visible` boolean NULL DEFAULT 0
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+INSERT INTO `product` (`title`, `link`, `image`, `alt`, `visible`)
+
+VALUES (
+  'NOS LEGUMES', 'dummy-link', '1666294099194-vegetable.png', 'image legumes', 1),
+  ('NOS PLANTS', 'dummy-link', '1666294111529-plant.png', 'image plante', 1),
+  ('PRODUIT FERMIER', 'dummy-link', '1666294126374-oil.png', 'image huile', 1),
+  ('LE PANIER', '', '1666294141053-basket.png', 'image panier', 1);
+
+
 
 CREATE TABLE `preorder` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -68,7 +77,7 @@ CREATE TABLE `preorder` (
 -- datetime default now fait un timestamp et inject automatiquement une date quand une donnée est créée
 -- on ne specifie pas dans la query les champs id,checkboxStatus et date car id est auto incrémenté, checkbox par défaut est 0 et date est remplis avec l'explication au dessus
 INSERT INTO
-  `preorder` (lastname, firstname, email, paymentMethod)
+  `preorder` (`lastname`, `firstname`, `email`, `paymentMethod`)
 VALUES
   (
     'Userlastname1',
