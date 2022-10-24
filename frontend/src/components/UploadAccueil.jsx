@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 // eslint-disable-next-line import/no-unresolved
 import axios from "@services/axios";
 import { useState, useEffect } from "react";
@@ -56,8 +57,11 @@ export default function Upload() {
       setImage([]);
       // eslint-disable-next-line no-undef
       setText();
-      setSucces(true);
       setFileCreated(data);
+      setSucces(true);
+      return setTimeout(() => {
+        window.location.reload();
+      }, 1500);
     } catch (err) {
       if (err) {
         setError(true);
@@ -80,22 +84,25 @@ export default function Upload() {
     );
     // console.log(text);
     const id = updateFile;
-    try {
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}pictures/update/${id}`,
-        formData
-      );
-      // console.log(data);
-      getImage();
-      // eslint-disable-next-line no-use-before-define
-      getText();
-      setSucces(true);
-      setUpdateFile(data);
-    } catch (err) {
-      if (err) {
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    )
+      try {
+        const { data } = await axios.put(
+          `${import.meta.env.VITE_BACKEND_URL}pictures/update/${id}`,
+          formData
+        );
+        setUpdateFile(data);
+        setSucces(true);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+      } catch (err) {
+        console.error(err);
         setError(true);
       }
-    }
   };
 
   const getImage = async () => {

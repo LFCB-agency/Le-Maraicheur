@@ -7,6 +7,7 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import JoditEditor from "jodit-react";
+import Upload from "@pages/Upload";
 import AlertSucces from "./AlertSucces";
 
 const ProduitsEditor = () => {
@@ -107,7 +108,12 @@ const ProduitsEditor = () => {
         })
         .then((response) => {
           setMessage(response.data);
-          setSuccess(true);
+          return (
+            setSuccess(true),
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          );
         });
       setSuccess(false);
     }
@@ -123,6 +129,41 @@ const ProduitsEditor = () => {
         className={buttonStyle(2)}
       >
         Pop-Up Panier
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(11)}
+        className={buttonStyle(11)}
+      >
+        AMAP
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(12)}
+        className={buttonStyle(12)}
+      >
+        MES AVANTAGES
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(13)}
+        className={buttonStyle(13)}
+      >
+        MARAICHEUR
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(14)}
+        className={buttonStyle(14)}
+      >
+        ABONNEMENTS
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(15)}
+        className={buttonStyle(15)}
+      >
+        CONTENU PANIER
       </button>
       <div className="text-editor">
         <JoditEditor
@@ -145,6 +186,7 @@ const ProduitsEditor = () => {
           Soumettre
         </button>
       </div>
+      <Upload />
     </section>
   );
 };

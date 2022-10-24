@@ -94,7 +94,7 @@ export default function TextAccueilSecond() {
                 {parse(text.body)}
               </Typography>
               <div className="button-modal-container">
-                <Link to="/contact">
+                <Link to="/amap">
                   <button
                     type="button"
                     className="modal-button-preorder"

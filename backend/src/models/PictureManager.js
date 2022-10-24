@@ -2,7 +2,15 @@
 const Joi = require("joi");
 const AbstractManager = require("./AbstractManager");
 
-const pics = ["carousel", "home", "methode", "produit", "propos", "contact"];
+const pics = [
+  "carousel",
+  "home",
+  "methode",
+  "produit",
+  "amap",
+  "propos",
+  "contact",
+];
 
 const picturesSchema = Joi.object({
   id: Joi.number(),

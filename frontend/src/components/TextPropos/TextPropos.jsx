@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import parse from "html-react-parser";
+import { Button } from "@mui/material";
 
 export default function TextPropos() {
   const [textPropos, setTextPropos] = useState([]);
-  // console.log(textPropos);
+  const [showMore, setShowMore] = useState(false);
 
   const getText = async () => {
     try {
@@ -20,9 +21,11 @@ export default function TextPropos() {
       }
     }
   };
+
   useEffect(() => {
     getText();
   }, []);
+
   return (
     <div className="team-main">
       <h2 className="teamtitle">Notre Équipe</h2>
@@ -39,7 +42,23 @@ export default function TextPropos() {
               alt={text.alt}
             />
           </div>
-          <p className="team-body">{parse(text.text)}</p>
+          {showMore ? (
+            <p key={text.id} className="team-body">
+              {parse(text.text.substring(0, 250).concat("..."))}
+            </p>
+          ) : (
+            <p className="team-body">{parse(text.text)}</p>
+          )}
+          <Button
+            sx={{
+              margin: "0px",
+            }}
+            variant="outlined"
+            id="buttonshowmore"
+            onClick={() => setShowMore(!showMore)}
+          >
+            {showMore ? "Voir plus" : "Voir moins"}
+          </Button>
         </div>
       ))}
     </div>
