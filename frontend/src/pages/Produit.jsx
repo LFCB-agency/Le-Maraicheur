@@ -84,107 +84,115 @@ export default function Produit() {
             spacing={{ xs: 8, md: 8 }}
             columns={{ xs: 4, sm: 4, md: 8 }}
           >
-            {products.map((items) => (
-              <Grid
-                xs={4}
-                sm={4}
-                md={4}
-                item={true}
-                key={items.id}
-                sx={{ margin: 0 }}
-              >
-                {items.title !== "LE PANIER" ? (
-                  <a
-                    key={items.id}
-                    className="product-image "
-                    id="legume"
-                    to={items.link}
-                    target="_blank"
-                  >
-                    <img
-                      className="imageprod1"
-                      src={`${import.meta.env.VITE_IMAGES_URL}${items.image}`}
-                      alt={items.alt}
-                    />
-                    <p className="legume-product">{items.title}</p>
-                    <span className="spanLine" />
-                  </a>
-                ) : (
-                  textModal.map((text) => (
-                    <>
-                      <div className="product-image">
-                        <img
-                          className="imageprod1"
-                          src={`${import.meta.env.VITE_IMAGES_URL}${
-                            items.image
-                          }`}
-                          alt={items.alt}
-                          onClick={handleOpen}
-                        />
-                        <p className="legume-product" onClick={handleOpen}>
-                          {items.title}
-                        </p>
-                        <span className="spanLine" />
-                      </div>
-                      <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                      >
-                        <Box sx={style}>
-                          <CloseIcon
-                            onClick={handleClose}
-                            style={{
-                              color: "white",
-                              float: "right",
-                              marginRight: "5px",
-                              marginTop: "5px",
-                              cursor: "pointer",
-                            }}
-                          />
-                          <Typography
-                            style={{
-                              fontFamily: "Montserrat, sans-serif",
-                              color: "white",
-                              display: "flex",
-                              justifyContent: "center",
-                              marginTop: "25px",
-                            }}
-                          >
-                            {parse(text.title)}
-                          </Typography>
-                          <Typography
-                            style={{
-                              fontFamily: "Montserrat, sans-serif",
-                              color: "white",
-                              textAlign: "center",
-                              marginTop: "3em",
-                              marginLeft: "15px",
-                              marginRight: "15px",
-                            }}
-                          >
-                            {parse(text.body)}
-                          </Typography>
-                          <div className="button-modal-container">
-                            <Link to="/amap">
-                              <button
-                                type="button"
-                                className="modal-button-preorder"
-                                style={{ marginTop: "3em" }}
-                              >
-                                {" "}
-                                JE COMMANDE{" "}
-                              </button>
-                            </Link>
-                          </div>
-                        </Box>
-                      </Modal>
-                    </>
-                  ))
-                )}
+            {products.length === 0 ? (
+              <Grid xs={12} sm={12} md={12} item={true} sx={{ margin: 0 }}>
+                <p className="nothing-display">
+                  La boutique est fermée pour le moment ! revenez plus tard !
+                </p>
               </Grid>
-            ))}
+            ) : (
+              products.map((items) => (
+                <Grid
+                  xs={4}
+                  sm={4}
+                  md={4}
+                  item={true}
+                  key={items.id}
+                  sx={{ margin: 0 }}
+                >
+                  {items.title !== "LE PANIER" ? (
+                    <a
+                      key={items.id}
+                      className="product-image "
+                      id="legume"
+                      to={items.link}
+                      target="_blank"
+                    >
+                      <img
+                        className="imageprod1"
+                        src={`${import.meta.env.VITE_IMAGES_URL}${items.image}`}
+                        alt={items.alt}
+                      />
+                      <p className="legume-product">{items.title}</p>
+                      <span className="spanLine" />
+                    </a>
+                  ) : (
+                    textModal.map((text) => (
+                      <>
+                        <div className="product-image">
+                          <img
+                            className="imageprod1"
+                            src={`${import.meta.env.VITE_IMAGES_URL}${
+                              items.image
+                            }`}
+                            alt={items.alt}
+                            onClick={handleOpen}
+                          />
+                          <p className="legume-product" onClick={handleOpen}>
+                            {items.title}
+                          </p>
+                          <span className="spanLine" />
+                        </div>
+                        <Modal
+                          open={open}
+                          onClose={handleClose}
+                          aria-labelledby="modal-modal-title"
+                          aria-describedby="modal-modal-description"
+                        >
+                          <Box sx={style}>
+                            <CloseIcon
+                              onClick={handleClose}
+                              style={{
+                                color: "white",
+                                float: "right",
+                                marginRight: "5px",
+                                marginTop: "5px",
+                                cursor: "pointer",
+                              }}
+                            />
+                            <Typography
+                              style={{
+                                fontFamily: "Montserrat, sans-serif",
+                                color: "white",
+                                display: "flex",
+                                justifyContent: "center",
+                                marginTop: "25px",
+                              }}
+                            >
+                              {parse(text.title)}
+                            </Typography>
+                            <Typography
+                              style={{
+                                fontFamily: "Montserrat, sans-serif",
+                                color: "white",
+                                textAlign: "center",
+                                marginTop: "3em",
+                                marginLeft: "15px",
+                                marginRight: "15px",
+                              }}
+                            >
+                              {parse(text.body)}
+                            </Typography>
+                            <div className="button-modal-container">
+                              <Link to="/amap">
+                                <button
+                                  type="button"
+                                  className="modal-button-preorder"
+                                  style={{ marginTop: "3em" }}
+                                >
+                                  {" "}
+                                  JE COMMANDE{" "}
+                                </button>
+                              </Link>
+                            </div>
+                          </Box>
+                        </Modal>
+                      </>
+                    ))
+                  )}
+                </Grid>
+              ))
+            )}
           </Grid>
         </Box>
       </div>

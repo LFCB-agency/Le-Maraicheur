@@ -10,9 +10,9 @@ export default function TextPropos() {
   const getText = async () => {
     try {
       const data = await axios
-        .get(`${import.meta.env.VITE_BACKEND_URL}pictures`)
+        .get(`${import.meta.env.VITE_BACKEND_URL}team`)
         .then((response) => response.data);
-      setTextPropos(data.filter((pic) => pic.categories === "propos"));
+      setTextPropos(data);
       // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
@@ -34,11 +34,11 @@ export default function TextPropos() {
         <div className="team-container" key={text.id}>
           <div className="container-image-propos">
             <div className="container--paragraphe-propos">
-              <p className="team-title">{text.title}</p>
+              <p className="team-title">{text.name}</p>
             </div>
             <img
               className="team-image"
-              src={`${import.meta.env.VITE_IMAGES_URL}${text.file}`}
+              src={`${import.meta.env.VITE_IMAGES_URL}${text.image}`}
               alt={text.alt}
             />
           </div>
