@@ -26,12 +26,15 @@ export default function TextPropos() {
     getText();
   }, []);
 
+  const style =
+    textPropos.length === 1 ? "team-container-bis" : "team-container";
+
   return (
     <div className="team-main">
       <h2 className="teamtitle">Notre Équipe</h2>
       <span className="spanLine" />
       {textPropos.map((text) => (
-        <div className="team-container" key={text.id}>
+        <div className={style} key={text.id}>
           <div className="container-image-propos">
             <div className="container--paragraphe-propos">
               <p className="team-title">{text.name}</p>

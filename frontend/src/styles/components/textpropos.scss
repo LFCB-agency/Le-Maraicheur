@@ -3,9 +3,18 @@
   width: 100%;
   margin-bottom: 70px;
   margin-top: 12px;
-
   align-items: center;
 }
+
+.team-container-bis {
+  display: flex;
+  width: 100%;
+  margin-bottom: 140px;
+  margin-top: 12px;
+  align-items: center;
+  height: 472px;
+}
+
 .container-image-propos {
   display: flex;
   flex-direction: column-reverse;
@@ -104,6 +113,8 @@
     align-items: center;
     margin: 0;
   }
+
+ 
 
   .teamtitle {
     // nice
