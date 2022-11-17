@@ -66,8 +66,10 @@
   }
 
   .imageAmapFourth{
+    height: 360px;
     width: 100%;
     margin: 10px 0px 10px 0px;
+    object-fit: cover;
   }
 
   .body-amap-5{
@@ -218,9 +220,11 @@
   }
 
   .imageAmapFourth{
-    width: 70%;
-    margin-bottom: 40px;
-  }
+    margin: 10px 0px 10px 0px;
+    width: auto;
+    height: auto;
+}
+  
   .amap-grid-1{
     grid-area: 1 / 1 / 2 / 2;
   }

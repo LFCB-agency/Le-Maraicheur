@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import parse from "html-react-parser";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default function Produit() {
   const [products, setProducts] = useState([]);
@@ -66,6 +67,15 @@ export default function Produit() {
 
   return (
     <section>
+      <Helmet>
+        <meta
+          description="Site Internet Du Maraicher Maraicheur Antoine Debray"
+          charSet="utf-8"
+          keywords="Maraicher, Maraicheur, Antoine Debray, Debray, Sol Vivant, Gestion du sol,
+       Culture de la terre, terre, fetile, agriculteur, légumes premium, champs, paysan "
+        />
+        <link href="http://lemaraicheur.com/produit" />
+      </Helmet>
       <Navbar />
       <MenuBurger />
       <h1 className="titre-product">NOS PRODUITS</h1>
