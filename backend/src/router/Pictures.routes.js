@@ -11,7 +11,7 @@ const { PictureController } = require("../controllers");
 const storage = multer.diskStorage({
   // on defini le chemin ou les fichiers seront stockés
   destination: (_req, _file, cb) => {
-    cb(null, "public/assets/images");
+    cb(null, path.join(__dirname, "../../public/assets/images/"));
   },
   // filename defini le nom du fichier dans le dossier
   // dans ce cas là il sera nommé ex : "2022-20-06-nom-du-fichier"
@@ -62,7 +62,7 @@ router.put(
     const storage = multer.diskStorage({
       // on defini le chemin ou les fichiers seront stockés
       destination: (_req, _file, cb) => {
-        cb(null, "public/assets/images");
+        cb(null, path.join(__dirname, "../../public/assets/images/"));
       },
       // filename defini le nom du fichier dans le dossier
       // dans ce cas là il sera nommé ex : "2022-20-06-nom-du-fichier"
