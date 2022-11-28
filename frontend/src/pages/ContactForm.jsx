@@ -17,8 +17,8 @@ import { Helmet } from "react-helmet";
 const Contact = () => {
   const [verified, setVerified] = useState(false);
 
-  const onSubmit = () => {
-    // console.log("Captcha value:", value);
+  const onSubmit = (e) => {
+    e.preventDefault();
     setVerified(true);
   };
   return (

@@ -87,7 +87,6 @@ router.put(
         picSection: pictureData.picSection,
         text_id: pictureData.text_id,
       };
-
       return next();
     });
   },
