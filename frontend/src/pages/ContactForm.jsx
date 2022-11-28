@@ -13,6 +13,7 @@ import Footer from "@components/Footer";
 import logo3 from "@assets/pictures/logo3.png";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const Contact = () => {
   const [verified, setVerified] = useState(false);
@@ -21,7 +22,8 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     setVerified(true);
   };
 
@@ -38,6 +40,15 @@ const Contact = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          description="Site Internet Du Maraicher Maraicheur Antoine Debray"
+          charSet="utf-8"
+          keywords="Maraicher, Maraicheur, Antoine Debray, Debray, Sol Vivant, Gestion du sol,
+       Culture de la terre, terre, fetile, agriculteur, légumes premium, champs, paysan "
+        />
+        <link href="http://lemaraicheur.com/contact" />
+      </Helmet>
       <Navbar />
       <MenuBurger />
       <h1 className="titre-contact">Nous contacter</h1>

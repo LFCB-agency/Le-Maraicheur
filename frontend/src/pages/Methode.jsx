@@ -10,10 +10,20 @@ import ImageMethodeFourth from "@components/ImageMethode/ImageMethodeFourth";
 import TextMethodeThird from "@components/TextMethode/TextMethodeThird";
 import TextMethodeFourth from "@components/TextMethode/TextMethodeFourth";
 import Navbar from "@components/Navbar";
+import { Helmet } from "react-helmet";
 
 export default function Methode() {
   return (
     <>
+      <Helmet>
+        <meta
+          description="Site Internet Du Maraicher Maraicheur Antoine Debray"
+          charSet="utf-8"
+          keywords="Maraicher, Maraicheur, Antoine Debray, Debray, Sol Vivant, Gestion du sol,
+       Culture de la terre, terre, fetile, agriculteur, légumes premium, champs, paysan "
+        />
+        <link href="http://lemaraicheur.com/methode" />
+      </Helmet>
       <Navbar />
       <MenuBurger />
       <ImageMethode />

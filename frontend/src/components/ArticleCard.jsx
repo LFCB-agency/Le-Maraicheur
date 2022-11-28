@@ -1,8 +1,39 @@
-import CardContent from "@mui/material/CardContent";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function ArticleCard() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    autoplay: false,
+    autoplayspeed: 2500,
+    adaptiveHeight: true,
+    pauseOnHover: true,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+          autoplay: false,
+          autoplayspeed: 2500,
+          adaptiveHeight: true,
+          pauseOnHover: true,
+        },
+      },
+    ],
+  };
   const [article, setArticle] = useState();
 
   const getArticle = async () => {
@@ -25,11 +56,10 @@ export default function ArticleCard() {
   }, []);
 
   return (
-    <div className="card-main-container">
-      {/* sans le boolean avant le map, le site crash */}
-      {article?.map((items) => (
-        <section key={items.id} className="card-container-article">
-          <CardContent key={items.id}>
+    <div className="article-carousel-container">
+      <Slider {...settings}>
+        {article?.map((items) => (
+          <div key={items.id} className="card-main-container">
             <h2 className="card-article-title">{items.title}</h2>
             <a
               rel="noreferrer"
@@ -43,9 +73,9 @@ export default function ArticleCard() {
                 alt={items.alt}
               />
             </a>
-          </CardContent>
-        </section>
-      ))}
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 }

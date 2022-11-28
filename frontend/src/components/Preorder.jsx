@@ -59,7 +59,7 @@ export default function ClientList() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <div>
+        <div className="payment">
           <p>Paiement :</p>
           <select
             className="clientStatus"

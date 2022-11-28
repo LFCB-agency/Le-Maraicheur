@@ -33,19 +33,19 @@ export default function TextMethodeSecond() {
         <section key={text.id}>
           <div className="text-container">
             {showMore ? (
-              <p className="bodySec">{parse(text.body)}</p>
-            ) : (
               `${text.body.substring(0, 250)}...`
+            ) : (
+              <p className="bodySec">{parse(text.body)}</p>
             )}
             <Button
               variant="outlined"
               id="buttondisabled"
               onClick={() => setShowMore(!showMore)}
             >
-              {showMore ? "Voir moins" : "Voir plus"}
+              {showMore ? "Voir plus" : "Voir moins"}
             </Button>
           </div>
-          <div className="text-container2">
+          {/* <div className="text-container2">
             {showMore ? (
               <p className="bodySec">{parse(text.body)}</p>
             ) : (
@@ -58,7 +58,7 @@ export default function TextMethodeSecond() {
             >
               {showMore ? "Voir moins" : "Voir plus"}
             </Button>
-          </div>
+          </div> */}
         </section>
       ))}
     </section>

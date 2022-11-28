@@ -17,6 +17,7 @@ const Topslide = () => {
     "À Propos",
     "Clients",
     "Articles",
+    "Market",
   ];
   const location = useLocation();
   const [onHover, setOnHover] = useState(settings);
@@ -46,7 +47,8 @@ const Topslide = () => {
             {location.pathname === "/admin/produits" ? menu[2] : null}
             {location.pathname === "/admin/apropos" ? menu[3] : null}
             {location.pathname === "/admin/client" ? menu[4] : null}
-            {location.pathname === "/admin/news" ? menu[5] : null}
+            {location.pathname === "/admin/articles" ? menu[5] : null}
+            {location.pathname === "/admin/market" ? menu[6] : null}
           </span>
         </div>
         <div className="position-settings">

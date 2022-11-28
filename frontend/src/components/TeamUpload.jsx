@@ -1,5 +1,8 @@
 /* eslint-disable no-alert */
 // eslint-disable-next-line import/no-unresolved
+/* eslint-disable no-restricted-globals */
+/* eslint-disable consistent-return */
+
 import axios from "@services/axios";
 import { useState, useEffect } from "react";
 import "../App.css";
@@ -16,75 +19,6 @@ export default function Upload() {
   const [content, setContent] = useState("");
   const [image, setImage] = useState([]);
 
-  // import du text editor et config
-  // const config = {
-  //   readonly: false,
-  //   height: 400,
-  //   buttons: [
-  //     "source",
-  //     "|",
-  //     "bold",
-  //     "strikethrough",
-  //     "underline",
-  //     "italic",
-  //     "|",
-  //     "outdent",
-  //     "indent",
-  //     "|",
-  //     "font",
-  //     "fontsize",
-  //     "brush",
-  //     "|",
-  //     "table",
-  //     "link",
-  //     "|",
-  //     "align",
-  //     "undo",
-  //     "redo",
-  //     "|",
-  //     "hr",
-  //     "eraser",
-  //     "|",
-  //     "symbol",
-  //     "print",
-  //   ],
-  //   buttonsXS: [
-  //     "source",
-  //     "|",
-  //     "bold",
-  //     "strikethrough",
-  //     "underline",
-  //     "italic",
-  //     "|",
-  //     "outdent",
-  //     "indent",
-  //     "|",
-  //     "font",
-  //     "fontsize",
-  //     "brush",
-  //     "|",
-  //     "table",
-  //     "link",
-  //     "|",
-  //     "align",
-  //     "undo",
-  //     "redo",
-  //     "|",
-  //     "hr",
-  //     "eraser",
-  //     "|",
-  //     "symbol",
-  //     "print",
-  //   ],
-  //   controls: {
-  //     font: {
-  //       list: {
-  //         "Montserrat,sans-serif": "Montserrat",
-  //       },
-  //     },
-  //   },
-  // };
-
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
   const handleInput = (e) => {
     const file = e.target.files[0];
@@ -96,7 +30,11 @@ export default function Upload() {
   };
 
   const insertText = () => {
-    const data = { body: content, textSection: section, page: categories };
+    const data = {
+      body: content,
+      textSection: section,
+      page: categories,
+    };
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}text`, data)
       .then((result) => {
@@ -114,22 +52,31 @@ export default function Upload() {
         description,
         categories,
         textId,
-        // pictureId,
         picSection: section,
       })
     );
 
-    // console.log(formData);
-
-    try {
-      const { data } = await axios.post("team/upload", formData);
-      // console.log(data);
-      return setFileCreated(data);
-    } catch (err) {
-      console.warn(err);
-      // eslint-disable-next-line
-      return alert(err.message);
-    }
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    )
+      try {
+        const { data } = await axios.post("team/upload", formData);
+        // console.log(data);
+        return (
+          setFileCreated(data),
+          alert(
+            "Text Equipier ajouté !",
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          )
+        );
+      } catch (err) {
+        console.warn(err);
+        // eslint-disable-next-line
+      }
   };
 
   const handleUpdate = async (e) => {
@@ -141,18 +88,30 @@ export default function Upload() {
       JSON.stringify({ description, categories, picSection: section })
     );
     const id = updateFile;
-    try {
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_BACKEND_URL}pictures/update/${id}`,
-        formData
-      );
-      // console.log(data);
-      return setUpdateFile(data);
-    } catch (err) {
-      console.warn(err);
-      // eslint-disable-next-line
-      return alert(err.message);
-    }
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    )
+      try {
+        const { data } = await axios.put(
+          `${import.meta.env.VITE_BACKEND_URL}pictures/update/${id}`,
+          formData
+        );
+        return (
+          setUpdateFile(data),
+          alert(
+            "Equipier ajouté !",
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          )
+        );
+      } catch (err) {
+        console.warn(err);
+        // eslint-disable-next-line
+        return alert(err.message);
+      }
   };
 
   const getImage = async () => {
@@ -190,7 +149,7 @@ export default function Upload() {
     getImage();
     getText();
   }, [categories]);
-  // console.log(text);
+
   return (
     <div>
       <div className="text-editor">
@@ -223,18 +182,6 @@ export default function Upload() {
             <option value="4">4</option>
           </select>
         </label>
-        {/* <JoditEditor
-      ref={editor}
-      value={content}
-      config={config}
-      // onBlur={handleUpdate}
-      onChange={(value) => {
-        updatedContent = setContent(value);
-      }}
-    /> */}
-        {/* <button type="button" onClick={() => insertTextById(currentId)}>
-      Submit
-    </button> */}
         <button type="button" onClick={() => insertText()}>
           Submit new text
         </button>

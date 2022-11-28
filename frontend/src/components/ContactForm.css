@@ -31,7 +31,7 @@
   margin-top: 25px;
 }
 .img-contact img {
-  height: 600px;
+  height: 100%;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   width: auto;
   border-radius: 0px 0px 50px 0px;
@@ -176,6 +176,10 @@
   margin-bottom: 2rem;
 }
 
+.img-contact {
+  height: 677px;
+}
+
 /* Mobile */
 
 @media screen and (max-width: 700px) {
@@ -190,6 +194,9 @@
     margin-top: 25px;
   }
   .contact_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: #fdfafa;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0px 0px 0px 0px;
@@ -238,11 +245,17 @@
     width: 90px;
   }
   .nom-prenom {
-    width: 7rem;
+    width: 16rem;
+  }
+
+  .name-contact {
+    display: flex;
+    flex-direction: column;
   }
 
   .name-contact label {
-    padding-right: 9rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .email-label input {
@@ -261,5 +274,9 @@
 
   .info-contact {
     margin-top: 15px;
+  }
+
+  .label-title {
+    align-items: left;
   }
 }

@@ -1,7 +1,9 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-alert */
+/* eslint-disable func-names */
 // eslint-disable-next-line import/no-unresolved
+
 import axios from "@services/axios";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -38,12 +40,21 @@ export default function Upload() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", selectedFile);
+    if (!selectedFile) {
+      return alert("Please provide a picture to upload");
+    }
     // eslint-disable-next-line
     const dataT = {
       description,
       categories,
       picSection: parseInt(section, 10),
     };
+
+    if (!description || !categories || !section) {
+      return alert(
+        "Provide a description, categories, and a section to upload your image"
+      );
+    }
     if (textId) {
       dataT.text_id = parseInt(textId, 10);
     }
@@ -57,6 +68,9 @@ export default function Upload() {
       setText();
       setSucces(true);
       setFileCreated(data);
+      setTimeout(function () {
+        window.location.reload();
+      }, 4000);
     } catch (err) {
       if (err) {
         setError(true);
@@ -184,6 +198,12 @@ export default function Upload() {
             )}
             {location.pathname === "/admin/apropos" && (
               <option value="propos">À Propos</option>
+            )}
+            {location.pathname === "/admin/produits" && (
+              <>
+                <option value="amap">Amap</option>
+                <option value="produits">Produits</option>
+              </>
             )}
           </select>
           {categories === "propos" && (
