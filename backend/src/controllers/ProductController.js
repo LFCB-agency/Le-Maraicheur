@@ -119,18 +119,6 @@ class ProductController {
       });
   };
 
-  // static delete = (req, res) => {
-  //   models.product
-  //     .delete(req.params.id)
-  //     .then(() => {
-  //       res.sendStatus(204);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //       res.sendStatus(500);
-  //     });
-  // };
-
   static delete = async (req, res) => {
     const productId = parseInt(req.params.id, 10);
     try {

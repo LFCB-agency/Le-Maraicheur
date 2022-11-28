@@ -24,6 +24,14 @@
   }
 }
 
+
+.nothing-display{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 50% 0 50% 0;
+}
+
 .product-image {
   display: flex;
   align-items: center;

@@ -11,10 +11,20 @@ import ImageAmapFirst from "@components/ImageAmap/ImageAmapFirst";
 import ImageAmapSec from "@components/ImageAmap/ImageAmapSec";
 import ImageAmapThird from "@components/ImageAmap/ImageAmapThird";
 import ImageAmapFourth from "@components/ImageAmap/ImageAmapFourth";
+import { Helmet } from "react-helmet";
 
 export default function Amap() {
   return (
     <>
+      <Helmet>
+        <meta
+          description="Site Internet Du Maraicher Maraicheur Antoine Debray"
+          charSet="utf-8"
+          keywords="Maraicher, Maraicheur, Antoine Debray, Debray, Sol Vivant, Gestion du sol,
+       Culture de la terre, terre, fetile, agriculteur, légumes premium, champs, paysan "
+        />
+        <link href="http://lemaraicheur.com/amap" />
+      </Helmet>
       <Navbar />
       <MenuBurger />
       <ImageAmapFirst />
