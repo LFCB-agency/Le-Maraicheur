@@ -106,6 +106,12 @@ const TextEditor = () => {
           // console.log(response);
           setMessage(response.data);
           setSuccess(true);
+          return alert(
+            "Texte mis à jour !",
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          );
         });
       setSuccess(false);
     }

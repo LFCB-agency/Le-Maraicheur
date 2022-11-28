@@ -1,27 +1,33 @@
 .team-container {
   display: flex;
   width: 100%;
-
+  margin-bottom: 70px;
+  margin-top: 12px;
   align-items: center;
 }
-.container-image-propos {
-  position: relative;
-  transform: translate(-50%, -50%);
-  margin-top: 250px;
-  left: 10%;
+
+.team-container-bis {
   display: flex;
+  width: 100%;
+  margin-bottom: 140px;
+  margin-top: 12px;
   align-items: center;
+  height: 472px;
+}
+
+.container-image-propos {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin-left: 3em;
 
   p {
     @include shadows;
-    position: absolute;
     color: $white;
-    left: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 35px;
-    top: 90%;
     width: 250px;
     background: rgba(44, 47, 51, 0.6);
     font-family: "Montserrat", sans-serif;
@@ -31,14 +37,21 @@
     border-radius: 25px;
   }
 }
+
+#buttonshowmore {
+  display: none;
+}
+
+.container--paragraphe-propos{
+  margin-top: -30px
+}
+
 .team-image {
   @include shadows;
   display: flex;
   justify-content: center;
   width: 250px;
   height: 250px;
-  margin-left: 3em;
-  margin-right: 2em;
   border-radius: 100%;
   object-fit: cover;
 }
@@ -80,6 +93,19 @@
 }
 
 @media (max-width: 900px) {
+
+  #buttonshowmore {
+    align-self: flex-end;
+    display: flex;
+    border: solid 2px #2c2f33;
+    color: #2c2f33;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 3px;
+    font-size: 10px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+  }
+
   .team-container {
     display: flex;
     flex-direction: column;
@@ -87,6 +113,8 @@
     align-items: center;
     margin: 0;
   }
+
+ 
 
   .teamtitle {
     // nice
@@ -97,33 +125,28 @@
     width: 90%;
   }
   .team-image {
-    margin: 20px 0 20px 0;
+    margin: 20px 0 0px 0;
     box-shadow: 5px 10px 30px rgb(0 0 0 / 25%);
     width: 50%;
     height: 200px;
     border-radius: 50%;
-    /* clip-path: ellipse(50% 40%); */
     object-fit: cover;
   }
   .container-image-propos {
-    position: relative;
-    display: flex;
-    left: 50%;
+    position: inherit;
     align-items: center;
     width: 100%;
     justify-content: center;
+    flex-direction: column-reverse;
+    margin-left: 0px;
 
     p {
       @include shadows;
-      position: absolute;
-      color: $white;
-      left: 17%;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 35px;
-      top: 80%;
-      width: 250px;
       background: rgba(44, 47, 51, 0.6);
       font-family: "Montserrat", sans-serif;
       letter-spacing: 1px;

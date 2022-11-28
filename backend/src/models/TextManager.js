@@ -2,7 +2,7 @@
 const Joi = require("joi");
 const AbstractManager = require("./AbstractManager");
 
-const page = ["home", "methode", "produit", "propos", "contact"];
+const page = ["home", "methode", "produit", "propos", "amap", "contact"];
 
 const textSchema = Joi.object({
   title: Joi.string().max(255),

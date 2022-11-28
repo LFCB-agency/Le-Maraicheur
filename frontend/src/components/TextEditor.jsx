@@ -84,10 +84,6 @@ const TextEditor = () => {
       },
     },
   };
-  // const handleUpdate = (e) => {
-  //   const editorContent = e.target.value;
-  //   updatedContent = editorContent;
-  // };
 
   const fetchTextById = (id) => {
     axios
@@ -111,7 +107,12 @@ const TextEditor = () => {
         })
         .then((response) => {
           setMessage(response.data);
-          setSuccess(true);
+          return (
+            setSuccess(true),
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          );
         });
       setSuccess(false);
     }

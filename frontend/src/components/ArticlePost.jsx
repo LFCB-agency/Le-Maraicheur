@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 // eslint-disable-next-line import/no-unresolved
 import axios from "@services/axios";
 import { useState, useEffect } from "react";
@@ -8,7 +9,7 @@ import "../App.css";
 import AlertError from "@components/AlertError";
 import AlertSucces from "@components/AlertSucces";
 
-export default function Upload() {
+export default function ArticlePost() {
   const [selectedFile, setSelectedFile] = useState();
   const [fileCreated, setFileCreated] = useState();
   const [description, setDescription] = useState("");
@@ -18,7 +19,6 @@ export default function Upload() {
   const [articleLink, setArticleLink] = useState("");
   const [error, setError] = useState(false);
   const [succes, setSucces] = useState(false);
-  const [ridImage] = useState("");
 
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
   const handleInput = (e) => {
@@ -42,18 +42,29 @@ export default function Upload() {
     };
     formData.append("pictureData", JSON.stringify(dataT));
 
-    try {
-      const { data } = await axios.post("article/upload", formData);
-      // eslint-disable-next-line no-undef
-      setArticleImage([]);
-      // eslint-disable-next-line no-undef
-      setSucces(true);
-      setFileCreated(data);
-    } catch (err) {
-      if (err) {
-        setError(true);
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    )
+      try {
+        const { data } = await axios.post("article/upload", formData);
+        // eslint-disable-next-line no-undef
+        setArticleImage([]);
+        // eslint-disable-next-line no-undef
+        setSucces(true);
+        setFileCreated(data);
+        return alert(
+          "Article ajouter !",
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        );
+      } catch (err) {
+        if (err) {
+          setError(true);
+        }
       }
-    }
   };
 
   const handleUpdate = async (e) => {
@@ -80,6 +91,12 @@ export default function Upload() {
       // eslint-disable-next-line no-use-before-define
       setSucces(true);
       setUpdateFile(data);
+      return alert(
+        "Article mis à jour !",
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500)
+      );
     } catch (err) {
       if (err) {
         setError(true);
@@ -100,14 +117,25 @@ export default function Upload() {
   };
 
   const imageDelete = async (id) => {
-    const data = await axios
-      .delete(`${import.meta.env.VITE_BACKEND_URL}article/${id}`, {
-        body: articleImage,
-      })
-      .then((response) => {
-        ridImage(response.data);
-        getImage(data);
-      });
+    if (
+      confirm(
+        "Êtes vous sûr de vouloir soumettre ces modifications? \nCliquer sur OK pour confirmer ou annuler."
+      )
+    )
+      try {
+        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}article/${id}`, {
+          body: articleImage,
+        });
+
+        return alert(
+          "Article supprimer !",
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        );
+      } catch (err) {
+        console.error(err);
+      }
   };
 
   useEffect(() => {
