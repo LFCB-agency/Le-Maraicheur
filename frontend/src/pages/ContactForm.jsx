@@ -5,6 +5,7 @@
 /* eslint-disable import/newline-after-import */
 /* eslint-disable import/no-unresolved */
 import "@components/ContactForm.css";
+import axios from "axios";
 import MenuBurger from "@components/MenuBurger";
 import Preorder from "@components/Preorder";
 import Navbar from "@components/Navbar";
@@ -16,11 +17,27 @@ import { Helmet } from "react-helmet";
 
 const Contact = () => {
   const [verified, setVerified] = useState(false);
+  const [email, setEmail] = useState("");
+  const [textMail, setTextMail] = useState("");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
     setVerified(true);
   };
+
+  const postEmail = async (e) => {
+    e.preventDefault();
+    const postData = { email, textMail, name, surname };
+    // eslint-disable-next-line no-unused-vars
+    const newPost = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}emails/contactForm`,
+      postData
+    );
+    setVerified(true);
+  };
+
   return (
     <div>
       <Helmet>
@@ -40,7 +57,7 @@ const Contact = () => {
         <section className="container-form-grid">
           <div className="form-contact">
             <form
-              onSubmit={onSubmit}
+              onSubmit={postEmail}
               name="contact"
               method="post"
               className="contact_form"
@@ -57,6 +74,8 @@ const Contact = () => {
                 <label className="contact-label">
                   Prénom*{" "}
                   <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     className="nom-prenom"
                     type="text"
                     name="prénom"
@@ -67,6 +86,8 @@ const Contact = () => {
                 <label className="contact-label">
                   Nom*{" "}
                   <input
+                    value={surname}
+                    onChange={(e) => setSurname(e.target.value)}
                     className="nom-prenom"
                     type="text"
                     name="nom"
@@ -77,6 +98,8 @@ const Contact = () => {
               <label className="email-label">
                 Email*{" "}
                 <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="email"
                   type="email"
                   name="email"
@@ -87,6 +110,8 @@ const Contact = () => {
               <label className="message-contact">
                 Message*{" "}
                 <textarea
+                  value={textMail}
+                  onChange={(e) => setTextMail(e.target.value)}
                   rows="10"
                   cols="50"
                   placeholder="Saisissez votre message ici..."

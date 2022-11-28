@@ -64,7 +64,6 @@ export default function Produit() {
     background: "rgba( 255, 255, 255, 0.2 )",
     boxShadow: "0 8px 32px 0 rgba(253, 253, 253, 0.37)",
   };
-
   return (
     <section>
       <Helmet>

@@ -21,7 +21,6 @@
   box-sizing: border-box;
 }
 .background {
-  
   padding: 90px 0px;
   background-image: url("./assets/pictures/backgroundadmin.png");
   height: 100vh;

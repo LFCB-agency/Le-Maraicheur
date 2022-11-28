@@ -42,8 +42,8 @@
   display: none;
 }
 
-.container--paragraphe-propos{
-  margin-top: -30px
+.container--paragraphe-propos {
+  margin-top: -30px;
 }
 
 .team-image {
@@ -93,7 +93,6 @@
 }
 
 @media (max-width: 900px) {
-
   #buttonshowmore {
     align-self: flex-end;
     display: flex;
@@ -113,8 +112,6 @@
     align-items: center;
     margin: 0;
   }
-
- 
 
   .teamtitle {
     // nice
