@@ -33,7 +33,9 @@
   flex-direction: column;
   margin-top: 80px;
 }
-
+.legumes-products {
+  display: none;
+}
 .imageprod1 {
   filter: drop-shadow(5px 5px 4px rgba(44, 47, 51, 0.4));
   width: 60%;

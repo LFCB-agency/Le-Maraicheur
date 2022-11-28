@@ -16,6 +16,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import AlertError from "@components/AlertError";
+import usePicto from "@services/useModal";
 
 export default function Produit() {
   const style = {
@@ -36,6 +37,8 @@ export default function Produit() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [error, setError] = useState(false);
+  const { showPicto, toggle } = usePicto();
+
   const getText = async () => {
     try {
       const data = await axios
@@ -60,15 +63,17 @@ export default function Produit() {
       <h1 className="titre-product">NOS PRODUITS</h1>
       <hr className="product-hr"></hr>
       <div className="products-picto">
-        <Link className="product-image " id="legume" to="*">
-          <img
-            className="imageprod1"
-            alt=" vegetable "
-            src="src/assets/pictures/vegetable.png"
-          />
-          <p className="legume-product">NOS LÉGUMES</p>
-          <span className="spanLine" />
-        </Link>
+        {showPicto == false ? (
+          <Link className="legume-product" id="legume" to="*">
+            <img
+              className="imageprod1"
+              alt=" vegetable "
+              src="src/assets/pictures/vegetable.png"
+            />
+            <p className="legume-product">NOS LÉGUMES</p>
+            <span className="spanLine" />
+          </Link>
+        ) : null}
         <Link className="product-image" id="fermier" to="*">
           <img
             className="imageprod2"
