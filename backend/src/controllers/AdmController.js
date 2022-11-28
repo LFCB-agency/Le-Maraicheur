@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 const jwt = require("jsonwebtoken");
 const models = require("../models");
 const generatePassword = require("../helpers/generatePassword");
@@ -56,6 +58,53 @@ class AdmController {
       return res.sendStatus(204);
     } catch (err) {
       return res.status(500).send(err.message);
+    }
+  };
+
+  static refreshToken = async (req, res) => {
+    const token = req.cookies.accessToken;
+    if (!token) {
+      return res.sendStatus(204);
+    }
+    try {
+      const decoded = jwt.verify(token, process.env.ACCESS_JWT_SECRET);
+      // console.log(decoded);
+
+      const id = parseInt(req.params.id, 10);
+      // console.log(id);
+      const [adm] = await models.adm.find(id);
+      // console.log(adm);
+      if (!adm[0]) {
+        // console.log(token);
+        return res.status(404).send(`User with id "${id}" not found`);
+      }
+
+      const refreshedToken = jwt.sign(
+        { id: adm.id },
+        process.env.ACCESS_JWT_SECRET,
+        {
+          expiresIn: process.env.ACCESS_JWT_EXPIRESIN,
+        }
+      );
+
+      return res
+        .cookie(
+          "accessToken",
+          refreshedToken,
+          {
+            httpOnly: true,
+            secure: process.env.ACCESS_JWT_SECURE === "true",
+            maxAge: parseInt(process.env.ACCESS_JWT_COOKIE_MAXAGE, 10),
+          }
+          // console.warn(token)
+        )
+        .status(200)
+        .json({
+          ...adm[0],
+          expiresIn: parseInt(process.env.ACCESS_JWT_COOKIE_MAXAGE, 10),
+        });
+    } catch (err) {
+      return res.sendStatus(500);
     }
   };
 

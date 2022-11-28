@@ -3,13 +3,8 @@ const express = require("express");
 const { AdmController, EmailController } = require("../controllers");
 
 const router = express.Router();
-
-// router.get("/", (req, res) => {
-//   return res.send("Hello Adm routes");
-// });
-// router.get("/", AdmController.browse);
-
 router.get("/", AdmController.browse);
+router.get("/refreshToken/:id", AdmController.refreshToken);
 router.get("/logout", AdmController.authorization, AdmController.clearCookie);
 router.get("/:id", AdmController.read);
 

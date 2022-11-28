@@ -6,19 +6,21 @@ import method from "../assets/pictures/plantadmin.png";
 import product from "../assets/pictures/radish.png";
 import about from "../assets/pictures/people.png";
 import contact from "../assets/pictures/email.png";
+import news from "../assets/pictures/news-paper.png";
+import market from "../assets/pictures/paniershop.png";
 
 export default function LeftSlide() {
   return (
     <section>
       <div className="leftpannel">
         <div className="logo-position-home">
-          <NavLink to="/admin/log">
+          <NavLink to="/admin/home">
             <img src={logo} alt="" className="logo-size-home" />
           </NavLink>
         </div>
         <nav>
           <NavLink
-            to="/admin/log"
+            to="/admin/home"
             className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
           >
             <div className="icon-container">
@@ -36,7 +38,7 @@ export default function LeftSlide() {
             </div>
           </NavLink>
           <NavLink
-            to="/"
+            to="/admin/produits"
             className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
           >
             <div className="icon-container">
@@ -51,6 +53,24 @@ export default function LeftSlide() {
             <div className="icon-container">
               <img src={about} alt="icon about" className="icon-about" />
               <p>À propos</p>
+            </div>
+          </NavLink>
+          <NavLink
+            to="/admin/articles"
+            className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
+          >
+            <div className="icon-container">
+              <img src={news} alt="icon articles" className="icon-contact" />
+              <p>Articles</p>
+            </div>
+          </NavLink>
+          <NavLink
+            to="/admin/market"
+            className={(nav) => (nav.isActive ? "nav-admin-active" : undefined)}
+          >
+            <div className="icon-container">
+              <img src={market} alt="icon market" className="icon-contact" />
+              <p>Market</p>
             </div>
           </NavLink>
           <NavLink

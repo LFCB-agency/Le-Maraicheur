@@ -1,6 +1,8 @@
 import axios from "@services/axios";
 import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import SuccesPreorder from "./SuccesPreorder";
+// import WarningPreorder from "./WarningPreorder";
 
 export default function ClientList() {
   const [clientList, setClientList] = useState();
@@ -9,6 +11,12 @@ export default function ClientList() {
   const [email, setEmail] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("");
   const [succes, setSucces] = useState(false);
+  const [verified, setVerified] = useState(false);
+
+  const onSubmit = () => {
+    // console.log("Captcha value:", value);
+    setVerified(true);
+  };
 
   const postClient = async () => {
     axios.post(`${import.meta.env.VITE_BACKEND_URL}preorder`, {
@@ -51,8 +59,8 @@ export default function ClientList() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <div>
-          Paiement :
+        <div className="payment">
+          <p>Paiement :</p>
           <select
             className="clientStatus"
             value={paymentMethod}
@@ -64,7 +72,30 @@ export default function ClientList() {
             <option value="12x">12x</option>
           </select>
         </div>
-        <button type="button" onClick={() => postClient(clientList)}>
+        <div
+          className="captcha"
+          style={{
+            transform: "scale(0.85)",
+            transformOrigin: "0 0",
+            marginTop: 20,
+            width: 256,
+          }}
+        >
+          <ReCAPTCHA
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "300px",
+            }}
+            sitekey="6Lcv1_0gAAAAAGFIJMCtmoB62_PXuLLrOSc9KSOm"
+            onChange={onSubmit}
+          />
+        </div>
+        <button
+          type="button"
+          onClick={() => postClient(clientList)}
+          disabled={!verified}
+        >
           Précommander
         </button>
       </form>

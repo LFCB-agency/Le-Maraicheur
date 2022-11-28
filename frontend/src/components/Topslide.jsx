@@ -16,6 +16,8 @@ const Topslide = () => {
     "Nos Produits",
     "À Propos",
     "Clients",
+    "Articles",
+    "Market",
   ];
   const location = useLocation();
   const [onHover, setOnHover] = useState(settings);
@@ -40,11 +42,13 @@ const Topslide = () => {
         <div className="title-style">
           <h1>Menu Administrateur / </h1>
           <span className="animation-title--topslide">
-            {location.pathname === "/admin/log" ? menu[0] : null}
+            {location.pathname === "/admin/home" ? menu[0] : null}
             {location.pathname === "/admin/methode" ? menu[1] : null}
-            {location.pathname === "/admin/produit" ? menu[2] : null}
+            {location.pathname === "/admin/produits" ? menu[2] : null}
             {location.pathname === "/admin/apropos" ? menu[3] : null}
             {location.pathname === "/admin/client" ? menu[4] : null}
+            {location.pathname === "/admin/articles" ? menu[5] : null}
+            {location.pathname === "/admin/market" ? menu[6] : null}
           </span>
         </div>
         <div className="position-settings">
@@ -61,9 +65,11 @@ const Topslide = () => {
       <Modal show={showModal}>
         <ModalBody>
           <h2 className="title-modal-admin">OPTIONS ADMINISTRATEUR</h2>
-          <button className="button-modal-admin-1">
-            <NavLink to="/admin">SE DECONNECTER DE L'ADMINISTRATION</NavLink>
-          </button>
+          <NavLink to="/admin">
+            <button className="button-modal-admin-1">
+              SE DECONNECTER DE L'ADMINISTRATION
+            </button>
+          </NavLink>
           <br />
           <br />
           <br />

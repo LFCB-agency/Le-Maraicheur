@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 40px;
 }
 
 .mep {
@@ -10,10 +11,10 @@
   justify-content: center;
   align-items: center;
   padding-top: 25px;
-  width: 70%;
+  width: 75%;
   flex-direction: column;
   background: #fdfafa;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 50px 0px 50px 0px;
   height: auto;
 
@@ -27,8 +28,8 @@
     border-radius: 5px;
     font-family: "Poppins", sans-serif;
     border: none;
-    width: 800px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     height: 45px;
     margin-bottom: 1.5rem;
 
@@ -38,6 +39,7 @@
   }
 
   label {
+    width: 65%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -49,7 +51,11 @@
 
   select {
     margin-left: 15px;
-    border-radius: 10px;
+    height: 45px;
+    width: 500px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 
     &:focus {
@@ -60,12 +66,16 @@
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
     font-weight: 700;
+
+    p {
+      margin-left: 1.1em;
+      padding-bottom: 5px;
+    }
   }
   button {
     width: 250px;
     margin-top: 25px;
     margin-bottom: 25px;
-    margin-left: 55px;
     cursor: pointer;
     text-transform: uppercase;
     font-family: "Montserrat", sans-serif;
@@ -73,7 +83,7 @@
     border: none;
     height: 50px;
     background: $buttonnewsletter;
-    box-shadow: 2px 2px 4px rgb(0 0 0 / 25%);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     text-decoration: underline;
     transition: 1s;
@@ -87,12 +97,49 @@
 
 @media (max-width: 900px) {
   .mep {
+    width: 65%;
+    border-radius: 0px 0px 0px 0px;
+
     input {
-      width: 240px;
+      width: auto;
     }
 
     button {
       margin-left: 0px;
+
+      &:hover {
+        transition: none;
+        transform: none;
+      }
+    }
+
+    select {
+      margin: 0 15px;
+      height: 45px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .payment {
+      width: 65%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        align-self: flex-start;
+        margin-left: 0;
+        padding-bottom: 2px;
+      }
     }
   }
+
+
 }

@@ -5,6 +5,7 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import JoditEditor from "jodit-react";
+import Upload from "@pages/Upload";
 import AlertSucces from "./AlertSucces";
 
 const TextEditor = () => {
@@ -17,10 +18,13 @@ const TextEditor = () => {
 
   const config = {
     readonly: false,
-    height: 400,
+    height: 350,
+    allowResizeX: false,
+    allowResizeY: false,
+    showCharsCounter: false,
+    showWordsCounter: false,
+    showXPathInStatusbar: false,
     buttons: [
-      "source",
-      "|",
       "bold",
       "strikethrough",
       "underline",
@@ -35,7 +39,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -46,8 +49,6 @@ const TextEditor = () => {
       "print",
     ],
     buttonsXS: [
-      "source",
-      "|",
       "bold",
       "strikethrough",
       "underline",
@@ -62,7 +63,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -81,10 +81,6 @@ const TextEditor = () => {
       },
     },
   };
-  // const handleUpdate = (e) => {
-  //   const editorContent = e.target.value;
-  //   updatedContent = editorContent;
-  // };
 
   const fetchTextById = (id) => {
     axios
@@ -107,8 +103,15 @@ const TextEditor = () => {
           body: updatedContent,
         })
         .then((response) => {
+          // console.log(response);
           setMessage(response.data);
           setSuccess(true);
+          return alert(
+            "Texte mis à jour !",
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          );
         });
       setSuccess(false);
     }
@@ -123,29 +126,65 @@ const TextEditor = () => {
         onClick={() => fetchTextById(3)}
         className={buttonStyle(3)}
       >
-        À propos: 1
+        Antoine Debray
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(4)}
         className={buttonStyle(4)}
       >
-        À propos: 2
+        Équipier: N°1
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(5)}
         className={buttonStyle(5)}
       >
-        À propos: 3
+        Équipier: N°2
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(6)}
         className={buttonStyle(6)}
       >
-        À propos: 4
+        Équipier: N°3
       </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(11)}
+        className={buttonStyle(11)}
+      >
+        Équipier: N°4
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(12)}
+        className={buttonStyle(12)}
+      >
+        Équipier: N°5
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(13)}
+        className={buttonStyle(13)}
+      >
+        Équipier: N°6
+      </button>
+      <button
+        type="button"
+        onClick={() => fetchTextById(14)}
+        className={buttonStyle(14)}
+      >
+        Équipier: N°7
+      </button>
+      {/* <div>
+        <input
+          type="text"
+          placeholder="Nom Equipier"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div> */}
       <div className="text-editor">
         <JoditEditor
           ref={editor}
@@ -163,9 +202,10 @@ const TextEditor = () => {
           onClick={() => insertTextById(currentId)}
           className="editor-btn"
         >
-          Submit
+          Soumettre
         </button>
       </div>
+      <Upload />
     </section>
   );
 };

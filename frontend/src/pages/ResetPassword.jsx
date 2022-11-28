@@ -1,8 +1,10 @@
+/* eslint-disable consistent-return */
 /* eslint-disable import/no-unresolved */
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "@services/axios";
 import * as yup from "yup";
+import AlertError from "@components/AlertError";
 import logo from "../assets/pictures/logo1.png";
 import eyesHidden from "../assets/pictures/invisible.png";
 import eyesUnhidden from "../assets/pictures/yeux.png";
@@ -47,6 +49,7 @@ const schemaForResetPassword = yup.object().shape({
 });
 
 export default function ResetPassword() {
+  const [error, setError] = useState(false);
   const [eyesVisible, setEyesVisible] = useState(eyesHidden);
   const [eyesStyle, setEyesStyle] = useState(true);
   const [passwordShown, setPasswordShown] = useState(false);
@@ -99,15 +102,17 @@ export default function ResetPassword() {
         confirmPassword: "",
       });
 
-      return navigate("/admin");
+      navigate("/admin");
     } catch (err) {
-      // eslint-disable-next-line
-      return alert(err.message);
+      if (err) {
+        setError(true);
+      }
     }
   };
 
   return (
     <section className="background">
+      {error ? <AlertError /> : ""}
       <div className="container">
         <div className="logo-position">
           <NavLink to="/admin">

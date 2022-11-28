@@ -18,10 +18,13 @@ const TextEditor = () => {
 
   const config = {
     readonly: false,
-    height: 400,
+    height: 350,
+    allowResizeX: false,
+    allowResizeY: false,
+    showCharsCounter: false,
+    showWordsCounter: false,
+    showXPathInStatusbar: false,
     buttons: [
-      "source",
-      "|",
       "bold",
       "strikethrough",
       "underline",
@@ -36,7 +39,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -47,8 +49,6 @@ const TextEditor = () => {
       "print",
     ],
     buttonsXS: [
-      "source",
-      "|",
       "bold",
       "strikethrough",
       "underline",
@@ -63,7 +63,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -109,7 +108,12 @@ const TextEditor = () => {
         })
         .then((response) => {
           setMessage(response.data);
-          setSuccess(true);
+          return (
+            setSuccess(true),
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          );
         });
       setSuccess(false);
     }
@@ -124,28 +128,28 @@ const TextEditor = () => {
         onClick={() => fetchTextById(7)}
         className={buttonStyle(7)}
       >
-        Méthode: 1
+        Introduction
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(8)}
         className={buttonStyle(8)}
       >
-        Méthode: 2
+        Section: N°1
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(9)}
         className={buttonStyle(9)}
       >
-        Méthode: 3
+        Section: N°2
       </button>
       <button
         type="button"
         onClick={() => fetchTextById(10)}
         className={buttonStyle(10)}
       >
-        Méthode: 4
+        Section: N°3
       </button>
       <div className="text-editor">
         <JoditEditor
@@ -159,15 +163,15 @@ const TextEditor = () => {
         />
       </div>
       <div className="button-container--adminhome">
-        <Upload />
         <button
           type="button"
           onClick={() => insertTextById(currentId)}
           className="editor-btn"
         >
-          Submit
+          Soumettre
         </button>
       </div>
+      <Upload />
     </section>
   );
 };

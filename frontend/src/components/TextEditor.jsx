@@ -20,10 +20,14 @@ const TextEditor = () => {
 
   const config = {
     readonly: false,
-    height: 400,
+    height: 350,
+    allowResizeX: false,
+    allowResizeY: false,
+    showCharsCounter: false,
+    showWordsCounter: false,
+    showXPathInStatusbar: false,
     buttons: [
       "source",
-      "|",
       "bold",
       "strikethrough",
       "underline",
@@ -38,7 +42,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -49,8 +52,6 @@ const TextEditor = () => {
       "print",
     ],
     buttonsXS: [
-      "source",
-      "|",
       "bold",
       "strikethrough",
       "underline",
@@ -65,7 +66,6 @@ const TextEditor = () => {
       "table",
       "link",
       "|",
-      "align",
       "undo",
       "redo",
       "|",
@@ -84,10 +84,6 @@ const TextEditor = () => {
       },
     },
   };
-  // const handleUpdate = (e) => {
-  //   const editorContent = e.target.value;
-  //   updatedContent = editorContent;
-  // };
 
   const fetchTextById = (id) => {
     axios
@@ -111,7 +107,12 @@ const TextEditor = () => {
         })
         .then((response) => {
           setMessage(response.data);
-          setSuccess(true);
+          return (
+            setSuccess(true),
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500)
+          );
         });
       setSuccess(false);
     }
@@ -128,13 +129,6 @@ const TextEditor = () => {
       >
         Présentation
       </button>
-      <button
-        type="button"
-        onClick={() => fetchTextById(2)}
-        className={buttonStyle(2)}
-      >
-        Panier
-      </button>
       <div className="text-editor">
         <JoditEditor
           ref={editor}
@@ -147,15 +141,15 @@ const TextEditor = () => {
         />
       </div>
       <div className="button-container--adminhome">
-        <Upload />
         <button
           type="button"
           onClick={() => insertTextById(currentId)}
           className="editor-btn"
         >
-          Submit
+          Soumettre
         </button>
       </div>
+      <Upload />
     </section>
   );
 };

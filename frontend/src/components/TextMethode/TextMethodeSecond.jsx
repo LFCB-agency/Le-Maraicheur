@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import parse from "html-react-parser";
 import "../../styles/components/methode.scss";
+import { Button } from "@mui/material";
 
 export default function TextMethodeSecond() {
   const [textMethode, setTextMethode] = useState([]);
+  const [showMore, setShowMore] = useState(false);
 
   const getText = async () => {
     try {
@@ -26,12 +28,39 @@ export default function TextMethodeSecond() {
     getText();
   }, []);
   return (
-    <div>
+    <section>
       {textMethode.map((text) => (
-        <div key={text.id}>
-          <p className="bodySec">{parse(text.body)}</p>
-        </div>
+        <section key={text.id}>
+          <div className="text-container">
+            {showMore ? (
+              `${text.body.substring(0, 250)}...`
+            ) : (
+              <p className="bodySec">{parse(text.body)}</p>
+            )}
+            <Button
+              variant="outlined"
+              id="buttondisabled"
+              onClick={() => setShowMore(!showMore)}
+            >
+              {showMore ? "Voir plus" : "Voir moins"}
+            </Button>
+          </div>
+          {/* <div className="text-container2">
+            {showMore ? (
+              <p className="bodySec">{parse(text.body)}</p>
+            ) : (
+              `${text.body.substring(0)}...`
+            )}
+            <Button
+              variant="outlined"
+              id="buttondisabled"
+              onClick={() => setShowMore(!showMore)}
+            >
+              {showMore ? "Voir moins" : "Voir plus"}
+            </Button>
+          </div> */}
+        </section>
       ))}
-    </div>
+    </section>
   );
 }

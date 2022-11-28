@@ -16,6 +16,7 @@ export default function Carousels() {
     autoplay: true,
     autoplayspeed: 3500,
     adaptiveHeight: true,
+    pauseOnHover: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -27,6 +28,7 @@ export default function Carousels() {
           autoplay: true,
           autoplayspeed: 3500,
           adaptiveHeight: true,
+          pauseOnHover: false,
         },
       },
     ],
@@ -64,7 +66,7 @@ export default function Carousels() {
               <img
                 className="imgCarousel"
                 src={`${import.meta.env.VITE_IMAGES_URL}${image.file}`}
-                alt="a"
+                alt={image.alt}
               />
             </div>
           </div>

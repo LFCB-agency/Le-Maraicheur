@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable no-restricted-globals */
@@ -12,6 +13,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import InformationLoginAlert from "@components/InformationLoginAlert";
 import WarningAlert from "@components/WarningAlert";
 import SuccesEmailAlert from "@components/SuccesEmailAlert";
+import AlertError from "@components/AlertError";
 import logo from "../assets/pictures/logo1.png";
 import eyesHidden from "../assets/pictures/invisible.png";
 import eyesUnhidden from "../assets/pictures/yeux.png";
@@ -19,7 +21,6 @@ import eyesUnhidden from "../assets/pictures/yeux.png";
 import axios from "../services/axios";
 
 export default function AdminLogin({ setAdm }) {
-  // const { dispatch } = userContext();
   const navigate = useNavigate();
   const [eyesVisible, setEyesVisible] = useState(eyesHidden);
   const [eyesStyle, setEyesStyle] = useState(true);
@@ -27,6 +28,7 @@ export default function AdminLogin({ setAdm }) {
   const [info, setInfo] = useState(false);
   const [warning, setWarning] = useState(false);
   const [succes, setSucces] = useState(false);
+  const [error, setError] = useState(false);
 
   const [admData, setAdmData] = useState({
     email: "",
@@ -62,11 +64,12 @@ export default function AdminLogin({ setAdm }) {
       // console.log(data);
       setAdmData({ email: "", password: "" });
       setAdm({ email: data.email });
-      navigate("/admin/log");
+      navigate("/admin/home");
       // dispatch({ type: "LOGIN", payload: data });
     } catch (err) {
-      // eslint-disable-next-line
-      return alert(err.message);
+      if (err) {
+        setError(true);
+      }
     }
   };
 
@@ -86,8 +89,9 @@ export default function AdminLogin({ setAdm }) {
           return navigate("/reset");
         }, 9000);
       } catch (err) {
-        // eslint-disable-next-line
-        return alert(err.message);
+        if (err) {
+          setError(true);
+        }
       }
     }
     return setWarning(true);
@@ -97,6 +101,7 @@ export default function AdminLogin({ setAdm }) {
     <section className="background">
       {info ? <InformationLoginAlert /> : ""}
       {warning ? <WarningAlert /> : ""}
+      {error ? <AlertError /> : ""}
       {succes ? <SuccesEmailAlert /> : ""}
       <div className="container">
         <div className="logo-position">
