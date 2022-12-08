@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import LeftSlide from "@components/Leftslide";
 import ProduitsEditor from "@components/ProduitsEditor";
 import Topslide from "@components/Topslide";
@@ -11,9 +12,9 @@ const AdminProduits = ({ toggle }) => {
       <div className="position-admin--editor">
         <div className="background-texteditor-produits">
           <ProduitsEditor />
-          <button type="button" onClick={toggle}>
+          {/* <button type="button" onClick={toggle}>
             CLICK
-          </button>
+          </button> */}
         </div>
       </div>
     </section>

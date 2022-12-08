@@ -206,10 +206,10 @@ class EmailController {
       from: EMAIL_USER,
       to: email,
       // to: user.email,
-      subject: "Confirmation d'envoie",
+      subject: "Confirmation d'envois",
       html: `
-      <h1>Votre email à bien était envoyé</h1>
-      <h2>nous vous répondrons le plus rapidement possible</h2>
+      <h1>Votre email à bien été envoyé</h1>
+      <h2>Nous vous répondrons le plus rapidement possible</h2>
       <h3>Cordialement, le Maraicheur</h3>
 
     `,

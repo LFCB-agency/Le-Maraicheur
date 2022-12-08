@@ -4,6 +4,8 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable import/newline-after-import */
 /* eslint-disable import/no-unresolved */
+/* eslint-disable no-unused-vars */
+
 import "@components/ContactForm.css";
 import axios from "axios";
 import MenuBurger from "@components/MenuBurger";
@@ -64,7 +66,7 @@ const Contact = () => {
             >
               <img
                 className="logo-maraicheur"
-                src="./src/assets/pictures/logo2.png"
+                src="./src/assets/pictures/logo2.webp"
               />
               <div className="logo-mobile">
                 <img className="logo-maraicheur2" src={logo3} />
@@ -124,7 +126,7 @@ const Contact = () => {
                   onChange={onSubmit}
                 />
                 <button
-                  disabled={!verified}
+                  // disabled={!verified}
                   className="button-contact"
                   type="submit"
                 >
