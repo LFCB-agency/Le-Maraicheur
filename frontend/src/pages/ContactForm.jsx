@@ -42,11 +42,11 @@ const Contact = () => {
     <div>
       <Helmet>
         <meta
-          description="Site Internet Du Maraicher Maraicheur Antoine Debray"
           charSet="utf-8"
-          keywords="Maraicher, Maraicheur, Antoine Debray, Debray, Sol Vivant, Gestion du sol,
-       Culture de la terre, terre, fetile, agriculteur, légumes premium, champs, paysan "
+          name="content"
+          content="Antoine Debray, Le Maraicheur maraicher situé à La Croix-du-Perche"
         />
+        <title>Contact - Le Maraicheur </title>
         <link href="http://lemaraicheur.com/contact" />
       </Helmet>
       <Navbar />

@@ -78,7 +78,6 @@ router.put(
         return res.status(500).send(err.message);
       }
       const pictureData = JSON.parse(req.body.pictureData);
-      // console.log({ pictureData });
       req.picture = {
         id: req.params.id,
         file: req.file.filename,
