@@ -4,6 +4,10 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable import/newline-after-import */
 /* eslint-disable import/no-unresolved */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
+/* eslint-disable consistent-return */
+
 import "@components/ContactForm.css";
 import axios from "axios";
 import MenuBurger from "@components/MenuBurger";
@@ -12,6 +16,7 @@ import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
 import logo3 from "@assets/pictures/logo3.png";
 import ReCAPTCHA from "react-google-recaptcha";
+
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 
@@ -29,13 +34,23 @@ const Contact = () => {
 
   const postEmail = async (e) => {
     e.preventDefault();
-    const postData = { email, textMail, name, surname };
-    // eslint-disable-next-line no-unused-vars
-    const newPost = await axios.post(
-      `${import.meta.env.VITE_BACKEND_URL}emails/contactForm`,
-      postData
-    );
-    setVerified(true);
+    try {
+      const postData = { email, textMail, name, surname };
+      // eslint-disable-next-line no-unused-vars
+      const newPost = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}emails/contactForm`,
+        postData
+      );
+      setVerified(true);
+      return alert(
+        "Le mail a bien été envoyé !",
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500)
+      );
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -64,7 +79,7 @@ const Contact = () => {
             >
               <img
                 className="logo-maraicheur"
-                src="./src/assets/pictures/logo2.png"
+                src="./src/assets/pictures/logo2.webp"
               />
               <div className="logo-mobile">
                 <img className="logo-maraicheur2" src={logo3} />
@@ -124,7 +139,7 @@ const Contact = () => {
                   onChange={onSubmit}
                 />
                 <button
-                  disabled={!verified}
+                  // disabled={!verified}
                   className="button-contact"
                   type="submit"
                 >

@@ -189,7 +189,11 @@ VALUES
     'Arbres et fruits',
     'methode',
     4
-  );
+  ),
+  ('1670537428115-1659434132008-Carroussel1.JPG','Antoine champs','amap',1),
+ ('1670537453033-1662119717847-1657637557592-methode4.jpg','Serres', 'amap',  2), 
+('1670537763185-1657637047615-Carroussel3.jpg', 'Legumes', 'amap', 3), 
+('1670538296188-1668682761549-tableauM.png','Panier', 'amap', 4);
 
 CREATE TABLE `text` (
   `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,

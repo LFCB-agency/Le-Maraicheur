@@ -4,8 +4,8 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
+import AdminLogin from "@pages/AdminLogin";
 
-const AdminLogin = lazy(() => "@pages/AdminLogin");
 const Accueil = lazy(() => import("@pages/Accueil"));
 const Methode = lazy(() => import("@pages/Methode"));
 const Upload = lazy(() => import("@pages/Upload"));
@@ -13,16 +13,18 @@ const Produit = lazy(() => import("@pages/Produit"));
 const Amap = lazy(() => import("@pages/Amap"));
 const Propos = lazy(() => import("@pages/Propos"));
 const Contact = lazy(() => import("@pages/ContactForm"));
+
 const AdminHome = lazy(() => import("@pages/AdminHome"));
 const AdminPopup = lazy(() => import("@pages/AdminPopup"));
 const AdminMethode = lazy(() => import("@pages/AdminMethode"));
 const AdminPropos = lazy(() => import("@pages/AdminPropos"));
 const AdminNews = lazy(() => import("@pages/AdminNews"));
 const ResetPassword = lazy(() => import("@pages/ResetPassword"));
-const Error404 = lazy(() => import("@pages/Error404"));
 const AdminClient = lazy(() => import("@pages/AdminClient"));
 const AdminProduits = lazy(() => import("@pages/AdminProduits"));
 const AdminMarket = lazy(() => import("@pages/AdminMarket"));
+
+const Error404 = lazy(() => import("@pages/Error404"));
 
 function App() {
   const [adm, setAdm] = useState({ email: "", id: null });
@@ -57,6 +59,7 @@ function App() {
           <Route path="/propos" element={<Propos />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/reset" element={<ResetPassword />} />
+
           <Route exact path="/admin" element={<AdminLogin setAdm={setAdm} />} />
           {adm.email && (
             <>

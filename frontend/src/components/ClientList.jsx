@@ -116,7 +116,7 @@ export default function ClientList() {
         clientList
           .filter((client) => client.archived === isArchived)
           .map((clients) => {
-            const dateFormat = moment().format("l");
+            const dateFormat = moment().format("DD/MM/YYYY");
             const clientStyle =
               clients.checkboxStatus === 0
                 ? "client-list-display"

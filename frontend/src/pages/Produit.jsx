@@ -61,9 +61,11 @@ export default function Produit() {
     transform: "translate(-50%, -50%)",
     width: "90%",
     borderRadius: "8px",
+    marginBottom: "150px",
     background: "rgba( 255, 255, 255, 0.2 )",
     boxShadow: "0 8px 32px 0 rgba(253, 253, 253, 0.37)",
   };
+
   return (
     <section>
       <Helmet>
@@ -106,12 +108,11 @@ export default function Produit() {
                   sm={4}
                   md={4}
                   item={true}
-                  key={items.id}
                   sx={{ margin: 0 }}
+                  key={items.id}
                 >
                   {items.title !== "LE PANIER" ? (
                     <a
-                      key={items.id}
                       className="product-image "
                       id="legume"
                       to={items.link}
@@ -128,7 +129,7 @@ export default function Produit() {
                   ) : (
                     textModal.map((text) => (
                       <>
-                        <div className="product-image">
+                        <div key={text.id} className="product-image">
                           <img
                             className="imageprod1"
                             src={`${import.meta.env.VITE_IMAGES_URL}${
