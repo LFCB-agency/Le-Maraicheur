@@ -24,7 +24,6 @@ export default function Upload() {
   const [image, setImage] = useState([]);
   const [error, setError] = useState(false);
   const [succes, setSucces] = useState(false);
-  const [ridImage] = useState("");
 
   // on va specifier que seulement deux types de fichiers peuvent fonctionner
   const handleInput = (e) => {
@@ -68,9 +67,12 @@ export default function Upload() {
       setText();
       setSucces(true);
       setFileCreated(data);
-      setTimeout(function () {
-        window.location.reload();
-      }, 4000);
+      alert(
+        "Image Ajoutée!",
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500)
+      );
     } catch (err) {
       if (err) {
         setError(true);
@@ -104,6 +106,12 @@ export default function Upload() {
       getText();
       setSucces(true);
       setUpdateFile(data);
+      alert(
+        "Image mis a jour!",
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500)
+      );
     } catch (err) {
       if (err) {
         setError(true);
@@ -116,7 +124,6 @@ export default function Upload() {
       const data = await axios
         .get(`pictures?categories=${categories}`)
         .then((response) => response.data);
-      // console.log(data);
       setImage(data);
     } catch (err) {
       if (err) {
@@ -126,14 +133,23 @@ export default function Upload() {
   };
 
   const imageDelete = async (id) => {
-    const data = await axios
-      .delete(`${import.meta.env.VITE_BACKEND_URL}pictures/${id}`, {
-        body: image,
-      })
-      .then((response) => {
-        ridImage(response.data);
-        getImage(data);
-      });
+    try {
+      const data = await axios
+        .delete(`${import.meta.env.VITE_BACKEND_URL}pictures/${id}`, {
+          body: image,
+        })
+        .then((response) => response.data);
+      getImage(data);
+      setSucces(true);
+      alert(
+        "Image supprimée!",
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500)
+      );
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
