@@ -16,7 +16,6 @@ export default function TextMethodeSecond() {
         )
         .then((response) => response.data);
       setTextMethode(data);
-      // console.log(data);
     } catch (err) {
       if (err.response.status === 401) {
         // eslint-disable-next-line
@@ -33,9 +32,11 @@ export default function TextMethodeSecond() {
         <section key={text.id}>
           <div className="text-container">
             {showMore ? (
-              `${text.body.substring(0, 250)}...`
+              <div className="bodySec">
+                {parse(text.body.substring(0, 250).concat("..."))}
+              </div>
             ) : (
-              <p className="bodySec">{parse(text.body)}</p>
+              <div className="bodySec">{parse(text.body)}</div>
             )}
             <Button
               variant="outlined"
@@ -45,20 +46,6 @@ export default function TextMethodeSecond() {
               {showMore ? "Voir plus" : "Voir moins"}
             </Button>
           </div>
-          {/* <div className="text-container2">
-            {showMore ? (
-              <p className="bodySec">{parse(text.body)}</p>
-            ) : (
-              `${text.body.substring(0)}...`
-            )}
-            <Button
-              variant="outlined"
-              id="buttondisabled"
-              onClick={() => setShowMore(!showMore)}
-            >
-              {showMore ? "Voir moins" : "Voir plus"}
-            </Button>
-          </div> */}
         </section>
       ))}
     </section>

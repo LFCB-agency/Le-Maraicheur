@@ -81,10 +81,6 @@ const TextEditor = () => {
       },
     },
   };
-  // const handleUpdate = (e) => {
-  //   const editorContent = e.target.value;
-  //   updatedContent = editorContent;
-  // };
 
   const fetchTextById = (id) => {
     axios
@@ -108,12 +104,10 @@ const TextEditor = () => {
         })
         .then((response) => {
           setMessage(response.data);
-          return (
-            setSuccess(true),
-            setTimeout(() => {
-              window.location.reload();
-            }, 1500)
-          );
+          return setSuccess(true);
+          // setTimeout(() => {
+          //   window.location.reload();
+          // }, 1500)
         });
       setSuccess(false);
     }
@@ -125,29 +119,29 @@ const TextEditor = () => {
       {success ? <AlertSucces message={message} /> : ""}
       <button
         type="button"
-        onClick={() => fetchTextById(7)}
-        className={buttonStyle(7)}
+        onClick={() => fetchTextById(3)}
+        className={buttonStyle(3)}
       >
         Introduction
       </button>
       <button
         type="button"
-        onClick={() => fetchTextById(8)}
-        className={buttonStyle(8)}
+        onClick={() => fetchTextById(4)}
+        className={buttonStyle(4)}
       >
         Section: N°1
       </button>
       <button
         type="button"
-        onClick={() => fetchTextById(9)}
-        className={buttonStyle(9)}
+        onClick={() => fetchTextById(5)}
+        className={buttonStyle(5)}
       >
         Section: N°2
       </button>
       <button
         type="button"
-        onClick={() => fetchTextById(10)}
-        className={buttonStyle(10)}
+        onClick={() => fetchTextById(6)}
+        className={buttonStyle(6)}
       >
         Section: N°3
       </button>
