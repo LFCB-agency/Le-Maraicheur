@@ -2,10 +2,17 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
+const serveStatic = require("serve-static");
 const router = require("./router");
 
 const app = express();
-
+app.use(compression());
+app.use(
+  serveStatic(".", {
+    index: ["index.html", "robots.txt"],
+  })
+);
 // use some application-level middlewares
 
 app.use(
