@@ -129,74 +129,22 @@ export default function Produit() {
                   ) : (
                     textModal.map((text) => (
                       <>
-                        <div key={text.id} className="product-image">
-                          <img
-                            className="imageprod1"
-                            src={`${import.meta.env.VITE_IMAGES_URL}${
-                              items.image
-                            }`}
-                            alt={items.alt}
-                            onClick={handleOpen}
-                          />
-                          <p className="legume-product" onClick={handleOpen}>
-                            {items.title}
-                          </p>
-                          <span className="spanLine" />
-                        </div>
-                        <Modal
-                          open={open}
-                          onClose={handleClose}
-                          aria-labelledby="modal-modal-title"
-                          aria-describedby="modal-modal-description"
-                        >
-                          <Box sx={style}>
-                            <CloseIcon
-                              onClick={handleClose}
-                              style={{
-                                color: "white",
-                                float: "right",
-                                marginRight: "5px",
-                                marginTop: "5px",
-                                cursor: "pointer",
-                              }}
+                        <Link to="/amap">
+                          <div key={text.id} className="product-image">
+                            <img
+                              className="imageprod1"
+                              src={`${import.meta.env.VITE_IMAGES_URL}${
+                                items.image
+                              }`}
+                              alt={items.alt}
+                              onClick={handleOpen}
                             />
-                            <Typography
-                              style={{
-                                fontFamily: "Montserrat, sans-serif",
-                                color: "white",
-                                display: "flex",
-                                justifyContent: "center",
-                                marginTop: "25px",
-                              }}
-                            >
-                              {parse(text.title)}
-                            </Typography>
-                            <Typography
-                              style={{
-                                fontFamily: "Montserrat, sans-serif",
-                                color: "white",
-                                textAlign: "center",
-                                marginTop: "3em",
-                                marginLeft: "15px",
-                                marginRight: "15px",
-                              }}
-                            >
-                              {parse(text.body)}
-                            </Typography>
-                            <div className="button-modal-container">
-                              <Link to="/amap">
-                                <button
-                                  type="button"
-                                  className="modal-button-preorder"
-                                  style={{ marginTop: "3em" }}
-                                >
-                                  {" "}
-                                  JE COMMANDE{" "}
-                                </button>
-                              </Link>
-                            </div>
-                          </Box>
-                        </Modal>
+                            <p className="legume-product" onClick={handleOpen}>
+                              {items.title}
+                            </p>
+                            <span className="spanLine" />
+                          </div>
+                        </Link>
                       </>
                     ))
                   )}

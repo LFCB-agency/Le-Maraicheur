@@ -16,11 +16,16 @@ export default function Accueil() {
       <Helmet>
         <meta
           charSet="utf-8"
-          name="content"
+          name="description"
           content="Antoine Debray, Le Maraicheur maraicher situé à La Croix-du-Perche"
         />
+        <meta
+          name="keyword"
+          content="DEBRAY ANTOINE, DEBRAY, maraicheur, maraicher, Croix-du-Perche, Les petites Guigniere, sol vivant, ferme"
+        />
+        <link rel="icon" type="image/svg+xml" href="src/assets/logo1.webp" />
         <title>Accueil - Le Maraicheur </title>
-        <link href="http://lemaraicheur.com/accueil" />
+        <link href="https://lemaraicheur.fr/" />
       </Helmet>
       <Navbar />
       <MenuBurger />
