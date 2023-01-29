@@ -21,7 +21,7 @@ export default function Accueil() {
         />
         <meta
           name="keyword"
-          content="DEBRAY ANTOINE, DEBRAY, maraicheur, maraicher, Croix-du-Perche, Les petites Guigniere, sol vivant, ferme"
+          content="DEBRAY ANTOINE, DEBRAY, maraicheur, maraicher, Croix-du-Perche, Les petites Guignieres, sol vivant, ferme"
         />
         <link rel="icon" type="image/svg+xml" href="src/assets/logo1.webp" />
         <title>Accueil - Le Maraicheur </title>

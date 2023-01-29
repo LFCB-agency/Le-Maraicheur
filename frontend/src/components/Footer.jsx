@@ -34,7 +34,7 @@ export default function Footer() {
         rel="noreferrer"
       >
         <p className="footerAddress">
-          Les Petites Guinières, 28480 La Croix-du-Perche
+          Les Petites Guignières, 28480 La Croix-du-Perche
         </p>
       </a>
       <span className="footerUnderline" />
