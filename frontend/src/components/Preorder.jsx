@@ -60,16 +60,16 @@ export default function ClientList() {
           />
         </label>
         <div className="payment">
-          <p>Paiement :</p>
+          <p>Préférences de paiement:</p>
           <select
             className="clientStatus"
             value={paymentMethod}
             onChange={(e) => setPaymentMethod(e.target.value)}
           >
-            <option value="Select">Choisir un paiement en: </option>
+            <option value="Select">Préférences de paiement: </option>
             <option value="1x">1x</option>
             <option value="3x">3x</option>
-            <option value="12x">12x</option>
+            <option value="12x">Tous les mois</option>
           </select>
         </div>
         <div

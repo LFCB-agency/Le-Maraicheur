@@ -56,7 +56,7 @@ export default function Carousels() {
   return (
     <div className="carouselDiv">
       <h2 className="carouseltitle">
-        GOÛTER AU VIVANT
+        GOÛTEZ AU VIVANT
         <span className="spanLine" />
       </h2>
       <Slider {...settings}>
