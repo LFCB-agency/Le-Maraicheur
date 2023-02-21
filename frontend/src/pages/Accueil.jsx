@@ -30,22 +30,24 @@ export default function Accueil() {
       <Navbar />
       <MenuBurger />
       <Carousels />
-      <TextAccueil />
-      <h2 className="panierTitle">
-        LE PANIER
-        <span className="spanLine" />
-      </h2>
-      <TextAccueilSecond />
-      <h2 className="panierTitle">
-        PRESSE
-        <span className="spanLine" />
-      </h2>
-      <ArticleCard />
-      <h2 className="panierTitle">
-        NEWSLETTER
-        <span className="spanLine" />
-      </h2>
-      <Newsletter />
+      <div className="class-format">
+        <TextAccueil />
+        <h2 className="panierTitle">
+          LE PANIER
+          <span className="spanLine" />
+        </h2>
+        <TextAccueilSecond />
+        <h2 className="panierTitle">
+          PRESSE
+          <span className="spanLine" />
+        </h2>
+        <ArticleCard />
+        <h2 className="panierTitle">
+          NEWSLETTER
+          <span className="spanLine" />
+        </h2>
+        <Newsletter />
+      </div>
       <Footer />
     </>
   );
