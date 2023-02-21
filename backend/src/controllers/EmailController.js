@@ -164,7 +164,7 @@ class EmailController {
       html: `
       <h1>Mot de passe oublié</h1>
       <p>Votre mot de passe temporaire: ${adm.temporaryPassword}</p>
-       <a href="http://localhost:3000/reset">Cliquer ici pour changer votre mot de passe</a>
+       <a href="https://lemaraicheur.fr/reset">Cliquer ici pour changer votre mot de passe</a>
     `,
     };
 
