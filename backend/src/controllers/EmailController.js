@@ -4,8 +4,14 @@ const path = require("path");
 const nodemailerHbs = require("nodemailer-express-handlebars");
 const { schemaForm } = require("../joiSchema");
 
-const { EMAIL_HOST, EMAIL_PORT, EMAIL_SECURE, EMAIL_USER, EMAIL_PASS } =
-  process.env;
+const {
+  EMAIL_HOST,
+  EMAIL_PORT,
+  EMAIL_SECURE,
+  EMAIL_USER,
+  EMAIL_PASS,
+  EMAIL_REPLY,
+} = process.env;
 
 let emailConfiguration = {
   service: "gmail",
@@ -183,7 +189,7 @@ class EmailController {
 
     const message = {
       from: EMAIL_USER,
-      to: EMAIL_USER,
+      to: EMAIL_REPLY,
       subject: "Nouveau message via le Maraicheur",
       html: `
       <h1>Un nouveaux message via le maraicheur !!</h1>
