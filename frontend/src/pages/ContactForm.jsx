@@ -16,7 +16,6 @@ import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
 import logo3 from "@assets/pictures/logo3.png";
 import ReCAPTCHA from "react-google-recaptcha";
-
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 
@@ -62,7 +61,7 @@ const Contact = () => {
           content="Antoine Debray, Le Maraicheur maraicher situé à La Croix-du-Perche"
         />
         <title>Contact - Le Maraicheur </title>
-        <link href="http://lemaraicheur.com/contact" />
+        <link href="https://lemaraicheur.com/contact" />
       </Helmet>
       <Navbar />
       <MenuBurger />
@@ -133,11 +132,11 @@ const Contact = () => {
                 ></textarea>
               </label>
               <div className="container-button-contact">
-                <ReCAPTCHA
+                {/* <ReCAPTCHA
                   style={{ marginTop: 20 }}
                   sitekey="6Lcv1_0gAAAAAGFIJMCtmoB62_PXuLLrOSc9KSOm"
                   onChange={onSubmit}
-                />
+                /> */}
                 <button
                   // disabled={!verified}
                   className="button-contact"

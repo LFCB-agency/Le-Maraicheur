@@ -7,6 +7,7 @@ router.get("/html-and-file", EmailController.sendWithHtmlAndFile);
 router.get("/hbs", EmailController.sendWithHbsTemplate);
 router.post(
   "/contactForm",
+  EmailController.Verify,
   EmailController.sendTest,
   EmailController.sendWithSuccess
 );

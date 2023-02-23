@@ -75,7 +75,7 @@ export default function Produit() {
           content="Antoine Debray, Le Maraicheur maraicher situé à La Croix-du-Perche"
         />
         <title>Produits - Le Maraicheur </title>
-        <link href="http://lemaraicheur.com/produit" />
+        <link href="https://lemaraicheur.com/produit" />
       </Helmet>
       <Navbar />
       <MenuBurger />

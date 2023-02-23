@@ -22,7 +22,7 @@ export default function Methode() {
           content="Antoine Debray, Le Maraicheur maraicher situé à La Croix-du-Perche"
         />
         <title>Methode - Le Maraicheur </title>
-        <link href="http://lemaraicheur.com/methode" />
+        <link href="https://lemaraicheur.com/methode" />
       </Helmet>
       <Navbar />
       <MenuBurger />

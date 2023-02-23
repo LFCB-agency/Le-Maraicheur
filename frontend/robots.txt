@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
-Noindex :
+Disallow: /mentions
+Noindex : /mentions
 Sitemap: https://lemaraicheur.fr/sitemap.xml

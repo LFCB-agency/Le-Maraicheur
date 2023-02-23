@@ -9,7 +9,7 @@ router.get("/logout", AdmController.authorization, AdmController.clearCookie);
 router.get("/:id", AdmController.read);
 
 router.post("/login", AdmController.login);
-router.post("/", AdmController.register);
+// router.post("/", AdmController.register);
 
 router.post(
   "/password-forgotten",

@@ -23,7 +23,7 @@ export default function Amap() {
           content="Antoine Debray, Le Maraicheur maraicher situé à La Croix-du-Perche"
         />
         <title>Amap - Le Maraicheur </title>
-        <link href="http://lemaraicheur.com/amap" />
+        <link href="https://lemaraicheur.com/amap" />
       </Helmet>
       <Navbar />
       <MenuBurger />
