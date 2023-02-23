@@ -2,17 +2,19 @@
 const nodemailer = require("nodemailer");
 const path = require("path");
 const nodemailerHbs = require("nodemailer-express-handlebars");
+const { schemaForm } = require("../joiSchema");
 
-const { EMAIL_HOST, EMAIL_PORT, EMAIL_SECURE, EMAIL_USER, EMAIL_PASSWORD } =
+const { EMAIL_HOST, EMAIL_PORT, EMAIL_SECURE, EMAIL_USER, EMAIL_PASS } =
   process.env;
 
 let emailConfiguration = {
+  service: "gmail",
   host: EMAIL_HOST,
   port: EMAIL_PORT,
   secure: EMAIL_SECURE,
   auth: {
     user: EMAIL_USER,
-    pass: EMAIL_PASSWORD,
+    pass: EMAIL_PASS,
   },
 };
 
@@ -199,14 +201,23 @@ class EmailController {
     }
   };
 
+  static Verify = async (req, res, next) => {
+    const { message } = req.body;
+    try {
+      await schemaForm.validateAsync(message);
+      return next();
+    } catch (err) {
+      return res.sendStatus(500);
+    }
+  };
+
   static sendWithSuccess = async (req, res) => {
     const { email } = req.body;
 
     const message = {
       from: EMAIL_USER,
       to: email,
-      // to: user.email,
-      subject: "Confirmation d'envoi",
+      subject: "Confirmation d'envoi Le Maraicheur",
       html: `
       <h1>Votre email à bien été envoyé</h1> <br/>
       <h2>Nous vous répondrons le plus rapidement possible</h2> <br/>

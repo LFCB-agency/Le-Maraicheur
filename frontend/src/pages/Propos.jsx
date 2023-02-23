@@ -14,7 +14,7 @@ export default function Propos() {
           content="Antoine Debray, Le Maraicheur maraicher situé à La Croix-du-Perche"
         />
         <title>A Propos - Le Maraicheur </title>
-        <link href="http://lemaraicheur.com/apropos" />
+        <link href="https://lemaraicheur.com/apropos" />
       </Helmet>
       <Navbar />
       <MenuBurger />
