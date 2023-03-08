@@ -166,14 +166,14 @@ export default function MenuBurger() {
                 <NavLink to="/" className="footerLink2">
                   <img
                     className="socials2"
-                    src="src/assets/pictures/social-network.png"
+                    src="src/assets/pictures/social-network.webp"
                     alt="Facebook icon"
                   />
                 </NavLink>
                 <NavLink to="/" className="footerLink2">
                   <img
                     className="socials2"
-                    src="src/assets/pictures/instagram.png"
+                    src="src/assets/pictures/instagram.webp"
                     alt="instagram icon"
                   />
                 </NavLink>

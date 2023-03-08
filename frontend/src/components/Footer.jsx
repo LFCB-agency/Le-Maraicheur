@@ -10,7 +10,7 @@ export default function Footer() {
         >
           <img
             className="socials"
-            src="src/assets/pictures/social-network.png"
+            src="src/assets/pictures/social-network.webp"
             alt="Facebook icon"
           />
         </a>
@@ -22,7 +22,7 @@ export default function Footer() {
         >
           <img
             className="socials"
-            src="src/assets/pictures/instagram.png"
+            src="src/assets/pictures/instagram.webp"
             alt="instagram icon"
           />
         </a>

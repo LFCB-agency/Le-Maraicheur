@@ -14,7 +14,7 @@ import MenuBurger from "@components/MenuBurger";
 import Preorder from "@components/Preorder";
 import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
-import logo3 from "@assets/pictures/logo3.png";
+import logo3 from "@assets/pictures/logo3.webp";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
@@ -150,7 +150,7 @@ const Contact = () => {
           <div className="img-contact">
             <img
               className="image-contact"
-              src="./src/assets/pictures/Contact.jpeg"
+              src="./src/assets/pictures/Contact.webp"
               alt="image-antoine"
             ></img>
           </div>
