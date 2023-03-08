@@ -3,6 +3,8 @@ const express = require("express");
 const path = require("path");
 const router = express.Router();
 const multer = require("multer");
+const sharp = require("sharp");
+const fs = require("fs");
 
 const { PictureController } = require("../controllers");
 
@@ -15,6 +17,7 @@ const storage = multer.diskStorage({
   },
   // filename defini le nom du fichier dans le dossier
   // dans ce cas là il sera nommé ex : "2022-20-06-nom-du-fichier"
+
   filename: (_, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
   },
@@ -38,6 +41,8 @@ router.post(
       const pictureData = JSON.parse(req.body.pictureData);
       console.log({ pictureData });
 
+      sharp(pictureData).toFile("output.webp");
+
       req.picture = {
         // Tout decoule de pictureData
         file: req.file.filename,
@@ -49,6 +54,7 @@ router.post(
       if (pictureData.text_id) {
         req.picture.text_id = pictureData.text_id;
       }
+
       return next();
     });
   },
@@ -73,7 +79,7 @@ router.put(
 
     const uploadToUpdate = multer({ storage }).single("file");
 
-    uploadToUpdate(req, res, (err) => {
+    uploadToUpdate(req, res, async (err) => {
       if (err) {
         return res.status(500).send(err.message);
       }
@@ -86,6 +92,26 @@ router.put(
         picSection: pictureData.picSection,
         text_id: pictureData.text_id,
       };
+
+      try {
+        const imagePath = path.join(__dirname, "../../public/assets/images/");
+        const webpBuffer = await sharp(imagePath + req.picture.file)
+          .webp()
+          .toBuffer();
+
+        fs.writeFile(
+          imagePath + `${req.picture.alt}.webp`,
+          webpBuffer,
+          (err) => {
+            if (err) {
+              return res.status(500).send(err.message);
+            }
+          }
+        );
+      } catch (err) {
+        return res.status(500).send(err.message);
+      }
+
       return next();
     });
   },
