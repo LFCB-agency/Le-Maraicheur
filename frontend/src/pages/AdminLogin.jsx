@@ -15,8 +15,8 @@ import WarningAlert from "@components/WarningAlert";
 import SuccesEmailAlert from "@components/SuccesEmailAlert";
 import AlertError from "@components/AlertError";
 import logo from "../assets/pictures/logo1.webp";
-import eyesHidden from "../assets/pictures/invisible.png";
-import eyesUnhidden from "../assets/pictures/yeux.png";
+import eyesHidden from "../assets/pictures/invisible.webp";
+import eyesUnhidden from "../assets/pictures/yeux.webp";
 
 import axios from "../services/axios";
 

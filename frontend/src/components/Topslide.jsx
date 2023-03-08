@@ -6,8 +6,8 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React, { useState } from "react";
 import { useLocation, NavLink } from "react-router-dom";
-import settings from "../assets/pictures/paramètres.png";
-import hover from "../assets/pictures/equipement.png";
+import settings from "../assets/pictures/parametres.webp";
+import hover from "../assets/pictures/equipement.webp";
 
 const Topslide = () => {
   const menu = [

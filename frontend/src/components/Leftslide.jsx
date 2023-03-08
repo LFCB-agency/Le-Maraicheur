@@ -6,8 +6,8 @@ import method from "../assets/pictures/plantadmin.webp";
 import product from "../assets/pictures/radish.webp";
 import about from "../assets/pictures/people.webp";
 import contact from "../assets/pictures/email.webp";
-import news from "../assets/pictures/news-paper.png";
-import market from "../assets/pictures/paniershop.png";
+import news from "../assets/pictures/news-paper.webp";
+import market from "../assets/pictures/paniershop.webp";
 
 export default function LeftSlide() {
   return (
