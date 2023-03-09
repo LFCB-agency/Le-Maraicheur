@@ -3,8 +3,8 @@ const express = require("express");
 const path = require("path");
 const router = express.Router();
 const multer = require("multer");
-const sharp = require("sharp");
-const fs = require("fs");
+// const sharp = require("sharp");
+// const fs = require("fs");
 
 const { PictureController } = require("../controllers");
 
@@ -40,8 +40,6 @@ router.post(
       }
       const pictureData = JSON.parse(req.body.pictureData);
       console.log({ pictureData });
-
-      sharp(pictureData).toFile("output.webp");
 
       req.picture = {
         // Tout decoule de pictureData
@@ -93,24 +91,24 @@ router.put(
         text_id: pictureData.text_id,
       };
 
-      try {
-        const imagePath = path.join(__dirname, "../../public/assets/images/");
-        const webpBuffer = await sharp(imagePath + req.picture.file)
-          .webp()
-          .toBuffer();
+      // try {
+      //   const imagePath = path.join(__dirname, "../../public/assets/images/");
+      //   const webpBuffer = await sharp(imagePath + req.picture.file)
+      //     .webp()
+      //     .toBuffer();
 
-        fs.writeFile(
-          imagePath + `${req.picture.alt}.webp`,
-          webpBuffer,
-          (err) => {
-            if (err) {
-              return res.status(500).send(err.message);
-            }
-          }
-        );
-      } catch (err) {
-        return res.status(500).send(err.message);
-      }
+      //   fs.writeFile(
+      //     imagePath + `${req.picture.alt}.webp`,
+      //     webpBuffer,
+      //     (err) => {
+      //       if (err) {
+      //         return res.status(500).send(err.message);
+      //       }
+      //     }
+      //   );
+      // } catch (err) {
+      //   return res.status(500).send(err.message);
+      // }
 
       return next();
     });
